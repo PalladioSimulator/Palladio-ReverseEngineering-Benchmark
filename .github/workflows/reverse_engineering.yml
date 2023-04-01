@@ -1,0 +1,31 @@
+name: Reverse-Engineer Case Studies
+
+on:
+  workflow_dispatch:
+
+  # Every day at 2:00.
+  schedule:
+  - cron: '* 2 * * *'
+
+env:
+  CURRENT_VERSION: invalid
+
+jobs:
+  generate_pcm:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get newest RuleEngine version
+        run: |
+          LATEST_VERSION=$(\
+            curl -sL https://api.github.com/repos/PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine/releases/latest \
+            | jq  -r ".tag_name"
+          )
+          echo "latest_version=$LATEST_VERSION" >> $GITHUB_ENV
+
+      - name: Run RuleEngine
+        if: ${{ env.latest_version != vars.CURRENT_VERSION }}
+        uses: PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine@${{ env.latest_version }}
+
+      - name: Update version
+        run: CURRENT_VERSION=${{ env.latest_version }}
