@@ -28,4 +28,10 @@ jobs:
 
       - name: Update version
         if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
-        run: curl -L https://api.github.com/api/v3/repos/FloBoJa/ArDoCoBenchmark/actions/variables/CURRENT_RULE_ENGINE_VERSION
+        run: |
+          curl -L \
+          -X PATCH \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ github.token }}" \
+          http(s)://HOSTNAME/api/v3/repos/OWNER/REPO/actions/variables/CURRENT_RULE_ENGINE_VERSION \
+          -d '{"name":"CURRENT_RULE_ENGINE_VERSION","value":"${{ env.latest_version }}"}'
