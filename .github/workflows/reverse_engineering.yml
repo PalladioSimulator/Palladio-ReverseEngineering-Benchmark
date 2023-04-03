@@ -7,11 +7,35 @@ on:
   schedule:
   - cron: '0 2 * * *'
 
-permissions: write-all
-
 jobs:
+  find_dirs:
+    runs-on: ubuntu-latest
+    
+    outputs:
+      array: ${{ steps.find_directories.outputs.array }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Find directories
+        id: find_directories
+        run: |
+          array=$(
+            printf '%s\n' $(ls -d */
+            | sed 's/\/$//'
+            | sed 's/.*/"&"/')
+            | sed ':a;N;$!ba;s/\n/, /g'
+            | printf '[%s]\n' "$(cat)"
+          )
+          echo "p::set-output name=array::$array"
+
   generate_pcm:
     runs-on: ubuntu-latest
+    needs: find_dirs
+    strategy:
+      matrix:
+        directory: ${{ fromJson(needs.find_dirs.outputs.array) }}
 
     steps:
       - name: Get latest RuleEngine version
@@ -22,9 +46,22 @@ jobs:
           )
           echo "latest_version=$LATEST_VERSION" >> $GITHUB_ENV
 
-      - name: Run RuleEngine
+      - name: Run RuleEngine on every directory
         if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
         uses: PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
+        with:
+          source_path: ${{ matrix.directory }}
+
+      - name: Run ExampleAction on every directory
+        run: |
+          while read dir; do
+            echo "Running RuleEngineAction on directory $dir"
+            # Pass the directory as input to the action
+            echo "::set-input name=directory::$dir" >> $GITHUB_ENV
+            # Run the action
+            env | grep INPUT_DIRECTORY
+            echo "${{ steps.example_action.outputs.id }}"
+          done < dirs.txt
 
       - name: Update version
         if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
