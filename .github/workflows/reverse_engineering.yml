@@ -21,12 +21,12 @@ jobs:
       - name: Find directories
         id: find_directories
         run: |
-          array=$(
-            printf '%s\n' $(ls -d */
-            | sed 's/\/$//'
-            | sed 's/.*/"&"/')
-            | sed ':a;N;$!ba;s/\n/, /g'
-            | printf '[%s]\n' "$(cat)"
+          array=$( \
+            printf '%s\n' $(ls -d */ \
+            | sed 's/\/$//' \
+            | sed 's/.*/"&"/') \
+            | sed ':a;N;$!ba;s/\n/, /g' \
+            | printf '[%s]\n' "$(cat)" \
           )
           echo "p::set-output name=array::$array"
 
