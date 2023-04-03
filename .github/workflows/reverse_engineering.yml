@@ -47,8 +47,8 @@ jobs:
       - name: Parse .ruleengine.yml
         run: |
           CONFIG_FILE="benchmark/${{ matrix.directory }}/.ruleengine.yml"
-          echo "repository=$(yq '.repository' $CONFIG_FILE)" >> GITHUB_ENV
-          echo "current_version=$(yq '.current_version' $CONFIG_FILE)" >> GITHUB_ENV
+          echo "repository=$(yq eval '.repository' $CONFIG_FILE)" >> GITHUB_ENV
+          echo "current_version=$(yq eval '.current_version' $CONFIG_FILE)" >> GITHUB_ENV
 
       - name: Get latest RuleEngine version
         run: |
@@ -73,4 +73,4 @@ jobs:
 
       - name: Update version
         if: ${{ env.latest_version != env.current_version }}
-        run: yq -i '.current_version = ${{ env.latest_version }}' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
+        run: yq eval -i '.current_version = "${{ env.latest_version }}"' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
