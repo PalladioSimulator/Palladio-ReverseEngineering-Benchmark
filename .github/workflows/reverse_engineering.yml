@@ -41,7 +41,7 @@ jobs:
       - name: Get latest RuleEngine version
         run: |
           LATEST_VERSION=$(\
-            curl -sL https://api.github.com/repos/PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine/releases/latest \
+            curl -sL ${{ github.api_url }}/repos/PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine/releases/latest \
             | jq  -r ".tag_name"
           )
           echo "latest_version=$LATEST_VERSION" >> $GITHUB_ENV
@@ -55,9 +55,4 @@ jobs:
       - name: Update version
         if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
         run: |
-          curl -L \
-          -X PATCH \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ github.token }}" \
-          https://api.github.com/repos/FloBoJa/ArDoCoBenchmark/actions/variables/CURRENT_RULE_ENGINE_VERSION \
-          -d '{"name":"CURRENT_RULE_ENGINE_VERSION","value":"${{ env.latest_version }}"}'
+          echo "TODO: Update current version to ${{ env.latest_version }}"
