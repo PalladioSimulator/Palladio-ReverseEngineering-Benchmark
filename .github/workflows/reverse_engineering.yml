@@ -7,9 +7,6 @@ on:
   schedule:
   - cron: '0 2 * * *'
 
-env:
-  CURRENT_VERSION: invalid
-
 jobs:
   generate_pcm:
     runs-on: ubuntu-latest
@@ -24,9 +21,9 @@ jobs:
           echo "latest_version=$LATEST_VERSION" >> $GITHUB_ENV
 
       - name: Run RuleEngine
-        if: ${{ env.latest_version != vars.CURRENT_VERSION }}
+        if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
         uses: PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
 
       - name: Update version
-        if: ${{ env.latest_version != vars.CURRENT_VERSION }}
-        run: CURRENT_VERSION=${{ env.latest_version }}
+        if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
+        run: CURRENT_RULE_ENGINE_VERSION=${{ env.latest_version }}
