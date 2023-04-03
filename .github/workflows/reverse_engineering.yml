@@ -52,17 +52,6 @@ jobs:
         with:
           source_path: ${{ matrix.directory }}
 
-      - name: Run ExampleAction on every directory
-        run: |
-          while read dir; do
-            echo "Running RuleEngineAction on directory $dir"
-            # Pass the directory as input to the action
-            echo "::set-input name=directory::$dir" >> $GITHUB_ENV
-            # Run the action
-            env | grep INPUT_DIRECTORY
-            echo "${{ steps.example_action.outputs.id }}"
-          done < dirs.txt
-
       - name: Update version
         if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
         run: |
