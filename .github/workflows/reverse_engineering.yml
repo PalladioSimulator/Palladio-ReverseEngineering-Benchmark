@@ -22,11 +22,9 @@ jobs:
         id: find_directories
         run: |
           array=$( \
-            printf '%s\n' $(ls -d */ \
-            | sed 's/\/$//' \
-            | sed 's/.*/"&"/') \
-            | sed ':a;N;$!ba;s/\n/, /g' \
-            | printf '[%s]\n' "$(cat)" \
+            printf '%s\n' '['"$( \
+              find . -maxdepth 1 -type d -exec test -e "{}/.ruleengine.yml" ';' -printf '"%p",\n' \
+              | sed 's|\./||; $s/,$//')"]'' \
           )
           echo "array=$array" >> $GITHUB_OUTPUT
 
@@ -38,8 +36,17 @@ jobs:
         directory: ${{ fromJson(needs.find_dirs.outputs.array) }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout benchmark repository
         uses: actions/checkout@v3
+        
+      - name: Install yq
+        run: sudo apt-get update && sudo apt-get install yq -y
+        
+      - name: Parse .ruleengine.yml
+        run: |
+          CONFIG_FILE=${{ matrix.directory }}/.ruleengine.yml
+          echo "repository=$(yq '.repository' $CONFIG_FILE)" >> GITHUB_ENV
+          echo "current_version=$(yq '.current_version' $CONFIG_FILE)" >> GITHUB_ENV
 
       - name: Get latest RuleEngine version
         run: |
@@ -49,13 +56,28 @@ jobs:
           )
           echo "latest_version=$LATEST_VERSION" >> $GITHUB_ENV
 
-      - name: Run RuleEngine on ${{ matrix.directory }}
-        if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
+      - name: Create temporary directory
+        if: ${{ env.latest_version != env.current_verion }}
+        run: |
+          TEMP_DIR=$(mktemp -d)
+          echo "temp_dir=$TEMP_DIR" >> $GITHUB_ENV
+
+      - name: Checkout repository
+        if: ${{ env.latest_version != env.current_verion }}
+        uses: actions/checkout@v3
+        with:
+          path: ${{ env.temp_dir }}
+          repository: ${{ env.repository }}
+
+      - name: Run RuleEngine on ${{ env.repostory }}
+        if: ${{ env.latest_version != env.current_verion }}
         uses: FloBoJa/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
         with:
-          source_path: ${{ matrix.directory }}
+          source_path: ${{ env.temp_dir }}
 
       - name: Update version
-        if: ${{ env.latest_version != vars.CURRENT_RULE_ENGINE_VERSION }}
-        run: |
-          echo "TODO: Update current version to ${{ env.latest_version }}"
+        if: ${{ env.latest_version != env.current_version }}
+        run: yq -i '.current_version = ${{ env.latest_version }}' ${{ matrix.directory }}/.ruleengine.yml
+        
+      - name: Remove temporary directory
+        run: rm -rf ${{ env.temp_dir }}
