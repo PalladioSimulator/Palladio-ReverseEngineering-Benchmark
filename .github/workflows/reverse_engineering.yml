@@ -50,6 +50,7 @@ jobs:
           CONFIG_FILE="benchmark/${{ matrix.directory }}/.ruleengine.yml"
           echo "repository=$(yq eval '.repository' $CONFIG_FILE)" >> $GITHUB_ENV
           echo "current_version=$(yq eval '.current_version' $CONFIG_FILE)" >> $GITHUB_ENV
+          echo "rules=$(yq eval '.rules[]' $CONFIG_FILE | paste -sd ",")" >> $GITHUB_ENV
 
       - name: Get latest RuleEngine version
         run: |
@@ -71,6 +72,7 @@ jobs:
         uses: FloBoJa/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
         with:
           source_path: repo
+          rules: ${{ env.rules }}
 
       - name: Update version
         if: ${{ env.latest_version != env.current_version }}
