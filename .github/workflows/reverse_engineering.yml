@@ -61,14 +61,14 @@ jobs:
           echo "latest_version=$LATEST_VERSION" >> $GITHUB_ENV
 
       - name: Checkout repository
-        if: ${{ env.latest_version != env.current_verion }}
+        if: ${{ env.latest_version != env.current_version }}
         uses: actions/checkout@v3
         with:
           path: repo
           repository: ${{ env.repository }}
 
       - name: Run RuleEngine
-        if: ${{ env.latest_version != env.current_verion }}
+        if: ${{ env.latest_version != env.current_version }}
         uses: FloBoJa/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
         with:
           source_path: repo
