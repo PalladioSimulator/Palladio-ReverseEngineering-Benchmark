@@ -45,7 +45,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: ${{ fromJson(needs.find_dirs.outputs.array) }}
+        directory: ${{ fromJson(needs.collect_info.outputs.array) }}
 
     steps:
       - name: Checkout benchmark repository
@@ -66,40 +66,40 @@ jobs:
           echo "rules=$(yq eval '.rules[]' $CONFIG_FILE | paste -sd ",")" >> $GITHUB_ENV
 
       - name: Checkout repository
-        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         uses: actions/checkout@v3
         with:
           path: repo/${{ matrix.directory }}
           repository: ${{ env.repository }}
 
       - name: Run RuleEngine
-        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         uses: FloBoJa/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
         with:
           source_path: repo/${{ matrix.directory }}
           rules: ${{ env.rules }}
       
       - name: Download results
-        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         uses: actions/download-artifact@v3
         with:
           name: ruleengine
           path: results
         
       - name: Prepare upload
-        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         run: |
           mkdir -p to_commit/${{ matrix.directory }}/model_re/pcm
           mv results/repo/${{ matrix.directory }} to_commit/${{ matrix.directory }}/model_re/pcm
 
       - name: Update version
-        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         run: |
-          yq eval -i '.current_version = "${{ needs.find_dirs.outputs.latest_version }}"' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
+          yq eval -i '.current_version = "${{ needs.collect_info.outputs.latest_version }}"' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
           mv "benchmark/${{ matrix.directory }}/.ruleengine.yml" to_commit/${{ matrix.directory }}/.ruleengine.yml
       
       - name: Upload artifact
-        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         uses: actions/upload-artifact@v3
         with:
           name: to_commit
@@ -131,5 +131,5 @@ jobs:
         cd repo
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-        git commit -a -m "Upload analysis with RuleEngine ${{ needs.find_dirs.outputs.latest_version }}"
+        git commit -a -m "Upload analysis with RuleEngine ${{ needs.collect_info.outputs.latest_version }}"
         git push
