@@ -120,12 +120,15 @@ jobs:
         path: repo
     
     - name: Download artifact
+      id: download_artifact
       uses: actions/download-artifact@v3
+      continue-on-error: true
       with:
         name: to_commit
         path: to_commit
     
     - name: Integrate changes
+      if: steps.download_artifact.outcome == 'success'
       run: |
         rsync -a to_commit/* repo
         cd repo
