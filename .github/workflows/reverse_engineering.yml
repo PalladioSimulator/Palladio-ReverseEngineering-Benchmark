@@ -73,7 +73,51 @@ jobs:
         with:
           source_path: repo/${{ matrix.directory }}
           rules: ${{ env.rules }}
+      
+      - name: Download results
+        if: ${{ env.latest_version != env.current_version }}
+        uses: actions/download-artifact@v3
+        with:
+          name: ruleengine
+          path: results
+        
+      - name: Prepare upload
+        if: ${{ env.latest_version != env.current_version }}
+        run: |
+          mkdir to_commit
+          mv results/repo/${{ matrix.directory }} to_commit/${{ matrix.directory }}
 
       - name: Update version
         if: ${{ env.latest_version != env.current_version }}
-        run: yq eval -i '.current_version = "${{ env.latest_version }}"' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
+        run: |
+          yq eval -i '.current_version = "${{ env.latest_version }}"' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
+          mv "benchmark/${{ matrix.directory }}/.ruleengine.yml" to_commit/${{ matrix.directory }}/.ruleengine.yml
+      
+      - name: Upload artifact
+        if: ${{ env.latest_version != env.current_version }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: to_commit
+          path: to_commit
+
+  commit_results:
+   runs-on: ubuntu-latest
+   
+   steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        path: repo
+    
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: to_commit
+        path: to_commit
+    
+    - name: Integrate changes
+      run: |
+        mv to_commit/* repo
+        cd repo
+        git commit -a -m "Upload analysis with RuleEngine ${{ env.latest_version }}"
+        git push
