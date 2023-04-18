@@ -64,14 +64,14 @@ jobs:
         if: ${{ env.latest_version != env.current_version }}
         uses: actions/checkout@v3
         with:
-          path: repo
+          path: repo/${{ matrix.directory }}
           repository: ${{ env.repository }}
 
       - name: Run RuleEngine
         if: ${{ env.latest_version != env.current_version }}
         uses: FloBoJa/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
         with:
-          source_path: repo
+          source_path: repo/${{ matrix.directory }}
           rules: ${{ env.rules }}
 
       - name: Update version
