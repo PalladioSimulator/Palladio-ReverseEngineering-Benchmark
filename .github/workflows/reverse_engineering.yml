@@ -11,11 +11,12 @@ permissions:
   contents: write
 
 jobs:
-  find_dirs:
+  collect_info:
     runs-on: ubuntu-latest
     
     outputs:
       array: ${{ steps.find_directories.outputs.array }}
+      latest_version: ${{ steps.latest_version.outputs.value }}
 
     steps:
       - name: Checkout repository
@@ -28,10 +29,19 @@ jobs:
             printf '[%s]' "$(find . -maxdepth 1 -type d -exec test -e "{}/.ruleengine.yml" ';' -printf '"%P",' | sed 's/\.\///g; s/,$//')" \
           )
           echo "array=$array" >> $GITHUB_OUTPUT
+      
+      - name: Get latest RuleEngine version
+        id: latest_version
+        run: |
+          LATEST_VERSION=$(\
+            curl -sL ${{ github.api_url }}/repos/PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine/releases/latest \
+            | jq  -r ".tag_name"
+          )
+          echo "value=$LATEST_VERSION" >> $GITHUB_OUTPUT
 
   generate_pcm:
     runs-on: ubuntu-latest
-    needs: find_dirs
+    needs: collect_info
     strategy:
       fail-fast: false
       matrix:
@@ -55,49 +65,41 @@ jobs:
           echo "current_version=$(yq eval '.current_version' $CONFIG_FILE)" >> $GITHUB_ENV
           echo "rules=$(yq eval '.rules[]' $CONFIG_FILE | paste -sd ",")" >> $GITHUB_ENV
 
-      - name: Get latest RuleEngine version
-        run: |
-          LATEST_VERSION=$(\
-            curl -sL ${{ github.api_url }}/repos/PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine/releases/latest \
-            | jq  -r ".tag_name"
-          )
-          echo "latest_version=$LATEST_VERSION" >> $GITHUB_ENV
-
       - name: Checkout repository
-        if: ${{ env.latest_version != env.current_version }}
+        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
         uses: actions/checkout@v3
         with:
           path: repo/${{ matrix.directory }}
           repository: ${{ env.repository }}
 
       - name: Run RuleEngine
-        if: ${{ env.latest_version != env.current_version }}
+        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
         uses: FloBoJa/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
         with:
           source_path: repo/${{ matrix.directory }}
           rules: ${{ env.rules }}
       
       - name: Download results
-        if: ${{ env.latest_version != env.current_version }}
+        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
         uses: actions/download-artifact@v3
         with:
           name: ruleengine
           path: results
         
       - name: Prepare upload
-        if: ${{ env.latest_version != env.current_version }}
+        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
         run: |
           mkdir -p to_commit/${{ matrix.directory }}/model_re/pcm
           mv results/repo/${{ matrix.directory }} to_commit/${{ matrix.directory }}/model_re/pcm
 
       - name: Update version
-        if: ${{ env.latest_version != env.current_version }}
+        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
         run: |
-          yq eval -i '.current_version = "${{ env.latest_version }}"' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
+          yq eval -i '.current_version = "${{ needs.find_dirs.outputs.latest_version }}"' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
           mv "benchmark/${{ matrix.directory }}/.ruleengine.yml" to_commit/${{ matrix.directory }}/.ruleengine.yml
       
       - name: Upload artifact
-        if: ${{ env.latest_version != env.current_version }}
+        if: ${{ needs.find_dirs.outputs.latest_version != env.current_version }}
         uses: actions/upload-artifact@v3
         with:
           name: to_commit
@@ -105,7 +107,9 @@ jobs:
 
   commit_results:
    runs-on: ubuntu-latest
-   needs: generate_pcm
+   needs:
+    - collect_info
+    - generate_pcm
    # Run even if some matrix job failed
    if: ${{ always() }}
    
@@ -127,5 +131,5 @@ jobs:
         cd repo
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-        git commit -a -m "Upload analysis with RuleEngine ${{ env.latest_version }}"
+        git commit -a -m "Upload analysis with RuleEngine ${{ needs.find_dirs.outputs.latest_version }}"
         git push
