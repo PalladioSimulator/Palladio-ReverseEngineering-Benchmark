@@ -1,0 +1,39 @@
+skinparam fixCircleLabelOverlapping true
+component "CatalogController\n\n\n\n\n\n" {
+[com_ewolff_microservice_catalog_ItemRepository]
+[com_ewolff_microservice_catalog_web_CatalogController]
+portin "/\nCatalogController"
+[com_ewolff_microservice_catalog_web_CatalogController]..>[com_ewolff_microservice_catalog_ItemRepository] : requires
+"/\nCatalogController"..>[com_ewolff_microservice_catalog_web_CatalogController] : requires
+}
+"interface /"--"/\nCatalogController"
+component "CatalogStub\n\n\n\n\n\n" {
+[com_ewolff_microservice_order_catalogstub_CatalogStub]
+portin "/catalog\nCatalogStub"
+"/catalog\nCatalogStub"..>[com_ewolff_microservice_order_catalogstub_CatalogStub] : requires
+}
+"interface /catalog"--"/catalog\nCatalogStub"
+component "CustomerController\n\n\n\n\n\n" {
+[com_ewolff_microservice_customer_web_CustomerController]
+[com_ewolff_microservice_customer_CustomerRepository]
+portin "/\nCustomerController"
+[com_ewolff_microservice_customer_web_CustomerController]..>[com_ewolff_microservice_customer_CustomerRepository] : requires
+"/\nCustomerController"..>[com_ewolff_microservice_customer_web_CustomerController] : requires
+}
+"interface /"--"/\nCustomerController"
+component "CustomerStub\n\n\n\n\n\n" {
+[com_ewolff_microservice_order_customerstub_CustomerStub]
+portin "/customer\nCustomerStub"
+"/customer\nCustomerStub"..>[com_ewolff_microservice_order_customerstub_CustomerStub] : requires
+}
+"interface /customer"--"/customer\nCustomerStub"
+component "OrderService\n\n\n\n\n\n" {
+[com_ewolff_microservice_order_logic_OrderController]
+[com_ewolff_microservice_order_logic_OrderRepository]
+[com_ewolff_microservice_order_logic_OrderService]
+portin "/\nOrderService"
+[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
+[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
+"/\nOrderService"..>[com_ewolff_microservice_order_logic_OrderController] : requires
+}
+"interface /"--"/\nOrderService"
