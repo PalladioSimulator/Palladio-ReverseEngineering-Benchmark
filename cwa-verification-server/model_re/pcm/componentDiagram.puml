@@ -1,0 +1,38 @@
+skinparam fixCircleLabelOverlapping true
+component "ExternalTanController\n\n\n\n\n\n" {
+[app_coronawarn_verification_controller_ExternalTanController]
+portin "/version/v1/tan[POST]\nExternalTanController"
+"/version/v1/tan[POST]\nExternalTanController"..>[app_coronawarn_verification_controller_ExternalTanController] : requires
+}
+"interface /version/v1/tan[POST]"--"/version/v1/tan[POST]\nExternalTanController"
+component "ExternalTestStateController\n\n\n\n\n\n" {
+[app_coronawarn_verification_controller_ExternalTestStateController]
+portin "/version/v1/testresult[POST]\nExternalTestStateController"
+"/version/v1/testresult[POST]\nExternalTestStateController"..>[app_coronawarn_verification_controller_ExternalTestStateController] : requires
+}
+"interface /version/v1/testresult[POST]"--"/version/v1/testresult[POST]\nExternalTestStateController"
+component "ExternalTokenController\n\n\n\n\n\n" {
+[app_coronawarn_verification_controller_ExternalTokenController]
+portin "/version/v1/registrationToken[POST]\nExternalTokenController"
+"/version/v1/registrationToken[POST]\nExternalTokenController"..>[app_coronawarn_verification_controller_ExternalTokenController] : requires
+}
+"interface /version/v1/registrationToken[POST]"--"/version/v1/registrationToken[POST]\nExternalTokenController"
+component "FakeRequestService\n\n\n\n\n\n" {
+[app_coronawarn_verification_service_FakeRequestService]
+}
+component "InternalTanController\n\n\n\n\n\n" {
+[app_coronawarn_verification_controller_InternalTanController]
+portin "/version/v1/tan\nInternalTanController"
+"/version/v1/tan\nInternalTanController"..>[app_coronawarn_verification_controller_InternalTanController] : requires
+}
+"interface /version/v1/tan"--"/version/v1/tan\nInternalTanController"
+component "InternalTestStateController\n\n\n\n\n\n" {
+[app_coronawarn_verification_controller_InternalTestStateController]
+portin "/version/v1/testresult[POST]\nInternalTestStateController"
+"/version/v1/testresult[POST]\nInternalTestStateController"..>[app_coronawarn_verification_controller_InternalTestStateController] : requires
+}
+"interface /version/v1/testresult[POST]"--"/version/v1/testresult[POST]\nInternalTestStateController"
+[app_coronawarn_verification_client_IamClient]..>"interface /auth/realms/cwa/protocol/openid-connect/certs[GET]" : requires
+[app_coronawarn_verification_client_TestResultServerClient]..>"interface /api/v1/app/result[POST]" : requires
+"interface JpaRepository"--[app_coronawarn_verification_repository_VerificationAppSessionRepository]
+"interface JpaRepository"--[app_coronawarn_verification_repository_VerificationTanRepository]
