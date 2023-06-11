@@ -98,8 +98,9 @@ jobs:
       - name: Render UML diagrams
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         run: |
+          sudo apt-get install graphviz
           wget https://github.com/plantuml/plantuml/releases/download/v1.2023.8/plantuml-1.2023.8.jar -O plantuml.jar
-          java -jar plantuml.jar -tsvg -o to_commit/${{ matrix.directory }}/model_re/uml/ to_commit/${{ matrix.directory }}/model_re/uml/*.puml
+          java -jar plantuml.jar -tsvg to_commit/${{ matrix.directory }}/model_re/uml/*.puml
 
       - name: Update version
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
