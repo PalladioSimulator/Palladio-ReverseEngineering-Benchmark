@@ -1,0 +1,94 @@
+skinparam fixCircleLabelOverlapping true
+component "AccountControllerV1\n\n\n\n\n\n" {
+[demo_api_v1_AccountControllerV1]
+portin "/\nAccountControllerV1"
+"/\nAccountControllerV1"..>[demo_api_v1_AccountControllerV1] : requires
+}
+"interface /"--"/\nAccountControllerV1"
+component "AccountServiceV1\n\n\n\n\n\n" {
+[demo_account_AccountRepository]
+[demo_api_v1_AccountServiceV1]
+[demo_api_v1_AccountServiceV1]..>[demo_account_AccountRepository] : requires
+}
+component "CatalogControllerV1\n\n\n\n\n\n" {
+[demo_api_v1_CatalogControllerV1]
+portin "/v1\nCatalogControllerV1"
+"/v1\nCatalogControllerV1"..>[demo_api_v1_CatalogControllerV1] : requires
+}
+"interface /v1"--"/v1\nCatalogControllerV1"
+component "CatalogServiceV1\n\n\n\n\n\n" {
+[demo_api_v1_CatalogServiceV1]
+[demo_catalog_CatalogInfoRepository]
+[demo_api_v1_CatalogServiceV1]..>[demo_catalog_CatalogInfoRepository] : requires
+}
+component "InventoryControllerV1\n\n\n\n\n\n" {
+[demo_v1_InventoryControllerV1]
+portin "/v1\nInventoryControllerV1"
+"/v1\nInventoryControllerV1"..>[demo_v1_InventoryControllerV1] : requires
+}
+"interface /v1"--"/v1\nInventoryControllerV1"
+component "InventoryServiceV1\n\n\n\n\n\n" {
+[demo_v1_InventoryServiceV1]
+}
+component "LoginController\n\n\n\n\n\n" {
+[demo_login_LoginController]
+portin "/login\nLoginController"
+"/login\nLoginController"..>[demo_login_LoginController] : requires
+}
+"interface /login"--"/login\nLoginController"
+component "OrderControllerV1\n\n\n\n\n\n" {
+[demo_api_v1_OrderControllerV1]
+portin "/\nOrderControllerV1"
+"/\nOrderControllerV1"..>[demo_api_v1_OrderControllerV1] : requires
+}
+"interface /"--"/\nOrderControllerV1"
+component "OrderServiceV1\n\n\n\n\n\n" {
+[demo_config_DatabaseInitializer]
+[demo_order_OrderEventRepository]
+[demo_api_v1_OrderServiceV1]
+[demo_order_OrderRepository]
+[demo_invoice_InvoiceRepository]
+[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
+}
+component "ShoppingCartControllerV1\n\n\n\n\n\n" {
+[demo_api_v1_ShoppingCartControllerV1]
+portin "/\nShoppingCartControllerV1"
+"/\nShoppingCartControllerV1"..>[demo_api_v1_ShoppingCartControllerV1] : requires
+}
+"interface /"--"/\nShoppingCartControllerV1"
+component "ShoppingCartServiceV1\n\n\n\n\n\n" {
+[demo_cart_CartEventRepository]
+[demo_api_v1_ShoppingCartServiceV1]
+[demo_api_v1_ShoppingCartServiceV1]..>[demo_cart_CartEventRepository] : requires
+}
+component "UserController\n\n\n\n\n\n" {
+[demo_UserController]
+[demo_login_UserController]
+portin "/user\nUserController"
+portin "/\nUserController"
+"/\nUserController"..>[demo_UserController] : requires
+}
+"interface /user"--"/user\nUserController"
+"interface /"--"/\nUserController"
+component "UserControllerV1\n\n\n\n\n\n" {
+[demo_api_v1_UserControllerV1]
+portin "/\nUserControllerV1"
+"/\nUserControllerV1"..>[demo_api_v1_UserControllerV1] : requires
+}
+"interface /"--"/\nUserControllerV1"
+component "UserService\n\n\n\n\n\n" {
+[demo_UserRepository]
+[demo_UserService]
+[demo_UserService]..>[demo_UserRepository] : requires
+}
+component "UserServiceV1\n\n\n\n\n\n" {
+[demo_api_v1_UserServiceV1]
+[demo_user_UserRepository]
+[demo_api_v1_UserServiceV1]..>[demo_user_UserRepository] : requires
+}
+[DatabaseInitializer]
+"interface PagingAndSortingRepository"--[demo_customer_CustomerRepository]
+[demo_user_UserClientV1]..>"interface /uaa/v1/me" : requires
