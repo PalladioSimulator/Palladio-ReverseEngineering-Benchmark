@@ -1,0 +1,63 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+component "BaseController\n\n\n\n\n\n" {
+[edu_kit_recipe_recipebackend_controller_BaseController]
+portin "/\nBaseController"
+"/\nBaseController"..>[edu_kit_recipe_recipebackend_controller_BaseController] : requires
+}
+"interface /"--"/\nBaseController"
+component "CustomerController\n\n\n\n\n\n" {
+[edu_kit_recipe_recipebackend_controller_api_v1_user_CustomerController]
+portin "/api/v1/user\nCustomerController"
+"/api/v1/user\nCustomerController"..>[edu_kit_recipe_recipebackend_controller_api_v1_user_CustomerController] : requires
+}
+"interface /api/v1/user"--"/api/v1/user\nCustomerController"
+component "ExceptionController\n\n\n\n\n\n" {
+[edu_kit_recipe_recipebackend_controller_exception_ExceptionController]
+portin "/error\nExceptionController"
+"/error\nExceptionController"..>[edu_kit_recipe_recipebackend_controller_exception_ExceptionController] : requires
+}
+"interface /error"--"/error\nExceptionController"
+component "ImageController\n\n\n\n\n\n" {
+[edu_kit_recipe_recipebackend_controller_api_v1_image_ImageController]
+[edu_kit_recipe_recipebackend_repository_CustomerRepository]
+[edu_kit_recipe_recipebackend_repository_RecipeRepository]
+[edu_kit_recipe_recipebackend_service_RecipeService]
+[edu_kit_recipe_recipebackend_repository_ImageRepository]
+[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController]
+[edu_kit_recipe_recipebackend_service_CustomerService]
+portin "/api/v1/recipes\nImageController"
+portin "/api/v1/images\nImageController"
+[edu_kit_recipe_recipebackend_service_RecipeService]..>[edu_kit_recipe_recipebackend_repository_RecipeRepository] : requires
+[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController]..>[edu_kit_recipe_recipebackend_repository_RecipeRepository] : requires
+[edu_kit_recipe_recipebackend_service_CustomerService]..>[edu_kit_recipe_recipebackend_repository_RecipeRepository] : requires
+[edu_kit_recipe_recipebackend_controller_api_v1_image_ImageController]..>[edu_kit_recipe_recipebackend_repository_ImageRepository] : requires
+[edu_kit_recipe_recipebackend_service_RecipeService]..>[edu_kit_recipe_recipebackend_repository_ImageRepository] : requires
+[edu_kit_recipe_recipebackend_service_CustomerService]..>[edu_kit_recipe_recipebackend_repository_CustomerRepository] : requires
+}
+"interface /api/v1/recipes"--"/api/v1/recipes\nImageController"
+"interface /api/v1/images"--"/api/v1/images\nImageController"
+component "IngredientsController\n\n\n\n\n\n" {
+[edu_kit_recipe_recipebackend_repository_IngredientRepository]
+[edu_kit_recipe_recipebackend_repository_tag_TagRepository]
+[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]
+[edu_kit_recipe_recipebackend_controller_api_v1_tag_TagsController]
+portin "/\nIngredientsController"
+portin "/api/v1/ingredients\nIngredientsController"
+[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]..>[edu_kit_recipe_recipebackend_repository_IngredientRepository] : requires
+[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]..>[edu_kit_recipe_recipebackend_repository_tag_TagRepository] : requires
+[edu_kit_recipe_recipebackend_controller_api_v1_tag_TagsController]..>[edu_kit_recipe_recipebackend_repository_tag_TagRepository] : requires
+}
+"interface /"--"/\nIngredientsController"
+"interface /api/v1/ingredients"--"/api/v1/ingredients\nIngredientsController"
+component "UnitController\n\n\n\n\n\n" {
+[edu_kit_recipe_recipebackend_controller_api_v1_units_UnitController]
+[edu_kit_recipe_recipebackend_repository_UnitRepository]
+portin "/api/v1/units\nUnitController"
+[edu_kit_recipe_recipebackend_controller_api_v1_units_UnitController]..>[edu_kit_recipe_recipebackend_repository_UnitRepository] : requires
+"/api/v1/units\nUnitController"..>[edu_kit_recipe_recipebackend_controller_api_v1_units_UnitController] : requires
+}
+"interface /api/v1/units"--"/api/v1/units\nUnitController"
+"interface JpaRepository"--[edu_kit_recipe_recipebackend_repository_IngredientWithAmountRepository]
+
+@enduml

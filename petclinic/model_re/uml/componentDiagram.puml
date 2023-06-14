@@ -1,3 +1,4 @@
+@startuml
 skinparam fixCircleLabelOverlapping true
 component "ApiGatewayController\n\n\n\n\n\n" {
 [org_springframework_samples_petclinic_api_boundary_web_ApiGatewayController]
@@ -6,30 +7,30 @@ portin "/api/gateway/owners\nApiGatewayController"
 }
 "interface /api/gateway/owners"--"/api/gateway/owners\nApiGatewayController"
 component "PetResource\n\n\n\n\n\n" {
-[org_springframework_samples_petclinic_customers_web_PetResource]
-[org_springframework_samples_petclinic_customers_model_PetRepository]
-[org_springframework_samples_petclinic_customers_web_OwnerResource]
 [org_springframework_samples_petclinic_customers_model_OwnerRepository]
-portin "/owners\nPetResource"
+[org_springframework_samples_petclinic_customers_model_PetRepository]
+[org_springframework_samples_petclinic_customers_web_PetResource]
+[org_springframework_samples_petclinic_customers_web_OwnerResource]
 portin "/\nPetResource"
+portin "/owners\nPetResource"
 [org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_PetRepository] : requires
 [org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
 [org_springframework_samples_petclinic_customers_web_OwnerResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
 "/\nPetResource"..>[org_springframework_samples_petclinic_customers_web_PetResource] : requires
 }
-"interface /"--"/\nPetResource"
 "interface /owners"--"/owners\nPetResource"
+"interface /"--"/\nPetResource"
 component "VetResource\n\n\n\n\n\n" {
-[org_springframework_samples_petclinic_vets_model_VetRepository]
 [org_springframework_samples_petclinic_vets_web_VetResource]
+[org_springframework_samples_petclinic_vets_model_VetRepository]
 portin "/vets/[GET]\nVetResource"
 [org_springframework_samples_petclinic_vets_web_VetResource]..>[org_springframework_samples_petclinic_vets_model_VetRepository] : requires
 "/vets/[GET]\nVetResource"..>[org_springframework_samples_petclinic_vets_web_VetResource] : requires
 }
 "interface /vets/[GET]"--"/vets/[GET]\nVetResource"
 component "VisitResource\n\n\n\n\n\n" {
-[org_springframework_samples_petclinic_visits_web_VisitResource]
 [org_springframework_samples_petclinic_visits_model_VisitRepository]
+[org_springframework_samples_petclinic_visits_web_VisitResource]
 portin "/owners\nVisitResource"
 portin "/\nVisitResource"
 [org_springframework_samples_petclinic_visits_web_VisitResource]..>[org_springframework_samples_petclinic_visits_model_VisitRepository] : requires
@@ -37,3 +38,5 @@ portin "/\nVisitResource"
 }
 "interface /owners"--"/owners\nVisitResource"
 "interface /"--"/\nVisitResource"
+
+@enduml

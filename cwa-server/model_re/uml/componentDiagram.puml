@@ -1,0 +1,58 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+component "CallbackController\n\n\n\n\n\n" {
+[app_coronawarn_server_services_callback_controller_CallbackController]
+portin "/version/v1/callback[GET]\nCallbackController"
+"/version/v1/callback[GET]\nCallbackController"..>[app_coronawarn_server_services_callback_controller_CallbackController] : requires
+}
+"interface /version/v1/callback[GET]"--"/version/v1/callback[GET]\nCallbackController"
+component "FakeRequestController\n\n\n\n\n\n" {
+[app_coronawarn_server_services_submission_controller_FakeRequestController]
+portin "/version/v1/diagnosis-keys[POST]\nFakeRequestController"
+"/version/v1/diagnosis-keys[POST]\nFakeRequestController"..>[app_coronawarn_server_services_submission_controller_FakeRequestController] : requires
+}
+"interface /version/v1/diagnosis-keys[POST]"--"/version/v1/diagnosis-keys[POST]\nFakeRequestController"
+component "SrsOtpVerifier\n\n\n\n\n\n" {
+[app_coronawarn_server_services_submission_verification_SrsOtpVerifier]
+}
+component "SubmissionController\n\n\n\n\n\n" {
+[app_coronawarn_server_services_submission_controller_SubmissionController]
+portin "/version/v1/diagnosis-keys[POST]\nSubmissionController"
+portin "/version/v1\nSubmissionController"
+"/version/v1\nSubmissionController"..>[app_coronawarn_server_services_submission_controller_SubmissionController] : requires
+}
+"interface /version/v1"--"/version/v1\nSubmissionController"
+"interface /version/v1/diagnosis-keys[POST]"--"/version/v1/diagnosis-keys[POST]\nSubmissionController"
+component "TanVerifier\n\n\n\n\n\n" {
+[app_coronawarn_server_services_submission_verification_TanVerifier]
+}
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/audit/download" : requires
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/callback" : requires
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/callback[GET]" : requires
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/download" : requires
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/upload[POST]" : requires
+"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_CheckInProtectedReportsRepository]
+"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_DccRevocationEtagRepository]
+"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_DccRevocationListRepository]
+"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_DiagnosisKeyRepository]
+"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_FederationBatchInfoRepository]
+"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_FederationUploadKeyRepository]
+"interface CrudRepository"--[app_coronawarn_server_common_persistence_repository_LocalStatisticsDownloadRepository]
+"interface CrudRepository"--[app_coronawarn_server_common_persistence_repository_StatisticsDownloadRepository]
+"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_TraceTimeIntervalWarningRepository]
+[app_coronawarn_server_services_distribution_dcc_DccRevocationFeignClient]..>"interface /" : requires
+[app_coronawarn_server_services_distribution_dcc_DccRevocationFeignClient]..>"interface /[GET]" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /bnrules" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /bnrules[GET]" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /cclrules" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /cclrules[GET]" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /countrylist[GET]" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /rules" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /rules[GET]" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /valuesets" : requires
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /valuesets[GET]" : requires
+[app_coronawarn_server_services_distribution_dgc_dsc_DigitalSigningCertificatesFeignClient]..>"interface /trustList/DSC/[GET]" : requires
+[app_coronawarn_server_services_submission_verification_SrsVerifyClient]..>"interface /version/v1/srs[POST]" : requires
+[app_coronawarn_server_services_submission_verification_VerificationServerClient]..>"interface /version/v1/tan/verify[POST]" : requires
+
+@enduml
