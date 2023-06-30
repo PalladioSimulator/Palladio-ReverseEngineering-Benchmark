@@ -1,0 +1,45 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+component "MainController\n\n\n\n\n\n" {
+[com_example_service_RecommendationClientService]
+[com_example_service_UserService]
+[com_example_MainController]
+portin "/api\nMainController"
+portout "/newuser\nMainController"
+portout "/user\nMainController"
+[com_example_MainController]..>[com_example_service_UserService] : requires
+[com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
+"/api\nMainController"..>[com_example_MainController] : requires
+[com_example_service_UserService]..>"/user\nMainController" : requires
+[com_example_service_UserService]..>"/newuser\nMainController" : requires
+}
+"interface /api"--"/api\nMainController"
+"/user\nMainController"..>"interface /user" : requires
+"/newuser\nMainController"..>"interface /newuser" : requires
+component "MovieController\n\n\n\n\n\n" {
+[com_example_MovieController]
+portin "/movie\nMovieController"
+portin "/movie/dummyData\nMovieController"
+"/movie\nMovieController"..>[com_example_MovieController] : requires
+}
+"interface /movie"--"/movie\nMovieController"
+"interface /movie/dummyData"--"/movie/dummyData\nMovieController"
+component "RecommendationController\n\n\n\n\n\n" {
+[com_example_RecommendationController]
+portin "/recommendation\nRecommendationController"
+portin "/recommendation/dummyData\nRecommendationController"
+"/recommendation\nRecommendationController"..>[com_example_RecommendationController] : requires
+}
+"interface /recommendation"--"/recommendation\nRecommendationController"
+"interface /recommendation/dummyData"--"/recommendation/dummyData\nRecommendationController"
+component "UserController\n\n\n\n\n\n" {
+[com_example_UserController]
+portin "/user\nUserController"
+"/user\nUserController"..>[com_example_UserController] : requires
+}
+"interface /user"--"/user\nUserController"
+[com_example_service_MovieService]..>"interface /movie" : requires
+[com_example_service_MovieService]..>"interface /movie/dummyData" : requires
+[com_example_service_RecommendationService]..>"interface /recommendation/dummyData" : requires
+
+@enduml

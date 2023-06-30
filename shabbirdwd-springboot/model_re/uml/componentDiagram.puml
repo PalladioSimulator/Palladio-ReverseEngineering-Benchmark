@@ -1,0 +1,30 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+component "DepartmentController\n\n\n\n\n\n" {
+[com_dailycodebuffer_department_service_DepartmentService]
+[com_dailycodebuffer_department_controller_DepartmentController]
+[com_dailycodebuffer_department_repository_DepartmentRepository]
+portin "/departments\nDepartmentController"
+[com_dailycodebuffer_department_service_DepartmentService]..>[com_dailycodebuffer_department_repository_DepartmentRepository] : requires
+[com_dailycodebuffer_department_controller_DepartmentController]..>[com_dailycodebuffer_department_service_DepartmentService] : requires
+"/departments\nDepartmentController"..>[com_dailycodebuffer_department_controller_DepartmentController] : requires
+}
+"interface /departments"--"/departments\nDepartmentController"
+component "FallBackMethodController\n\n\n\n\n\n" {
+[com_dailycodebuffer_cloud_gateway_FallBackMethodController]
+portin "/\nFallBackMethodController"
+"/\nFallBackMethodController"..>[com_dailycodebuffer_cloud_gateway_FallBackMethodController] : requires
+}
+"interface /"--"/\nFallBackMethodController"
+component "UserController\n\n\n\n\n\n" {
+[com_dailycodebuffer_user_service_UserService]
+[com_dailycodebuffer_user_controller_UserController]
+[com_dailycodebuffer_user_repository_UserRepository]
+portin "/users\nUserController"
+[com_dailycodebuffer_user_controller_UserController]..>[com_dailycodebuffer_user_service_UserService] : requires
+[com_dailycodebuffer_user_service_UserService]..>[com_dailycodebuffer_user_repository_UserRepository] : requires
+"/users\nUserController"..>[com_dailycodebuffer_user_controller_UserController] : requires
+}
+"interface /users"--"/users\nUserController"
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+component "FoodTrayController\n\n\n\n\n\n" {
+[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository]
+[com_github_joffryferrater_foodtrayservice_FoodTrayController]
+[com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository]
+portin "/foodtrays\nFoodTrayController"
+portout "/prices/search\nFoodTrayController"
+portout "/items/search\nFoodTrayController"
+[com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository] : requires
+[com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository] : requires
+"/foodtrays\nFoodTrayController"..>[com_github_joffryferrater_foodtrayservice_FoodTrayController] : requires
+[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository]..>"/items/search\nFoodTrayController" : requires
+[com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository]..>"/prices/search\nFoodTrayController" : requires
+}
+"interface /foodtrays"--"/foodtrays\nFoodTrayController"
+"/items/search\nFoodTrayController"..>"interface /items/search" : requires
+"/prices/search\nFoodTrayController"..>"interface /prices/search" : requires
+component "TrayItemService\n\n\n\n\n\n" {
+[com_github_joffryferrater_foodtrayservice_service_TrayItemService]
+}
+"interface CrudRepository"--[com_github_joffryferrater_accountservice_models_AccountRepository]
+"interface CrudRepository"--[com_github_joffryferrater_customerservice_models_CustomerRepository]
+"interface CrudRepository"--[com_github_joffryferrater_itemservice_models_ItemRepository]
+"interface CrudRepository"--[com_github_joffryferrater_priceservice_models_PriceRepository]
+"interface CrudRepository"--[com_github_joffryferrater_storeservice_models_StoreRepository]
+
+@enduml

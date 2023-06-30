@@ -1,0 +1,32 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+component "CardServiceController\n\n\n\n\n\n" {
+[com_spring_netflix_oss_microservices_api_CardServiceController]
+portin "/api\nCardServiceController"
+"/api\nCardServiceController"..>[com_spring_netflix_oss_microservices_api_CardServiceController] : requires
+}
+"interface /api"--"/api\nCardServiceController"
+component "CardStatementServiceController\n\n\n\n\n\n" {
+[com_spring_netflix_oss_microservices_service_CardStatementServiceController]
+[com_spring_netflix_oss_microservices_service_CardClient]
+[com_spring_netflix_oss_microservices_service_StatementClient]
+portin "/api/statement-by-card\nCardStatementServiceController"
+[com_spring_netflix_oss_microservices_service_CardStatementServiceController]..>[com_spring_netflix_oss_microservices_service_CardClient] : requires
+[com_spring_netflix_oss_microservices_service_CardStatementServiceController]..>[com_spring_netflix_oss_microservices_service_StatementClient] : requires
+"/api/statement-by-card\nCardStatementServiceController"..>[com_spring_netflix_oss_microservices_service_CardStatementServiceController] : requires
+}
+"interface /api/statement-by-card"--"/api/statement-by-card\nCardStatementServiceController"
+component "MonitorDashboardApplication\n\n\n\n\n\n" {
+[com_spring_netflix_oss_microservices_MonitorDashboardApplication]
+portin "/\nMonitorDashboardApplication"
+"/\nMonitorDashboardApplication"..>[com_spring_netflix_oss_microservices_MonitorDashboardApplication] : requires
+}
+"interface /"--"/\nMonitorDashboardApplication"
+component "StatementServiceController\n\n\n\n\n\n" {
+[com_spring_netflix_oss_microservices_api_StatementServiceController]
+portin "/api\nStatementServiceController"
+"/api\nStatementServiceController"..>[com_spring_netflix_oss_microservices_api_StatementServiceController] : requires
+}
+"interface /api"--"/api\nStatementServiceController"
+
+@enduml
