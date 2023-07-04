@@ -7,8 +7,8 @@ portin "/\nAccountControllerV1"
 }
 "interface /"--"/\nAccountControllerV1"
 component "AccountServiceV1\n\n\n\n\n\n" {
-[demo_account_AccountRepository]
 [demo_api_v1_AccountServiceV1]
+[demo_account_AccountRepository]
 [demo_api_v1_AccountServiceV1]..>[demo_account_AccountRepository] : requires
 }
 component "CatalogControllerV1\n\n\n\n\n\n" {
@@ -18,8 +18,8 @@ portin "/v1\nCatalogControllerV1"
 }
 "interface /v1"--"/v1\nCatalogControllerV1"
 component "CatalogServiceV1\n\n\n\n\n\n" {
-[demo_api_v1_CatalogServiceV1]
 [demo_catalog_CatalogInfoRepository]
+[demo_api_v1_CatalogServiceV1]
 [demo_api_v1_CatalogServiceV1]..>[demo_catalog_CatalogInfoRepository] : requires
 }
 component "InventoryControllerV1\n\n\n\n\n\n" {
@@ -44,15 +44,15 @@ portin "/\nOrderControllerV1"
 }
 "interface /"--"/\nOrderControllerV1"
 component "OrderServiceV1\n\n\n\n\n\n" {
-[demo_config_DatabaseInitializer]
-[demo_order_OrderEventRepository]
-[demo_api_v1_OrderServiceV1]
 [demo_order_OrderRepository]
+[demo_api_v1_OrderServiceV1]
 [demo_invoice_InvoiceRepository]
-[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
-[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
-[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
+[demo_order_OrderEventRepository]
+[demo_config_DatabaseInitializer]
 [demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
 }
 component "ShoppingCartControllerV1\n\n\n\n\n\n" {
 [demo_api_v1_ShoppingCartControllerV1]
@@ -61,19 +61,19 @@ portin "/\nShoppingCartControllerV1"
 }
 "interface /"--"/\nShoppingCartControllerV1"
 component "ShoppingCartServiceV1\n\n\n\n\n\n" {
-[demo_cart_CartEventRepository]
 [demo_api_v1_ShoppingCartServiceV1]
+[demo_cart_CartEventRepository]
 [demo_api_v1_ShoppingCartServiceV1]..>[demo_cart_CartEventRepository] : requires
 }
 component "UserController\n\n\n\n\n\n" {
 [demo_UserController]
 [demo_login_UserController]
-portin "/\nUserController"
 portin "/user\nUserController"
+portin "/\nUserController"
 "/\nUserController"..>[demo_UserController] : requires
 }
-"interface /user"--"/user\nUserController"
 "interface /"--"/\nUserController"
+"interface /user"--"/user\nUserController"
 component "UserControllerV1\n\n\n\n\n\n" {
 [demo_api_v1_UserControllerV1]
 portin "/\nUserControllerV1"
@@ -81,8 +81,8 @@ portin "/\nUserControllerV1"
 }
 "interface /"--"/\nUserControllerV1"
 component "UserService\n\n\n\n\n\n" {
-[demo_UserRepository]
 [demo_UserService]
+[demo_UserRepository]
 [demo_UserService]..>[demo_UserRepository] : requires
 }
 component "UserServiceV1\n\n\n\n\n\n" {
