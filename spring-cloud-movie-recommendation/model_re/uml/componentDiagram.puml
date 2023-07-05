@@ -2,13 +2,13 @@
 skinparam fixCircleLabelOverlapping true
 component "MainController\n\n\n\n\n\n" {
 [com_example_MainController]
-[com_example_service_UserService]
 [com_example_service_RecommendationClientService]
+[com_example_service_UserService]
 portin "/api\nMainController"
 portout "/user\nMainController"
 portout "/newuser\nMainController"
-[com_example_MainController]..>[com_example_service_UserService] : requires
 [com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
+[com_example_MainController]..>[com_example_service_UserService] : requires
 "/api\nMainController"..>[com_example_MainController] : requires
 [com_example_service_UserService]..>"/user\nMainController" : requires
 [com_example_service_UserService]..>"/newuser\nMainController" : requires
@@ -26,8 +26,8 @@ portin "/movie\nMovieController"
 "interface /movie/dummyData"--"/movie/dummyData\nMovieController"
 component "RecommendationController\n\n\n\n\n\n" {
 [com_example_RecommendationController]
-portin "/recommendation\nRecommendationController"
 portin "/recommendation/dummyData\nRecommendationController"
+portin "/recommendation\nRecommendationController"
 "/recommendation\nRecommendationController"..>[com_example_RecommendationController] : requires
 }
 "interface /recommendation"--"/recommendation\nRecommendationController"
