@@ -44,15 +44,15 @@ portin "/\nOrderControllerV1"
 }
 "interface /"--"/\nOrderControllerV1"
 component "OrderServiceV1\n\n\n\n\n\n" {
-[demo_order_OrderEventRepository]
-[demo_config_DatabaseInitializer]
+[demo_api_v1_OrderServiceV1]
 [demo_order_OrderRepository]
 [demo_invoice_InvoiceRepository]
-[demo_api_v1_OrderServiceV1]
-[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
+[demo_order_OrderEventRepository]
+[demo_config_DatabaseInitializer]
 [demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
-[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
 [demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
 }
 component "ShoppingCartControllerV1\n\n\n\n\n\n" {
 [demo_api_v1_ShoppingCartControllerV1]
@@ -68,12 +68,12 @@ component "ShoppingCartServiceV1\n\n\n\n\n\n" {
 component "UserController\n\n\n\n\n\n" {
 [demo_login_UserController]
 [demo_UserController]
-portin "/\nUserController"
 portin "/user\nUserController"
+portin "/\nUserController"
 "/\nUserController"..>[demo_UserController] : requires
 }
-"interface /"--"/\nUserController"
 "interface /user"--"/user\nUserController"
+"interface /"--"/\nUserController"
 component "UserControllerV1\n\n\n\n\n\n" {
 [demo_api_v1_UserControllerV1]
 portin "/\nUserControllerV1"
