@@ -3,40 +3,45 @@ skinparam fixCircleLabelOverlapping true
 component "CatalogController\n\n\n\n\n\n" {
 [com_ewolff_microservice_catalog_web_CatalogController]
 [com_ewolff_microservice_catalog_ItemRepository]
-portin "/\nCatalogController"
+portin " " as CatalogController.requires._
 [com_ewolff_microservice_catalog_web_CatalogController]..>[com_ewolff_microservice_catalog_ItemRepository] : requires
-"/\nCatalogController"..>[com_ewolff_microservice_catalog_web_CatalogController] : requires
+"CatalogController.requires._"--[com_ewolff_microservice_catalog_web_CatalogController]
 }
-"interface /"--"/\nCatalogController"
+interface "/" as interface._
+interface._--"CatalogController.requires._"
 component "CatalogStub\n\n\n\n\n\n" {
 [com_ewolff_microservice_order_catalogstub_CatalogStub]
-portin "/catalog\nCatalogStub"
-"/catalog\nCatalogStub"..>[com_ewolff_microservice_order_catalogstub_CatalogStub] : requires
+portin " " as CatalogStub.requires._catalog
+"CatalogStub.requires._catalog"--[com_ewolff_microservice_order_catalogstub_CatalogStub]
 }
-"interface /catalog"--"/catalog\nCatalogStub"
+interface "/catalog" as interface._catalog
+interface._catalog--"CatalogStub.requires._catalog"
 component "CustomerController\n\n\n\n\n\n" {
-[com_ewolff_microservice_customer_CustomerRepository]
 [com_ewolff_microservice_customer_web_CustomerController]
-portin "/\nCustomerController"
+[com_ewolff_microservice_customer_CustomerRepository]
+portin " " as CustomerController.requires._
 [com_ewolff_microservice_customer_web_CustomerController]..>[com_ewolff_microservice_customer_CustomerRepository] : requires
-"/\nCustomerController"..>[com_ewolff_microservice_customer_web_CustomerController] : requires
+"CustomerController.requires._"--[com_ewolff_microservice_customer_web_CustomerController]
 }
-"interface /"--"/\nCustomerController"
+interface "/" as interface._
+interface._--"CustomerController.requires._"
 component "CustomerStub\n\n\n\n\n\n" {
 [com_ewolff_microservice_order_customerstub_CustomerStub]
-portin "/customer\nCustomerStub"
-"/customer\nCustomerStub"..>[com_ewolff_microservice_order_customerstub_CustomerStub] : requires
+portin " " as CustomerStub.requires._customer
+"CustomerStub.requires._customer"--[com_ewolff_microservice_order_customerstub_CustomerStub]
 }
-"interface /customer"--"/customer\nCustomerStub"
+interface "/customer" as interface._customer
+interface._customer--"CustomerStub.requires._customer"
 component "OrderService\n\n\n\n\n\n" {
+[com_ewolff_microservice_order_logic_OrderRepository]
 [com_ewolff_microservice_order_logic_OrderController]
 [com_ewolff_microservice_order_logic_OrderService]
-[com_ewolff_microservice_order_logic_OrderRepository]
-portin "/\nOrderService"
+portin " " as OrderService.requires._
 [com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
 [com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
-"/\nOrderService"..>[com_ewolff_microservice_order_logic_OrderController] : requires
+"OrderService.requires._"--[com_ewolff_microservice_order_logic_OrderController]
 }
-"interface /"--"/\nOrderService"
+interface "/" as interface._
+interface._--"OrderService.requires._"
 
 @enduml

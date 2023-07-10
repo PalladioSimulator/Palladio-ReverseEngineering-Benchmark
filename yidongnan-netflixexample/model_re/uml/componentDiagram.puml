@@ -1,0 +1,26 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+component "HystrixWrappedServiceBClient\n\n\n\n\n\n" {
+[net_devh_hystrix_HystrixWrappedServiceBClient]
+[net_devh_controller_AServiceController]
+[net_devh_feign_ServiceBClient]
+portin " " as HystrixWrappedServiceBClient.requires._
+portout " " as HystrixWrappedServiceBClient.provides._
+[net_devh_controller_AServiceController]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
+[net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_feign_ServiceBClient] : requires
+"HystrixWrappedServiceBClient.requires._"--[net_devh_controller_AServiceController]
+[net_devh_feign_ServiceBClient].."HystrixWrappedServiceBClient.provides._"
+}
+interface "/" as interface._
+interface._--"HystrixWrappedServiceBClient.requires._"
+interface "/" as interface._
+"HystrixWrappedServiceBClient.provides._"..>interface._ : requires
+component "ServiceB1Controller\n\n\n\n\n\n" {
+[net_devh_ServiceB1Controller]
+portin " " as ServiceB1Controller.requires._
+"ServiceB1Controller.requires._"--[net_devh_ServiceB1Controller]
+}
+interface "/" as interface._
+interface._--"ServiceB1Controller.requires._"
+
+@enduml

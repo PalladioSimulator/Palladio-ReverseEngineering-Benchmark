@@ -2,15 +2,17 @@
 skinparam fixCircleLabelOverlapping true
 component "AccountController\n\n\n\n\n\n" {
 [pl_piomin_services_account_api_AccountController]
-portin "/\nAccountController"
-"/\nAccountController"..>[pl_piomin_services_account_api_AccountController] : requires
+portin " " as AccountController.requires._
+"AccountController.requires._"--[pl_piomin_services_account_api_AccountController]
 }
-"interface /"--"/\nAccountController"
+interface "/" as interface._
+interface._--"AccountController.requires._"
 component "AuthServer\n\n\n\n\n\n" {
 [pl_piomin_services_auth_AuthServer]
-portin "/user\nAuthServer"
-"/user\nAuthServer"..>[pl_piomin_services_auth_AuthServer] : requires
+portin " " as AuthServer.requires._user
+"AuthServer.requires._user"--[pl_piomin_services_auth_AuthServer]
 }
-"interface /user"--"/user\nAuthServer"
+interface "/user" as interface._user
+interface._user--"AuthServer.requires._user"
 
 @enduml

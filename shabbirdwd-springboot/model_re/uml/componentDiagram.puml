@@ -2,29 +2,32 @@
 skinparam fixCircleLabelOverlapping true
 component "DepartmentController\n\n\n\n\n\n" {
 [com_dailycodebuffer_department_repository_DepartmentRepository]
-[com_dailycodebuffer_department_service_DepartmentService]
 [com_dailycodebuffer_department_controller_DepartmentController]
-portin "/departments\nDepartmentController"
-[com_dailycodebuffer_department_service_DepartmentService]..>[com_dailycodebuffer_department_repository_DepartmentRepository] : requires
+[com_dailycodebuffer_department_service_DepartmentService]
+portin " " as DepartmentController.requires._departments
 [com_dailycodebuffer_department_controller_DepartmentController]..>[com_dailycodebuffer_department_service_DepartmentService] : requires
-"/departments\nDepartmentController"..>[com_dailycodebuffer_department_controller_DepartmentController] : requires
+[com_dailycodebuffer_department_service_DepartmentService]..>[com_dailycodebuffer_department_repository_DepartmentRepository] : requires
+"DepartmentController.requires._departments"--[com_dailycodebuffer_department_controller_DepartmentController]
 }
-"interface /departments"--"/departments\nDepartmentController"
+interface "/departments" as interface._departments
+interface._departments--"DepartmentController.requires._departments"
 component "FallBackMethodController\n\n\n\n\n\n" {
 [com_dailycodebuffer_cloud_gateway_FallBackMethodController]
-portin "/\nFallBackMethodController"
-"/\nFallBackMethodController"..>[com_dailycodebuffer_cloud_gateway_FallBackMethodController] : requires
+portin " " as FallBackMethodController.requires._
+"FallBackMethodController.requires._"--[com_dailycodebuffer_cloud_gateway_FallBackMethodController]
 }
-"interface /"--"/\nFallBackMethodController"
+interface "/" as interface._
+interface._--"FallBackMethodController.requires._"
 component "UserController\n\n\n\n\n\n" {
-[com_dailycodebuffer_user_repository_UserRepository]
 [com_dailycodebuffer_user_service_UserService]
 [com_dailycodebuffer_user_controller_UserController]
-portin "/users\nUserController"
-[com_dailycodebuffer_user_controller_UserController]..>[com_dailycodebuffer_user_service_UserService] : requires
+[com_dailycodebuffer_user_repository_UserRepository]
+portin " " as UserController.requires._users
 [com_dailycodebuffer_user_service_UserService]..>[com_dailycodebuffer_user_repository_UserRepository] : requires
-"/users\nUserController"..>[com_dailycodebuffer_user_controller_UserController] : requires
+[com_dailycodebuffer_user_controller_UserController]..>[com_dailycodebuffer_user_service_UserService] : requires
+"UserController.requires._users"--[com_dailycodebuffer_user_controller_UserController]
 }
-"interface /users"--"/users\nUserController"
+interface "/users" as interface._users
+interface._users--"UserController.requires._users"
 
 @enduml

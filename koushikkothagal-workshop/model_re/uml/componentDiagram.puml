@@ -2,21 +2,24 @@
 skinparam fixCircleLabelOverlapping true
 component "CatalogResource\n\n\n\n\n\n" {
 [io_javabrains_moviecatalogservice_resources_CatalogResource]
-portin "/catalog\nCatalogResource"
-"/catalog\nCatalogResource"..>[io_javabrains_moviecatalogservice_resources_CatalogResource] : requires
+portin " " as CatalogResource.requires._catalog
+"CatalogResource.requires._catalog"--[io_javabrains_moviecatalogservice_resources_CatalogResource]
 }
-"interface /catalog"--"/catalog\nCatalogResource"
+interface "/catalog" as interface._catalog
+interface._catalog--"CatalogResource.requires._catalog"
 component "MovieResource\n\n\n\n\n\n" {
 [io_javabrains_movieinfoservice_resources_MovieResource]
-portin "/movies\nMovieResource"
-"/movies\nMovieResource"..>[io_javabrains_movieinfoservice_resources_MovieResource] : requires
+portin " " as MovieResource.requires._movies
+"MovieResource.requires._movies"--[io_javabrains_movieinfoservice_resources_MovieResource]
 }
-"interface /movies"--"/movies\nMovieResource"
+interface "/movies" as interface._movies
+interface._movies--"MovieResource.requires._movies"
 component "RatingsResource\n\n\n\n\n\n" {
 [io_javabrains_ratingsdataservice_resources_RatingsResource]
-portin "/ratingsdata\nRatingsResource"
-"/ratingsdata\nRatingsResource"..>[io_javabrains_ratingsdataservice_resources_RatingsResource] : requires
+portin " " as RatingsResource.requires._ratingsdata
+"RatingsResource.requires._ratingsdata"--[io_javabrains_ratingsdataservice_resources_RatingsResource]
 }
-"interface /ratingsdata"--"/ratingsdata\nRatingsResource"
+interface "/ratingsdata" as interface._ratingsdata
+interface._ratingsdata--"RatingsResource.requires._ratingsdata"
 
 @enduml

@@ -1,45 +1,56 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "MainController\n\n\n\n\n\n" {
+[com_example_MainController]
 [com_example_service_UserService]
 [com_example_service_RecommendationClientService]
-[com_example_MainController]
-portin "/api\nMainController"
-portout "/user\nMainController"
-portout "/newuser\nMainController"
-[com_example_MainController]..>[com_example_service_UserService] : requires
+portin " " as MainController.requires._api
+portout " " as MainController.provides._user
+portout " " as MainController.provides._newuser
 [com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
-"/api\nMainController"..>[com_example_MainController] : requires
-[com_example_service_UserService]..>"/user\nMainController" : requires
-[com_example_service_UserService]..>"/newuser\nMainController" : requires
+[com_example_MainController]..>[com_example_service_UserService] : requires
+"MainController.requires._api"--[com_example_MainController]
+[com_example_service_UserService].."MainController.provides._user"
+[com_example_service_UserService].."MainController.provides._newuser"
 }
-"interface /api"--"/api\nMainController"
-"/user\nMainController"..>"interface /user" : requires
-"/newuser\nMainController"..>"interface /newuser" : requires
+interface "/api" as interface._api
+interface._api--"MainController.requires._api"
+interface "/user" as interface._user
+"MainController.provides._user"..>interface._user : requires
+interface "/newuser" as interface._newuser
+"MainController.provides._newuser"..>interface._newuser : requires
 component "MovieController\n\n\n\n\n\n" {
 [com_example_MovieController]
-portin "/movie\nMovieController"
-portin "/movie/dummyData\nMovieController"
-"/movie\nMovieController"..>[com_example_MovieController] : requires
+portin " " as MovieController.requires._movie
+portin " " as MovieController.requires._movie_dummyData
+"MovieController.requires._movie"--[com_example_MovieController]
 }
-"interface /movie"--"/movie\nMovieController"
-"interface /movie/dummyData"--"/movie/dummyData\nMovieController"
+interface "/movie" as interface._movie
+interface._movie--"MovieController.requires._movie"
+interface "/movie/dummyData" as interface._movie_dummyData
+interface._movie_dummyData--"MovieController.requires._movie_dummyData"
 component "RecommendationController\n\n\n\n\n\n" {
 [com_example_RecommendationController]
-portin "/recommendation/dummyData\nRecommendationController"
-portin "/recommendation\nRecommendationController"
-"/recommendation\nRecommendationController"..>[com_example_RecommendationController] : requires
+portin " " as RecommendationController.requires._recommendation_dummyData
+portin " " as RecommendationController.requires._recommendation
+"RecommendationController.requires._recommendation"--[com_example_RecommendationController]
 }
-"interface /recommendation"--"/recommendation\nRecommendationController"
-"interface /recommendation/dummyData"--"/recommendation/dummyData\nRecommendationController"
+interface "/recommendation" as interface._recommendation
+interface._recommendation--"RecommendationController.requires._recommendation"
+interface "/recommendation/dummyData" as interface._recommendation_dummyData
+interface._recommendation_dummyData--"RecommendationController.requires._recommendation_dummyData"
 component "UserController\n\n\n\n\n\n" {
 [com_example_UserController]
-portin "/user\nUserController"
-"/user\nUserController"..>[com_example_UserController] : requires
+portin " " as UserController.requires._user
+"UserController.requires._user"--[com_example_UserController]
 }
-"interface /user"--"/user\nUserController"
-[com_example_service_MovieService]..>"interface /movie" : requires
-[com_example_service_MovieService]..>"interface /movie/dummyData" : requires
-[com_example_service_RecommendationService]..>"interface /recommendation/dummyData" : requires
+interface "/user" as interface._user
+interface._user--"UserController.requires._user"
+interface "/movie" as interface._movie
+[com_example_service_MovieService]..>interface._movie : requires
+interface "/movie/dummyData" as interface._movie_dummyData
+[com_example_service_MovieService]..>interface._movie_dummyData : requires
+interface "/recommendation/dummyData" as interface._recommendation_dummyData
+[com_example_service_RecommendationService]..>interface._recommendation_dummyData : requires
 
 @enduml

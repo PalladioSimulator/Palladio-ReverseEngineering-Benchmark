@@ -2,29 +2,33 @@
 skinparam fixCircleLabelOverlapping true
 component "AuthUserController\n\n\n\n\n\n" {
 [com_rohitghatol_microservice_auth_api_AuthUserController]
-portin "/me\nAuthUserController"
-"/me\nAuthUserController"..>[com_rohitghatol_microservice_auth_api_AuthUserController] : requires
+portin " " as AuthUserController.requires._me
+"AuthUserController.requires._me"--[com_rohitghatol_microservice_auth_api_AuthUserController]
 }
-"interface /me"--"/me\nAuthUserController"
+interface "/me" as interface._me
+interface._me--"AuthUserController.requires._me"
 component "CommentsController\n\n\n\n\n\n" {
 [com_rohitghatol_microservices_comments_apis_CommentsController]
-portin "/comments\nCommentsController"
-"/comments\nCommentsController"..>[com_rohitghatol_microservices_comments_apis_CommentsController] : requires
+portin " " as CommentsController.requires._comments
+"CommentsController.requires._comments"--[com_rohitghatol_microservices_comments_apis_CommentsController]
 }
-"interface /comments"--"/comments\nCommentsController"
+interface "/comments" as interface._comments
+interface._comments--"CommentsController.requires._comments"
 component "TaskController\n\n\n\n\n\n" {
-[com_rohitghatol_microservices_task_apis_TaskController]
 [com_rohitghatol_microservices_task_apis_CommentsService]
-portin "/\nTaskController"
+[com_rohitghatol_microservices_task_apis_TaskController]
+portin " " as TaskController.requires._
 [com_rohitghatol_microservices_task_apis_TaskController]..>[com_rohitghatol_microservices_task_apis_CommentsService] : requires
-"/\nTaskController"..>[com_rohitghatol_microservices_task_apis_TaskController] : requires
+"TaskController.requires._"--[com_rohitghatol_microservices_task_apis_TaskController]
 }
-"interface /"--"/\nTaskController"
+interface "/" as interface._
+interface._--"TaskController.requires._"
 component "UserController\n\n\n\n\n\n" {
 [com_rohitghatol_microservices_user_apis_UserController]
-portin "/\nUserController"
-"/\nUserController"..>[com_rohitghatol_microservices_user_apis_UserController] : requires
+portin " " as UserController.requires._
+"UserController.requires._"--[com_rohitghatol_microservices_user_apis_UserController]
 }
-"interface /"--"/\nUserController"
+interface "/" as interface._
+interface._--"UserController.requires._"
 
 @enduml
