@@ -2,57 +2,89 @@
 skinparam fixCircleLabelOverlapping true
 component "CallbackController\n\n\n\n\n\n" {
 [app_coronawarn_server_services_callback_controller_CallbackController]
-portin "/version/v1/callback[GET]\nCallbackController"
-"/version/v1/callback[GET]\nCallbackController"..>[app_coronawarn_server_services_callback_controller_CallbackController] : requires
+portin " " as CallbackController.requires._version_v1_callback_GET_
+"CallbackController.requires._version_v1_callback_GET_"--[app_coronawarn_server_services_callback_controller_CallbackController]
 }
-"interface /version/v1/callback[GET]"--"/version/v1/callback[GET]\nCallbackController"
+interface "/version/v1/callback[GET]" as interface._version_v1_callback_GET_
+interface._version_v1_callback_GET_--"CallbackController.requires._version_v1_callback_GET_"
 component "FakeRequestController\n\n\n\n\n\n" {
 [app_coronawarn_server_services_submission_controller_FakeRequestController]
-portin "/version/v1/diagnosis-keys[POST]\nFakeRequestController"
-"/version/v1/diagnosis-keys[POST]\nFakeRequestController"..>[app_coronawarn_server_services_submission_controller_FakeRequestController] : requires
+portin " " as FakeRequestController.requires._version_v1_diagnosis_keys_POST_
+"FakeRequestController.requires._version_v1_diagnosis_keys_POST_"--[app_coronawarn_server_services_submission_controller_FakeRequestController]
 }
-"interface /version/v1/diagnosis-keys[POST]"--"/version/v1/diagnosis-keys[POST]\nFakeRequestController"
+interface "/version/v1/diagnosis-keys[POST]" as interface._version_v1_diagnosis_keys_POST_
+interface._version_v1_diagnosis_keys_POST_--"FakeRequestController.requires._version_v1_diagnosis_keys_POST_"
 component "SrsOtpVerifier\n\n\n\n\n\n" {
 [app_coronawarn_server_services_submission_verification_SrsOtpVerifier]
 }
 component "SubmissionController\n\n\n\n\n\n" {
 [app_coronawarn_server_services_submission_controller_SubmissionController]
-portin "/version/v1/diagnosis-keys[POST]\nSubmissionController"
-portin "/version/v1\nSubmissionController"
-"/version/v1\nSubmissionController"..>[app_coronawarn_server_services_submission_controller_SubmissionController] : requires
+portin " " as SubmissionController.requires._version_v1_diagnosis_keys_POST_
+portin " " as SubmissionController.requires._version_v1
+"SubmissionController.requires._version_v1"--[app_coronawarn_server_services_submission_controller_SubmissionController]
 }
-"interface /version/v1"--"/version/v1\nSubmissionController"
-"interface /version/v1/diagnosis-keys[POST]"--"/version/v1/diagnosis-keys[POST]\nSubmissionController"
+interface "/version/v1/diagnosis-keys[POST]" as interface._version_v1_diagnosis_keys_POST_
+interface._version_v1_diagnosis_keys_POST_--"SubmissionController.requires._version_v1_diagnosis_keys_POST_"
+interface "/version/v1" as interface._version_v1
+interface._version_v1--"SubmissionController.requires._version_v1"
 component "TanVerifier\n\n\n\n\n\n" {
 [app_coronawarn_server_services_submission_verification_TanVerifier]
 }
-[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/audit/download" : requires
-[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/callback" : requires
-[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/callback[GET]" : requires
-[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/download" : requires
-[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>"interface /diagnosiskeys/upload[POST]" : requires
-"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_CheckInProtectedReportsRepository]
-"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_DccRevocationEtagRepository]
-"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_DccRevocationListRepository]
-"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_DiagnosisKeyRepository]
-"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_FederationBatchInfoRepository]
-"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_FederationUploadKeyRepository]
-"interface CrudRepository"--[app_coronawarn_server_common_persistence_repository_LocalStatisticsDownloadRepository]
-"interface CrudRepository"--[app_coronawarn_server_common_persistence_repository_StatisticsDownloadRepository]
-"interface PagingAndSortingRepository"--[app_coronawarn_server_common_persistence_repository_TraceTimeIntervalWarningRepository]
-[app_coronawarn_server_services_distribution_dcc_DccRevocationFeignClient]..>"interface /" : requires
-[app_coronawarn_server_services_distribution_dcc_DccRevocationFeignClient]..>"interface /[GET]" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /bnrules" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /bnrules[GET]" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /cclrules" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /cclrules[GET]" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /countrylist[GET]" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /rules" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /rules[GET]" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /valuesets" : requires
-[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>"interface /valuesets[GET]" : requires
-[app_coronawarn_server_services_distribution_dgc_dsc_DigitalSigningCertificatesFeignClient]..>"interface /trustList/DSC/[GET]" : requires
-[app_coronawarn_server_services_submission_verification_SrsVerifyClient]..>"interface /version/v1/srs[POST]" : requires
-[app_coronawarn_server_services_submission_verification_VerificationServerClient]..>"interface /version/v1/tan/verify[POST]" : requires
+interface "/diagnosiskeys/audit/download" as interface._diagnosiskeys_audit_download
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>interface._diagnosiskeys_audit_download : requires
+interface "/diagnosiskeys/callback" as interface._diagnosiskeys_callback
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>interface._diagnosiskeys_callback : requires
+interface "/diagnosiskeys/callback[GET]" as interface._diagnosiskeys_callback_GET_
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>interface._diagnosiskeys_callback_GET_ : requires
+interface "/diagnosiskeys/download" as interface._diagnosiskeys_download
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>interface._diagnosiskeys_download : requires
+interface "/diagnosiskeys/upload[POST]" as interface._diagnosiskeys_upload_POST_
+[app_coronawarn_server_common_federation_client_FederationGatewayClient]..>interface._diagnosiskeys_upload_POST_ : requires
+interface "PagingAndSortingRepository" as interface.PagingAndSortingRepository
+interface.PagingAndSortingRepository--[app_coronawarn_server_common_persistence_repository_CheckInProtectedReportsRepository]
+interface "PagingAndSortingRepository" as interface.PagingAndSortingRepository
+interface.PagingAndSortingRepository--[app_coronawarn_server_common_persistence_repository_DccRevocationEtagRepository]
+interface "PagingAndSortingRepository" as interface.PagingAndSortingRepository
+interface.PagingAndSortingRepository--[app_coronawarn_server_common_persistence_repository_DccRevocationListRepository]
+interface "PagingAndSortingRepository" as interface.PagingAndSortingRepository
+interface.PagingAndSortingRepository--[app_coronawarn_server_common_persistence_repository_DiagnosisKeyRepository]
+interface "PagingAndSortingRepository" as interface.PagingAndSortingRepository
+interface.PagingAndSortingRepository--[app_coronawarn_server_common_persistence_repository_FederationBatchInfoRepository]
+interface "PagingAndSortingRepository" as interface.PagingAndSortingRepository
+interface.PagingAndSortingRepository--[app_coronawarn_server_common_persistence_repository_FederationUploadKeyRepository]
+interface "CrudRepository" as interface.CrudRepository
+interface.CrudRepository--[app_coronawarn_server_common_persistence_repository_LocalStatisticsDownloadRepository]
+interface "CrudRepository" as interface.CrudRepository
+interface.CrudRepository--[app_coronawarn_server_common_persistence_repository_StatisticsDownloadRepository]
+interface "PagingAndSortingRepository" as interface.PagingAndSortingRepository
+interface.PagingAndSortingRepository--[app_coronawarn_server_common_persistence_repository_TraceTimeIntervalWarningRepository]
+interface "/" as interface._
+[app_coronawarn_server_services_distribution_dcc_DccRevocationFeignClient]..>interface._ : requires
+interface "/[GET]" as interface.__GET_
+[app_coronawarn_server_services_distribution_dcc_DccRevocationFeignClient]..>interface.__GET_ : requires
+interface "/bnrules" as interface._bnrules
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._bnrules : requires
+interface "/bnrules[GET]" as interface._bnrules_GET_
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._bnrules_GET_ : requires
+interface "/cclrules" as interface._cclrules
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._cclrules : requires
+interface "/cclrules[GET]" as interface._cclrules_GET_
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._cclrules_GET_ : requires
+interface "/countrylist[GET]" as interface._countrylist_GET_
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._countrylist_GET_ : requires
+interface "/rules" as interface._rules
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._rules : requires
+interface "/rules[GET]" as interface._rules_GET_
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._rules_GET_ : requires
+interface "/valuesets" as interface._valuesets
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._valuesets : requires
+interface "/valuesets[GET]" as interface._valuesets_GET_
+[app_coronawarn_server_services_distribution_dgc_client_DigitalCovidCertificateFeignClient]..>interface._valuesets_GET_ : requires
+interface "/trustList/DSC/[GET]" as interface._trustList_DSC__GET_
+[app_coronawarn_server_services_distribution_dgc_dsc_DigitalSigningCertificatesFeignClient]..>interface._trustList_DSC__GET_ : requires
+interface "/version/v1/srs[POST]" as interface._version_v1_srs_POST_
+[app_coronawarn_server_services_submission_verification_SrsVerifyClient]..>interface._version_v1_srs_POST_ : requires
+interface "/version/v1/tan/verify[POST]" as interface._version_v1_tan_verify_POST_
+[app_coronawarn_server_services_submission_verification_VerificationServerClient]..>interface._version_v1_tan_verify_POST_ : requires
 
 @enduml

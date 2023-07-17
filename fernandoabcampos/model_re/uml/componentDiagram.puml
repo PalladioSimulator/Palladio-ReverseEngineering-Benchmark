@@ -2,31 +2,35 @@
 skinparam fixCircleLabelOverlapping true
 component "CardServiceController\n\n\n\n\n\n" {
 [com_spring_netflix_oss_microservices_api_CardServiceController]
-portin "/api\nCardServiceController"
-"/api\nCardServiceController"..>[com_spring_netflix_oss_microservices_api_CardServiceController] : requires
+portin " " as CardServiceController.requires._api
+"CardServiceController.requires._api"--[com_spring_netflix_oss_microservices_api_CardServiceController]
 }
-"interface /api"--"/api\nCardServiceController"
+interface "/api" as interface._api
+interface._api--"CardServiceController.requires._api"
 component "CardStatementServiceController\n\n\n\n\n\n" {
-[com_spring_netflix_oss_microservices_service_CardStatementServiceController]
 [com_spring_netflix_oss_microservices_service_StatementClient]
+[com_spring_netflix_oss_microservices_service_CardStatementServiceController]
 [com_spring_netflix_oss_microservices_service_CardClient]
-portin "/api/statement-by-card\nCardStatementServiceController"
-[com_spring_netflix_oss_microservices_service_CardStatementServiceController]..>[com_spring_netflix_oss_microservices_service_StatementClient] : requires
+portin " " as CardStatementServiceController.requires._api_statement_by_card
 [com_spring_netflix_oss_microservices_service_CardStatementServiceController]..>[com_spring_netflix_oss_microservices_service_CardClient] : requires
-"/api/statement-by-card\nCardStatementServiceController"..>[com_spring_netflix_oss_microservices_service_CardStatementServiceController] : requires
+[com_spring_netflix_oss_microservices_service_CardStatementServiceController]..>[com_spring_netflix_oss_microservices_service_StatementClient] : requires
+"CardStatementServiceController.requires._api_statement_by_card"--[com_spring_netflix_oss_microservices_service_CardStatementServiceController]
 }
-"interface /api/statement-by-card"--"/api/statement-by-card\nCardStatementServiceController"
+interface "/api/statement-by-card" as interface._api_statement_by_card
+interface._api_statement_by_card--"CardStatementServiceController.requires._api_statement_by_card"
 component "MonitorDashboardApplication\n\n\n\n\n\n" {
 [com_spring_netflix_oss_microservices_MonitorDashboardApplication]
-portin "/\nMonitorDashboardApplication"
-"/\nMonitorDashboardApplication"..>[com_spring_netflix_oss_microservices_MonitorDashboardApplication] : requires
+portin " " as MonitorDashboardApplication.requires._
+"MonitorDashboardApplication.requires._"--[com_spring_netflix_oss_microservices_MonitorDashboardApplication]
 }
-"interface /"--"/\nMonitorDashboardApplication"
+interface "/" as interface._
+interface._--"MonitorDashboardApplication.requires._"
 component "StatementServiceController\n\n\n\n\n\n" {
 [com_spring_netflix_oss_microservices_api_StatementServiceController]
-portin "/api\nStatementServiceController"
-"/api\nStatementServiceController"..>[com_spring_netflix_oss_microservices_api_StatementServiceController] : requires
+portin " " as StatementServiceController.requires._api
+"StatementServiceController.requires._api"--[com_spring_netflix_oss_microservices_api_StatementServiceController]
 }
-"interface /api"--"/api\nStatementServiceController"
+interface "/api" as interface._api
+interface._api--"StatementServiceController.requires._api"
 
 @enduml

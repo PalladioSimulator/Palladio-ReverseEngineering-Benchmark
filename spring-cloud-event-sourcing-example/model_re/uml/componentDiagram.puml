@@ -8,8 +8,8 @@ portin " " as AccountControllerV1.requires._
 interface "/" as interface._
 interface._--"AccountControllerV1.requires._"
 component "AccountServiceV1\n\n\n\n\n\n" {
-[demo_account_AccountRepository]
 [demo_api_v1_AccountServiceV1]
+[demo_account_AccountRepository]
 [demo_api_v1_AccountServiceV1]..>[demo_account_AccountRepository] : requires
 }
 component "CatalogControllerV1\n\n\n\n\n\n" {
@@ -20,8 +20,8 @@ portin " " as CatalogControllerV1.requires._v1
 interface "/v1" as interface._v1
 interface._v1--"CatalogControllerV1.requires._v1"
 component "CatalogServiceV1\n\n\n\n\n\n" {
-[demo_api_v1_CatalogServiceV1]
 [demo_catalog_CatalogInfoRepository]
+[demo_api_v1_CatalogServiceV1]
 [demo_api_v1_CatalogServiceV1]..>[demo_catalog_CatalogInfoRepository] : requires
 }
 component "InventoryControllerV1\n\n\n\n\n\n" {
@@ -49,15 +49,15 @@ portin " " as OrderControllerV1.requires._
 interface "/" as interface._
 interface._--"OrderControllerV1.requires._"
 component "OrderServiceV1\n\n\n\n\n\n" {
-[demo_api_v1_OrderServiceV1]
-[demo_order_OrderRepository]
-[demo_invoice_InvoiceRepository]
 [demo_order_OrderEventRepository]
 [demo_config_DatabaseInitializer]
-[demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
-[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
-[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
+[demo_invoice_InvoiceRepository]
+[demo_order_OrderRepository]
+[demo_api_v1_OrderServiceV1]
 [demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
 }
 component "ShoppingCartControllerV1\n\n\n\n\n\n" {
 [demo_api_v1_ShoppingCartControllerV1]
@@ -78,10 +78,10 @@ portin " " as UserController.requires._
 portin " " as UserController.requires._user
 "UserController.requires._"--[demo_UserController]
 }
-interface "/user" as interface._user
-interface._user--"UserController.requires._user"
 interface "/" as interface._
 interface._--"UserController.requires._"
+interface "/user" as interface._user
+interface._user--"UserController.requires._user"
 component "UserControllerV1\n\n\n\n\n\n" {
 [demo_api_v1_UserControllerV1]
 portin " " as UserControllerV1.requires._
@@ -95,8 +95,8 @@ component "UserService\n\n\n\n\n\n" {
 [demo_UserService]..>[demo_UserRepository] : requires
 }
 component "UserServiceV1\n\n\n\n\n\n" {
-[demo_api_v1_UserServiceV1]
 [demo_user_UserRepository]
+[demo_api_v1_UserServiceV1]
 [demo_api_v1_UserServiceV1]..>[demo_user_UserRepository] : requires
 }
 [DatabaseInitializer]
