@@ -10,13 +10,13 @@ interface._api_gateway_owners--"ApiGatewayController.requires._api_gateway_owner
 component "PetResource\n\n\n\n\n\n" {
 [org_springframework_samples_petclinic_customers_model_OwnerRepository]
 [org_springframework_samples_petclinic_customers_web_PetResource]
-[org_springframework_samples_petclinic_customers_model_PetRepository]
 [org_springframework_samples_petclinic_customers_web_OwnerResource]
+[org_springframework_samples_petclinic_customers_model_PetRepository]
 portin " " as PetResource.requires._owners
 portin " " as PetResource.requires._
+[org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_PetRepository] : requires
 [org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
 [org_springframework_samples_petclinic_customers_web_OwnerResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
-[org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_PetRepository] : requires
 "PetResource.requires._"--[org_springframework_samples_petclinic_customers_web_PetResource]
 }
 interface "/owners" as interface._owners
@@ -35,14 +35,14 @@ interface._vets__GET_--"VetResource.requires._vets__GET_"
 component "VisitResource\n\n\n\n\n\n" {
 [org_springframework_samples_petclinic_visits_web_VisitResource]
 [org_springframework_samples_petclinic_visits_model_VisitRepository]
-portin " " as VisitResource.requires._
 portin " " as VisitResource.requires._owners
+portin " " as VisitResource.requires._
 [org_springframework_samples_petclinic_visits_web_VisitResource]..>[org_springframework_samples_petclinic_visits_model_VisitRepository] : requires
 "VisitResource.requires._"--[org_springframework_samples_petclinic_visits_web_VisitResource]
 }
-interface "/" as interface._
-interface._--"VisitResource.requires._"
 interface "/owners" as interface._owners
 interface._owners--"VisitResource.requires._owners"
+interface "/" as interface._
+interface._--"VisitResource.requires._"
 
 @enduml
