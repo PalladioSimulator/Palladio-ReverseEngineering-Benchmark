@@ -21,8 +21,9 @@ interface "/newuser" as interface._newuser
 "MainController.provides._newuser"..>interface._newuser : requires
 component "MovieController\n\n\n\n\n\n" {
 [com_example_MovieController]
-portin " " as MovieController.requires._movie_dummyData
 portin " " as MovieController.requires._movie
+portin " " as MovieController.requires._movie_dummyData
+"MovieController.requires._movie_dummyData"--[com_example_MovieController]
 "MovieController.requires._movie"--[com_example_MovieController]
 }
 interface "/movie/dummyData" as interface._movie_dummyData
@@ -32,13 +33,22 @@ interface._movie--"MovieController.requires._movie"
 component "RecommendationController\n\n\n\n\n\n" {
 [com_example_RecommendationController]
 portin " " as RecommendationController.requires._recommendation_dummyData
-portin " " as RecommendationController.requires._recommendation
-"RecommendationController.requires._recommendation"--[com_example_RecommendationController]
+portin " " as RecommendationController.requires._recommendation_movie
+portin " " as RecommendationController.requires._recommendation_user
+portin " " as RecommendationController.requires._recommendation_recommend_user
+"RecommendationController.requires._recommendation_user"--[com_example_RecommendationController]
+"RecommendationController.requires._recommendation_dummyData"--[com_example_RecommendationController]
+"RecommendationController.requires._recommendation_recommend_user"--[com_example_RecommendationController]
+"RecommendationController.requires._recommendation_movie"--[com_example_RecommendationController]
 }
+interface "/recommendation/user" as interface._recommendation_user
+interface._recommendation_user--"RecommendationController.requires._recommendation_user"
 interface "/recommendation/dummyData" as interface._recommendation_dummyData
 interface._recommendation_dummyData--"RecommendationController.requires._recommendation_dummyData"
-interface "/recommendation" as interface._recommendation
-interface._recommendation--"RecommendationController.requires._recommendation"
+interface "/recommendation/recommend/user" as interface._recommendation_recommend_user
+interface._recommendation_recommend_user--"RecommendationController.requires._recommendation_recommend_user"
+interface "/recommendation/movie" as interface._recommendation_movie
+interface._recommendation_movie--"RecommendationController.requires._recommendation_movie"
 component "UserController\n\n\n\n\n\n" {
 [com_example_UserController]
 portin " " as UserController.requires._user

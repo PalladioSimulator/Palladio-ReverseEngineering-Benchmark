@@ -2,24 +2,24 @@
 skinparam fixCircleLabelOverlapping true
 component "CatalogResource\n\n\n\n\n\n" {
 [io_javabrains_moviecatalogservice_resources_CatalogResource]
-portin " " as CatalogResource.requires._catalog
-"CatalogResource.requires._catalog"--[io_javabrains_moviecatalogservice_resources_CatalogResource]
+portin " " as CatalogResource.requires._movie_catalog_service_catalog
+"CatalogResource.requires._movie_catalog_service_catalog"--[io_javabrains_moviecatalogservice_resources_CatalogResource]
 }
-interface "/catalog" as interface._catalog
-interface._catalog--"CatalogResource.requires._catalog"
+interface "/movie-catalog-service/catalog" as interface._movie_catalog_service_catalog
+interface._movie_catalog_service_catalog--"CatalogResource.requires._movie_catalog_service_catalog"
 component "MovieResource\n\n\n\n\n\n" {
 [io_javabrains_movieinfoservice_resources_MovieResource]
-portin " " as MovieResource.requires._movies
-"MovieResource.requires._movies"--[io_javabrains_movieinfoservice_resources_MovieResource]
+portin " " as MovieResource.requires._movie_info_service_movies
+"MovieResource.requires._movie_info_service_movies"--[io_javabrains_movieinfoservice_resources_MovieResource]
 }
-interface "/movies" as interface._movies
-interface._movies--"MovieResource.requires._movies"
+interface "/movie-info-service/movies" as interface._movie_info_service_movies
+interface._movie_info_service_movies--"MovieResource.requires._movie_info_service_movies"
 component "RatingsResource\n\n\n\n\n\n" {
 [io_javabrains_ratingsdataservice_resources_RatingsResource]
-portin " " as RatingsResource.requires._ratingsdata
-"RatingsResource.requires._ratingsdata"--[io_javabrains_ratingsdataservice_resources_RatingsResource]
+portin " " as RatingsResource.requires._ratings_data_service_ratingsdata
+"RatingsResource.requires._ratings_data_service_ratingsdata"--[io_javabrains_ratingsdataservice_resources_RatingsResource]
 }
-interface "/ratingsdata" as interface._ratingsdata
-interface._ratingsdata--"RatingsResource.requires._ratingsdata"
+interface "/ratings-data-service/ratingsdata" as interface._ratings_data_service_ratingsdata
+interface._ratings_data_service_ratingsdata--"RatingsResource.requires._ratings_data_service_ratingsdata"
 
 @enduml

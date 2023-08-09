@@ -3,45 +3,45 @@ skinparam fixCircleLabelOverlapping true
 component "CatalogController\n\n\n\n\n\n" {
 [com_ewolff_microservice_catalog_web_CatalogController]
 [com_ewolff_microservice_catalog_ItemRepository]
-portin " " as CatalogController.requires._
+portin " " as CatalogController.requires._catalog
 [com_ewolff_microservice_catalog_web_CatalogController]..>[com_ewolff_microservice_catalog_ItemRepository] : requires
-"CatalogController.requires._"--[com_ewolff_microservice_catalog_web_CatalogController]
-}
-interface "/" as interface._
-interface._--"CatalogController.requires._"
-component "CatalogStub\n\n\n\n\n\n" {
-[com_ewolff_microservice_order_catalogstub_CatalogStub]
-portin " " as CatalogStub.requires._catalog
-"CatalogStub.requires._catalog"--[com_ewolff_microservice_order_catalogstub_CatalogStub]
+"CatalogController.requires._catalog"--[com_ewolff_microservice_catalog_web_CatalogController]
 }
 interface "/catalog" as interface._catalog
-interface._catalog--"CatalogStub.requires._catalog"
-component "CustomerController\n\n\n\n\n\n" {
-[com_ewolff_microservice_customer_web_CustomerController]
-[com_ewolff_microservice_customer_CustomerRepository]
-portin " " as CustomerController.requires._
-[com_ewolff_microservice_customer_web_CustomerController]..>[com_ewolff_microservice_customer_CustomerRepository] : requires
-"CustomerController.requires._"--[com_ewolff_microservice_customer_web_CustomerController]
+interface._catalog--"CatalogController.requires._catalog"
+component "CatalogStub\n\n\n\n\n\n" {
+[com_ewolff_microservice_order_catalogstub_CatalogStub]
+portin " " as CatalogStub.requires._order_catalog
+"CatalogStub.requires._order_catalog"--[com_ewolff_microservice_order_catalogstub_CatalogStub]
 }
-interface "/" as interface._
-interface._--"CustomerController.requires._"
-component "CustomerStub\n\n\n\n\n\n" {
-[com_ewolff_microservice_order_customerstub_CustomerStub]
-portin " " as CustomerStub.requires._customer
-"CustomerStub.requires._customer"--[com_ewolff_microservice_order_customerstub_CustomerStub]
+interface "/order/catalog" as interface._order_catalog
+interface._order_catalog--"CatalogStub.requires._order_catalog"
+component "CustomerController\n\n\n\n\n\n" {
+[com_ewolff_microservice_customer_CustomerRepository]
+[com_ewolff_microservice_customer_web_CustomerController]
+portin " " as CustomerController.requires._customer
+[com_ewolff_microservice_customer_web_CustomerController]..>[com_ewolff_microservice_customer_CustomerRepository] : requires
+"CustomerController.requires._customer"--[com_ewolff_microservice_customer_web_CustomerController]
 }
 interface "/customer" as interface._customer
-interface._customer--"CustomerStub.requires._customer"
-component "OrderService\n\n\n\n\n\n" {
-[com_ewolff_microservice_order_logic_OrderController]
-[com_ewolff_microservice_order_logic_OrderRepository]
-[com_ewolff_microservice_order_logic_OrderService]
-portin " " as OrderService.requires._
-[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
-[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
-"OrderService.requires._"--[com_ewolff_microservice_order_logic_OrderController]
+interface._customer--"CustomerController.requires._customer"
+component "CustomerStub\n\n\n\n\n\n" {
+[com_ewolff_microservice_order_customerstub_CustomerStub]
+portin " " as CustomerStub.requires._order_customer
+"CustomerStub.requires._order_customer"--[com_ewolff_microservice_order_customerstub_CustomerStub]
 }
-interface "/" as interface._
-interface._--"OrderService.requires._"
+interface "/order/customer" as interface._order_customer
+interface._order_customer--"CustomerStub.requires._order_customer"
+component "OrderService\n\n\n\n\n\n" {
+[com_ewolff_microservice_order_logic_OrderService]
+[com_ewolff_microservice_order_logic_OrderRepository]
+[com_ewolff_microservice_order_logic_OrderController]
+portin " " as OrderService.requires._order
+[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
+[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
+"OrderService.requires._order"--[com_ewolff_microservice_order_logic_OrderController]
+}
+interface "/order" as interface._order
+interface._order--"OrderService.requires._order"
 
 @enduml

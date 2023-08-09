@@ -15,12 +15,16 @@ portin " " as CommentsController.requires._comments
 interface "/comments" as interface._comments
 interface._comments--"CommentsController.requires._comments"
 component "TaskController\n\n\n\n\n\n" {
-[com_anilallewar_microservices_task_apis_TaskController]
 [com_anilallewar_microservices_task_apis_CommentsService]
+[com_anilallewar_microservices_task_apis_TaskController]
 portin " " as TaskController.requires._
+portin " " as TaskController.requires._usertask
 [com_anilallewar_microservices_task_apis_TaskController]..>[com_anilallewar_microservices_task_apis_CommentsService] : requires
+"TaskController.requires._usertask"--[com_anilallewar_microservices_task_apis_TaskController]
 "TaskController.requires._"--[com_anilallewar_microservices_task_apis_TaskController]
 }
+interface "/usertask" as interface._usertask
+interface._usertask--"TaskController.requires._usertask"
 interface "/" as interface._
 interface._--"TaskController.requires._"
 component "UserController\n\n\n\n\n\n" {
