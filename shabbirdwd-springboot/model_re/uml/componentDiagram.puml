@@ -1,20 +1,16 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "DepartmentController\n\n\n\n\n\n" {
-[com_dailycodebuffer_department_repository_DepartmentRepository]
 [com_dailycodebuffer_department_service_DepartmentService]
 [com_dailycodebuffer_department_controller_DepartmentController]
-portin " " as DepartmentController.requires._departments_GET_
-portin " " as DepartmentController.requires._departments_POST_
-[com_dailycodebuffer_department_controller_DepartmentController]..>[com_dailycodebuffer_department_service_DepartmentService] : requires
+[com_dailycodebuffer_department_repository_DepartmentRepository]
+portin " " as DepartmentController.requires._departments
 [com_dailycodebuffer_department_service_DepartmentService]..>[com_dailycodebuffer_department_repository_DepartmentRepository] : requires
-"DepartmentController.requires._departments_GET_"--[com_dailycodebuffer_department_controller_DepartmentController]
-"DepartmentController.requires._departments_POST_"--[com_dailycodebuffer_department_controller_DepartmentController]
+[com_dailycodebuffer_department_controller_DepartmentController]..>[com_dailycodebuffer_department_service_DepartmentService] : requires
+"DepartmentController.requires._departments"--[com_dailycodebuffer_department_controller_DepartmentController]
 }
-interface "/departments[GET]" as interface._departments_GET_
-interface._departments_GET_--"DepartmentController.requires._departments_GET_"
-interface "/departments[POST]" as interface._departments_POST_
-interface._departments_POST_--"DepartmentController.requires._departments_POST_"
+interface "/departments" as interface._departments
+interface._departments--"DepartmentController.requires._departments"
 component "FallBackMethodController\n\n\n\n\n\n" {
 [com_dailycodebuffer_cloud_gateway_FallBackMethodController]
 portin " " as FallBackMethodController.requires._departmentServiceFallBack_GET_
@@ -27,19 +23,15 @@ interface._userServiceFallBack_GET_--"FallBackMethodController.requires._userSer
 interface "/departmentServiceFallBack[GET]" as interface._departmentServiceFallBack_GET_
 interface._departmentServiceFallBack_GET_--"FallBackMethodController.requires._departmentServiceFallBack_GET_"
 component "UserController\n\n\n\n\n\n" {
-[com_dailycodebuffer_user_repository_UserRepository]
 [com_dailycodebuffer_user_service_UserService]
 [com_dailycodebuffer_user_controller_UserController]
-portin " " as UserController.requires._users_GET_
-portin " " as UserController.requires._users_POST_
-[com_dailycodebuffer_user_controller_UserController]..>[com_dailycodebuffer_user_service_UserService] : requires
+[com_dailycodebuffer_user_repository_UserRepository]
+portin " " as UserController.requires._users
 [com_dailycodebuffer_user_service_UserService]..>[com_dailycodebuffer_user_repository_UserRepository] : requires
-"UserController.requires._users_GET_"--[com_dailycodebuffer_user_controller_UserController]
-"UserController.requires._users_POST_"--[com_dailycodebuffer_user_controller_UserController]
+[com_dailycodebuffer_user_controller_UserController]..>[com_dailycodebuffer_user_service_UserService] : requires
+"UserController.requires._users"--[com_dailycodebuffer_user_controller_UserController]
 }
-interface "/users[GET]" as interface._users_GET_
-interface._users_GET_--"UserController.requires._users_GET_"
-interface "/users[POST]" as interface._users_POST_
-interface._users_POST_--"UserController.requires._users_POST_"
+interface "/users" as interface._users
+interface._users--"UserController.requires._users"
 
 @enduml
