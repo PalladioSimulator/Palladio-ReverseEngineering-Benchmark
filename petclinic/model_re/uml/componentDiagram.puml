@@ -2,47 +2,69 @@
 skinparam fixCircleLabelOverlapping true
 component "ApiGatewayController\n\n\n\n\n\n" {
 [org_springframework_samples_petclinic_api_boundary_web_ApiGatewayController]
-portin " " as ApiGatewayController.requires._api_gateway_owners
-"ApiGatewayController.requires._api_gateway_owners"--[org_springframework_samples_petclinic_api_boundary_web_ApiGatewayController]
+portin " " as ApiGatewayController.requires._api_gateway_owners_GET_
+"ApiGatewayController.requires._api_gateway_owners_GET_"--[org_springframework_samples_petclinic_api_boundary_web_ApiGatewayController]
 }
-interface "/api/gateway/owners" as interface._api_gateway_owners
-interface._api_gateway_owners--"ApiGatewayController.requires._api_gateway_owners"
+interface "/api/gateway/owners[GET]" as interface._api_gateway_owners_GET_
+interface._api_gateway_owners_GET_--"ApiGatewayController.requires._api_gateway_owners_GET_"
 component "PetResource\n\n\n\n\n\n" {
 [org_springframework_samples_petclinic_customers_model_OwnerRepository]
-[org_springframework_samples_petclinic_customers_web_PetResource]
 [org_springframework_samples_petclinic_customers_web_OwnerResource]
+[org_springframework_samples_petclinic_customers_web_PetResource]
 [org_springframework_samples_petclinic_customers_model_PetRepository]
-portin " " as PetResource.requires._owners
-portin " " as PetResource.requires._
+portin " " as PetResource.requires._petTypes_GET_
+portin " " as PetResource.requires._owners___pets_POST_
+portin " " as PetResource.requires._owners___pets_GET_
+portin " " as PetResource.requires._owners_GET_
+portin " " as PetResource.requires._owners_PUT_
+portin " " as PetResource.requires._owners_POST_
+portin " " as PetResource.requires._owners___pets_PUT_
 [org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_PetRepository] : requires
-[org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
 [org_springframework_samples_petclinic_customers_web_OwnerResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
-"PetResource.requires._"--[org_springframework_samples_petclinic_customers_web_PetResource]
+[org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
+"PetResource.requires._owners_GET_"--[org_springframework_samples_petclinic_customers_web_OwnerResource]
+"PetResource.requires._petTypes_GET_"--[org_springframework_samples_petclinic_customers_web_PetResource]
+"PetResource.requires._owners___pets_POST_"--[org_springframework_samples_petclinic_customers_web_PetResource]
+"PetResource.requires._owners___pets_PUT_"--[org_springframework_samples_petclinic_customers_web_PetResource]
+"PetResource.requires._owners_POST_"--[org_springframework_samples_petclinic_customers_web_OwnerResource]
+"PetResource.requires._owners_PUT_"--[org_springframework_samples_petclinic_customers_web_OwnerResource]
+"PetResource.requires._owners___pets_GET_"--[org_springframework_samples_petclinic_customers_web_PetResource]
 }
-interface "/owners" as interface._owners
-interface._owners--"PetResource.requires._owners"
-interface "/" as interface._
-interface._--"PetResource.requires._"
+interface "/owners[GET]" as interface._owners_GET_
+interface._owners_GET_--"PetResource.requires._owners_GET_"
+interface "/petTypes[GET]" as interface._petTypes_GET_
+interface._petTypes_GET_--"PetResource.requires._petTypes_GET_"
+interface "/owners/*/pets[POST]" as interface._owners___pets_POST_
+interface._owners___pets_POST_--"PetResource.requires._owners___pets_POST_"
+interface "/owners/*/pets[PUT]" as interface._owners___pets_PUT_
+interface._owners___pets_PUT_--"PetResource.requires._owners___pets_PUT_"
+interface "/owners[POST]" as interface._owners_POST_
+interface._owners_POST_--"PetResource.requires._owners_POST_"
+interface "/owners[PUT]" as interface._owners_PUT_
+interface._owners_PUT_--"PetResource.requires._owners_PUT_"
+interface "/owners/*/pets[GET]" as interface._owners___pets_GET_
+interface._owners___pets_GET_--"PetResource.requires._owners___pets_GET_"
 component "VetResource\n\n\n\n\n\n" {
-[org_springframework_samples_petclinic_vets_model_VetRepository]
 [org_springframework_samples_petclinic_vets_web_VetResource]
-portin " " as VetResource.requires._vets__GET_
+[org_springframework_samples_petclinic_vets_model_VetRepository]
+portin " " as VetResource.requires._vets_GET_
 [org_springframework_samples_petclinic_vets_web_VetResource]..>[org_springframework_samples_petclinic_vets_model_VetRepository] : requires
-"VetResource.requires._vets__GET_"--[org_springframework_samples_petclinic_vets_web_VetResource]
+"VetResource.requires._vets_GET_"--[org_springframework_samples_petclinic_vets_web_VetResource]
 }
-interface "/vets/[GET]" as interface._vets__GET_
-interface._vets__GET_--"VetResource.requires._vets__GET_"
+interface "/vets[GET]" as interface._vets_GET_
+interface._vets_GET_--"VetResource.requires._vets_GET_"
 component "VisitResource\n\n\n\n\n\n" {
-[org_springframework_samples_petclinic_visits_web_VisitResource]
 [org_springframework_samples_petclinic_visits_model_VisitRepository]
-portin " " as VisitResource.requires._owners
-portin " " as VisitResource.requires._
+[org_springframework_samples_petclinic_visits_web_VisitResource]
+portin " " as VisitResource.requires._owners___pets___visits
+portin " " as VisitResource.requires._pets_visits_GET_
 [org_springframework_samples_petclinic_visits_web_VisitResource]..>[org_springframework_samples_petclinic_visits_model_VisitRepository] : requires
-"VisitResource.requires._"--[org_springframework_samples_petclinic_visits_web_VisitResource]
+"VisitResource.requires._owners___pets___visits"--[org_springframework_samples_petclinic_visits_web_VisitResource]
+"VisitResource.requires._pets_visits_GET_"--[org_springframework_samples_petclinic_visits_web_VisitResource]
 }
-interface "/owners" as interface._owners
-interface._owners--"VisitResource.requires._owners"
-interface "/" as interface._
-interface._--"VisitResource.requires._"
+interface "/owners/*/pets/*/visits" as interface._owners___pets___visits
+interface._owners___pets___visits--"VisitResource.requires._owners___pets___visits"
+interface "/pets/visits[GET]" as interface._pets_visits_GET_
+interface._pets_visits_GET_--"VisitResource.requires._pets_visits_GET_"
 
 @enduml

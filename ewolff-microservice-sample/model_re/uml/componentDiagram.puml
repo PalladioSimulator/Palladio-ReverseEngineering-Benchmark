@@ -1,8 +1,8 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "CatalogController\n\n\n\n\n\n" {
-[com_ewolff_microservice_catalog_ItemRepository]
 [com_ewolff_microservice_catalog_web_CatalogController]
+[com_ewolff_microservice_catalog_ItemRepository]
 [com_ewolff_microservice_catalog_CatalogApp]
 portin " " as CatalogController.requires._catalog
 [com_ewolff_microservice_catalog_web_CatalogController]..>[com_ewolff_microservice_catalog_ItemRepository] : requires
@@ -19,8 +19,8 @@ portin " " as CatalogStub.requires._order_catalog
 interface "/order/catalog" as interface._order_catalog
 interface._order_catalog--"CatalogStub.requires._order_catalog"
 component "CustomerController\n\n\n\n\n\n" {
-[com_ewolff_microservice_customer_CustomerRepository]
 [com_ewolff_microservice_customer_CustomerApp]
+[com_ewolff_microservice_customer_CustomerRepository]
 [com_ewolff_microservice_customer_web_CustomerController]
 portin " " as CustomerController.requires._customer
 [com_ewolff_microservice_customer_CustomerApp]..>[com_ewolff_microservice_customer_CustomerRepository] : requires
@@ -37,16 +37,17 @@ portin " " as CustomerStub.requires._order_customer
 interface "/order/customer" as interface._order_customer
 interface._order_customer--"CustomerStub.requires._order_customer"
 component "OrderService\n\n\n\n\n\n" {
-[com_ewolff_microservice_order_clients_CustomerClient]
 [com_ewolff_microservice_order_logic_OrderService]
 [com_ewolff_microservice_order_clients_CatalogClient]
-[com_ewolff_microservice_order_logic_OrderController]
 [com_ewolff_microservice_order_logic_OrderRepository]
+[com_ewolff_microservice_order_logic_OrderController]
+[com_ewolff_microservice_order_clients_CustomerClient]
 portin " " as OrderService.requires._order
 [com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
 [com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
 [com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_clients_CatalogClient] : requires
 [com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_clients_CatalogClient] : requires
+[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderService] : requires
 [com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_clients_CustomerClient] : requires
 [com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_clients_CustomerClient] : requires
 "OrderService.requires._order"--[com_ewolff_microservice_order_logic_OrderController]
