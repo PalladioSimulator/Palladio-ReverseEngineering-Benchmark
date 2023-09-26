@@ -1,24 +1,26 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "FoodTrayController\n\n\n\n\n\n" {
+[com_github_joffryferrater_foodtrayservice_FoodTrayController]
 [com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository]
 [com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository]
-[com_github_joffryferrater_foodtrayservice_FoodTrayController]
-portin " " as FoodTrayController.requires._foodtrays
-portout " " as FoodTrayController.provides._items_search
-portout " " as FoodTrayController.provides._prices_search
-[com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository] : requires
+[com_github_joffryferrater_foodtrayservice_repository_ItemServiceFallback]
+portin " " as FoodTrayController.requires._foodtray_service_foodtrays
+portout " " as FoodTrayController.provides._prices_search_findByItemCode_itemCode_
+portout " " as FoodTrayController.provides._items_search_findByItemCode_itemCode_
 [com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository] : requires
-"FoodTrayController.requires._foodtrays"--[com_github_joffryferrater_foodtrayservice_FoodTrayController]
-[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository].."FoodTrayController.provides._items_search"
-[com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository].."FoodTrayController.provides._prices_search"
+[com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_ItemServiceFallback] : requires
+[com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository] : requires
+"FoodTrayController.requires._foodtray_service_foodtrays"--[com_github_joffryferrater_foodtrayservice_FoodTrayController]
+[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository].."FoodTrayController.provides._items_search_findByItemCode_itemCode_"
+[com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository].."FoodTrayController.provides._prices_search_findByItemCode_itemCode_"
 }
-interface "/foodtrays" as interface._foodtrays
-interface._foodtrays--"FoodTrayController.requires._foodtrays"
-interface "/items/search" as interface._items_search
-"FoodTrayController.provides._items_search"..>interface._items_search : requires
-interface "/prices/search" as interface._prices_search
-"FoodTrayController.provides._prices_search"..>interface._prices_search : requires
+interface "/foodtray-service/foodtrays" as interface._foodtray_service_foodtrays
+interface._foodtray_service_foodtrays--"FoodTrayController.requires._foodtray_service_foodtrays"
+interface "/items/search/findByItemCode?itemCode=" as interface._items_search_findByItemCode_itemCode_
+"FoodTrayController.provides._items_search_findByItemCode_itemCode_"..>interface._items_search_findByItemCode_itemCode_ : requires
+interface "/prices/search/findByItemCode?itemCode=" as interface._prices_search_findByItemCode_itemCode_
+"FoodTrayController.provides._prices_search_findByItemCode_itemCode_"..>interface._prices_search_findByItemCode_itemCode_ : requires
 component "TrayItemService\n\n\n\n\n\n" {
 [com_github_joffryferrater_foodtrayservice_service_TrayItemService]
 }
