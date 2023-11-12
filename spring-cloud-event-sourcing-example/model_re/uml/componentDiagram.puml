@@ -1,9 +1,9 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "AccountServiceV1\n\n\n\n\n\n" {
-[demo_account_AccountRepository]
-[demo_api_v1_AccountServiceV1]
 [demo_api_v1_AccountControllerV1]
+[demo_api_v1_AccountServiceV1]
+[demo_account_AccountRepository]
 portin " " as AccountServiceV1.requires._account_service
 [demo_api_v1_AccountServiceV1]..>[demo_account_AccountRepository] : requires
 [demo_api_v1_AccountControllerV1]..>[demo_api_v1_AccountServiceV1] : requires
@@ -12,8 +12,8 @@ portin " " as AccountServiceV1.requires._account_service
 interface "/account-service" as interface._account_service
 interface._account_service--"AccountServiceV1.requires._account_service"
 component "CatalogControllerV1\n\n\n\n\n\n" {
-[demo_api_v1_CatalogServiceV1]
 [demo_catalog_CatalogInfoRepository]
+[demo_api_v1_CatalogServiceV1]
 [demo_api_v1_CatalogControllerV1]
 portin " " as CatalogControllerV1.requires._catalog_service_v1
 [demo_api_v1_CatalogControllerV1]..>[demo_api_v1_CatalogServiceV1] : requires
@@ -23,8 +23,8 @@ portin " " as CatalogControllerV1.requires._catalog_service_v1
 interface "/catalog-service/v1" as interface._catalog_service_v1
 interface._catalog_service_v1--"CatalogControllerV1.requires._catalog_service_v1"
 component "InventoryControllerV1\n\n\n\n\n\n" {
-[demo_v1_InventoryControllerV1]
 [demo_v1_InventoryServiceV1]
+[demo_v1_InventoryControllerV1]
 portin " " as InventoryControllerV1.requires._inventory_service_v1
 [demo_v1_InventoryControllerV1]..>[demo_v1_InventoryServiceV1] : requires
 "InventoryControllerV1.requires._inventory_service_v1"--[demo_v1_InventoryControllerV1]
@@ -39,26 +39,26 @@ portin " " as LoginController.requires._user_service_login
 interface "/user-service/login" as interface._user_service_login
 interface._user_service_login--"LoginController.requires._user_service_login"
 component "OrderServiceV1\n\n\n\n\n\n" {
-[demo_config_DatabaseInitializer]
-[demo_api_v1_OrderControllerV1]
+[demo_order_OrderEventRepository]
 [demo_order_OrderRepository]
 [demo_api_v1_OrderServiceV1]
-[demo_order_OrderEventRepository]
+[demo_config_DatabaseInitializer]
+[demo_api_v1_OrderControllerV1]
 [demo_invoice_InvoiceRepository]
 portin " " as OrderServiceV1.requires._order_service
-[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
-[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
-[demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
-[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
 [demo_api_v1_OrderControllerV1]..>[demo_api_v1_OrderServiceV1] : requires
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
 "OrderServiceV1.requires._order_service"--[demo_api_v1_OrderControllerV1]
 }
 interface "/order-service" as interface._order_service
 interface._order_service--"OrderServiceV1.requires._order_service"
 component "ShoppingCartControllerV1\n\n\n\n\n\n" {
+[demo_api_v1_ShoppingCartControllerV1]
 [demo_api_v1_ShoppingCartServiceV1]
 [demo_cart_CartEventRepository]
-[demo_api_v1_ShoppingCartControllerV1]
 portin " " as ShoppingCartControllerV1.requires._shopping_cart_service
 [demo_api_v1_ShoppingCartControllerV1]..>[demo_api_v1_ShoppingCartServiceV1] : requires
 [demo_api_v1_ShoppingCartServiceV1]..>[demo_cart_CartEventRepository] : requires
@@ -73,8 +73,8 @@ component "UserController\n\n\n\n\n\n" {
 [demo_UserController]
 portin " " as UserController.requires._
 portin " " as UserController.requires._user_service_user
-[demo_UserController]..>[demo_UserService] : requires
 [demo_UserService]..>[demo_UserRepository] : requires
+[demo_UserController]..>[demo_UserService] : requires
 "UserController.requires._user_service_user"--[demo_login_UserController]
 "UserController.requires._"--[demo_UserController]
 }
@@ -83,9 +83,9 @@ interface._user_service_user--"UserController.requires._user_service_user"
 interface "/" as interface._
 interface._--"UserController.requires._"
 component "UserControllerV1\n\n\n\n\n\n" {
-[demo_api_v1_UserControllerV1]
-[demo_user_UserRepository]
 [demo_api_v1_UserServiceV1]
+[demo_user_UserRepository]
+[demo_api_v1_UserControllerV1]
 portin " " as UserControllerV1.requires._user_service
 [demo_api_v1_UserControllerV1]..>[demo_api_v1_UserServiceV1] : requires
 [demo_api_v1_UserServiceV1]..>[demo_user_UserRepository] : requires
