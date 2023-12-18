@@ -82,7 +82,7 @@ jobs:
 
       - name: Download results
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ruleengine
           path: results
@@ -110,7 +110,7 @@ jobs:
 
       - name: Upload artifact
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: to_commit
           path: to_commit
@@ -129,7 +129,7 @@ jobs:
 
     - name: Download artifact
       id: download_artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       continue-on-error: true
       with:
         name: to_commit
