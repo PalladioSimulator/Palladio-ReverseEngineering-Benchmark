@@ -2,35 +2,35 @@
 skinparam fixCircleLabelOverlapping true
 component "CardServiceController\n\n\n\n\n\n" {
 [com_spring_netflix_oss_microservices_api_CardServiceController]
-portin " " as CardServiceController.requires._card_service_api
-"CardServiceController.requires._card_service_api"--[com_spring_netflix_oss_microservices_api_CardServiceController]
+portin " " as CardServiceController.requires.card_service_api
+"CardServiceController.requires.card_service_api"--[com_spring_netflix_oss_microservices_api_CardServiceController]
 }
-interface "/card-service/api" as interface._card_service_api
-interface._card_service_api--"CardServiceController.requires._card_service_api"
+interface "card-service/api" as interface.card_service_api
+interface.card_service_api--"CardServiceController.requires.card_service_api"
 component "CardStatementServiceController\n\n\n\n\n\n" {
 [com_spring_netflix_oss_microservices_service_CardClient]
-[com_spring_netflix_oss_microservices_service_StatementClient]
 [com_spring_netflix_oss_microservices_service_CardStatementServiceController]
-portin " " as CardStatementServiceController.requires._card_statement_composite_api_statement_by_card
+[com_spring_netflix_oss_microservices_service_StatementClient]
+portin " " as CardStatementServiceController.requires.card_statement_composite_api_statement_by_card
 [com_spring_netflix_oss_microservices_service_CardStatementServiceController]..>[com_spring_netflix_oss_microservices_service_StatementClient] : requires
 [com_spring_netflix_oss_microservices_service_CardStatementServiceController]..>[com_spring_netflix_oss_microservices_service_CardClient] : requires
-"CardStatementServiceController.requires._card_statement_composite_api_statement_by_card"--[com_spring_netflix_oss_microservices_service_CardStatementServiceController]
+"CardStatementServiceController.requires.card_statement_composite_api_statement_by_card"--[com_spring_netflix_oss_microservices_service_CardStatementServiceController]
 }
-interface "/card-statement-composite/api/statement-by-card" as interface._card_statement_composite_api_statement_by_card
-interface._card_statement_composite_api_statement_by_card--"CardStatementServiceController.requires._card_statement_composite_api_statement_by_card"
+interface "card-statement-composite/api/statement-by-card" as interface.card_statement_composite_api_statement_by_card
+interface.card_statement_composite_api_statement_by_card--"CardStatementServiceController.requires.card_statement_composite_api_statement_by_card"
 component "MonitorDashboardApplication\n\n\n\n\n\n" {
 [com_spring_netflix_oss_microservices_MonitorDashboardApplication]
-portin " " as MonitorDashboardApplication.requires._monitor_dashboard
-"MonitorDashboardApplication.requires._monitor_dashboard"--[com_spring_netflix_oss_microservices_MonitorDashboardApplication]
+portin " " as MonitorDashboardApplication.requires.monitor_dashboard_
+"MonitorDashboardApplication.requires.monitor_dashboard_"--[com_spring_netflix_oss_microservices_MonitorDashboardApplication]
 }
-interface "/monitor-dashboard" as interface._monitor_dashboard
-interface._monitor_dashboard--"MonitorDashboardApplication.requires._monitor_dashboard"
+interface "monitor-dashboard/" as interface.monitor_dashboard_
+interface.monitor_dashboard_--"MonitorDashboardApplication.requires.monitor_dashboard_"
 component "StatementServiceController\n\n\n\n\n\n" {
 [com_spring_netflix_oss_microservices_api_StatementServiceController]
-portin " " as StatementServiceController.requires._statement_service_api
-"StatementServiceController.requires._statement_service_api"--[com_spring_netflix_oss_microservices_api_StatementServiceController]
+portin " " as StatementServiceController.requires.statement_service_api
+"StatementServiceController.requires.statement_service_api"--[com_spring_netflix_oss_microservices_api_StatementServiceController]
 }
-interface "/statement-service/api" as interface._statement_service_api
-interface._statement_service_api--"StatementServiceController.requires._statement_service_api"
+interface "statement-service/api" as interface.statement_service_api
+interface.statement_service_api--"StatementServiceController.requires.statement_service_api"
 
 @enduml

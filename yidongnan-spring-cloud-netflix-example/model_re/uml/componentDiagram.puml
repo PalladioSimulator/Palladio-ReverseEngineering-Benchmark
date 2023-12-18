@@ -1,26 +1,26 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "HystrixWrappedServiceBClient\n\n\n\n\n\n" {
-[net_devh_controller_AServiceController]
 [net_devh_feign_ServiceBClient]
+[net_devh_controller_AServiceController]
 [net_devh_hystrix_HystrixWrappedServiceBClient]
-portin " " as HystrixWrappedServiceBClient.requires._
-portout " " as HystrixWrappedServiceBClient.provides._
-[net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_feign_ServiceBClient] : requires
+portin " " as HystrixWrappedServiceBClient.requires.SPRING_APPLICATION_
+portout " " as HystrixWrappedServiceBClient.provides.service_b_
 [net_devh_controller_AServiceController]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
-"HystrixWrappedServiceBClient.requires._"--[net_devh_controller_AServiceController]
-[net_devh_feign_ServiceBClient].."HystrixWrappedServiceBClient.provides._"
+[net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_feign_ServiceBClient] : requires
+"HystrixWrappedServiceBClient.requires.SPRING_APPLICATION_"--[net_devh_controller_AServiceController]
+[net_devh_feign_ServiceBClient].."HystrixWrappedServiceBClient.provides.service_b_"
 }
-interface "/" as interface._
-interface._--"HystrixWrappedServiceBClient.requires._"
-interface "/" as interface._
-"HystrixWrappedServiceBClient.provides._"..>interface._ : requires
+interface "SPRING-APPLICATION/" as interface.SPRING_APPLICATION_
+interface.SPRING_APPLICATION_--"HystrixWrappedServiceBClient.requires.SPRING_APPLICATION_"
+interface "service-b/" as interface.service_b_
+"HystrixWrappedServiceBClient.provides.service_b_"..>interface.service_b_ : requires
 component "ServiceB1Controller\n\n\n\n\n\n" {
 [net_devh_ServiceB1Controller]
-portin " " as ServiceB1Controller.requires._
-"ServiceB1Controller.requires._"--[net_devh_ServiceB1Controller]
+portin " " as ServiceB1Controller.requires.SPRING_APPLICATION_
+"ServiceB1Controller.requires.SPRING_APPLICATION_"--[net_devh_ServiceB1Controller]
 }
-interface "/" as interface._
-interface._--"ServiceB1Controller.requires._"
+interface "SPRING-APPLICATION/" as interface.SPRING_APPLICATION_
+interface.SPRING_APPLICATION_--"ServiceB1Controller.requires.SPRING_APPLICATION_"
 
 @enduml

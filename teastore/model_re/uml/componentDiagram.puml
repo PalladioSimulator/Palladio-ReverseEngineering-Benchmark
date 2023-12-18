@@ -1,142 +1,168 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
-interface "tools_descartes_teastore_auth_security_IKeyProvider" as interface.tools_descartes_teastore_auth_security_IKeyProvider
-interface.tools_descartes_teastore_auth_security_IKeyProvider--[tools_descartes_teastore_auth_security_ConstantKeyProvider]
-interface "tools_descartes_teastore_auth_security_ISessionIdGenerator" as interface.tools_descartes_teastore_auth_security_ISessionIdGenerator
-interface.tools_descartes_teastore_auth_security_ISessionIdGenerator--[tools_descartes_teastore_auth_security_RandomSessionIdGenerator]
-interface "tools_descartes_teastore_auth_security_ISecurityProvider" as interface.tools_descartes_teastore_auth_security_ISecurityProvider
-interface.tools_descartes_teastore_auth_security_ISecurityProvider--[tools_descartes_teastore_auth_security_ShaSecurityProvider]
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_image_ImageScaler]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_image_cache_entry_ICachable" as interface.tools_descartes_teastore_image_cache_entry_ICachable
-interface.tools_descartes_teastore_image_cache_entry_ICachable--[tools_descartes_teastore_image_StoreImage]
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_image_StoreImage]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_image_cache_IDataCache" as interface.tools_descartes_teastore_image_cache_IDataCache
-interface.tools_descartes_teastore_image_cache_IDataCache--[tools_descartes_teastore_image_cache_AbstractCache]
-interface "java_util_concurrent_locks_ReadWriteLock" as interface.java_util_concurrent_locks_ReadWriteLock
-[tools_descartes_teastore_image_cache_AbstractCache]..>interface.java_util_concurrent_locks_ReadWriteLock : requires
-interface "java_util_function_Predicate" as interface.java_util_function_Predicate
-[tools_descartes_teastore_image_cache_AbstractCache]..>interface.java_util_function_Predicate : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_image_cache_AbstractCache]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_image_storage_IDataStorage" as interface.tools_descartes_teastore_image_storage_IDataStorage
-[tools_descartes_teastore_image_cache_AbstractCache]..>interface.tools_descartes_teastore_image_storage_IDataStorage : requires
-interface "tools_descartes_teastore_image_cache_entry_ICachable" as interface.tools_descartes_teastore_image_cache_entry_ICachable
-interface.tools_descartes_teastore_image_cache_entry_ICachable--[tools_descartes_teastore_image_cache_DummyData]
-interface "tools_descartes_teastore_image_cache_entry_ICacheEntry" as interface.tools_descartes_teastore_image_cache_entry_ICacheEntry
-interface.tools_descartes_teastore_image_cache_entry_ICacheEntry--[tools_descartes_teastore_image_cache_DummyEntry]
-interface "tools_descartes_teastore_image_cache_entry_ICacheEntry" as interface.tools_descartes_teastore_image_cache_entry_ICacheEntry
-interface.tools_descartes_teastore_image_cache_entry_ICacheEntry--[tools_descartes_teastore_image_cache_entry_AbstractEntry]
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_image_cache_entry_AbstractEntry]..>interface.org_slf4j_Logger : requires
-interface "java_util_function_Predicate" as interface.java_util_function_Predicate
-interface.java_util_function_Predicate--[tools_descartes_teastore_image_cache_rules_CacheAll]
-interface "java_lang_Runnable" as interface.java_lang_Runnable
-interface.java_lang_Runnable--[tools_descartes_teastore_image_setup_CreatorRunner]
-interface "java_nio_file_Path" as interface.java_nio_file_Path
-[tools_descartes_teastore_image_setup_CreatorRunner]..>interface.java_nio_file_Path : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_image_setup_CreatorRunner]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_image_storage_IDataStorage" as interface.tools_descartes_teastore_image_storage_IDataStorage
-interface.tools_descartes_teastore_image_storage_IDataStorage--[tools_descartes_teastore_image_storage_DriveStorage]
-interface "java_nio_file_Path" as interface.java_nio_file_Path
-[tools_descartes_teastore_image_storage_DriveStorage]..>interface.java_nio_file_Path : requires
-interface "java_util_concurrent_locks_ReadWriteLock" as interface.java_util_concurrent_locks_ReadWriteLock
-[tools_descartes_teastore_image_storage_DriveStorage]..>interface.java_util_concurrent_locks_ReadWriteLock : requires
-interface "java_util_function_Predicate" as interface.java_util_function_Predicate
-[tools_descartes_teastore_image_storage_DriveStorage]..>interface.java_util_function_Predicate : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_image_storage_DriveStorage]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_image_storage_IDataStorage" as interface.tools_descartes_teastore_image_storage_IDataStorage
-interface.tools_descartes_teastore_image_storage_IDataStorage--[tools_descartes_teastore_image_storage_NoStorage]
-interface "java_util_function_Predicate" as interface.java_util_function_Predicate
-interface.java_util_function_Predicate--[tools_descartes_teastore_image_storage_rules_StoreAll]
-interface "java_util_function_Predicate" as interface.java_util_function_Predicate
-interface.java_util_function_Predicate--[tools_descartes_teastore_image_storage_rules_StoreLargeImages]
-interface "tools_descartes_teastore_kieker_probes_records_IPayloadCharacterization" as interface.tools_descartes_teastore_kieker_probes_records_IPayloadCharacterization
-interface.tools_descartes_teastore_kieker_probes_records_IPayloadCharacterization--[tools_descartes_teastore_kieker_probes_records_OperationExecutionWithParametersRecord]
-interface "java_lang_Runnable" as interface.java_lang_Runnable
-interface.java_lang_Runnable--[tools_descartes_teastore_kieker_rabbitmq_FileWriterDaemon]
-interface "java_lang_Runnable" as interface.java_lang_Runnable
-interface.java_lang_Runnable--[tools_descartes_teastore_kieker_rabbitmq_LogReaderDaemon]
-interface "java_util_concurrent_ScheduledExecutorService" as interface.java_util_concurrent_ScheduledExecutorService
-[tools_descartes_teastore_kieker_rabbitmq_LogReaderStartup]..>interface.java_util_concurrent_ScheduledExecutorService : requires
-interface "java_util_Queue" as interface.java_util_Queue
-[tools_descartes_teastore_kieker_rabbitmq_MemoryLogStorage]..>interface.java_util_Queue : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_persistence_RegistrationDaemon]..>interface.org_slf4j_Logger : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_persistence_daemons_InitialDataGenerationDaemon]..>interface.org_slf4j_Logger : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_persistence_rest_DatabaseGenerationEndpoint]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_recommender_algorithm_IRecommender" as interface.tools_descartes_teastore_recommender_algorithm_IRecommender
-interface.tools_descartes_teastore_recommender_algorithm_IRecommender--[tools_descartes_teastore_recommender_algorithm_AbstractRecommender]
-interface "java_util_Map" as interface.java_util_Map
-[tools_descartes_teastore_recommender_algorithm_AbstractRecommender]..>interface.java_util_Map : requires
-interface "java_util_Set" as interface.java_util_Set
-[tools_descartes_teastore_recommender_algorithm_AbstractRecommender]..>interface.java_util_Set : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_recommender_algorithm_AbstractRecommender]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_recommender_algorithm_IRecommender" as interface.tools_descartes_teastore_recommender_algorithm_IRecommender
-interface.tools_descartes_teastore_recommender_algorithm_IRecommender--[tools_descartes_teastore_recommender_algorithm_RecommenderSelector]
-interface "java_util_Map" as interface.java_util_Map
-[tools_descartes_teastore_recommender_algorithm_RecommenderSelector]..>interface.java_util_Map : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_recommender_algorithm_RecommenderSelector]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_recommender_algorithm_IRecommender" as interface.tools_descartes_teastore_recommender_algorithm_IRecommender
-[tools_descartes_teastore_recommender_algorithm_RecommenderSelector]..>interface.tools_descartes_teastore_recommender_algorithm_IRecommender : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_recommender_servlet_RecommenderStartup]..>interface.org_slf4j_Logger : requires
-interface "java_util_List" as interface.java_util_List
-[tools_descartes_teastore_recommender_servlet_TrainingSynchronizer]..>interface.java_util_List : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_recommender_servlet_TrainingSynchronizer]..>interface.org_slf4j_Logger : requires
-interface "java_util_Map" as interface.java_util_Map
-[tools_descartes_teastore_registry_rest_Registry]..>interface.java_util_Map : requires
-interface "java_util_concurrent_locks_Lock" as interface.java_util_concurrent_locks_Lock
-[tools_descartes_teastore_registry_rest_Registry]..>interface.java_util_concurrent_locks_Lock : requires
-interface "java_util_concurrent_locks_ReadWriteLock" as interface.java_util_concurrent_locks_ReadWriteLock
-[tools_descartes_teastore_registry_rest_Registry]..>interface.java_util_concurrent_locks_ReadWriteLock : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_registry_rest_Registry]..>interface.org_slf4j_Logger : requires
-interface "java_util_concurrent_ScheduledExecutorService" as interface.java_util_concurrent_ScheduledExecutorService
-[tools_descartes_teastore_registry_rest_RegistryStartup]..>interface.java_util_concurrent_ScheduledExecutorService : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_registry_rest_RegistryStartup]..>interface.org_slf4j_Logger : requires
-interface "java_lang_Runnable" as interface.java_lang_Runnable
-interface.java_lang_Runnable--[tools_descartes_teastore_registryclient_RegistryClientHeartbeatDaemon]
-interface "java_lang_Runnable" as interface.java_lang_Runnable
-interface.java_lang_Runnable--[tools_descartes_teastore_registryclient_StartupCallbackTask]
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_registryclient_StartupCallbackTask]..>interface.org_slf4j_Logger : requires
-interface "tools_descartes_teastore_registryclient_StartupCallback" as interface.tools_descartes_teastore_registryclient_StartupCallback
-[tools_descartes_teastore_registryclient_StartupCallbackTask]..>interface.tools_descartes_teastore_registryclient_StartupCallback : requires
-interface "java_lang_Runnable" as interface.java_lang_Runnable
-interface.java_lang_Runnable--[tools_descartes_teastore_registryclient_loadbalancers_LoadBalancerUpdaterDaemon]
-interface "java_util_Set" as interface.java_util_Set
-[tools_descartes_teastore_registryclient_loadbalancers_ServiceLoadBalancer]..>interface.java_util_Set : requires
-interface "java_util_concurrent_locks_ReadWriteLock" as interface.java_util_concurrent_locks_ReadWriteLock
-[tools_descartes_teastore_registryclient_loadbalancers_ServiceLoadBalancer]..>interface.java_util_concurrent_locks_ReadWriteLock : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_registryclient_loadbalancers_ServiceLoadBalancer]..>interface.org_slf4j_Logger : requires
-interface "kieker_monitoring_core_controller_IMonitoringController" as interface.kieker_monitoring_core_controller_IMonitoringController
-[tools_descartes_teastore_registryclient_rest_HttpWrapper]..>interface.kieker_monitoring_core_controller_IMonitoringController : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_registryclient_rest_HttpWrapper]..>interface.org_slf4j_Logger : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_registryclient_rest_NonBalancedCRUDOperations]..>interface.org_slf4j_Logger : requires
-interface "kieker_monitoring_core_controller_IMonitoringController" as interface.kieker_monitoring_core_controller_IMonitoringController
-[tools_descartes_teastore_registryclient_rest_ResponseWrapper]..>interface.kieker_monitoring_core_controller_IMonitoringController : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_registryclient_rest_ResponseWrapper]..>interface.org_slf4j_Logger : requires
-interface "kieker_monitoring_core_controller_IMonitoringController" as interface.kieker_monitoring_core_controller_IMonitoringController
-[tools_descartes_teastore_registryclient_rest_TrackingFilter]..>interface.kieker_monitoring_core_controller_IMonitoringController : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_registryclient_rest_TrackingFilter]..>interface.org_slf4j_Logger : requires
-interface "java_util_List" as interface.java_util_List
-[tools_descartes_teastore_webui_servlet_CategoryServlet]..>interface.java_util_List : requires
-interface "org_slf4j_Logger" as interface.org_slf4j_Logger
-[tools_descartes_teastore_webui_servlet_DataBaseActionServlet]..>interface.org_slf4j_Logger : requires
+component "AboutUsServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_AboutUsServlet]
+}
+component "AbstractCRUDEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_registryclient_util_AbstractCRUDEndpoint]
+portin " " as AbstractCRUDEndpoint.requires.host_abstract
+"AbstractCRUDEndpoint.requires.host_abstract"--[tools_descartes_teastore_registryclient_util_AbstractCRUDEndpoint]
+}
+interface "host/abstract" as interface.host_abstract
+interface.host_abstract--"AbstractCRUDEndpoint.requires.host_abstract"
+component "AuthCartRest\n\n\n\n\n\n" {
+[tools_descartes_teastore_auth_rest_AuthCartRest]
+portin " " as AuthCartRest.requires.host_cart
+"AuthCartRest.requires.host_cart"--[tools_descartes_teastore_auth_rest_AuthCartRest]
+}
+interface "host/cart" as interface.host_cart
+interface.host_cart--"AuthCartRest.requires.host_cart"
+component "AuthUserActionsRest\n\n\n\n\n\n" {
+[tools_descartes_teastore_auth_rest_AuthUserActionsRest]
+portin " " as AuthUserActionsRest.requires.host_useractions
+"AuthUserActionsRest.requires.host_useractions"--[tools_descartes_teastore_auth_rest_AuthUserActionsRest]
+}
+interface "host/useractions" as interface.host_useractions
+interface.host_useractions--"AuthUserActionsRest.requires.host_useractions"
+component "CacheManagerEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_persistence_rest_CacheManagerEndpoint]
+portin " " as CacheManagerEndpoint.requires.host_cache
+"CacheManagerEndpoint.requires.host_cache"--[tools_descartes_teastore_persistence_rest_CacheManagerEndpoint]
+}
+interface "host/cache" as interface.host_cache
+interface.host_cache--"CacheManagerEndpoint.requires.host_cache"
+component "CartActionServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_CartActionServlet]
+}
+component "CartServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_CartServlet]
+}
+component "CategoryEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_persistence_rest_CategoryEndpoint]
+}
+component "CategoryServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_CategoryServlet]
+}
+component "DataBaseActionServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_DataBaseActionServlet]
+}
+component "DataBaseServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_DataBaseServlet]
+}
+component "DatabaseGenerationEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_persistence_rest_DatabaseGenerationEndpoint]
+portin " " as DatabaseGenerationEndpoint.requires.host_generatedb
+"DatabaseGenerationEndpoint.requires.host_generatedb"--[tools_descartes_teastore_persistence_rest_DatabaseGenerationEndpoint]
+}
+interface "host/generatedb" as interface.host_generatedb
+interface.host_generatedb--"DatabaseGenerationEndpoint.requires.host_generatedb"
+component "DisplayLogs\n\n\n\n\n\n" {
+[tools_descartes_teastore_kieker_rabbitmq_DisplayLogs]
+}
+component "ErrorServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_ErrorServlet]
+}
+component "ImageProviderEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_image_rest_ImageProviderEndpoint]
+portin " " as ImageProviderEndpoint.requires.host_image
+"ImageProviderEndpoint.requires.host_image"--[tools_descartes_teastore_image_rest_ImageProviderEndpoint]
+}
+interface "host/image" as interface.host_image
+interface.host_image--"ImageProviderEndpoint.requires.host_image"
+component "IndexServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_persistence_servlet_IndexServlet]
+[tools_descartes_teastore_webui_servlet_IndexServlet]
+[tools_descartes_teastore_recommender_servlet_IndexServlet]
+[tools_descartes_teastore_kieker_rabbitmq_IndexServlet]
+[tools_descartes_teastore_registry_servlet_IndexServlet]
+}
+component "LoginActionServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_LoginActionServlet]
+}
+component "LoginServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_LoginServlet]
+}
+component "OrderEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_persistence_rest_OrderEndpoint]
+portin " " as OrderEndpoint.requires.host_orders_user
+"OrderEndpoint.requires.host_orders_user"--[tools_descartes_teastore_persistence_rest_OrderEndpoint]
+}
+interface "host/orders/user" as interface.host_orders_user
+interface.host_orders_user--"OrderEndpoint.requires.host_orders_user"
+component "OrderItemEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_persistence_rest_OrderItemEndpoint]
+portin " " as OrderItemEndpoint.requires.host_orderitems
+"OrderItemEndpoint.requires.host_orderitems"--[tools_descartes_teastore_persistence_rest_OrderItemEndpoint]
+}
+interface "host/orderitems" as interface.host_orderitems
+interface.host_orderitems--"OrderItemEndpoint.requires.host_orderitems"
+component "OrderServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_OrderServlet]
+}
+component "ProductEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_persistence_rest_ProductEndpoint]
+portin " " as ProductEndpoint.requires.host_products
+"ProductEndpoint.requires.host_products"--[tools_descartes_teastore_persistence_rest_ProductEndpoint]
+}
+interface "host/products" as interface.host_products
+interface.host_products--"ProductEndpoint.requires.host_products"
+component "ProductServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_ProductServlet]
+}
+component "ProfileServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_ProfileServlet]
+}
+component "ReadyRest\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_rest_ReadyRest]
+[tools_descartes_teastore_auth_rest_ReadyRest]
+portin " " as ReadyRest.requires.host_ready_isready
+"ReadyRest.requires.host_ready_isready"--[tools_descartes_teastore_webui_rest_ReadyRest]
+"ReadyRest.requires.host_ready_isready"--[tools_descartes_teastore_auth_rest_ReadyRest]
+"ReadyRest.requires.host_ready_isready"--[tools_descartes_teastore_webui_rest_ReadyRest]
+"ReadyRest.requires.host_ready_isready"--[tools_descartes_teastore_auth_rest_ReadyRest]
+}
+interface "host/ready/isready" as interface.host_ready_isready
+interface.host_ready_isready--"ReadyRest.requires.host_ready_isready"
+component "RecommendEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_recommender_rest_RecommendEndpoint]
+portin " " as RecommendEndpoint.requires.host_recommend
+"RecommendEndpoint.requires.host_recommend"--[tools_descartes_teastore_recommender_rest_RecommendEndpoint]
+}
+interface "host/recommend" as interface.host_recommend
+interface.host_recommend--"RecommendEndpoint.requires.host_recommend"
+component "RecommendSingleEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_recommender_rest_RecommendSingleEndpoint]
+portin " " as RecommendSingleEndpoint.requires.host_recommendsingle
+"RecommendSingleEndpoint.requires.host_recommendsingle"--[tools_descartes_teastore_recommender_rest_RecommendSingleEndpoint]
+}
+interface "host/recommendsingle" as interface.host_recommendsingle
+interface.host_recommendsingle--"RecommendSingleEndpoint.requires.host_recommendsingle"
+component "RegistryREST\n\n\n\n\n\n" {
+[tools_descartes_teastore_registry_rest_RegistryREST]
+portin " " as RegistryREST.requires.host_services
+"RegistryREST.requires.host_services"--[tools_descartes_teastore_registry_rest_RegistryREST]
+}
+interface "host/services" as interface.host_services
+interface.host_services--"RegistryREST.requires.host_services"
+component "Reset\n\n\n\n\n\n" {
+[tools_descartes_teastore_kieker_rabbitmq_Reset]
+}
+component "StatusServlet\n\n\n\n\n\n" {
+[tools_descartes_teastore_webui_servlet_StatusServlet]
+}
+component "TrainEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_recommender_rest_TrainEndpoint]
+portin " " as TrainEndpoint.requires.host_train
+"TrainEndpoint.requires.host_train"--[tools_descartes_teastore_recommender_rest_TrainEndpoint]
+}
+interface "host/train" as interface.host_train
+interface.host_train--"TrainEndpoint.requires.host_train"
+component "UserEndpoint\n\n\n\n\n\n" {
+[tools_descartes_teastore_persistence_rest_UserEndpoint]
+portin " " as UserEndpoint.requires.host_users_name
+"UserEndpoint.requires.host_users_name"--[tools_descartes_teastore_persistence_rest_UserEndpoint]
+}
+interface "host/users/name" as interface.host_users_name
+interface.host_users_name--"UserEndpoint.requires.host_users_name"
 
 @enduml
