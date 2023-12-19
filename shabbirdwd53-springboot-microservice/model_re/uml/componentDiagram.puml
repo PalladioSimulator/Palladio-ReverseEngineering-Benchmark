@@ -1,20 +1,20 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "DepartmentController\n\n\n\n\n\n" {
-[com_dailycodebuffer_department_controller_DepartmentController]
 [com_dailycodebuffer_department_service_DepartmentService]
+[com_dailycodebuffer_department_controller_DepartmentController]
 [com_dailycodebuffer_department_repository_DepartmentRepository]
 portin " " as DepartmentController.requires.SPRING_APPLICATION_departments
-[com_dailycodebuffer_department_controller_DepartmentController]..>[com_dailycodebuffer_department_service_DepartmentService] : requires
 [com_dailycodebuffer_department_service_DepartmentService]..>[com_dailycodebuffer_department_repository_DepartmentRepository] : requires
+[com_dailycodebuffer_department_controller_DepartmentController]..>[com_dailycodebuffer_department_service_DepartmentService] : requires
 "DepartmentController.requires.SPRING_APPLICATION_departments"--[com_dailycodebuffer_department_controller_DepartmentController]
 }
 interface "SPRING-APPLICATION/departments" as interface.SPRING_APPLICATION_departments
 interface.SPRING_APPLICATION_departments--"DepartmentController.requires.SPRING_APPLICATION_departments"
 component "FallBackMethodController\n\n\n\n\n\n" {
 [com_dailycodebuffer_cloud_gateway_FallBackMethodController]
-portin " " as FallBackMethodController.requires.SPRING_APPLICATION_departmentServiceFallBack_GET_
 portin " " as FallBackMethodController.requires.SPRING_APPLICATION_userServiceFallBack_GET_
+portin " " as FallBackMethodController.requires.SPRING_APPLICATION_departmentServiceFallBack_GET_
 "FallBackMethodController.requires.SPRING_APPLICATION_userServiceFallBack_GET_"--[com_dailycodebuffer_cloud_gateway_FallBackMethodController]
 "FallBackMethodController.requires.SPRING_APPLICATION_departmentServiceFallBack_GET_"--[com_dailycodebuffer_cloud_gateway_FallBackMethodController]
 }
@@ -23,12 +23,12 @@ interface.SPRING_APPLICATION_userServiceFallBack_GET_--"FallBackMethodController
 interface "SPRING-APPLICATION/departmentServiceFallBack[GET]" as interface.SPRING_APPLICATION_departmentServiceFallBack_GET_
 interface.SPRING_APPLICATION_departmentServiceFallBack_GET_--"FallBackMethodController.requires.SPRING_APPLICATION_departmentServiceFallBack_GET_"
 component "UserController\n\n\n\n\n\n" {
-[com_dailycodebuffer_user_repository_UserRepository]
-[com_dailycodebuffer_user_service_UserService]
 [com_dailycodebuffer_user_controller_UserController]
+[com_dailycodebuffer_user_service_UserService]
+[com_dailycodebuffer_user_repository_UserRepository]
 portin " " as UserController.requires.SPRING_APPLICATION_users
-[com_dailycodebuffer_user_service_UserService]..>[com_dailycodebuffer_user_repository_UserRepository] : requires
 [com_dailycodebuffer_user_controller_UserController]..>[com_dailycodebuffer_user_service_UserService] : requires
+[com_dailycodebuffer_user_service_UserService]..>[com_dailycodebuffer_user_repository_UserRepository] : requires
 "UserController.requires.SPRING_APPLICATION_users"--[com_dailycodebuffer_user_controller_UserController]
 }
 interface "SPRING-APPLICATION/users" as interface.SPRING_APPLICATION_users

@@ -7,8 +7,8 @@ component "MainController\n\n\n\n\n\n" {
 portin " " as MainController.requires.SPRING_APPLICATION_api
 portout " " as MainController.provides.user_service_user
 portout " " as MainController.provides.user_service_newuser
-[com_example_MainController]..>[com_example_service_UserService] : requires
 [com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
+[com_example_MainController]..>[com_example_service_UserService] : requires
 "MainController.requires.SPRING_APPLICATION_api"--[com_example_MainController]
 [com_example_service_UserService].."MainController.provides.user_service_newuser"
 [com_example_service_UserService].."MainController.provides.user_service_user"
@@ -20,27 +20,27 @@ interface "user-service/newuser" as interface.user_service_newuser
 interface "user-service/user" as interface.user_service_user
 "MainController.provides.user_service_user"..>interface.user_service_user : requires
 component "UserController\n\n\n\n\n\n" {
-[com_example_RecommendationController]
 [com_example_MovieRepo]
 [com_example_UserRepo]
+[com_example_RecommendationController]
 [com_example_MovieController]
 [com_example_UserController]
 portin " " as UserController.requires.SPRING_APPLICATION_recommendation
-portin " " as UserController.requires.SPRING_APPLICATION_user
 portin " " as UserController.requires.SPRING_APPLICATION_movie
+portin " " as UserController.requires.SPRING_APPLICATION_user
 [com_example_RecommendationController]..>[com_example_MovieRepo] : requires
 [com_example_MovieController]..>[com_example_MovieRepo] : requires
 [com_example_RecommendationController]..>[com_example_UserRepo] : requires
 [com_example_UserController]..>[com_example_UserRepo] : requires
 "UserController.requires.SPRING_APPLICATION_recommendation"--[com_example_RecommendationController]
-"UserController.requires.SPRING_APPLICATION_movie"--[com_example_MovieController]
 "UserController.requires.SPRING_APPLICATION_user"--[com_example_UserController]
+"UserController.requires.SPRING_APPLICATION_movie"--[com_example_MovieController]
 }
 interface "SPRING-APPLICATION/recommendation" as interface.SPRING_APPLICATION_recommendation
 interface.SPRING_APPLICATION_recommendation--"UserController.requires.SPRING_APPLICATION_recommendation"
-interface "SPRING-APPLICATION/movie" as interface.SPRING_APPLICATION_movie
-interface.SPRING_APPLICATION_movie--"UserController.requires.SPRING_APPLICATION_movie"
 interface "SPRING-APPLICATION/user" as interface.SPRING_APPLICATION_user
 interface.SPRING_APPLICATION_user--"UserController.requires.SPRING_APPLICATION_user"
+interface "SPRING-APPLICATION/movie" as interface.SPRING_APPLICATION_movie
+interface.SPRING_APPLICATION_movie--"UserController.requires.SPRING_APPLICATION_movie"
 
 @enduml
