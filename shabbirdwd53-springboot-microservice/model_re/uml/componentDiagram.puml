@@ -1,37 +1,37 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "DepartmentController\n\n\n\n\n\n" {
-[com_dailycodebuffer_department_controller_DepartmentController]
-[com_dailycodebuffer_department_service_DepartmentService]
 [com_dailycodebuffer_department_repository_DepartmentRepository]
-portin " " as DepartmentController.requires._departments
+[com_dailycodebuffer_department_service_DepartmentService]
+[com_dailycodebuffer_department_controller_DepartmentController]
+portin " " as DepartmentController.requires.SPRING_APPLICATION_departments
 [com_dailycodebuffer_department_controller_DepartmentController]..>[com_dailycodebuffer_department_service_DepartmentService] : requires
 [com_dailycodebuffer_department_service_DepartmentService]..>[com_dailycodebuffer_department_repository_DepartmentRepository] : requires
-"DepartmentController.requires._departments"--[com_dailycodebuffer_department_controller_DepartmentController]
+"DepartmentController.requires.SPRING_APPLICATION_departments"--[com_dailycodebuffer_department_controller_DepartmentController]
 }
-interface "/departments" as interface._departments
-interface._departments--"DepartmentController.requires._departments"
+interface "SPRING-APPLICATION/departments" as interface.SPRING_APPLICATION_departments
+interface.SPRING_APPLICATION_departments--"DepartmentController.requires.SPRING_APPLICATION_departments"
 component "FallBackMethodController\n\n\n\n\n\n" {
 [com_dailycodebuffer_cloud_gateway_FallBackMethodController]
-portin " " as FallBackMethodController.requires._userServiceFallBack_GET_
-portin " " as FallBackMethodController.requires._departmentServiceFallBack_GET_
-"FallBackMethodController.requires._userServiceFallBack_GET_"--[com_dailycodebuffer_cloud_gateway_FallBackMethodController]
-"FallBackMethodController.requires._departmentServiceFallBack_GET_"--[com_dailycodebuffer_cloud_gateway_FallBackMethodController]
+portin " " as FallBackMethodController.requires.SPRING_APPLICATION_departmentServiceFallBack_GET_
+portin " " as FallBackMethodController.requires.SPRING_APPLICATION_userServiceFallBack_GET_
+"FallBackMethodController.requires.SPRING_APPLICATION_userServiceFallBack_GET_"--[com_dailycodebuffer_cloud_gateway_FallBackMethodController]
+"FallBackMethodController.requires.SPRING_APPLICATION_departmentServiceFallBack_GET_"--[com_dailycodebuffer_cloud_gateway_FallBackMethodController]
 }
-interface "/userServiceFallBack[GET]" as interface._userServiceFallBack_GET_
-interface._userServiceFallBack_GET_--"FallBackMethodController.requires._userServiceFallBack_GET_"
-interface "/departmentServiceFallBack[GET]" as interface._departmentServiceFallBack_GET_
-interface._departmentServiceFallBack_GET_--"FallBackMethodController.requires._departmentServiceFallBack_GET_"
+interface "SPRING-APPLICATION/userServiceFallBack[GET]" as interface.SPRING_APPLICATION_userServiceFallBack_GET_
+interface.SPRING_APPLICATION_userServiceFallBack_GET_--"FallBackMethodController.requires.SPRING_APPLICATION_userServiceFallBack_GET_"
+interface "SPRING-APPLICATION/departmentServiceFallBack[GET]" as interface.SPRING_APPLICATION_departmentServiceFallBack_GET_
+interface.SPRING_APPLICATION_departmentServiceFallBack_GET_--"FallBackMethodController.requires.SPRING_APPLICATION_departmentServiceFallBack_GET_"
 component "UserController\n\n\n\n\n\n" {
-[com_dailycodebuffer_user_repository_UserRepository]
 [com_dailycodebuffer_user_controller_UserController]
 [com_dailycodebuffer_user_service_UserService]
-portin " " as UserController.requires._users
-[com_dailycodebuffer_user_controller_UserController]..>[com_dailycodebuffer_user_service_UserService] : requires
+[com_dailycodebuffer_user_repository_UserRepository]
+portin " " as UserController.requires.SPRING_APPLICATION_users
 [com_dailycodebuffer_user_service_UserService]..>[com_dailycodebuffer_user_repository_UserRepository] : requires
-"UserController.requires._users"--[com_dailycodebuffer_user_controller_UserController]
+[com_dailycodebuffer_user_controller_UserController]..>[com_dailycodebuffer_user_service_UserService] : requires
+"UserController.requires.SPRING_APPLICATION_users"--[com_dailycodebuffer_user_controller_UserController]
 }
-interface "/users" as interface._users
-interface._users--"UserController.requires._users"
+interface "SPRING-APPLICATION/users" as interface.SPRING_APPLICATION_users
+interface.SPRING_APPLICATION_users--"UserController.requires.SPRING_APPLICATION_users"
 
 @enduml

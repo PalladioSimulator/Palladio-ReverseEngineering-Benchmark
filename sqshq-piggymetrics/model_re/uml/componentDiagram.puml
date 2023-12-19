@@ -1,22 +1,22 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "AccountController\n\n\n\n\n\n" {
-[com_piggymetrics_account_client_AuthServiceClient]
+[com_piggymetrics_account_repository_AccountRepository]
 [com_piggymetrics_account_service_AccountService]
+[com_piggymetrics_account_controller_AccountController]
+[com_piggymetrics_account_client_AuthServiceClient]
 [com_piggymetrics_account_client_StatisticsServiceClient]
 [com_piggymetrics_account_service_AccountServiceImpl]
-[com_piggymetrics_account_repository_AccountRepository]
-[com_piggymetrics_account_controller_AccountController]
 [com_piggymetrics_account_client_StatisticsServiceClientFallback]
 portin " " as AccountController.requires.account_service_accounts
 portout " " as AccountController.provides.statistics_service_statistics
 portout " " as AccountController.provides.auth_service_uaa_users
-[com_piggymetrics_account_service_AccountServiceImpl]..>[com_piggymetrics_account_client_StatisticsServiceClient] : requires
-[com_piggymetrics_account_service_AccountServiceImpl]..>[com_piggymetrics_account_client_StatisticsServiceClientFallback] : requires
-[com_piggymetrics_account_service_AccountServiceImpl]..>[com_piggymetrics_account_client_AuthServiceClient] : requires
 [com_piggymetrics_account_service_AccountServiceImpl]..>[com_piggymetrics_account_repository_AccountRepository] : requires
+[com_piggymetrics_account_service_AccountServiceImpl]..>[com_piggymetrics_account_client_AuthServiceClient] : requires
 [com_piggymetrics_account_controller_AccountController]..>[com_piggymetrics_account_service_AccountService] : requires
 [com_piggymetrics_account_controller_AccountController]..>[com_piggymetrics_account_service_AccountServiceImpl] : requires
+[com_piggymetrics_account_service_AccountServiceImpl]..>[com_piggymetrics_account_client_StatisticsServiceClient] : requires
+[com_piggymetrics_account_service_AccountServiceImpl]..>[com_piggymetrics_account_client_StatisticsServiceClientFallback] : requires
 "AccountController.requires.account_service_accounts"--[com_piggymetrics_account_controller_AccountController]
 [com_piggymetrics_account_client_StatisticsServiceClient].."AccountController.provides.statistics_service_statistics"
 [com_piggymetrics_account_client_AuthServiceClient].."AccountController.provides.auth_service_uaa_users"
@@ -28,24 +28,24 @@ interface "statistics-service/statistics" as interface.statistics_service_statis
 interface "auth-service/uaa/users" as interface.auth_service_uaa_users
 "AccountController.provides.auth_service_uaa_users"..>interface.auth_service_uaa_users : requires
 component "NotificationServiceImpl\n\n\n\n\n\n" {
-[com_piggymetrics_notification_service_RecipientServiceImpl]
-[com_piggymetrics_notification_repository_RecipientRepository]
-[com_piggymetrics_notification_controller_RecipientController]
 [com_piggymetrics_notification_client_AccountServiceClient]
-[com_piggymetrics_notification_service_RecipientService]
+[com_piggymetrics_notification_service_RecipientServiceImpl]
 [com_piggymetrics_notification_service_NotificationServiceImpl]
+[com_piggymetrics_notification_controller_RecipientController]
+[com_piggymetrics_notification_repository_RecipientRepository]
 [com_piggymetrics_notification_service_EmailServiceImpl]
+[com_piggymetrics_notification_service_RecipientService]
 [com_piggymetrics_notification_service_EmailService]
 portin " " as NotificationServiceImpl.requires.notification_service_notifications_recipients
 portout " " as NotificationServiceImpl.provides.account_service_accounts
-[com_piggymetrics_notification_service_NotificationServiceImpl]..>[com_piggymetrics_notification_service_EmailServiceImpl] : requires
-[com_piggymetrics_notification_service_NotificationServiceImpl]..>[com_piggymetrics_notification_service_EmailService] : requires
 [com_piggymetrics_notification_service_NotificationServiceImpl]..>[com_piggymetrics_notification_client_AccountServiceClient] : requires
-[com_piggymetrics_notification_controller_RecipientController]..>[com_piggymetrics_notification_service_RecipientServiceImpl] : requires
-[com_piggymetrics_notification_controller_RecipientController]..>[com_piggymetrics_notification_service_RecipientService] : requires
 [com_piggymetrics_notification_service_NotificationServiceImpl]..>[com_piggymetrics_notification_service_RecipientServiceImpl] : requires
 [com_piggymetrics_notification_service_NotificationServiceImpl]..>[com_piggymetrics_notification_service_RecipientService] : requires
+[com_piggymetrics_notification_controller_RecipientController]..>[com_piggymetrics_notification_service_RecipientServiceImpl] : requires
+[com_piggymetrics_notification_controller_RecipientController]..>[com_piggymetrics_notification_service_RecipientService] : requires
 [com_piggymetrics_notification_service_RecipientServiceImpl]..>[com_piggymetrics_notification_repository_RecipientRepository] : requires
+[com_piggymetrics_notification_service_NotificationServiceImpl]..>[com_piggymetrics_notification_service_EmailServiceImpl] : requires
+[com_piggymetrics_notification_service_NotificationServiceImpl]..>[com_piggymetrics_notification_service_EmailService] : requires
 "NotificationServiceImpl.requires.notification_service_notifications_recipients"--[com_piggymetrics_notification_controller_RecipientController]
 [com_piggymetrics_notification_client_AccountServiceClient].."NotificationServiceImpl.provides.account_service_accounts"
 }
@@ -55,22 +55,22 @@ interface "account-service/accounts" as interface.account_service_accounts
 "NotificationServiceImpl.provides.account_service_accounts"..>interface.account_service_accounts : requires
 component "StatisticsServiceImpl\n\n\n\n\n\n" {
 [com_piggymetrics_statistics_client_ExchangeRatesClientFallback]
-[com_piggymetrics_statistics_controller_StatisticsController]
-[com_piggymetrics_statistics_client_ExchangeRatesClient]
 [com_piggymetrics_statistics_service_StatisticsService]
+[com_piggymetrics_statistics_service_ExchangeRatesService]
+[com_piggymetrics_statistics_client_ExchangeRatesClient]
 [com_piggymetrics_statistics_service_ExchangeRatesServiceImpl]
+[com_piggymetrics_statistics_controller_StatisticsController]
 [com_piggymetrics_statistics_service_StatisticsServiceImpl]
 [com_piggymetrics_statistics_repository_DataPointRepository]
-[com_piggymetrics_statistics_service_ExchangeRatesService]
 portin " " as StatisticsServiceImpl.requires.statistics_service_statistics
 portout " " as StatisticsServiceImpl.provides.rates_client_latest
-[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl]..>[com_piggymetrics_statistics_client_ExchangeRatesClientFallback] : requires
-[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl]..>[com_piggymetrics_statistics_client_ExchangeRatesClient] : requires
-[com_piggymetrics_statistics_service_StatisticsServiceImpl]..>[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl] : requires
+[com_piggymetrics_statistics_service_StatisticsServiceImpl]..>[com_piggymetrics_statistics_repository_DataPointRepository] : requires
 [com_piggymetrics_statistics_service_StatisticsServiceImpl]..>[com_piggymetrics_statistics_service_ExchangeRatesService] : requires
+[com_piggymetrics_statistics_service_StatisticsServiceImpl]..>[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl] : requires
 [com_piggymetrics_statistics_controller_StatisticsController]..>[com_piggymetrics_statistics_service_StatisticsService] : requires
 [com_piggymetrics_statistics_controller_StatisticsController]..>[com_piggymetrics_statistics_service_StatisticsServiceImpl] : requires
-[com_piggymetrics_statistics_service_StatisticsServiceImpl]..>[com_piggymetrics_statistics_repository_DataPointRepository] : requires
+[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl]..>[com_piggymetrics_statistics_client_ExchangeRatesClientFallback] : requires
+[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl]..>[com_piggymetrics_statistics_client_ExchangeRatesClient] : requires
 "StatisticsServiceImpl.requires.statistics_service_statistics"--[com_piggymetrics_statistics_controller_StatisticsController]
 [com_piggymetrics_statistics_client_ExchangeRatesClient].."StatisticsServiceImpl.provides.rates_client_latest"
 }
@@ -79,19 +79,27 @@ interface.statistics_service_statistics--"StatisticsServiceImpl.requires.statist
 interface "rates-client/latest" as interface.rates_client_latest
 "StatisticsServiceImpl.provides.rates_client_latest"..>interface.rates_client_latest : requires
 component "UserController\n\n\n\n\n\n" {
-[com_piggymetrics_auth_service_UserService]
 [com_piggymetrics_auth_service_security_MongoUserDetailsService]
-[com_piggymetrics_auth_service_UserServiceImpl]
-[com_piggymetrics_auth_controller_UserController]
 [com_piggymetrics_auth_repository_UserRepository]
+[com_piggymetrics_auth_controller_UserController]
+[com_piggymetrics_auth_service_UserServiceImpl]
+[com_piggymetrics_auth_service_UserService]
 portin " " as UserController.requires.auth_service_uaa_users
-[com_piggymetrics_auth_controller_UserController]..>[com_piggymetrics_auth_service_UserService] : requires
 [com_piggymetrics_auth_controller_UserController]..>[com_piggymetrics_auth_service_UserServiceImpl] : requires
+[com_piggymetrics_auth_controller_UserController]..>[com_piggymetrics_auth_service_UserService] : requires
 [com_piggymetrics_auth_service_security_MongoUserDetailsService]..>[com_piggymetrics_auth_repository_UserRepository] : requires
 [com_piggymetrics_auth_service_UserServiceImpl]..>[com_piggymetrics_auth_repository_UserRepository] : requires
 "UserController.requires.auth_service_uaa_users"--[com_piggymetrics_auth_controller_UserController]
 }
 interface "auth-service/uaa/users" as interface.auth_service_uaa_users
 interface.auth_service_uaa_users--"UserController.requires.auth_service_uaa_users"
+interface "gateway/" as interface.gateway_
+interface.gateway_--[Gateway]
+interface "account-service/accounts" as interface.account_service_accounts
+[Gateway]..>interface.account_service_accounts : requires
+interface "auth-service/uaa/oauth/token" as interface.auth_service_uaa_oauth_token
+[Gateway]..>interface.auth_service_uaa_oauth_token : requires
+interface "notification-service/notifications/recipients" as interface.notification_service_notifications_recipients
+[Gateway]..>interface.notification_service_notifications_recipients : requires
 
 @enduml
