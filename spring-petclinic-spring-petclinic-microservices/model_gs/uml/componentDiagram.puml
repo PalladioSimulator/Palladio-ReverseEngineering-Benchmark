@@ -1,0 +1,106 @@
+@startuml
+
+
+interface "/owners" as ownerInterface
+'interfaces of PetResource
+interface "/petTypes" as petInterface1
+interface "/owners/{ownerId}/pets" as petInterface2
+interface "/owners/*/pets/{petId}" as petInterface3
+
+component [customer-service] as customer {
+	portIn " " as ownerIn
+	portIn " " as petIn1
+	portIn " " as petIn2
+	portIn " " as petIn3
+	component [OwnerResource] as OwnerResource
+	component [OwnerRepository] as OwnerRepository
+	component [PetResource] as PetResource
+	component [PetRepository] as PetRepository
+	
+	ownerInterface -- ownerIn
+	ownerIn -- OwnerResource
+	petInterface1 -- petIn1
+	petInterface2 -- petIn2
+	petInterface3 -- petIn3
+	petIn1 -- PetResource
+	petIn2 -- PetResource
+	petIn3 -- PetResource
+	OwnerResource ..> OwnerRepository : requires
+	PetResource ..> OwnerRepository : requires
+	PetResource ..> PetRepository : requires
+}
+
+
+interface "/vets" as vetsInterface
+component [vets-service] as vets {
+	portIn " " as vetIn
+	component [VetResource] as VetResource
+	component [VetRepository] as VetRepository
+	
+	vetsInterface -- vetIn
+	vetIn -- VetResource
+	VetResource ..> VetRepository : requires
+}
+
+'interfaces of VisitResource
+interface "owners/*/pets/{petId}/visits" as visitInterface1
+interface "pets/visits" as visitInterface2
+component [visits-service] as visits{
+	portin " " as visitIn1
+	portin " " as visitIn2
+	component [VisitResource] as VisitResource
+	component [VisitRepository] as VisitRepository
+	
+	visitInterface1 -- visitIn1
+	visitInterface2 -- visitIn2
+	visitIn1 -- VisitResource
+	visitIn2 -- VisitResource
+	VisitResource ..> VisitRepository : requires
+}
+
+interface "/api/gateway" as gatewayInterface
+component [api-gateway] as gateway{
+	portIn " " as gatewayIn
+	component [ApiGatewayController] as ApiGatewayController
+	component [CustomersServiceClient] as CustomersServiceClient
+	component [VisitsServiceClient] as VisitsServiceClient
+	
+	gatewayInterface -- gatewayIn
+	gatewayIn -- ApiGatewayController
+	ApiGatewayController ..> CustomersServiceClient : requires
+	ApiGatewayController ..> VisitsServiceClient : requires
+}
+
+component [discovery-service] as discovery
+
+component [config-service] as config
+
+component [admin-server] as admin
+
+component [Prometheus] as Prometheus
+
+component [Grafana] as Grafana
+
+component [zipkin] as zipkin
+
+gateway ..> config : use
+discovery ..> config : use
+admin ..> config : use
+zipkin ..> config : use
+customer ..> config : use
+visits ..> config : use
+vets ..> config : use
+
+gateway ..> discovery : use
+admin ..> discovery : use
+zipkin ..> discovery : use
+customer ..> discovery : use
+visits ..> discovery : use
+vets ..> discovery : use
+
+gateway ..> zipkin : Sends Tracing Data
+customer ..> zipkin : Sends Tracing Data
+visits ..> zipkin : Sends Tracing Data
+vets ..> zipkin : Sends Tracing Data
+
+@enduml

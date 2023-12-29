@@ -1,0 +1,113 @@
+@startuml
+
+'这像是一个未完成的项目，我只能提取出大概的组件结构
+'这个项目没有gateway component,那独立的interface该如何连接
+
+'@FeignClient("movie-service") interface是否该形如
+'"movie-service/movie"
+'interface "/movie/list" as MovieInterface2
+'interface "/movie/dummyData" as MovieInterface3
+'interface "/movie/{movieId}" as MovieInterfae4
+'形如 "/movie/{movieId}"的interface该如何表达
+
+interface "/movie" as MovieInterface1
+
+component [movie-service] as movieService{
+	portin " " as movieIn1
+	'portin " " as movieIn2
+	'portin " " as movieIn3
+	component [MovieController] as MovieController
+	component [MovieRepo] as MovieRepo1
+	
+	MovieInterface1 -- movieIn1
+	'MovieInterface2 -- movieIn2
+	'MovieInterface3 -- movieIn3
+	MovieController ..> MovieRepo1 : requires
+	movieIn1 -- MovieController
+	'movieIn2 -- MovieController
+	'movieIn3 -- MovieController
+}
+
+interface "/recommendation" as recoInterface1
+
+component [recommendation-service] as recoService {
+	portin " " as RecoIn
+	component [RecommendationController] as RecoController
+	component [UserRepo] as UserRepo2
+	component [MovieRepo] as MovieRepo2
+	
+	recoInterface1 -- RecoIn
+	RecoIn -- RecoController
+	RecoController ..> UserRepo2 : requires
+	RecoController ..> MovieRepo2 : requires
+}
+
+interface "/user" as userInterface1
+'interface "/user/{userId}" as userInterface2
+
+component [user-service] as userService {
+	portin " " as UserIn1
+	'portin " " as UserIn2
+	component [UserController] as UserController
+	component [UserRepo] as UserRepo1
+	
+	userInterface1 -- UserIn1
+	'userInterface2 -- UserIn2
+	UserIn1 -- UserController
+	'UserIn2 -- UserController
+	UserController ..> UserRepo1:requires
+}
+
+interface "/api" as ClientInterface
+
+component [recommendation-client] as recoClient{
+	portin " " as ClientIn
+	component [MainController] as MainController
+	component [RecommendationClientService] as RecommendationClientService
+	portout " " as out1
+	portout " " as out2
+	component [RecommendationService] as RecommendationService
+	portout " " as ClientReco
+	component [UserService] as UserService
+	portout " " as ClientUser
+	component [MovieService] as MovieService
+	portout " " as ClientMovie
+	
+	ClientInterface -- ClientIn
+	ClientIn -- MainController
+	MainController ..> RecommendationClientService : requires
+	MainController ..> UserService : requires
+	RecommendationService ..ClientReco
+	UserService .. ClientUser
+	MovieService .. ClientMovie
+	RecommendationClientService .. out1
+	RecommendationClientService .. out2
+	
+}
+
+ClientMovie ..> MovieInterface1 : requires
+'ClientMovie ..> MovieInterface3 : requires
+'如果一个service通过不同interface呼叫同一个服务,portout是否是同一个
+ClientUser ..> userInterface1 : requires
+ClientReco ..> recoInterface1 : requires
+out1 ..> userInterface1 : requires
+out2 ..> recoInterface1 : requires
+
+component [config-service] as config
+
+component [eureka-service] as eureka
+
+movieService ..> eureka : use
+recoService ..> eureka : use
+recoClient ..> eureka : use
+userService ..> eureka : use
+
+movieService ..> config : use
+recoService ..> config : use
+recoClient ..> config : use
+userService ..> config : use
+eureka ..> config : use
+
+
+@enduml
+

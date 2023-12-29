@@ -1,0 +1,97 @@
+@startuml
+
+top to bottom direction
+
+component [api-gateway] as gateway
+
+component [zipkin-server] as zipkin
+
+component [webservice-registry] as registry
+
+component [config-server] as config
+
+component [web-portal] as portal
+
+interface "/task-service" as generalInterface
+
+interface "/user-service" as generalInterface1
+
+interface "/comments" as CommentsInterface
+
+
+
+component [task-webservice] as task {
+	portin " " as TaskIn1
+	'portin " " as TaskIn2
+	component [CommentsService] as CommentsService
+	component [TaskController] as TaskController
+	portout " " as TaskOut1
+	
+	'taskInterface -- TaskIn2
+	'TaskIn2 -- TaskController
+	generalInterface -- TaskIn1
+	TaskIn1 -- TaskController
+	TaskController ..> CommentsService : requires
+	CommentsService .. TaskOut1
+	TaskOut1 ..> CommentsInterface : requires
+}
+
+component [comments-webservice] as comments {
+	portin " " as commentsIn1
+	component [CommentsController] as CommentsController
+	
+	CommentsInterface -- commentsIn1
+	commentsIn1 -- CommentsController
+}
+
+component [user-webservice] as user {
+	portin " " as UserIn1
+	component [UserController] as UserController
+	
+	generalInterface1 -- UserIn1
+	UserIn1 -- UserController
+}
+
+
+
+'interface "/usertask" as taskInterface
+
+
+
+interface "/userauth" as authInterface
+
+component [auth-server] as auth {
+	portin " " as authIn
+	component [AuthUserController] as AuthUserController
+	authInterface -- authIn
+	authIn -- AuthUserController
+}
+
+gateway ..> generalInterface : depends on
+gateway ..> generalInterface1 : depends on
+gateway ..> CommentsInterface : depends on
+'gateway ..> taskInterface : depends on
+gateway ..> authInterface : depends on
+
+comments ..> config : use
+auth ..> config : use
+gateway ..> config : use
+task ..> config : use
+user ..> config : use
+portal ..> config : use
+registry ..> config : use
+zipkin ..> config : use
+
+comments ..> registry : use
+auth ..> registry : use
+gateway ..> registry : use
+task ..> registry : use
+user ..> registry : use
+portal ..> registry : use
+
+comments ..> zipkin : Sends Tracing Data
+task ..> zipkin : Sends Tracing Data
+user ..> zipkin : Sends Tracing Data
+
+
+@enduml

@@ -1,0 +1,137 @@
+@startuml
+
+component [gateway] as gateway
+
+component [registry] as registry
+
+component [config] as config
+
+interface "/notifications" as notificationInterface
+interface "/notifications/recipients" as recipientsInterface
+
+component [notification-service] as NotiService{
+	portin " " as NotiIn1
+	portin " " as NotiIn2
+	component [RecipientController] as RecipientController
+	component [RecipientServiceImpl] as RecipientServiceImpl
+	component [RecipientRepository] as RecipientRepository
+	component [NotificationServiceImpl] as NotificationServiceImpl
+	component [AccountServiceClient] as AccountServiceClient
+	component [EmailServiceImp] as EmailServiceImp
+	component [FrequencyReaderConverter] as FrequencyReaderConverter
+	component [FrequencyWriterConverter] as FrequencyWriterConverter
+	portout " " as NotiAccount
+	
+	notificationInterface -- NotiIn1
+	recipientsInterface -- NotiIn2
+	NotiIn2 -- RecipientController
+	NotiIn1 -- NotificationServiceImpl
+	RecipientController ..> RecipientServiceImpl : requires
+	RecipientServiceImpl ..> RecipientRepository : requires
+	NotificationServiceImpl ..> RecipientServiceImpl : requires
+	NotificationServiceImpl ..> EmailServiceImp : requires
+	NotificationServiceImpl ..> AccountServiceClient : requires
+	AccountServiceClient .. NotiAccount
+	RecipientRepository ..> FrequencyReaderConverter : requires
+	RecipientRepository ..> FrequencyWriterConverter : requires
+	
+}
+
+interface "/accounts" as AccountInterface
+NotiAccount ..> AccountInterface : requires
+
+component [account-service] as AccService{
+	portin " " as AccountNoti
+	component [AccountController] as AccountController
+	component [AccountServiceImpl] as AccountServiceImpl
+	component [StatisticsServiceClient] as StatisticsServiceClient
+	component [AuthServiceClient] as AuthServiceClient
+	component [AccountRepository] as AccountRepository
+	component [StatisticsServiceClientFallback] as StatisticsServiceClientFallback
+	portout " " as AccountAuth
+	portout " " as AccountStatistic
+	
+	AccountInterface -- AccountNoti
+	AccountNoti -- AccountController
+	AccountController ..> AccountServiceImpl : requires
+	AccountServiceImpl ..> StatisticsServiceClient : requires
+	AccountServiceImpl ..> AuthServiceClient : requires
+	AccountServiceImpl ..> AccountRepository : requires
+	AccountServiceImpl ..> StatisticsServiceClientFallback : requires
+	AuthServiceClient .. AccountAuth
+	StatisticsServiceClient .. AccountStatistic
+}
+
+
+interface "/uaa/users" as authInterface
+interface "/statistics" as statisticsInterface
+AccountAuth ..> authInterface : requires
+AccountStatistic ..> statisticsInterface : requires
+
+component [auth-service] as AuthService{
+	portin " " as AuthAccount
+	component [UserController] as UserController
+	component [UserSeriveImpl] as UserSeriveImpl
+	component [UserRepository] as UserRepository
+	component [MongoUserDetailsService] as MongoUserDetailsService
+	
+	authInterface -- AuthAccount
+	AuthAccount -- UserController
+	UserController ..> UserSeriveImpl : requires
+	UserSeriveImpl ..> UserRepository : requires
+	MongoUserDetailsService ..> UserRepository: requires
+}
+
+interface "/latest" as StatisticsOutInterface
+
+component [statistics-service] as StatService{
+	portin " " as StatisticAccount
+	component [StatisticsController] as StatisticsController
+	component [StatisticsServiceImpl] as StatisticsServiceImpl
+	component [DataPointRepository] as DataPointRepository
+	component [ExchangeRatesServiceImpl] as ExchangeRatesServiceImpl
+	component [ExchangeRatesClient] as ExchangeRatesClient
+	component [DataPointIdReaderConverter] as DataPointIdReaderConverter
+	component [DataPointIdWriterConverter] as DataPointIdWriterConverter
+	component [ExchangeRatesClientFallback] as ExchangeRatesClientFallback
+	portout " " as StatisticsOut
+	
+	statisticsInterface -- StatisticAccount
+	StatisticAccount -- StatisticsController
+	StatisticsController ..> StatisticsServiceImpl : requires
+	StatisticsServiceImpl ..> DataPointRepository : requires
+	StatisticsServiceImpl ..> ExchangeRatesServiceImpl : requires
+	ExchangeRatesServiceImpl ..> ExchangeRatesClient : requires
+	ExchangeRatesServiceImpl ..> ExchangeRatesClientFallback : requires
+	DataPointRepository ..> DataPointIdReaderConverter : requires
+	DataPointRepository ..> DataPointIdWriterConverter : requires
+	ExchangeRatesClient .. StatisticsOut
+	StatisticsOut ..> StatisticsOutInterface : requires
+}
+
+'component [monitoring] as monitoring
+
+gateway ..> notificationInterface : depends on
+gateway ..> recipientsInterface : depends on
+gateway ..> AccountInterface : depends on
+gateway ..> authInterface : depends on
+gateway ..> statisticsInterface : depends on
+
+AccService ..> config : use
+NotiAccount ..> config : use
+StatService ..> config : use
+AuthService ..> config : use
+gateway ..> config : use
+registry ..> config : use
+
+AccService ..> registry : use
+NotiAccount ..> registry : use
+StatService ..> registry : use
+AuthService ..> registry : use
+gateway ..> registry : use
+
+
+	
+
+
+@enduml

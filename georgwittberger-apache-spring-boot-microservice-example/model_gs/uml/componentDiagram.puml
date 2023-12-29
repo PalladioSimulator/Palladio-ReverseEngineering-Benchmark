@@ -1,0 +1,41 @@
+@startuml
+
+component [web-server] as web
+
+interface "/cart" as cartInterface
+component [cart-service] as cart {
+	portin " " as cartIn
+	component [CartController] as CartController
+	component [CartService] as CartService
+	
+	cartInterface -- cartIn
+	cartIn -- CartController
+	CartController ..> CartService : requires
+}
+
+interface "/product" as productInterface
+component [product-service] as product{
+	portin " " as productIn
+	component [ProductController] as ProductController
+	component [ProductService] as ProductService
+	
+	productInterface -- productIn
+	productIn -- ProductController
+	ProductController ..> ProductService : requires
+}
+
+interface "/" as contenInterface
+component [content-service] as content {
+	portin " " as contentIn
+	component [ContentController] as ContentController
+	
+	contenInterface -- contentIn
+	contentIn -- ContentController
+}
+
+web ..> cartInterface : forward
+web ..> productInterface : forward
+web ..> contenInterface : forward
+
+
+@enduml

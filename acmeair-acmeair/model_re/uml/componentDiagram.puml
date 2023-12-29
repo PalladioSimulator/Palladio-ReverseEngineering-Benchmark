@@ -1,68 +1,68 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "AcmeAirConfiguration\n\n\n\n\n\n" {
-[com_acmeair_service_TransactionService]
-[com_acmeair_service_BookingService]
-[com_acmeair_service_FlightService]
-[com_acmeair_wxs_service_BookingServiceImpl]
-[com_acmeair_web_FlightsREST]
-[com_acmeair_loader_FlightLoader]
-[com_acmeair_web_BookingsREST]
 [com_acmeair_config_AcmeAirConfiguration]
-[com_acmeair_service_CustomerService]
-[com_acmeair_wxs_utils_WXSSessionManager]
-[com_acmeair_loader_CustomerLoader]
+[com_acmeair_web_LoginREST]
 [com_acmeair_service_KeyGenerator]
 [com_acmeair_web_CustomerREST]
 [com_acmeair_web_RESTCookieSessionFilter]
 [com_acmeair_morphia_services_BookingServiceImpl]
-[com_acmeair_web_LoginREST]
-portin " " as AcmeAirConfiguration.requires.SERVICE_HOST_bookings
-portin " " as AcmeAirConfiguration.requires.SERVICE_HOST_login
-portin " " as AcmeAirConfiguration.requires.SERVICE_HOST_customer_byid
-portin " " as AcmeAirConfiguration.requires.SERVICE_HOST_flights
-portin " " as AcmeAirConfiguration.requires.SERVICE_HOST_config
+[com_acmeair_wxs_service_BookingServiceImpl]
+[com_acmeair_service_CustomerService]
+[com_acmeair_service_FlightService]
+[com_acmeair_service_BookingService]
+[com_acmeair_web_FlightsREST]
+[com_acmeair_service_TransactionService]
+[com_acmeair_web_BookingsREST]
+[com_acmeair_loader_FlightLoader]
+[com_acmeair_wxs_utils_WXSSessionManager]
+[com_acmeair_loader_CustomerLoader]
+portin " " as AcmeAirConfiguration.requires.host_config
+portin " " as AcmeAirConfiguration.requires.host_flights
+portin " " as AcmeAirConfiguration.requires.host_customer_byid
+portin " " as AcmeAirConfiguration.requires.host_bookings
+portin " " as AcmeAirConfiguration.requires.host_login
+[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_morphia_services_BookingServiceImpl] : requires
+[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_wxs_service_BookingServiceImpl] : requires
+[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_service_BookingService] : requires
+[com_acmeair_web_BookingsREST]..>[com_acmeair_morphia_services_BookingServiceImpl] : requires
+[com_acmeair_web_BookingsREST]..>[com_acmeair_wxs_service_BookingServiceImpl] : requires
+[com_acmeair_web_BookingsREST]..>[com_acmeair_service_BookingService] : requires
+[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_service_FlightService] : requires
 [com_acmeair_web_FlightsREST]..>[com_acmeair_service_FlightService] : requires
 [com_acmeair_loader_FlightLoader]..>[com_acmeair_service_FlightService] : requires
-[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_service_FlightService] : requires
-[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_service_CustomerService] : requires
-[com_acmeair_loader_CustomerLoader]..>[com_acmeair_service_CustomerService] : requires
-[com_acmeair_web_CustomerREST]..>[com_acmeair_service_CustomerService] : requires
-[com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_service_CustomerService] : requires
-[com_acmeair_web_LoginREST]..>[com_acmeair_service_CustomerService] : requires
+[com_acmeair_service_CustomerService]..>[com_acmeair_service_KeyGenerator] : requires
 [com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_service_TransactionService] : requires
 [com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_wxs_utils_WXSSessionManager] : requires
-[com_acmeair_service_CustomerService]..>[com_acmeair_service_KeyGenerator] : requires
-[com_acmeair_web_BookingsREST]..>[com_acmeair_service_BookingService] : requires
-[com_acmeair_web_BookingsREST]..>[com_acmeair_wxs_service_BookingServiceImpl] : requires
-[com_acmeair_web_BookingsREST]..>[com_acmeair_morphia_services_BookingServiceImpl] : requires
-[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_service_BookingService] : requires
-[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_wxs_service_BookingServiceImpl] : requires
-[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_morphia_services_BookingServiceImpl] : requires
-"AcmeAirConfiguration.requires.SERVICE_HOST_login"--[com_acmeair_web_LoginREST]
-"AcmeAirConfiguration.requires.SERVICE_HOST_bookings"--[com_acmeair_web_BookingsREST]
-"AcmeAirConfiguration.requires.SERVICE_HOST_customer_byid"--[com_acmeair_web_CustomerREST]
-"AcmeAirConfiguration.requires.SERVICE_HOST_flights"--[com_acmeair_web_FlightsREST]
-"AcmeAirConfiguration.requires.SERVICE_HOST_config"--[com_acmeair_config_AcmeAirConfiguration]
+[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_service_CustomerService] : requires
+[com_acmeair_web_LoginREST]..>[com_acmeair_service_CustomerService] : requires
+[com_acmeair_web_CustomerREST]..>[com_acmeair_service_CustomerService] : requires
+[com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_service_CustomerService] : requires
+[com_acmeair_loader_CustomerLoader]..>[com_acmeair_service_CustomerService] : requires
+"AcmeAirConfiguration.requires.host_customer_byid"--[com_acmeair_web_CustomerREST]
+"AcmeAirConfiguration.requires.host_login"--[com_acmeair_web_LoginREST]
+"AcmeAirConfiguration.requires.host_bookings"--[com_acmeair_web_BookingsREST]
+"AcmeAirConfiguration.requires.host_flights"--[com_acmeair_web_FlightsREST]
+"AcmeAirConfiguration.requires.host_config"--[com_acmeair_config_AcmeAirConfiguration]
 }
-interface "SERVICE-HOST/login" as interface.SERVICE_HOST_login
-interface.SERVICE_HOST_login--"AcmeAirConfiguration.requires.SERVICE_HOST_login"
-interface "SERVICE-HOST/bookings" as interface.SERVICE_HOST_bookings
-interface.SERVICE_HOST_bookings--"AcmeAirConfiguration.requires.SERVICE_HOST_bookings"
-interface "SERVICE-HOST/customer/byid" as interface.SERVICE_HOST_customer_byid
-interface.SERVICE_HOST_customer_byid--"AcmeAirConfiguration.requires.SERVICE_HOST_customer_byid"
-interface "SERVICE-HOST/flights" as interface.SERVICE_HOST_flights
-interface.SERVICE_HOST_flights--"AcmeAirConfiguration.requires.SERVICE_HOST_flights"
-interface "SERVICE-HOST/config" as interface.SERVICE_HOST_config
-interface.SERVICE_HOST_config--"AcmeAirConfiguration.requires.SERVICE_HOST_config"
+interface "host/customer/byid" as interface.host_customer_byid
+interface.host_customer_byid--"AcmeAirConfiguration.requires.host_customer_byid"
+interface "host/login" as interface.host_login
+interface.host_login--"AcmeAirConfiguration.requires.host_login"
+interface "host/bookings" as interface.host_bookings
+interface.host_bookings--"AcmeAirConfiguration.requires.host_bookings"
+interface "host/flights" as interface.host_flights
+interface.host_flights--"AcmeAirConfiguration.requires.host_flights"
+interface "host/config" as interface.host_config
+interface.host_config--"AcmeAirConfiguration.requires.host_config"
 component "LoaderREST\n\n\n\n\n\n" {
-[com_acmeair_loader_Loader]
 [com_acmeair_config_LoaderREST]
-portin " " as LoaderREST.requires.SERVICE_HOST_loader
+[com_acmeair_loader_Loader]
+portin " " as LoaderREST.requires.host_loader
 [com_acmeair_config_LoaderREST]..>[com_acmeair_loader_Loader] : requires
-"LoaderREST.requires.SERVICE_HOST_loader"--[com_acmeair_config_LoaderREST]
+"LoaderREST.requires.host_loader"--[com_acmeair_config_LoaderREST]
 }
-interface "SERVICE-HOST/loader" as interface.SERVICE_HOST_loader
-interface.SERVICE_HOST_loader--"LoaderREST.requires.SERVICE_HOST_loader"
+interface "host/loader" as interface.host_loader
+interface.host_loader--"LoaderREST.requires.host_loader"
 
 @enduml

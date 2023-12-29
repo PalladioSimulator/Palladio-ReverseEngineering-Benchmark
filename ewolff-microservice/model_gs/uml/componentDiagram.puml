@@ -1,0 +1,73 @@
+@startuml
+
+interface "/catalog" as catalogInterface
+component [catalog] as catalog{
+	portin " " as catalogIn
+	component [CatalogController] as CatalogController
+	component [ItemRepository] as ItemRepository
+	component [CatalogApp] as CatalogApp
+	
+	catalogInterface -- catalogIn 
+	catalogIn -- CatalogController
+	CatalogController ..> ItemRepository : requires
+	CatalogApp ..> ItemRepository : requires
+}
+
+interface "/customer" as customerInterface
+component [customer] as customer {
+	portin " " as customerIn
+	component [CustomerController] as CustomerController
+	component [CustomerRepository] as CustomerRepository
+	component [CustomerApp] as CustomerApp
+	
+	customerInterface --customerIn
+	customerIn -- CustomerController
+	CustomerController ..> CustomerRepository : requires
+	CustomerApp ..> CustomerRepository : requires
+}
+
+'path not sure
+interface "/order" as orderInterface
+component [order] as order {
+	portin " " as orderIn
+	component [OrderController] as OrderController
+	component [OrderRepository] as OrderRepository
+	component [OrderService] as OrderService
+	component [CustomerClient] as CustomerClient
+	component [CatalogClient] as CatalogClient
+	portout " " as orderCustomer
+	portout " " as orderCatalog
+	
+	orderInterface -- orderIn
+	orderIn -- OrderController
+	OrderController ..> OrderRepository : requires
+	OrderController ..> OrderService : requires
+	OrderService ..> OrderRepository : requires
+	OrderService ..> CustomerClient : requires
+	OrderService ..> CatalogClient : requires
+	OrderController ..> CustomerClient : requires
+	OrderController ..> CatalogClient : requires
+	CustomerClient .. orderCustomer
+	orderCustomer ..> customerInterface : requires
+	CatalogClient .. orderCatalog
+	orderCatalog ..> catalogInterface : requires
+}
+
+component [eureka] as eureka
+
+interface "/api" as entryPoint
+component [zuul] as zuul
+
+entryPoint -- zuul
+zuul ..> orderInterface : depends on 
+zuul ..> catalogInterface : depends on
+zuul ..> customerInterface : depends on
+
+order ..> eureka : use
+catalog ..> eureka : use
+customer ..> eureka : use
+zuul ..> eureka : use
+
+
+
+@enduml

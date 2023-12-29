@@ -1,0 +1,75 @@
+@startuml
+component "BookingService" {
+ [BookingsREST]
+ portin " " as Booking
+ "Booking" -- [BookingsREST]
+ portout " " as pBooking
+ [BookingsREST] ..> "pBooking"
+}
+
+interface "iBooking" as iBooking
+iBooking -- "Booking"
+
+component "CustomerService" {
+ [CustomerLoader]
+ [CustomerREST]
+ [KeyGenerator]
+ [LoginREST]
+ portin " " as Customer
+ portin " " as Login
+ [CustomerREST] ..> [CustomerLoader] : requires
+ [CustomerREST] ..> [KeyGenerator] : requires
+ [LoginREST] ..> [CustomerLoader] : requires
+ "Customer" -- [CustomerREST]
+ "Login" -- [LoginREST]
+ portout " " as pCustomerLoader
+ [CustomerLoader] ..> "pCustomerLoader"
+}
+
+interface "iCustomer" as iCustomer
+interface "iLogin" as iLogin
+iCustomer -- "Customer"
+iLogin -- "Login"
+
+component "FlightService" {
+ [FlightLoader]
+ [FlightREST]
+ portin " " as Flight
+ [FlightREST] ..> [FlightLoader] : requires
+ "Flight" -- [FlightREST]
+ portout " " as pFlightLoader
+ [FlightLoader] ..> "pFlightLoader"
+}
+
+interface "iFlight" as iFlight
+iFlight -- "Flight"
+
+component "TransactionService" {
+ [RESTCookieSessionFilter]
+ [WXSSessionManager]
+ portin " " as Transaction
+ portout " " as pCustomer
+ [RESTCookieSessionFilter] ..> "pCustomer"
+ [RESTCookieSessionFilter] ..> [WXSSessionManager] : requires
+ "Transaction" -- [RESTCookieSessionFilter]
+ portout " " as pTransaction
+ [WXSSessionManager] ..> "pTransaction"
+}
+
+"pCustomer" ..> [iCustomer] : requires
+interface "iTransaction" as iTransaction
+iTransaction -- "Transaction"
+
+[WebApp]
+[WebApp] ..> "iBooking" : requires
+[WebApp] ..> "iCustomer" : requires
+[WebApp] ..> "iFlight" : requires
+[WebApp] ..> "iLogin" : requires
+[WebApp] ..> "iTransaction" : requires
+
+[DataService]
+"pBooking" ..> [DataService] : requires
+"pCustomerLoader" ..> [DataService] : requires
+"pFlightLoader" ..> [DataService] : requires
+"pTransaction" ..> [DataService] : requires
+@enduml
