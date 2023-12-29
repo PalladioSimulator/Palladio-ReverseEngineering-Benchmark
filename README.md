@@ -1,4 +1,6 @@
 # Benchmark Retriever
+[![Running Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Benchmark/actions/workflows/reverse_engineering.yml/badge.svg)](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Benchmark/actions/workflows/reverse_engineering.yml) [![Pages Build](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Benchmark/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Benchmark/actions/workflows/pages/pages-build-deployment)
+
 This repository presents a benchmark for the view-based [Retriever approach](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) to reverse engineering software architecture models. This approach enables the reverse engineering of software architecture models from heterogeneous artifacts by extracting structural and behavioral views from existing software artifacts using rule-based processes. The views are then refined to ensure completeness and consistency, and model-driven composition connects the different views. These views provide a comprehensive understanding of software systems and support model-driven analysis and quality prediction.
 
 ## Project Structures
