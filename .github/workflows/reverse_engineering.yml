@@ -30,11 +30,11 @@ jobs:
           )
           echo "array=$array" >> $GITHUB_OUTPUT
 
-      - name: Get latest RuleEngine version
+      - name: Get latest Retriever version
         id: latest_version
         run: |
           LATEST_VERSION=$(\
-            curl -sL ${{ github.api_url }}/repos/PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine/releases/latest \
+            curl -sL ${{ github.api_url }}/repos/PalladioSimulator/Palladio-ReverseEngineering-Retriever/releases/latest \
             | jq  -r ".tag_name"
           )
           echo "value=$LATEST_VERSION" >> $GITHUB_OUTPUT
@@ -73,9 +73,9 @@ jobs:
           path: repo/${{ matrix.directory }}
           repository: ${{ env.repository }}
 
-      - name: Run RuleEngine
+      - name: Run Retriever
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
-        uses: PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine@master
+        uses: PalladioSimulator/Palladio-ReverseEngineering-Retriever@master
         with:
           source_path: repo/${{ matrix.directory }}
           rules: ${{ env.rules }}
@@ -143,5 +143,5 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add .
-        git commit -m "Upload analysis (RuleEngine ${{ needs.collect_info.outputs.latest_version }})"
+        git commit -m "Upload analysis (Retriever ${{ needs.collect_info.outputs.latest_version }})"
         git push
