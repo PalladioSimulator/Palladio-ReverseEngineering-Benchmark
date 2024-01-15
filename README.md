@@ -5,7 +5,7 @@ This repository presents a benchmark for the view-based [Retriever approach](htt
 
 ## Project Structures
 Each benchmark project is structured as follows:
-* The `.ruleengine.yml` file contains the configuration for running the retriever approach.
+* The `.retriever.yml` file contains the configuration for running the retriever approach.
   * The `repository` value is the ID of a GitHub repository.
   * The `current_version` value is the latest version of the [Retriever approach](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever/releases) used to build the architectural models.
   * The `rules` values are the rules used to build the architectural models.
@@ -15,8 +15,8 @@ Each benchmark project is structured as follows:
 * The `model_gs` folder contains our manual gold standards for the system.
 
 ## Using the Benchmark
-The easiest way to use our approach is to use the CLI that we have [released](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever/releases). Here’s an example of how to call the [CLI](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine/blob/master/bundles/org.palladiosimulator.somox.analyzer.rules.main/src/org/palladiosimulator/somox/analyzer/rules/cli/RuleEngineApplication.java) application with the given parameters:
+The easiest way to use our approach is to use the CLI that we have [released](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever/releases). Here’s an example of how to call the [CLI](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever/blob/main/bundles/org.palladiosimulator.retriever.core/src/org/palladiosimulator/retriever/core/cli/RetrieverApplication.java) application with the given parameters:
 
 > ./eclipse -i /path/to/input/directory -o /path/to/output/directory -r supported_rules
 
-Here, replace `/path/to/input/directory` with the path to the root directory of the project you want to reverse engineer, `/path/to/output/directory` with the path to the output directory where you want to store the generated models, and `supported_rules` with the [rules](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-SoMoX-RuleEngine/tree/master/bundles/org.palladiosimulator.somox.analyzer.rules.impl/src/org/palladiosimulator/somox/analyzer/rules/impl) you want to use for reverse engineering.
+Here, replace `/path/to/input/directory` with the path to the root directory of the project you want to reverse engineer, `/path/to/output/directory` with the path to the output directory where you want to store the generated models, and `supported_rules` with the [rules](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever/tree/main/bundles/org.palladiosimulator.retriever.extraction.rules/src/org/palladiosimulator/retriever/extraction/rules) you want to use for reverse engineering.
