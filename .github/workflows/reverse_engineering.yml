@@ -26,7 +26,7 @@ jobs:
         id: find_directories
         run: |
           array=$( \
-            printf '[%s]' "$(find . -maxdepth 1 -type d -exec test -e "{}/.ruleengine.yml" ';' -printf '"%P",' | sed 's/\.\///g; s/,$//')" \
+            printf '[%s]' "$(find . -maxdepth 1 -type d -exec test -e "{}/.retriever.yml" ';' -printf '"%P",' | sed 's/\.\///g; s/,$//')" \
           )
           echo "array=$array" >> $GITHUB_OUTPUT
 
@@ -59,9 +59,9 @@ jobs:
           wget https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64.tar.gz -O - \
           | tar xz && sudo mv yq_linux_amd64 /usr/bin/yq
 
-      - name: Parse .ruleengine.yml
+      - name: Parse .retriever.yml
         run: |
-          CONFIG_FILE="benchmark/${{ matrix.directory }}/.ruleengine.yml"
+          CONFIG_FILE="benchmark/${{ matrix.directory }}/.retriever.yml"
           echo "repository=$(yq eval '.repository' $CONFIG_FILE)" >> $GITHUB_ENV
           echo "current_version=$(yq eval '.current_version' $CONFIG_FILE)" >> $GITHUB_ENV
           echo "rules=$(yq eval '.rules[]' $CONFIG_FILE | paste -sd ",")" >> $GITHUB_ENV
@@ -75,7 +75,7 @@ jobs:
 
       - name: Run Retriever
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
-        uses: PalladioSimulator/Palladio-ReverseEngineering-Retriever@master
+        uses: PalladioSimulator/Palladio-ReverseEngineering-Retriever@main
         with:
           source_path: repo/${{ matrix.directory }}
           rules: ${{ env.rules }}
@@ -84,7 +84,7 @@ jobs:
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         uses: actions/download-artifact@v3
         with:
-          name: ruleengine
+          name: retriever
           path: results
 
       - name: Prepare upload
@@ -105,8 +105,8 @@ jobs:
       - name: Update version
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         run: |
-          yq eval -i '.current_version = "${{ needs.collect_info.outputs.latest_version }}"' "benchmark/${{ matrix.directory }}/.ruleengine.yml"
-          mv "benchmark/${{ matrix.directory }}/.ruleengine.yml" to_commit/${{ matrix.directory }}/.ruleengine.yml
+          yq eval -i '.current_version = "${{ needs.collect_info.outputs.latest_version }}"' "benchmark/${{ matrix.directory }}/.retriever.yml"
+          mv "benchmark/${{ matrix.directory }}/.retriever.yml" to_commit/${{ matrix.directory }}/.retriever.yml
 
       - name: Upload artifact
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
