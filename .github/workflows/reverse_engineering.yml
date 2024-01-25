@@ -93,6 +93,8 @@ jobs:
           mkdir -p to_commit/${{ matrix.directory }}/model_re/pcm
           mkdir -p to_commit/${{ matrix.directory }}/model_re/uml
           mv results/repo/${{ matrix.directory }}/*.puml to_commit/${{ matrix.directory }}/model_re/uml
+          mv results/repo/${{ matrix.directory }}/*.txt to_commit/${{ matrix.directory }}/model_re/
+          mv results/repo/${{ matrix.directory }}/*.md to_commit/${{ matrix.directory }}/model_re/
           mv results/repo/${{ matrix.directory }}/* to_commit/${{ matrix.directory }}/model_re/pcm
 
       - name: Render UML diagrams
@@ -101,7 +103,7 @@ jobs:
           sudo apt-get install graphviz
           wget https://github.com/plantuml/plantuml/releases/download/v1.2023.13/plantuml-1.2023.13.jar -O plantuml.jar
           shopt -s nullglob
-          for file in to_commit/matrix_directory/model_re/uml/*.puml; do
+          for file in to_commit/${{ matrix.directory }}/model_re/uml/*.puml; do
             [ -f "$file" ] || continue
             java -jar plantuml.jar -tsvg "$file" || echo "Diagram description contains errors: ${file}"
           done
