@@ -1,0 +1,27 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() ratings-data-service/ratingsdata Delegation-Provider
+() movie-catalog-service/catalog Delegation-Provider
+() movie-info-service/movies Delegation-Provider
+component System {
+[io_javabrains_movieinfoservice_resources_MovieResource Assembly Context] -(0- [io_javabrains_movieinfoservice_resources_RestTemplate Provider Assembly Context] : io_javabrains_movieinfoservice_resources_RestTemplate Provider
+[io_javabrains_moviecatalogservice_resources_CatalogResource Assembly Context] -(0- [io_javabrains_moviecatalogservice_resources_RestTemplate Provider Assembly Context] : io_javabrains_moviecatalogservice_resources_RestTemplate Provider
+[io_javabrains_moviecatalogservice_resources_CatalogResource Assembly Context] -(0- [WebClient_Builder Provider Assembly Context] : WebClient_Builder Provider
+ratings-data-service/ratingsdata Delegation-Provider - ratings-data-service/ratingsdata Provider
+ratings-data-service/ratingsdata Provider - [RatingsResource]
+movie-catalog-service/catalog Delegation-Provider - movie-catalog-service/catalog Provider
+movie-catalog-service/catalog Provider - [CatalogResource]
+movie-info-service/movies Delegation-Provider - movie-info-service/movies Provider
+movie-info-service/movies Provider - [MovieResource]
+[io_javabrains_moviecatalogservice_resources_RestTemplate Provider Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+[io_javabrains_ratingsdataservice_resources_RatingsResource Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+[io_javabrains_movieinfoservice_resources_MovieResource Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+[io_javabrains_moviecatalogservice_resources_CatalogResource Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+[io_javabrains_movieinfoservice_resources_RestTemplate Provider Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+[MovieResource Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+[CatalogResource Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+[RatingsResource Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+[WebClient_Builder Provider Assembly Context] [[koushikkothagal-spring-boot-microservices-workshop.repository#_q0vdIbtpEe6NFo6ejmMMWQ]]
+}
+
+@enduml

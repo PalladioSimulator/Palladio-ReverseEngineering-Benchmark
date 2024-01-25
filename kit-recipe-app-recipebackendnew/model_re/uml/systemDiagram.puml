@@ -1,0 +1,65 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() SPRING-APPLICATION/error Delegation-Provider
+() SPRING-APPLICATION/[GET] Delegation-Provider
+() SPRING-APPLICATION/api/v1/images Delegation-Provider
+() SPRING-APPLICATION/api/v1/user[GET] Delegation-Provider
+() SPRING-APPLICATION/api/v1/ingredients Delegation-Provider
+() SPRING-APPLICATION/api/v1/units Delegation-Provider
+() ErrorController Delegation-Provider
+() SPRING-APPLICATION/api/v1/tags Delegation-Provider
+() SPRING-APPLICATION/api/v1/recipes Delegation-Provider
+component System {
+[edu_kit_recipe_recipebackend_service_RecipeService Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_ImageRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_ImageRepository Provider
+[edu_kit_recipe_recipebackend_controller_api_v1_tag_TagsController Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_tag_TagRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_tag_TagRepository Provider
+[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_IngredientRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_IngredientRepository Provider
+[edu_kit_recipe_recipebackend_controller_api_v1_image_ImageController Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_ImageRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_ImageRepository Provider
+[edu_kit_recipe_recipebackend_service_CustomerService Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_RecipeRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_RecipeRepository Provider
+[edu_kit_recipe_recipebackend_service_CustomerService Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_CustomerRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_CustomerRepository Provider
+[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_tag_TagRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_tag_TagRepository Provider
+[edu_kit_recipe_recipebackend_controller_api_v1_units_UnitController Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_UnitRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_UnitRepository Provider
+[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_RecipeRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_RecipeRepository Provider
+[edu_kit_recipe_recipebackend_service_RecipeService Assembly Context] -(0- [edu_kit_recipe_recipebackend_repository_RecipeRepository Assembly Context] : edu_kit_recipe_recipebackend_repository_RecipeRepository Provider
+SPRING-APPLICATION/error Delegation-Provider - SPRING-APPLICATION/error Provider
+SPRING-APPLICATION/error Provider - [ExceptionController]
+SPRING-APPLICATION/[GET] Delegation-Provider - SPRING-APPLICATION/[GET] Provider
+SPRING-APPLICATION/[GET] Provider - [BaseController]
+SPRING-APPLICATION/api/v1/images Delegation-Provider - SPRING-APPLICATION/api/v1/images Provider
+SPRING-APPLICATION/api/v1/images Provider - [ImageController]
+SPRING-APPLICATION/api/v1/user[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/user[GET] Provider
+SPRING-APPLICATION/api/v1/user[GET] Provider - [CustomerController]
+SPRING-APPLICATION/api/v1/ingredients Delegation-Provider - SPRING-APPLICATION/api/v1/ingredients Provider
+SPRING-APPLICATION/api/v1/ingredients Provider - [IngredientsController]
+SPRING-APPLICATION/api/v1/units Delegation-Provider - SPRING-APPLICATION/api/v1/units Provider
+SPRING-APPLICATION/api/v1/units Provider - [UnitController]
+ErrorController Delegation-Provider - ErrorController Provider
+ErrorController Provider - [ExceptionController]
+SPRING-APPLICATION/api/v1/tags Delegation-Provider - SPRING-APPLICATION/api/v1/tags Provider
+SPRING-APPLICATION/api/v1/tags Provider - [IngredientsController]
+SPRING-APPLICATION/api/v1/recipes Delegation-Provider - SPRING-APPLICATION/api/v1/recipes Provider
+SPRING-APPLICATION/api/v1/recipes Provider - [ImageController]
+[edu_kit_recipe_recipebackend_repository_UnitRepository Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[IngredientsController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_controller_api_v1_tag_TagsController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[UnitController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_repository_RecipeRepository Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_repository_ImageRepository Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[ImageController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_service_CustomerService Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_repository_CustomerRepository Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_controller_api_v1_units_UnitController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_repository_tag_TagRepository Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[CustomerController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_controller_exception_ExceptionController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_controller_api_v1_image_ImageController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[ExceptionController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_repository_IngredientRepository Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_controller_api_v1_user_CustomerController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_service_RecipeService Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[BaseController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+[edu_kit_recipe_recipebackend_controller_BaseController Assembly Context] [[kit-recipe-app-recipebackendnew.repository#_qGl9yLtpEe60_Iln787yZQ]]
+}
+
+@enduml

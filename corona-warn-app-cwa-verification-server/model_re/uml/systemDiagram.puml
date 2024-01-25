@@ -1,0 +1,39 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() SPRING-APPLICATION/version/v1/tan/teletan[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/testresult[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/testresult[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/testresult[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/tan[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/registrationToken[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/tan/verify[POST] Delegation-Provider
+component System {
+SPRING-APPLICATION/version/v1/tan/teletan[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/tan/teletan[POST] Provider
+SPRING-APPLICATION/version/v1/tan/teletan[POST] Provider - [InternalTanController]
+SPRING-APPLICATION/version/v1/testresult[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/testresult[POST] Provider
+SPRING-APPLICATION/version/v1/testresult[POST] Provider - [InternalTestStateController]
+SPRING-APPLICATION/version/v1/testresult[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/testresult[POST] Provider
+SPRING-APPLICATION/version/v1/testresult[POST] Provider - [InternalTestStateController]
+SPRING-APPLICATION/version/v1/testresult[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/testresult[POST] Provider
+SPRING-APPLICATION/version/v1/testresult[POST] Provider - [ExternalTestStateController]
+SPRING-APPLICATION/version/v1/tan[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/tan[POST] Provider
+SPRING-APPLICATION/version/v1/tan[POST] Provider - [ExternalTanController]
+SPRING-APPLICATION/version/v1/registrationToken[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/registrationToken[POST] Provider
+SPRING-APPLICATION/version/v1/registrationToken[POST] Provider - [ExternalTokenController]
+SPRING-APPLICATION/version/v1/tan/verify[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/tan/verify[POST] Provider
+SPRING-APPLICATION/version/v1/tan/verify[POST] Provider - [InternalTanController]
+[FakeRequestService Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[ExternalTanController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[app_coronawarn_verification_controller_ExternalTestStateController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[app_coronawarn_verification_controller_InternalTanController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[app_coronawarn_verification_controller_ExternalTokenController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[InternalTanController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[app_coronawarn_verification_controller_InternalTestStateController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[app_coronawarn_verification_controller_ExternalTanController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[InternalTestStateController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[app_coronawarn_verification_service_FakeRequestService Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[ExternalTestStateController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+[ExternalTokenController Assembly Context] [[corona-warn-app-cwa-verification-server.repository#_qJ037LtpEe6rpoenAd3otQ]]
+}
+
+@enduml

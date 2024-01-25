@@ -1,0 +1,111 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() mailer/emails[GET] Delegation-Provider
+() api-gateway/todos[GET] Delegation-Provider
+() user/accounts[GET] Delegation-Provider
+() ApplicationListener Delegation-Provider
+() api-gateway/accounts[GET] Delegation-Provider
+() user/accounts Delegation-Provider
+() reminder/todos Delegation-Provider
+() com_apssouza_eventsourcing_services_EventSourcingService Delegation-Provider
+() user/accounts[POST] Delegation-Provider
+() ApplicationListener Delegation-Provider
+() reminder/todo-changes[GET] Delegation-Provider
+() reminder/todo-statistics[GET] Delegation-Provider
+() mailer/send/email[GET] Delegation-Provider
+component System {
+[com_apssouza_mailservice_controllers_NotifyController Assembly Context] -(0- [com_apssouza_eventsourcing_commands_EmailCommandHandler Assembly Context] : com_apssouza_eventsourcing_commands_EmailCommandHandler Provider
+[com_apssouza_infra_EventPublisher Assembly Context] -(0- [com_apssouza_infra_ApplicationEventPublisher Provider Assembly Context] : com_apssouza_infra_ApplicationEventPublisher Provider
+[com_apssouza_controllers_TodoChangesController Assembly Context] -(0- [com_apssouza_monitors_TodoStoreEventChanges Assembly Context] : com_apssouza_monitors_TodoStoreEventChanges Provider
+[com_apssouza_services_TodoServiceImpl Assembly Context] -(0- [com_apssouza_infra_EventPublisher Assembly Context] : com_apssouza_infra_EventPublisher Provider
+[com_apssouza_controllers_TodoController Assembly Context] -(0- [com_apssouza_services_TodoService Assembly Context] : com_apssouza_services_TodoService Provider
+[com_apssouza_controllers_TodoController Assembly Context] -(0- [com_apssouza_services_TodoServiceImpl Assembly Context] : com_apssouza_services_TodoService Provider
+[com_apssouza_controllers_AccountController Assembly Context] -(0- [com_apssouza_services_AccountService Assembly Context] : com_apssouza_services_AccountService Provider
+[com_apssouza_mailservice_controllers_EmailController Assembly Context] -(0- [com_apssouza_mailservice_repository_EmailRepository Assembly Context] : com_apssouza_mailservice_repository_EmailRepository Provider
+[com_apssouza_eventsourcing_services_EventSourcingServiceImpl Assembly Context] -(0- [com_apssouza_eventsourcing_eventstore_EventSerializer Assembly Context] : com_apssouza_eventsourcing_eventstore_EventSerializer Provider
+[com_apssouza_eventsourcing_services_EventSourcingServiceImpl Assembly Context] -(0- [com_apssouza_eventsourcing_services_ApplicationEventPublisher Provider Assembly Context] : com_apssouza_eventsourcing_services_ApplicationEventPublisher Provider
+[com_apssouza_services_TodoServiceImpl Assembly Context] -(0- [com_apssouza_repositories_TodoRepository Assembly Context] : com_apssouza_repositories_TodoRepository Provider
+[UserClient Assembly Context] -(0- [com_apssouza_controllers_AccountController Assembly Context] : user/accounts[PUT] Provider
+[com_apssouza_controllers_TodoServiceStatisticsController Assembly Context] -(0- [com_apssouza_monitors_TodoServiceMethodInvokedStore Assembly Context] : com_apssouza_monitors_TodoServiceMethodInvokedStore Provider
+[com_apssouza_controllers_UserController Assembly Context] -(0- [com_apssouza_services_UserServiceImpl Assembly Context] : com_apssouza_services_UserService Provider
+[com_apssouza_infra_EventPublisher Assembly Context] -(0- [com_apssouza_infra_Source Provider Assembly Context] : com_apssouza_infra_Source Provider
+[com_apssouza_bootstrap_TodoLoader Assembly Context] -(0- [com_apssouza_repositories_TodoRepository Assembly Context] : com_apssouza_repositories_TodoRepository Provider
+[com_apssouza_controllers_UserController Assembly Context] -(0- [com_apssouza_services_TodoServiceImpl Assembly Context] : com_apssouza_services_TodoService Provider
+[UserClient Assembly Context] -(0- [user/users Provider Assembly Context] : user/users Provider
+[com_apssouza_controllers_UserController Assembly Context] -(0- [com_apssouza_services_UserService Assembly Context] : com_apssouza_services_UserService Provider
+[com_apssouza_controllers_UserController Assembly Context] -(0- [com_apssouza_services_TodoService Assembly Context] : com_apssouza_services_TodoService Provider
+[com_apssouza_clients_UserClient Assembly Context] -(0- [com_apssouza_controllers_AccountController Assembly Context] : user/accounts[PUT] Provider
+[com_apssouza_eventsourcing_services_EventSourcingServiceImpl Assembly Context] -(0- [com_apssouza_eventsourcing_eventstore_EventStoreRepository Assembly Context] : com_apssouza_eventsourcing_eventstore_EventStoreRepository Provider
+[com_apssouza_services_AccountServiceImpl Assembly Context] -(0- [com_apssouza_repositories_AccountRepository Assembly Context] : com_apssouza_repositories_AccountRepository Provider
+[com_apssouza_controllers_AccountController Assembly Context] -(0- [com_apssouza_services_AccountServiceImpl Assembly Context] : com_apssouza_services_AccountService Provider
+[com_apssouza_bootstrap_UserLoader Assembly Context] -(0- [com_apssouza_repositories_AccountRepository Assembly Context] : com_apssouza_repositories_AccountRepository Provider
+mailer/emails[GET] Delegation-Provider - mailer/emails[GET] Provider
+mailer/emails[GET] Provider - [EmailController]
+api-gateway/todos[GET] Delegation-Provider - api-gateway/todos[GET] Provider
+api-gateway/todos[GET] Provider - [TodoServiceImpl]
+user/accounts[GET] Delegation-Provider - user/accounts[GET] Provider
+user/accounts[GET] Provider - [AccountController]
+ApplicationListener Delegation-Provider - ApplicationListener Provider
+ApplicationListener Provider - [AccountController]
+api-gateway/accounts[GET] Delegation-Provider - api-gateway/accounts[GET] Provider
+api-gateway/accounts[GET] Provider - [TodoServiceImpl]
+user/accounts Delegation-Provider - user/accounts Provider
+user/accounts Provider - [AccountController]
+reminder/todos Delegation-Provider - reminder/todos Provider
+reminder/todos Provider - [TodoController]
+com_apssouza_eventsourcing_services_EventSourcingService Delegation-Provider - com_apssouza_eventsourcing_services_EventSourcingService Provider
+com_apssouza_eventsourcing_services_EventSourcingService Provider - [EventSourcingServiceImpl]
+user/accounts[POST] Delegation-Provider - user/accounts[POST] Provider
+user/accounts[POST] Provider - [AccountController]
+ApplicationListener Delegation-Provider - ApplicationListener Provider
+ApplicationListener Provider - [TodoServiceImpl]
+reminder/todo-changes[GET] Delegation-Provider - reminder/todo-changes[GET] Provider
+reminder/todo-changes[GET] Provider - [TodoChangesController]
+reminder/todo-statistics[GET] Delegation-Provider - reminder/todo-statistics[GET] Provider
+reminder/todo-statistics[GET] Provider - [TodoServiceStatisticsController]
+mailer/send/email[GET] Delegation-Provider - mailer/send/email[GET] Provider
+mailer/send/email[GET] Provider - [NotifyController]
+[com_apssouza_eventsourcing_commands_EmailCommandHandler Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[TodoServiceImpl Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_eventsourcing_services_EventSourcingServiceImpl Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[AccountController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[user/users Provider Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_mailservice_repository_EmailRepository Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_monitors_TodoServiceMethodInvokedStore Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_services_AccountServiceImpl Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_integrations_socket_TodoSocketController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_controllers_TodoServiceStatisticsController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_eventsourcing_services_ApplicationEventPublisher Provider Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[EventSourcingServiceImpl Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_eventsourcing_eventstore_EventStoreRepository Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_bootstrap_UserLoader Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_services_UserServiceImpl Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_controllers_AccountController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[EmailController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_services_TodoServiceImpl Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_services_UserService Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_infra_ApplicationEventPublisher Provider Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_bootstrap_TodoLoader Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_monitors_TodoStoreEventChanges Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_controllers_UserController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[NotifyController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_repositories_TodoRepository Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[TodoServiceStatisticsController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_controllers_TodoChangesController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[TodoChangesController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_controllers_TodoController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[TodoController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_services_AccountService Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_mailservice_controllers_NotifyController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_eventsourcing_eventstore_EventSerializer Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_repositories_AccountRepository Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_services_TodoService Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_infra_EventPublisher Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[UserClient Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[TodoSocketController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_mailservice_controllers_EmailController Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_clients_UserClient Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+[com_apssouza_infra_Source Provider Assembly Context] [[apssouza22-java-microservice.repository#_qW_KOrtpEe66ndueERJfLA]]
+}
+
+@enduml

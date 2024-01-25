@@ -1,0 +1,71 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() SERVICE-HOST/loader Delegation-Provider
+() SERVICE-HOST/bookings Delegation-Provider
+() SERVICE-HOST/config Delegation-Provider
+() SERVICE-HOST/login Delegation-Provider
+() SERVICE-HOST/flights Delegation-Provider
+() com_acmeair_morphia_MorphiaConstants Delegation-Provider
+() Filter Delegation-Provider
+() com_acmeair_wxs_WXSConstants Delegation-Provider
+() SERVICE-HOST/customer/byid Delegation-Provider
+component System {
+[com_acmeair_loader_CustomerLoader Assembly Context] -(0- [com_acmeair_service_CustomerService Assembly Context] : com_acmeair_service_CustomerService Provider
+[com_acmeair_web_LoginREST Assembly Context] -(0- [com_acmeair_service_CustomerService Assembly Context] : com_acmeair_service_CustomerService Provider
+[com_acmeair_config_AcmeAirConfiguration Assembly Context] -(0- [com_acmeair_service_CustomerService Assembly Context] : com_acmeair_service_CustomerService Provider
+[com_acmeair_web_RESTCookieSessionFilter Assembly Context] -(0- [com_acmeair_wxs_utils_WXSSessionManager Assembly Context] : com_acmeair_service_TransactionService Provider
+[com_acmeair_web_FlightsREST Assembly Context] -(0- [com_acmeair_service_FlightService Assembly Context] : com_acmeair_service_FlightService Provider
+[com_acmeair_web_CustomerREST Assembly Context] -(0- [com_acmeair_service_CustomerService Assembly Context] : com_acmeair_service_CustomerService Provider
+[com_acmeair_config_AcmeAirConfiguration Assembly Context] -(0- [com_acmeair_wxs_service_BookingServiceImpl Assembly Context] : com_acmeair_service_BookingService Provider
+[com_acmeair_web_BookingsREST Assembly Context] -(0- [com_acmeair_wxs_service_BookingServiceImpl Assembly Context] : com_acmeair_service_BookingService Provider
+[com_acmeair_web_BookingsREST Assembly Context] -(0- [com_acmeair_morphia_services_BookingServiceImpl Assembly Context] : com_acmeair_service_BookingService Provider
+[com_acmeair_config_AcmeAirConfiguration Assembly Context] -(0- [com_acmeair_morphia_services_BookingServiceImpl Assembly Context] : com_acmeair_service_BookingService Provider
+[com_acmeair_web_RESTCookieSessionFilter Assembly Context] -(0- [com_acmeair_service_TransactionService Assembly Context] : com_acmeair_service_TransactionService Provider
+[com_acmeair_loader_FlightLoader Assembly Context] -(0- [com_acmeair_service_FlightService Assembly Context] : com_acmeair_service_FlightService Provider
+[com_acmeair_web_BookingsREST Assembly Context] -(0- [com_acmeair_service_BookingService Assembly Context] : com_acmeair_service_BookingService Provider
+[com_acmeair_config_AcmeAirConfiguration Assembly Context] -(0- [com_acmeair_service_FlightService Assembly Context] : com_acmeair_service_FlightService Provider
+[com_acmeair_service_CustomerService Assembly Context] -(0- [com_acmeair_service_KeyGenerator Assembly Context] : com_acmeair_service_KeyGenerator Provider
+[com_acmeair_config_LoaderREST Assembly Context] -(0- [com_acmeair_loader_Loader Assembly Context] : com_acmeair_loader_Loader Provider
+[com_acmeair_config_AcmeAirConfiguration Assembly Context] -(0- [com_acmeair_service_BookingService Assembly Context] : com_acmeair_service_BookingService Provider
+[com_acmeair_web_RESTCookieSessionFilter Assembly Context] -(0- [com_acmeair_service_CustomerService Assembly Context] : com_acmeair_service_CustomerService Provider
+SERVICE-HOST/loader Delegation-Provider - SERVICE-HOST/loader Provider
+SERVICE-HOST/loader Provider - [LoaderREST]
+SERVICE-HOST/bookings Delegation-Provider - SERVICE-HOST/bookings Provider
+SERVICE-HOST/bookings Provider - [AcmeAirConfiguration]
+SERVICE-HOST/config Delegation-Provider - SERVICE-HOST/config Provider
+SERVICE-HOST/config Provider - [AcmeAirConfiguration]
+SERVICE-HOST/login Delegation-Provider - SERVICE-HOST/login Provider
+SERVICE-HOST/login Provider - [AcmeAirConfiguration]
+SERVICE-HOST/flights Delegation-Provider - SERVICE-HOST/flights Provider
+SERVICE-HOST/flights Provider - [AcmeAirConfiguration]
+com_acmeair_morphia_MorphiaConstants Delegation-Provider - com_acmeair_morphia_MorphiaConstants Provider
+com_acmeair_morphia_MorphiaConstants Provider - [AcmeAirConfiguration]
+Filter Delegation-Provider - Filter Provider
+Filter Provider - [AcmeAirConfiguration]
+com_acmeair_wxs_WXSConstants Delegation-Provider - com_acmeair_wxs_WXSConstants Provider
+com_acmeair_wxs_WXSConstants Provider - [AcmeAirConfiguration]
+SERVICE-HOST/customer/byid Delegation-Provider - SERVICE-HOST/customer/byid Provider
+SERVICE-HOST/customer/byid Provider - [AcmeAirConfiguration]
+[com_acmeair_loader_FlightLoader Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_web_CustomerREST Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_service_TransactionService Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_service_CustomerService Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_web_RESTCookieSessionFilter Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_service_KeyGenerator Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_service_BookingService Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_loader_Loader Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_web_LoginREST Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_service_FlightService Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[AcmeAirConfiguration Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_wxs_service_BookingServiceImpl Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_web_BookingsREST Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_loader_CustomerLoader Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[LoaderREST Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_config_AcmeAirConfiguration Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_web_FlightsREST Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_morphia_services_BookingServiceImpl Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_config_LoaderREST Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+[com_acmeair_wxs_utils_WXSSessionManager Assembly Context] [[acmeair-acmeair.repository#_qlkYtLtpEe63uYEqSkiY2w]]
+}
+
+@enduml

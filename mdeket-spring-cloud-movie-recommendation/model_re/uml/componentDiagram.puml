@@ -1,46 +1,52 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "MainController\n\n\n\n\n\n" {
+[com_example_service_RecommendationClientService]
 [com_example_MainController]
 [com_example_service_UserService]
-[com_example_service_RecommendationClientService]
-portin " " as MainController.requires.SPRING_APPLICATION_api
-portout " " as MainController.provides.user_service_user
-portout " " as MainController.provides.user_service_newuser
-[com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
+portin " " as MainController_requires_SPRING_APPLICATION_api
+portout " " as MainController_provides_user_service_user
+portout " " as MainController_provides_user_service_newuser
 [com_example_MainController]..>[com_example_service_UserService] : requires
-"MainController.requires.SPRING_APPLICATION_api"--[com_example_MainController]
-[com_example_service_UserService].."MainController.provides.user_service_newuser"
-[com_example_service_UserService].."MainController.provides.user_service_user"
+[com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
+"MainController_requires_SPRING_APPLICATION_api"--[com_example_MainController]
+[com_example_service_UserService].."MainController_provides_user_service_user"
+[com_example_service_UserService].."MainController_provides_user_service_newuser"
 }
 interface "SPRING-APPLICATION/api" as interface.SPRING_APPLICATION_api
-interface.SPRING_APPLICATION_api--"MainController.requires.SPRING_APPLICATION_api"
+interface.SPRING_APPLICATION_api--"MainController_requires_SPRING_APPLICATION_api"
 interface "user-service/newuser" as interface.user_service_newuser
-"MainController.provides.user_service_newuser"..>interface.user_service_newuser : requires
+"MainController_provides_user_service_newuser"..>interface.user_service_newuser : requires
 interface "user-service/user" as interface.user_service_user
-"MainController.provides.user_service_user"..>interface.user_service_user : requires
+"MainController_provides_user_service_user"..>interface.user_service_user : requires
 component "UserController\n\n\n\n\n\n" {
+[com_example_UserRepo]
 [com_example_RecommendationController]
+[com_example_MovieRepo]
 [com_example_MovieController]
 [com_example_UserController]
-[com_example_MovieRepo]
-[com_example_UserRepo]
-portin " " as UserController.requires.SPRING_APPLICATION_movie
-portin " " as UserController.requires.SPRING_APPLICATION_recommendation
-portin " " as UserController.requires.SPRING_APPLICATION_user
+portin " " as UserController_requires_SPRING_APPLICATION_recommendation
+portin " " as UserController_requires_SPRING_APPLICATION_user
+portin " " as UserController_requires_SPRING_APPLICATION_movie
+[com_example_MovieController]..>[com_example_MovieRepo] : requires
 [com_example_RecommendationController]..>[com_example_UserRepo] : requires
 [com_example_UserController]..>[com_example_UserRepo] : requires
 [com_example_RecommendationController]..>[com_example_MovieRepo] : requires
-[com_example_MovieController]..>[com_example_MovieRepo] : requires
-"UserController.requires.SPRING_APPLICATION_recommendation"--[com_example_RecommendationController]
-"UserController.requires.SPRING_APPLICATION_movie"--[com_example_MovieController]
-"UserController.requires.SPRING_APPLICATION_user"--[com_example_UserController]
+"UserController_requires_SPRING_APPLICATION_user"--[com_example_UserController]
+"UserController_requires_SPRING_APPLICATION_movie"--[com_example_MovieController]
+"UserController_requires_SPRING_APPLICATION_recommendation"--[com_example_RecommendationController]
 }
-interface "SPRING-APPLICATION/recommendation" as interface.SPRING_APPLICATION_recommendation
-interface.SPRING_APPLICATION_recommendation--"UserController.requires.SPRING_APPLICATION_recommendation"
 interface "SPRING-APPLICATION/movie" as interface.SPRING_APPLICATION_movie
-interface.SPRING_APPLICATION_movie--"UserController.requires.SPRING_APPLICATION_movie"
+interface.SPRING_APPLICATION_movie--"UserController_requires_SPRING_APPLICATION_movie"
+interface "SPRING-APPLICATION/recommendation" as interface.SPRING_APPLICATION_recommendation
+interface.SPRING_APPLICATION_recommendation--"UserController_requires_SPRING_APPLICATION_recommendation"
 interface "SPRING-APPLICATION/user" as interface.SPRING_APPLICATION_user
-interface.SPRING_APPLICATION_user--"UserController.requires.SPRING_APPLICATION_user"
+interface.SPRING_APPLICATION_user--"UserController_requires_SPRING_APPLICATION_user"
+interface "com_example_service_RestTemplate" as interface.com_example_service_RestTemplate
+interface.com_example_service_RestTemplate--[com_example_service_RestTemplate_Provider]
+interface "user-service/newuser" as interface.user_service_newuser
+interface.user_service_newuser--[user_service_newuser_Provider]
+interface "user-service/user" as interface.user_service_user
+interface.user_service_user--[user_service_user_Provider]
 
 @enduml

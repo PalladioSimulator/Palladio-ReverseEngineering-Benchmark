@@ -1,0 +1,31 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() SPRING-APPLICATION/version/v1/submission-on-behalf[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/callback[GET] Delegation-Provider
+() SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Delegation-Provider
+() SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Delegation-Provider
+component System {
+SPRING-APPLICATION/version/v1/submission-on-behalf[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/submission-on-behalf[POST] Provider
+SPRING-APPLICATION/version/v1/submission-on-behalf[POST] Provider - [SubmissionController]
+SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Provider
+SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Provider - [FakeRequestController]
+SPRING-APPLICATION/version/v1/callback[GET] Delegation-Provider - SPRING-APPLICATION/version/v1/callback[GET] Provider
+SPRING-APPLICATION/version/v1/callback[GET] Provider - [CallbackController]
+SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Provider
+SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Provider - [SubmissionController]
+SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Delegation-Provider - SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Provider
+SPRING-APPLICATION/version/v1/diagnosis-keys[POST] Provider - [FakeRequestController]
+[app_coronawarn_server_services_submission_controller_SubmissionController Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[app_coronawarn_server_services_submission_verification_SrsOtpVerifier Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[app_coronawarn_server_services_submission_verification_TanVerifier Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[app_coronawarn_server_services_callback_controller_CallbackController Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[FakeRequestController Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[CallbackController Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[SubmissionController Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[SrsOtpVerifier Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[TanVerifier Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+[app_coronawarn_server_services_submission_controller_FakeRequestController Assembly Context] [[corona-warn-app-cwa-server.repository#_sJBIertpEe6JCa48q1xu6g]]
+}
+
+@enduml

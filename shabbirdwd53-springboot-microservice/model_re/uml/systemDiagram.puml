@@ -1,0 +1,34 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() SPRING-APPLICATION/users Delegation-Provider
+() SPRING-APPLICATION/userServiceFallBack[GET] Delegation-Provider
+() SPRING-APPLICATION/departmentServiceFallBack[GET] Delegation-Provider
+() SPRING-APPLICATION/departments Delegation-Provider
+component System {
+[com_dailycodebuffer_user_service_UserService Assembly Context] -(0- [com_dailycodebuffer_user_service_RestTemplate Provider Assembly Context] : com_dailycodebuffer_user_service_RestTemplate Provider
+[com_dailycodebuffer_user_controller_UserController Assembly Context] -(0- [com_dailycodebuffer_user_service_UserService Assembly Context] : com_dailycodebuffer_user_service_UserService Provider
+[com_dailycodebuffer_department_controller_DepartmentController Assembly Context] -(0- [com_dailycodebuffer_department_service_DepartmentService Assembly Context] : com_dailycodebuffer_department_service_DepartmentService Provider
+[com_dailycodebuffer_user_service_UserService Assembly Context] -(0- [com_dailycodebuffer_user_repository_UserRepository Assembly Context] : com_dailycodebuffer_user_repository_UserRepository Provider
+[com_dailycodebuffer_department_service_DepartmentService Assembly Context] -(0- [com_dailycodebuffer_department_repository_DepartmentRepository Assembly Context] : com_dailycodebuffer_department_repository_DepartmentRepository Provider
+SPRING-APPLICATION/users Delegation-Provider - SPRING-APPLICATION/users Provider
+SPRING-APPLICATION/users Provider - [UserController]
+SPRING-APPLICATION/userServiceFallBack[GET] Delegation-Provider - SPRING-APPLICATION/userServiceFallBack[GET] Provider
+SPRING-APPLICATION/userServiceFallBack[GET] Provider - [FallBackMethodController]
+SPRING-APPLICATION/departmentServiceFallBack[GET] Delegation-Provider - SPRING-APPLICATION/departmentServiceFallBack[GET] Provider
+SPRING-APPLICATION/departmentServiceFallBack[GET] Provider - [FallBackMethodController]
+SPRING-APPLICATION/departments Delegation-Provider - SPRING-APPLICATION/departments Provider
+SPRING-APPLICATION/departments Provider - [DepartmentController]
+[com_dailycodebuffer_cloud_gateway_FallBackMethodController Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[UserController Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[com_dailycodebuffer_department_repository_DepartmentRepository Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[FallBackMethodController Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[com_dailycodebuffer_user_repository_UserRepository Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[com_dailycodebuffer_user_service_UserService Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[com_dailycodebuffer_department_service_DepartmentService Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[com_dailycodebuffer_user_service_RestTemplate Provider Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[com_dailycodebuffer_user_controller_UserController Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[DepartmentController Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+[com_dailycodebuffer_department_controller_DepartmentController Assembly Context] [[shabbirdwd53-springboot-microservice.repository#_w8sS0btpEe6TIsLwWT2FWQ]]
+}
+
+@enduml

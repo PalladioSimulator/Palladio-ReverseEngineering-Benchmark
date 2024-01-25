@@ -1,0 +1,36 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() card-service/api Delegation-Provider
+() monitor-dashboard/ Delegation-Provider
+() statement-service/api Delegation-Provider
+() card-statement-composite/api/statement-by-card Delegation-Provider
+() com_spring_netflix_oss_microservices_service_CardService Delegation-Provider
+() com_spring_netflix_oss_microservices_service_StatementService Delegation-Provider
+component System {
+[com_spring_netflix_oss_microservices_service_CardStatementServiceController Assembly Context] -(0- [com_spring_netflix_oss_microservices_service_CardClient Assembly Context] : com_spring_netflix_oss_microservices_service_CardClient Provider
+[com_spring_netflix_oss_microservices_service_CardStatementServiceController Assembly Context] -(0- [com_spring_netflix_oss_microservices_service_StatementClient Assembly Context] : com_spring_netflix_oss_microservices_service_StatementClient Provider
+card-service/api Delegation-Provider - card-service/api Provider
+card-service/api Provider - [CardServiceController]
+monitor-dashboard/ Delegation-Provider - monitor-dashboard/ Provider
+monitor-dashboard/ Provider - [MonitorDashboardApplication]
+statement-service/api Delegation-Provider - statement-service/api Provider
+statement-service/api Provider - [StatementServiceController]
+card-statement-composite/api/statement-by-card Delegation-Provider - card-statement-composite/api/statement-by-card Provider
+card-statement-composite/api/statement-by-card Provider - [CardStatementServiceController]
+com_spring_netflix_oss_microservices_service_CardService Delegation-Provider - com_spring_netflix_oss_microservices_service_CardService Provider
+com_spring_netflix_oss_microservices_service_CardService Provider - [CardStatementServiceController]
+com_spring_netflix_oss_microservices_service_StatementService Delegation-Provider - com_spring_netflix_oss_microservices_service_StatementService Provider
+com_spring_netflix_oss_microservices_service_StatementService Provider - [CardStatementServiceController]
+[com_spring_netflix_oss_microservices_api_CardServiceController Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[StatementServiceController Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[com_spring_netflix_oss_microservices_api_StatementServiceController Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[com_spring_netflix_oss_microservices_MonitorDashboardApplication Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[com_spring_netflix_oss_microservices_service_CardClient Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[CardServiceController Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[MonitorDashboardApplication Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[com_spring_netflix_oss_microservices_service_CardStatementServiceController Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[com_spring_netflix_oss_microservices_service_StatementClient Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+[CardStatementServiceController Assembly Context] [[fernandoabcampos-spring-netflix-oss-microservices.repository#_qOc5PLtpEe66e86fHCV45A]]
+}
+
+@enduml

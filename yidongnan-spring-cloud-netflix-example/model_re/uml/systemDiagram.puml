@@ -1,0 +1,31 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() SPRING-APPLICATION/ Delegation-Provider
+() SPRING-APPLICATION/ Delegation-Provider
+() SPRING-APPLICATION/ Delegation-Provider
+component System {
+[HystrixWrappedServiceBClient Assembly Context] -(0- [service-b/ Provider Assembly Context] : service-b/ Provider
+[net_devh_ServiceB1Controller Assembly Context] -(0- [net_devh_Registration Provider Assembly Context] : net_devh_Registration Provider
+[net_devh_feign_ServiceBClient Assembly Context] -(0- [service-b/ Provider Assembly Context] : service-b/ Provider
+[net_devh_controller_AServiceController Assembly Context] -(0- [net_devh_controller_Registration Provider Assembly Context] : net_devh_controller_Registration Provider
+[net_devh_controller_AServiceController Assembly Context] -(0- [net_devh_hystrix_HystrixWrappedServiceBClient Assembly Context] : net_devh_hystrix_HystrixWrappedServiceBClient Provider
+[net_devh_hystrix_HystrixWrappedServiceBClient Assembly Context] -(0- [net_devh_feign_ServiceBClient Assembly Context] : net_devh_feign_ServiceBClient Provider
+[net_devh_hystrix_HystrixWrappedServiceBClient Assembly Context] -(0- [net_devh_hystrix_HystrixWrappedServiceBClient Assembly Context] : net_devh_feign_ServiceBClient Provider
+SPRING-APPLICATION/ Delegation-Provider - SPRING-APPLICATION/ Provider
+SPRING-APPLICATION/ Provider - [HystrixWrappedServiceBClient]
+SPRING-APPLICATION/ Delegation-Provider - SPRING-APPLICATION/ Provider
+SPRING-APPLICATION/ Provider - [ServiceB1Controller]
+SPRING-APPLICATION/ Delegation-Provider - SPRING-APPLICATION/ Provider
+SPRING-APPLICATION/ Provider - [ServiceB1Controller]
+[net_devh_feign_ServiceBClient Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+[service-b/ Provider Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+[net_devh_controller_Registration Provider Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+[net_devh_controller_AServiceController Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+[net_devh_Registration Provider Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+[HystrixWrappedServiceBClient Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+[net_devh_ServiceB1Controller Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+[ServiceB1Controller Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+[net_devh_hystrix_HystrixWrappedServiceBClient Assembly Context] [[yidongnan-spring-cloud-netflix-example.repository#_wMI_qLtpEe66NtaHxzT1Cw]]
+}
+
+@enduml

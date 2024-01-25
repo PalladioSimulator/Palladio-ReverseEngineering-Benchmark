@@ -1,0 +1,91 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() notification-service/notifications/recipients Delegation-Provider
+() UserDetailsService Delegation-Provider
+() com_piggymetrics_notification_service_NotificationService Delegation-Provider
+component System {
+[com_piggymetrics_notification_service_NotificationServiceImpl Assembly Context] -(0- [com_piggymetrics_notification_service_RecipientService Assembly Context] : com_piggymetrics_notification_service_RecipientService Provider
+[com_piggymetrics_auth_controller_UserController Assembly Context] -(0- [com_piggymetrics_auth_service_UserServiceImpl Assembly Context] : com_piggymetrics_auth_service_UserService Provider
+[com_piggymetrics_account_client_StatisticsServiceClient Assembly Context] -(0- [com_piggymetrics_statistics_controller_StatisticsController Assembly Context] : statistics-service/statistics Provider
+[com_piggymetrics_notification_controller_RecipientController Assembly Context] -(0- [com_piggymetrics_notification_service_RecipientServiceImpl Assembly Context] : com_piggymetrics_notification_service_RecipientService Provider
+[com_piggymetrics_account_controller_AccountController Assembly Context] -(0- [com_piggymetrics_account_service_AccountServiceImpl Assembly Context] : com_piggymetrics_account_service_AccountService Provider
+[AccountController Assembly Context] -(0- [com_piggymetrics_auth_controller_UserController Assembly Context] : auth-service/uaa/users Provider
+[com_piggymetrics_notification_service_NotificationServiceImpl Assembly Context] -(0- [com_piggymetrics_notification_service_EmailService Assembly Context] : com_piggymetrics_notification_service_EmailService Provider
+[com_piggymetrics_auth_controller_UserController Assembly Context] -(0- [com_piggymetrics_auth_service_UserService Assembly Context] : com_piggymetrics_auth_service_UserService Provider
+[com_piggymetrics_account_controller_AccountController Assembly Context] -(0- [com_piggymetrics_account_service_AccountService Assembly Context] : com_piggymetrics_account_service_AccountService Provider
+[com_piggymetrics_statistics_controller_StatisticsController Assembly Context] -(0- [com_piggymetrics_statistics_service_StatisticsService Assembly Context] : com_piggymetrics_statistics_service_StatisticsService Provider
+[com_piggymetrics_statistics_service_StatisticsServiceImpl Assembly Context] -(0- [com_piggymetrics_statistics_repository_DataPointRepository Assembly Context] : com_piggymetrics_statistics_repository_DataPointRepository Provider
+[com_piggymetrics_statistics_service_StatisticsServiceImpl Assembly Context] -(0- [com_piggymetrics_statistics_service_ExchangeRatesServiceImpl Assembly Context] : com_piggymetrics_statistics_service_ExchangeRatesService Provider
+[AccountController Assembly Context] -(0- [UserController Assembly Context] : auth-service/uaa/users Provider
+[com_piggymetrics_account_service_AccountServiceImpl Assembly Context] -(0- [com_piggymetrics_account_client_StatisticsServiceClientFallback Assembly Context] : com_piggymetrics_account_client_StatisticsServiceClient Provider
+[com_piggymetrics_statistics_controller_StatisticsController Assembly Context] -(0- [com_piggymetrics_statistics_service_StatisticsServiceImpl Assembly Context] : com_piggymetrics_statistics_service_StatisticsService Provider
+[com_piggymetrics_notification_controller_RecipientController Assembly Context] -(0- [com_piggymetrics_notification_service_RecipientService Assembly Context] : com_piggymetrics_notification_service_RecipientService Provider
+[com_piggymetrics_auth_service_security_MongoUserDetailsService Assembly Context] -(0- [com_piggymetrics_auth_repository_UserRepository Assembly Context] : com_piggymetrics_auth_repository_UserRepository Provider
+[com_piggymetrics_notification_service_NotificationServiceImpl Assembly Context] -(0- [com_piggymetrics_notification_service_EmailServiceImpl Assembly Context] : com_piggymetrics_notification_service_EmailService Provider
+[com_piggymetrics_statistics_service_StatisticsServiceImpl Assembly Context] -(0- [com_piggymetrics_statistics_service_ExchangeRatesService Assembly Context] : com_piggymetrics_statistics_service_ExchangeRatesService Provider
+[com_piggymetrics_account_service_AccountServiceImpl Assembly Context] -(0- [com_piggymetrics_account_client_StatisticsServiceClient Assembly Context] : com_piggymetrics_account_client_StatisticsServiceClient Provider
+[com_piggymetrics_notification_service_RecipientServiceImpl Assembly Context] -(0- [com_piggymetrics_notification_repository_RecipientRepository Assembly Context] : com_piggymetrics_notification_repository_RecipientRepository Provider
+[com_piggymetrics_account_client_AuthServiceClient Assembly Context] -(0- [com_piggymetrics_auth_controller_UserController Assembly Context] : auth-service/uaa/users Provider
+[com_piggymetrics_account_client_StatisticsServiceClient Assembly Context] -(0- [ExchangeRatesServiceImpl Assembly Context] : statistics-service/statistics Provider
+[com_piggymetrics_notification_client_AccountServiceClient Assembly Context] -(0- [com_piggymetrics_account_controller_AccountController Assembly Context] : account-service/accounts Provider
+[com_piggymetrics_account_service_AccountServiceImpl Assembly Context] -(0- [com_piggymetrics_account_repository_AccountRepository Assembly Context] : com_piggymetrics_account_repository_AccountRepository Provider
+[ExchangeRatesServiceImpl Assembly Context] -(0- [rates-client/latest Provider Assembly Context] : rates-client/latest Provider
+[com_piggymetrics_notification_service_EmailServiceImpl Assembly Context] -(0- [com_piggymetrics_notification_service_Environment Provider Assembly Context] : com_piggymetrics_notification_service_Environment Provider
+[com_piggymetrics_account_client_AuthServiceClient Assembly Context] -(0- [UserController Assembly Context] : auth-service/uaa/users Provider
+[com_piggymetrics_notification_service_NotificationServiceImpl Assembly Context] -(0- [com_piggymetrics_notification_client_AccountServiceClient Assembly Context] : com_piggymetrics_notification_client_AccountServiceClient Provider
+[com_piggymetrics_statistics_client_ExchangeRatesClient Assembly Context] -(0- [rates-client/latest Provider Assembly Context] : rates-client/latest Provider
+[NotificationServiceImpl Assembly Context] -(0- [AccountController Assembly Context] : account-service/accounts Provider
+[com_piggymetrics_account_service_AccountServiceImpl Assembly Context] -(0- [com_piggymetrics_account_client_AuthServiceClient Assembly Context] : com_piggymetrics_account_client_AuthServiceClient Provider
+[com_piggymetrics_auth_service_UserServiceImpl Assembly Context] -(0- [com_piggymetrics_auth_repository_UserRepository Assembly Context] : com_piggymetrics_auth_repository_UserRepository Provider
+[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl Assembly Context] -(0- [com_piggymetrics_statistics_client_ExchangeRatesClientFallback Assembly Context] : com_piggymetrics_statistics_client_ExchangeRatesClient Provider
+[AccountController Assembly Context] -(0- [com_piggymetrics_statistics_controller_StatisticsController Assembly Context] : statistics-service/statistics Provider
+[NotificationServiceImpl Assembly Context] -(0- [com_piggymetrics_account_controller_AccountController Assembly Context] : account-service/accounts Provider
+[com_piggymetrics_notification_service_EmailServiceImpl Assembly Context] -(0- [com_piggymetrics_notification_service_JavaMailSender Provider Assembly Context] : com_piggymetrics_notification_service_JavaMailSender Provider
+[com_piggymetrics_notification_client_AccountServiceClient Assembly Context] -(0- [AccountController Assembly Context] : account-service/accounts Provider
+[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl Assembly Context] -(0- [com_piggymetrics_statistics_client_ExchangeRatesClient Assembly Context] : com_piggymetrics_statistics_client_ExchangeRatesClient Provider
+[com_piggymetrics_notification_service_NotificationServiceImpl Assembly Context] -(0- [com_piggymetrics_notification_service_RecipientServiceImpl Assembly Context] : com_piggymetrics_notification_service_RecipientService Provider
+[AccountController Assembly Context] -(0- [ExchangeRatesServiceImpl Assembly Context] : statistics-service/statistics Provider
+notification-service/notifications/recipients Delegation-Provider - notification-service/notifications/recipients Provider
+notification-service/notifications/recipients Provider - [NotificationServiceImpl]
+UserDetailsService Delegation-Provider - UserDetailsService Provider
+UserDetailsService Provider - [UserController]
+com_piggymetrics_notification_service_NotificationService Delegation-Provider - com_piggymetrics_notification_service_NotificationService Provider
+com_piggymetrics_notification_service_NotificationService Provider - [NotificationServiceImpl]
+[com_piggymetrics_notification_service_EmailServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_auth_repository_UserRepository Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[NotificationServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_service_RecipientService Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_account_client_StatisticsServiceClient Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[AccountController Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_repository_RecipientRepository Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_statistics_repository_DataPointRepository Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_statistics_controller_StatisticsController Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_statistics_service_ExchangeRatesService Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_account_repository_AccountRepository Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_account_controller_AccountController Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_controller_RecipientController Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_client_AccountServiceClient Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_account_client_StatisticsServiceClientFallback Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_account_service_AccountService Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_service_Environment Provider Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[UserController Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_auth_controller_UserController Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_auth_service_UserService Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_account_client_AuthServiceClient Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_account_service_AccountServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_statistics_client_ExchangeRatesClient Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_service_NotificationServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_service_EmailService Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[rates-client/latest Provider Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_statistics_service_StatisticsServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_statistics_client_ExchangeRatesClientFallback Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_auth_service_UserServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_statistics_service_ExchangeRatesServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_statistics_service_StatisticsService Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_auth_service_security_MongoUserDetailsService Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_service_RecipientServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[com_piggymetrics_notification_service_JavaMailSender Provider Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+[ExchangeRatesServiceImpl Assembly Context] [[sqshq-piggymetrics.repository#_wcehvrtpEe6mFsJaGrF89Q]]
+}
+
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+() catalog/ Delegation-Provider
+() order/catalog Delegation-Provider
+() customer/ Delegation-Provider
+() order/ Delegation-Provider
+() order/customer Delegation-Provider
+component System {
+[com_ewolff_microservice_order_logic_OrderService Assembly Context] -(0- [com_ewolff_microservice_order_clients_CustomerClient Assembly Context] : com_ewolff_microservice_order_clients_CustomerClient Provider
+[com_ewolff_microservice_order_logic_OrderController Assembly Context] -(0- [com_ewolff_microservice_order_clients_CatalogClient Assembly Context] : com_ewolff_microservice_order_clients_CatalogClient Provider
+[com_ewolff_microservice_order_logic_OrderController Assembly Context] -(0- [com_ewolff_microservice_order_clients_CustomerClient Assembly Context] : com_ewolff_microservice_order_clients_CustomerClient Provider
+[com_ewolff_microservice_order_logic_OrderService Assembly Context] -(0- [com_ewolff_microservice_order_clients_CatalogClient Assembly Context] : com_ewolff_microservice_order_clients_CatalogClient Provider
+[com_ewolff_microservice_order_logic_OrderController Assembly Context] -(0- [com_ewolff_microservice_order_logic_OrderRepository Assembly Context] : com_ewolff_microservice_order_logic_OrderRepository Provider
+[com_ewolff_microservice_catalog_web_CatalogController Assembly Context] -(0- [com_ewolff_microservice_catalog_ItemRepository Assembly Context] : com_ewolff_microservice_catalog_ItemRepository Provider
+[com_ewolff_microservice_customer_web_CustomerController Assembly Context] -(0- [com_ewolff_microservice_customer_CustomerRepository Assembly Context] : com_ewolff_microservice_customer_CustomerRepository Provider
+[com_ewolff_microservice_customer_CustomerApp Assembly Context] -(0- [com_ewolff_microservice_customer_CustomerRepository Assembly Context] : com_ewolff_microservice_customer_CustomerRepository Provider
+[com_ewolff_microservice_order_logic_OrderService Assembly Context] -(0- [com_ewolff_microservice_order_logic_OrderRepository Assembly Context] : com_ewolff_microservice_order_logic_OrderRepository Provider
+[com_ewolff_microservice_catalog_CatalogApp Assembly Context] -(0- [com_ewolff_microservice_catalog_ItemRepository Assembly Context] : com_ewolff_microservice_catalog_ItemRepository Provider
+[com_ewolff_microservice_order_logic_OrderController Assembly Context] -(0- [com_ewolff_microservice_order_logic_OrderService Assembly Context] : com_ewolff_microservice_order_logic_OrderService Provider
+catalog/ Delegation-Provider - catalog/ Provider
+catalog/ Provider - [CatalogController]
+order/catalog Delegation-Provider - order/catalog Provider
+order/catalog Provider - [CatalogStub]
+customer/ Delegation-Provider - customer/ Provider
+customer/ Provider - [CustomerController]
+order/ Delegation-Provider - order/ Provider
+order/ Provider - [OrderService]
+order/customer Delegation-Provider - order/customer Provider
+order/customer Provider - [CustomerStub]
+[CustomerController Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[CatalogController Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_order_logic_OrderService Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[CustomerStub Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[OrderService Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_order_clients_CatalogClient Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_customer_web_CustomerController Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_order_catalogstub_CatalogStub Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_customer_CustomerApp Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_order_logic_OrderController Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_order_customerstub_CustomerStub Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[CatalogStub Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_catalog_ItemRepository Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_order_logic_OrderRepository Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_catalog_web_CatalogController Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_order_clients_CustomerClient Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_customer_CustomerRepository Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+[com_ewolff_microservice_catalog_CatalogApp Assembly Context] [[ewolff-microservice.repository#_qkHnQLtpEe68SYeHost11Q]]
+}
+
+@enduml

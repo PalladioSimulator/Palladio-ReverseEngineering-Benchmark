@@ -1,18 +1,22 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 component "FoodTrayController\n\n\n\n\n\n" {
-[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository]
 [com_github_joffryferrater_foodtrayservice_FoodTrayController]
+[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository]
 [com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository]
-portin " " as FoodTrayController.requires.foodtray_service_foodtrays
-[com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository] : requires
+portin " " as FoodTrayController_requires_foodtray_service_foodtrays
 [com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_PriceServiceRepository] : requires
-"FoodTrayController.requires.foodtray_service_foodtrays"--[com_github_joffryferrater_foodtrayservice_FoodTrayController]
+[com_github_joffryferrater_foodtrayservice_FoodTrayController]..>[com_github_joffryferrater_foodtrayservice_repository_ItemServiceRepository] : requires
+"FoodTrayController_requires_foodtray_service_foodtrays"--[com_github_joffryferrater_foodtrayservice_FoodTrayController]
 }
 interface "foodtray-service/foodtrays" as interface.foodtray_service_foodtrays
-interface.foodtray_service_foodtrays--"FoodTrayController.requires.foodtray_service_foodtrays"
+interface.foodtray_service_foodtrays--"FoodTrayController_requires_foodtray_service_foodtrays"
 component "TrayItemService\n\n\n\n\n\n" {
 [com_github_joffryferrater_foodtrayservice_service_TrayItemService]
 }
+interface "null/items/search/findByItemCode?itemCode=" as interface.null_items_search_findByItemCode_itemCode_
+interface.null_items_search_findByItemCode_itemCode_--[null_items_search_findByItemCode_itemCode_Provider]
+interface "null/prices/search/findByItemCode?itemCode=" as interface.null_prices_search_findByItemCode_itemCode_
+interface.null_prices_search_findByItemCode_itemCode_--[null_prices_search_findByItemCode_itemCode_Provider]
 
 @enduml
