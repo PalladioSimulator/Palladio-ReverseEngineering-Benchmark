@@ -1,17 +1,17 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
-component "MainController\n\n\n\n\n\n" {
+component nullMainController\n\n\n\n\n\nnull {
 [com_example_service_RecommendationClientService]
-[com_example_MainController]
 [com_example_service_UserService]
+[com_example_MainController]
 portin " " as MainController_requires_SPRING_APPLICATION_api
 portout " " as MainController_provides_user_service_user
 portout " " as MainController_provides_user_service_newuser
-[com_example_MainController]..>[com_example_service_UserService] : requires
 [com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
+[com_example_MainController]..>[com_example_service_UserService] : requires
 "MainController_requires_SPRING_APPLICATION_api"--[com_example_MainController]
-[com_example_service_UserService].."MainController_provides_user_service_user"
 [com_example_service_UserService].."MainController_provides_user_service_newuser"
+[com_example_service_UserService].."MainController_provides_user_service_user"
 }
 interface "SPRING-APPLICATION/api" as interface.SPRING_APPLICATION_api
 interface.SPRING_APPLICATION_api--"MainController_requires_SPRING_APPLICATION_api"
@@ -19,22 +19,22 @@ interface "user-service/newuser" as interface.user_service_newuser
 "MainController_provides_user_service_newuser"..>interface.user_service_newuser : requires
 interface "user-service/user" as interface.user_service_user
 "MainController_provides_user_service_user"..>interface.user_service_user : requires
-component "UserController\n\n\n\n\n\n" {
+component nullUserController\n\n\n\n\n\nnull {
 [com_example_UserRepo]
-[com_example_RecommendationController]
 [com_example_MovieRepo]
 [com_example_MovieController]
 [com_example_UserController]
+[com_example_RecommendationController]
 portin " " as UserController_requires_SPRING_APPLICATION_recommendation
 portin " " as UserController_requires_SPRING_APPLICATION_user
 portin " " as UserController_requires_SPRING_APPLICATION_movie
-[com_example_MovieController]..>[com_example_MovieRepo] : requires
 [com_example_RecommendationController]..>[com_example_UserRepo] : requires
-[com_example_UserController]..>[com_example_UserRepo] : requires
 [com_example_RecommendationController]..>[com_example_MovieRepo] : requires
-"UserController_requires_SPRING_APPLICATION_user"--[com_example_UserController]
+[com_example_UserController]..>[com_example_UserRepo] : requires
+[com_example_MovieController]..>[com_example_MovieRepo] : requires
 "UserController_requires_SPRING_APPLICATION_movie"--[com_example_MovieController]
 "UserController_requires_SPRING_APPLICATION_recommendation"--[com_example_RecommendationController]
+"UserController_requires_SPRING_APPLICATION_user"--[com_example_UserController]
 }
 interface "SPRING-APPLICATION/movie" as interface.SPRING_APPLICATION_movie
 interface.SPRING_APPLICATION_movie--"UserController_requires_SPRING_APPLICATION_movie"

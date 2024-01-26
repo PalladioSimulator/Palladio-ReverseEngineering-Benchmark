@@ -1,34 +1,34 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
-component "ApiGatewayController\n\n\n\n\n\n" {
+component nullApiGatewayController\n\n\n\n\n\nnull {
 [org_springframework_samples_petclinic_api_boundary_web_ApiGatewayController]
 portin " " as ApiGatewayController_requires_SPRING_APPLICATION_api_gateway_owners_GET_
 "ApiGatewayController_requires_SPRING_APPLICATION_api_gateway_owners_GET_"--[org_springframework_samples_petclinic_api_boundary_web_ApiGatewayController]
 }
 interface "SPRING-APPLICATION/api/gateway/owners[GET]" as interface.SPRING_APPLICATION_api_gateway_owners_GET_
 interface.SPRING_APPLICATION_api_gateway_owners_GET_--"ApiGatewayController_requires_SPRING_APPLICATION_api_gateway_owners_GET_"
-component "PetResource\n\n\n\n\n\n" {
+component nullPetResource\n\n\n\n\n\nnull {
 [org_springframework_samples_petclinic_customers_web_OwnerResource]
-[org_springframework_samples_petclinic_customers_model_OwnerRepository]
 [org_springframework_samples_petclinic_customers_model_PetRepository]
+[org_springframework_samples_petclinic_customers_model_OwnerRepository]
 [org_springframework_samples_petclinic_customers_web_PetResource]
-portin " " as PetResource_requires_SPRING_APPLICATION_owners_PUT_
-portin " " as PetResource_requires_SPRING_APPLICATION_owners_POST_
-portin " " as PetResource_requires_SPRING_APPLICATION_petTypes_GET_
-portin " " as PetResource_requires_SPRING_APPLICATION_owners_GET_
 portin " " as PetResource_requires_SPRING_APPLICATION_owners_pets_GET_
-portin " " as PetResource_requires_SPRING_APPLICATION_owners_pets_PUT_
+portin " " as PetResource_requires_SPRING_APPLICATION_owners_POST_
 portin " " as PetResource_requires_SPRING_APPLICATION_owners_pets_POST_
+portin " " as PetResource_requires_SPRING_APPLICATION_owners_pets_PUT_
+portin " " as PetResource_requires_SPRING_APPLICATION_owners_GET_
+portin " " as PetResource_requires_SPRING_APPLICATION_owners_PUT_
+portin " " as PetResource_requires_SPRING_APPLICATION_petTypes_GET_
 [org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
-[org_springframework_samples_petclinic_customers_web_OwnerResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
 [org_springframework_samples_petclinic_customers_web_PetResource]..>[org_springframework_samples_petclinic_customers_model_PetRepository] : requires
+[org_springframework_samples_petclinic_customers_web_OwnerResource]..>[org_springframework_samples_petclinic_customers_model_OwnerRepository] : requires
 "PetResource_requires_SPRING_APPLICATION_owners_pets_PUT_"--[org_springframework_samples_petclinic_customers_web_PetResource]
-"PetResource_requires_SPRING_APPLICATION_owners_pets_GET_"--[org_springframework_samples_petclinic_customers_web_PetResource]
-"PetResource_requires_SPRING_APPLICATION_owners_POST_"--[org_springframework_samples_petclinic_customers_web_OwnerResource]
-"PetResource_requires_SPRING_APPLICATION_petTypes_GET_"--[org_springframework_samples_petclinic_customers_web_PetResource]
 "PetResource_requires_SPRING_APPLICATION_owners_PUT_"--[org_springframework_samples_petclinic_customers_web_OwnerResource]
-"PetResource_requires_SPRING_APPLICATION_owners_pets_POST_"--[org_springframework_samples_petclinic_customers_web_PetResource]
+"PetResource_requires_SPRING_APPLICATION_owners_POST_"--[org_springframework_samples_petclinic_customers_web_OwnerResource]
+"PetResource_requires_SPRING_APPLICATION_owners_pets_GET_"--[org_springframework_samples_petclinic_customers_web_PetResource]
 "PetResource_requires_SPRING_APPLICATION_owners_GET_"--[org_springframework_samples_petclinic_customers_web_OwnerResource]
+"PetResource_requires_SPRING_APPLICATION_owners_pets_POST_"--[org_springframework_samples_petclinic_customers_web_PetResource]
+"PetResource_requires_SPRING_APPLICATION_petTypes_GET_"--[org_springframework_samples_petclinic_customers_web_PetResource]
 }
 interface "SPRING-APPLICATION/owners[GET]" as interface.SPRING_APPLICATION_owners_GET_
 interface.SPRING_APPLICATION_owners_GET_--"PetResource_requires_SPRING_APPLICATION_owners_GET_"
@@ -44,7 +44,7 @@ interface "SPRING-APPLICATION/owners/*/pets[PUT]" as interface.SPRING_APPLICATIO
 interface.SPRING_APPLICATION_owners_pets_PUT_--"PetResource_requires_SPRING_APPLICATION_owners_pets_PUT_"
 interface "SPRING-APPLICATION/petTypes[GET]" as interface.SPRING_APPLICATION_petTypes_GET_
 interface.SPRING_APPLICATION_petTypes_GET_--"PetResource_requires_SPRING_APPLICATION_petTypes_GET_"
-component "VetResource\n\n\n\n\n\n" {
+component nullVetResource\n\n\n\n\n\nnull {
 [org_springframework_samples_petclinic_vets_model_VetRepository]
 [org_springframework_samples_petclinic_vets_web_VetResource]
 portin " " as VetResource_requires_SPRING_APPLICATION_vets_GET_
@@ -53,11 +53,11 @@ portin " " as VetResource_requires_SPRING_APPLICATION_vets_GET_
 }
 interface "SPRING-APPLICATION/vets[GET]" as interface.SPRING_APPLICATION_vets_GET_
 interface.SPRING_APPLICATION_vets_GET_--"VetResource_requires_SPRING_APPLICATION_vets_GET_"
-component "VisitResource\n\n\n\n\n\n" {
+component nullVisitResource\n\n\n\n\n\nnull {
 [org_springframework_samples_petclinic_visits_model_VisitRepository]
 [org_springframework_samples_petclinic_visits_web_VisitResource]
-portin " " as VisitResource_requires_SPRING_APPLICATION_pets_visits_GET_
 portin " " as VisitResource_requires_SPRING_APPLICATION_owners_pets_visits
+portin " " as VisitResource_requires_SPRING_APPLICATION_pets_visits_GET_
 [org_springframework_samples_petclinic_visits_web_VisitResource]..>[org_springframework_samples_petclinic_visits_model_VisitRepository] : requires
 "VisitResource_requires_SPRING_APPLICATION_owners_pets_visits"--[org_springframework_samples_petclinic_visits_web_VisitResource]
 "VisitResource_requires_SPRING_APPLICATION_pets_visits_GET_"--[org_springframework_samples_petclinic_visits_web_VisitResource]

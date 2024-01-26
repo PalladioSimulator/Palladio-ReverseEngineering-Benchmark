@@ -1,30 +1,30 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
-component "HystrixWrappedServiceBClient\n\n\n\n\n\n" {
+component nullHystrixWrappedServiceBClient\n\n\n\n\n\nnull {
 [net_devh_controller_AServiceController]
 [net_devh_feign_ServiceBClient]
 [net_devh_hystrix_HystrixWrappedServiceBClient]
 portin " " as HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_
+portin " " as HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_
 portout " " as HystrixWrappedServiceBClient_provides_service_b_
-[net_devh_controller_AServiceController]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
 [net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_feign_ServiceBClient] : requires
 [net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
+[net_devh_controller_AServiceController]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
+"HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_"--[net_devh_controller_AServiceController]
 "HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_"--[net_devh_controller_AServiceController]
 [net_devh_feign_ServiceBClient].."HystrixWrappedServiceBClient_provides_service_b_"
 }
 interface "SPRING-APPLICATION/" as interface.SPRING_APPLICATION_
 interface.SPRING_APPLICATION_--"HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_"
+interface "SPRING-APPLICATION/" as interface.SPRING_APPLICATION_
+interface.SPRING_APPLICATION_--"HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_"
 interface "service-b/" as interface.service_b_
 "HystrixWrappedServiceBClient_provides_service_b_"..>interface.service_b_ : requires
-component "ServiceB1Controller\n\n\n\n\n\n" {
+component nullServiceB1Controller\n\n\n\n\n\nnull {
 [net_devh_ServiceB1Controller]
 portin " " as ServiceB1Controller_requires_SPRING_APPLICATION_
-portin " " as ServiceB1Controller_requires_SPRING_APPLICATION_
-"ServiceB1Controller_requires_SPRING_APPLICATION_"--[net_devh_ServiceB1Controller]
 "ServiceB1Controller_requires_SPRING_APPLICATION_"--[net_devh_ServiceB1Controller]
 }
-interface "SPRING-APPLICATION/" as interface.SPRING_APPLICATION_
-interface.SPRING_APPLICATION_--"ServiceB1Controller_requires_SPRING_APPLICATION_"
 interface "SPRING-APPLICATION/" as interface.SPRING_APPLICATION_
 interface.SPRING_APPLICATION_--"ServiceB1Controller_requires_SPRING_APPLICATION_"
 interface "net_devh_Registration" as interface.net_devh_Registration

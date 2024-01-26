@@ -1,540 +1,540 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
-() SPRING-APPLICATION/api/v1/foodservice Delegation-Provider
-() SPRING-APPLICATION/api/v1/priceservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/verifycode Delegation-Provider
-() SPRING-APPLICATION/api/v1/orderOtherService Delegation-Provider
-() SPRING-APPLICATION/api/v1/executeservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/trainfoodservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/travelplanservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/admintravelservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/routeplanservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/adminorderservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/auth[POST] Delegation-Provider
-() SPRING-APPLICATION/api/v1/inside_pay_service[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/basicservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/contactservice Delegation-Provider
-() SPRING-APPLICATION/api/v1/adminrouteservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/securityservice Delegation-Provider
-() SPRING-APPLICATION/api/v1/adminbasicservice Delegation-Provider
-() SPRING-APPLICATION/api/v1/consignpriceservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/orderservice Delegation-Provider
-() SPRING-APPLICATION/api/v1/trainservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/travelservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/fooddeliveryservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/rebookservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/consignservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/paymentservice Delegation-Provider
-() SPRING-APPLICATION/api/v1/assuranceservice Delegation-Provider
-() SPRING-APPLICATION/api/v1/routeservice Delegation-Provider
-() SPRING-APPLICATION/api/v1/adminuserservice/users Delegation-Provider
-() SPRING-APPLICATION/api/v1/configservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/notifyservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/stationfoodservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/userservice/users Delegation-Provider
-() SPRING-APPLICATION/api/v1/stationservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/travel2service[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/users Delegation-Provider
-() SPRING-APPLICATION/api/v1/seatservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/preserveotherservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/cancelservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/preserveservice[GET] Delegation-Provider
-() SPRING-APPLICATION/api/v1/waitorderservice Delegation-Provider
-component System {
-[travel_service_TravelServiceImpl Assembly Context] -(0- [travel_repository_TripRepository Assembly Context] : travel_repository_TripRepository Provider
-[food_delivery_controller_FoodDeliveryController Assembly Context] -(0- [food_delivery_service_FoodDeliveryService Assembly Context] : food_delivery_service_FoodDeliveryService Provider
-[order_service_OrderServiceImpl Assembly Context] -(0- [order_service_DiscoveryClient Provider Assembly Context] : order_service_DiscoveryClient Provider
-[travel2_controller_Travel2Controller Assembly Context] -(0- [travel2_service_TravelServiceImpl Assembly Context] : travel2_service_TravelService Provider
-[auth_service_impl_TokenServiceImpl Assembly Context] -(0- [auth_security_jwt_JWTProvider Assembly Context] : auth_security_jwt_JWTProvider Provider
-[notification_service_MailService Assembly Context] -(0- [notification_service_JavaMailSender Provider Assembly Context] : notification_service_JavaMailSender Provider
-[cancel_controller_CancelController Assembly Context] -(0- [cancel_service_CancelServiceImpl Assembly Context] : cancel_service_CancelService Provider
-[preserveOther_service_PreserveOtherServiceImpl Assembly Context] -(0- [preserveOther_mq_RabbitSend Assembly Context] : preserveOther_mq_RabbitSend Provider
-[adminuser_controller_AdminUserController Assembly Context] -(0- [adminuser_service_AdminUserServiceImpl Assembly Context] : adminuser_service_AdminUserService Provider
-[execute_controller_ExecuteControlller Assembly Context] -(0- [execute_serivce_ExecuteServiceImpl Assembly Context] : execute_serivce_ExecuteService Provider
-[order_service_OrderServiceImpl Assembly Context] -(0- [order_repository_OrderRepository Assembly Context] : order_repository_OrderRepository Provider
-[user_service_impl_UserServiceImpl Assembly Context] -(0- [user_repository_UserRepository Assembly Context] : user_repository_UserRepository Provider
-[auth_service_impl_TokenServiceImpl Assembly Context] -(0- [auth_service_impl_RestTemplate Provider Assembly Context] : auth_service_impl_RestTemplate Provider
-[execute_serivce_ExecuteServiceImpl Assembly Context] -(0- [execute_serivce_DiscoveryClient Provider Assembly Context] : execute_serivce_DiscoveryClient Provider
-[route_service_RouteServiceImpl Assembly Context] -(0- [route_repository_RouteRepository Assembly Context] : route_repository_RouteRepository Provider
-[food_delivery_service_FoodDeliveryServiceImpl Assembly Context] -(0- [food_delivery_repository_FoodDeliveryOrderRepository Assembly Context] : food_delivery_repository_FoodDeliveryOrderRepository Provider
-[adminuser_service_AdminUserServiceImpl Assembly Context] -(0- [adminuser_service_DiscoveryClient Provider Assembly Context] : adminuser_service_DiscoveryClient Provider
-[cancel_service_CancelServiceImpl Assembly Context] -(0- [cancel_service_RestTemplate Provider Assembly Context] : cancel_service_RestTemplate Provider
-[food_controller_StationFoodController Assembly Context] -(0- [food_service_StationFoodService Assembly Context] : food_service_StationFoodService Provider
-[cancel_service_CancelServiceImpl Assembly Context] -(0- [cancel_service_DiscoveryClient Provider Assembly Context] : cancel_service_DiscoveryClient Provider
-[foodsearch_service_FoodServiceImpl Assembly Context] -(0- [foodsearch_service_RestTemplate Provider Assembly Context] : foodsearch_service_RestTemplate Provider
-[order_service_OrderServiceImpl Assembly Context] -(0- [order_service_RestTemplate Provider Assembly Context] : order_service_RestTemplate Provider
-[admintravel_service_AdminTravelServiceImpl Assembly Context] -(0- [admintravel_service_DiscoveryClient Provider Assembly Context] : admintravel_service_DiscoveryClient Provider
-[price_service_PriceServiceImpl Assembly Context] -(0- [price_repository_PriceConfigRepository Assembly Context] : price_repository_PriceConfigRepository Provider
-[foodsearch_controller_FoodController Assembly Context] -(0- [foodsearch_service_FoodService Assembly Context] : foodsearch_service_FoodService Provider
-[consign_controller_ConsignController Assembly Context] -(0- [consign_service_ConsignServiceImpl Assembly Context] : consign_service_ConsignService Provider
-[price_controller_PriceController Assembly Context] -(0- [price_service_PriceService Assembly Context] : price_service_PriceService Provider
-[trainFood_controller_TrainFoodController Assembly Context] -(0- [trainFood_service_TrainFoodService Assembly Context] : trainFood_service_TrainFoodService Provider
-[contacts_controller_ContactsController Assembly Context] -(0- [contacts_service_ContactsServiceImpl Assembly Context] : contacts_service_ContactsService Provider
-[consign_controller_ConsignController Assembly Context] -(0- [consign_service_ConsignService Assembly Context] : consign_service_ConsignService Provider
-[fdse_microservice_service_StationServiceImpl Assembly Context] -(0- [fdse_microservice_repository_StationRepository Assembly Context] : fdse_microservice_repository_StationRepository Provider
-[notification_controller_NotificationController Assembly Context] -(0- [notification_service_NotificationServiceImpl Assembly Context] : notification_service_NotificationService Provider
-[auth_service_impl_TokenServiceImpl Assembly Context] -(0- [auth_service_impl_AuthenticationManager Provider Assembly Context] : auth_service_impl_AuthenticationManager Provider
-[user_service_impl_UserServiceImpl Assembly Context] -(0- [user_service_impl_RestTemplate Provider Assembly Context] : user_service_impl_RestTemplate Provider
-[auth_controller_UserController Assembly Context] -(0- [auth_service_UserService Assembly Context] : auth_service_UserService Provider
-[plan_service_RoutePlanServiceImpl Assembly Context] -(0- [plan_service_DiscoveryClient Provider Assembly Context] : plan_service_DiscoveryClient Provider
-[consignprice_controller_ConsignPriceController Assembly Context] -(0- [consignprice_service_ConsignPriceService Assembly Context] : consignprice_service_ConsignPriceService Provider
-[admintravel_controller_AdminTravelController Assembly Context] -(0- [admintravel_service_AdminTravelServiceImpl Assembly Context] : admintravel_service_AdminTravelService Provider
-[travelplan_service_TravelPlanServiceImpl Assembly Context] -(0- [travelplan_service_DiscoveryClient Provider Assembly Context] : travelplan_service_DiscoveryClient Provider
-[train_service_TrainServiceImpl Assembly Context] -(0- [train_repository_TrainTypeRepository Assembly Context] : train_repository_TrainTypeRepository Provider
-[trainFood_service_TrainFoodServiceImpl Assembly Context] -(0- [trainFood_repository_TrainFoodRepository Assembly Context] : trainFood_repository_TrainFoodRepository Provider
-[other_controller_OrderOtherController Assembly Context] -(0- [other_service_OrderOtherService Assembly Context] : other_service_OrderOtherService Provider
-[execute_controller_ExecuteControlller Assembly Context] -(0- [execute_serivce_ExecuteService Assembly Context] : execute_serivce_ExecuteService Provider
-[travel2_service_TravelServiceImpl Assembly Context] -(0- [travel2_repository_TripRepository Assembly Context] : travel2_repository_TripRepository Provider
-[auth_controller_AuthController Assembly Context] -(0- [auth_service_UserService Assembly Context] : auth_service_UserService Provider
-[security_service_SecurityServiceImpl Assembly Context] -(0- [security_repository_SecurityRepository Assembly Context] : security_repository_SecurityRepository Provider
-[inside_payment_service_InsidePaymentServiceImpl Assembly Context] -(0- [inside_payment_repository_PaymentRepository Assembly Context] : inside_payment_repository_PaymentRepository Provider
-[security_controller_SecurityController Assembly Context] -(0- [security_service_SecurityServiceImpl Assembly Context] : security_service_SecurityService Provider
-[adminroute_controller_AdminRouteController Assembly Context] -(0- [adminroute_service_AdminRouteServiceImpl Assembly Context] : adminroute_service_AdminRouteService Provider
-[fdse_microservice_controller_BasicController Assembly Context] -(0- [fdse_microservice_service_BasicService Assembly Context] : fdse_microservice_service_BasicService Provider
-[travel2_controller_Travel2Controller Assembly Context] -(0- [travel2_service_TravelService Assembly Context] : travel2_service_TravelService Provider
-[foodsearch_service_FoodServiceImpl Assembly Context] -(0- [foodsearch_mq_RabbitSend Assembly Context] : foodsearch_mq_RabbitSend Provider
-[plan_controller_RoutePlanController Assembly Context] -(0- [plan_service_RoutePlanServiceImpl Assembly Context] : plan_service_RoutePlanService Provider
-[adminorder_controller_AdminOrderController Assembly Context] -(0- [adminorder_service_AdminOrderService Assembly Context] : adminorder_service_AdminOrderService Provider
-[consign_service_ConsignServiceImpl Assembly Context] -(0- [consign_repository_ConsignRepository Assembly Context] : consign_repository_ConsignRepository Provider
-[com_trainticket_controller_PaymentController Assembly Context] -(0- [com_trainticket_service_PaymentService Assembly Context] : com_trainticket_service_PaymentService Provider
-[config_service_ConfigServiceImpl Assembly Context] -(0- [config_repository_ConfigRepository Assembly Context] : config_repository_ConfigRepository Provider
-[auth_controller_UserController Assembly Context] -(0- [auth_service_TokenService Assembly Context] : auth_service_TokenService Provider
-[admintravel_service_AdminTravelServiceImpl Assembly Context] -(0- [admintravel_service_RestTemplate Provider Assembly Context] : admintravel_service_RestTemplate Provider
-[food_delivery_service_FoodDeliveryServiceImpl Assembly Context] -(0- [food_delivery_service_DiscoveryClient Provider Assembly Context] : food_delivery_service_DiscoveryClient Provider
-[waitorder_service_Impl_WaitListOrderServiceImpl Assembly Context] -(0- [waitorder_service_Impl_DiscoveryClient Provider Assembly Context] : waitorder_service_Impl_DiscoveryClient Provider
-[order_controller_OrderController Assembly Context] -(0- [order_service_OrderServiceImpl Assembly Context] : order_service_OrderService Provider
-[adminorder_controller_AdminOrderController Assembly Context] -(0- [adminorder_service_AdminOrderServiceImpl Assembly Context] : adminorder_service_AdminOrderService Provider
-[fdse_microservice_controller_BasicController Assembly Context] -(0- [fdse_microservice_service_BasicServiceImpl Assembly Context] : fdse_microservice_service_BasicService Provider
-[adminbasic_service_AdminBasicInfoServiceImpl Assembly Context] -(0- [adminbasic_service_DiscoveryClient Provider Assembly Context] : adminbasic_service_DiscoveryClient Provider
-[seat_service_SeatServiceImpl Assembly Context] -(0- [seat_service_RestTemplate Provider Assembly Context] : seat_service_RestTemplate Provider
-[rebook_service_RebookServiceImpl Assembly Context] -(0- [rebook_service_RestTemplate Provider Assembly Context] : rebook_service_RestTemplate Provider
-[preserve_service_PreserveServiceImpl Assembly Context] -(0- [preserve_mq_RabbitSend Assembly Context] : preserve_mq_RabbitSend Provider
-[verifycode_controller_VerifyCodeController Assembly Context] -(0- [verifycode_service_VerifyCodeService Assembly Context] : verifycode_service_VerifyCodeService Provider
-[adminbasic_controller_AdminBasicInfoController Assembly Context] -(0- [adminbasic_service_AdminBasicInfoServiceImpl Assembly Context] : adminbasic_service_AdminBasicInfoService Provider
-[seat_controller_SeatController Assembly Context] -(0- [seat_service_SeatService Assembly Context] : seat_service_SeatService Provider
-[food_service_StationFoodServiceImpl Assembly Context] -(0- [food_repository_StationFoodRepository Assembly Context] : food_repository_StationFoodRepository Provider
-[food_delivery_service_FoodDeliveryServiceImpl Assembly Context] -(0- [food_delivery_service_RestTemplate Provider Assembly Context] : food_delivery_service_RestTemplate Provider
-[route_controller_RouteController Assembly Context] -(0- [route_service_RouteService Assembly Context] : route_service_RouteService Provider
-[auth_controller_AuthController Assembly Context] -(0- [auth_service_impl_UserServiceImpl Assembly Context] : auth_service_UserService Provider
-[auth_service_impl_UserServiceImpl Assembly Context] -(0- [auth_repository_UserRepository Assembly Context] : auth_repository_UserRepository Provider
-[order_controller_OrderController Assembly Context] -(0- [order_service_OrderService Assembly Context] : order_service_OrderService Provider
-[foodsearch_controller_FoodController Assembly Context] -(0- [foodsearch_mq_RabbitSend Assembly Context] : foodsearch_mq_RabbitSend Provider
-[rebook_controller_RebookController Assembly Context] -(0- [rebook_service_RebookService Assembly Context] : rebook_service_RebookService Provider
-[preserveOther_controller_PreserveOtherController Assembly Context] -(0- [preserveOther_service_PreserveOtherService Assembly Context] : preserveOther_service_PreserveOtherService Provider
-[trainFood_controller_TrainFoodController Assembly Context] -(0- [trainFood_service_TrainFoodServiceImpl Assembly Context] : trainFood_service_TrainFoodService Provider
-[inside_payment_service_InsidePaymentServiceImpl Assembly Context] -(0- [inside_payment_service_RestTemplate Provider Assembly Context] : inside_payment_service_RestTemplate Provider
-[seat_service_SeatServiceImpl Assembly Context] -(0- [seat_service_DiscoveryClient Provider Assembly Context] : seat_service_DiscoveryClient Provider
-[com_trainticket_service_PaymentServiceImpl Assembly Context] -(0- [com_trainticket_repository_PaymentRepository Assembly Context] : com_trainticket_repository_PaymentRepository Provider
-[rebook_controller_RebookController Assembly Context] -(0- [rebook_service_RebookServiceImpl Assembly Context] : rebook_service_RebookService Provider
-[preserve_controller_PreserveController Assembly Context] -(0- [preserve_service_PreserveServiceImpl Assembly Context] : preserve_service_PreserveService Provider
-[adminroute_controller_AdminRouteController Assembly Context] -(0- [adminroute_service_AdminRouteService Assembly Context] : adminroute_service_AdminRouteService Provider
-[waitorder_service_Impl_WaitListOrderServiceImpl Assembly Context] -(0- [waitorder_service_Impl_RestTemplate Provider Assembly Context] : waitorder_service_Impl_RestTemplate Provider
-[fdse_microservice_service_BasicServiceImpl Assembly Context] -(0- [fdse_microservice_service_RestTemplate Provider Assembly Context] : fdse_microservice_service_RestTemplate Provider
-[user_controller_UserController Assembly Context] -(0- [user_service_impl_UserServiceImpl Assembly Context] : user_service_UserService Provider
-[notification_controller_NotificationController Assembly Context] -(0- [notification_service_NotificationService Assembly Context] : notification_service_NotificationService Provider
-[contacts_service_ContactsServiceImpl Assembly Context] -(0- [contacts_repository_ContactsRepository Assembly Context] : contacts_repository_ContactsRepository Provider
-[fdse_microservice_controller_StationController Assembly Context] -(0- [fdse_microservice_service_StationService Assembly Context] : fdse_microservice_service_StationService Provider
-[other_service_OrderOtherServiceImpl Assembly Context] -(0- [other_repository_OrderOtherRepository Assembly Context] : other_repository_OrderOtherRepository Provider
-[waitorder_controller_WaitListOrderController Assembly Context] -(0- [waitorder_service_Impl_WaitListOrderServiceImpl Assembly Context] : waitorder_service_WaitListOrderService Provider
-[preserve_controller_PreserveController Assembly Context] -(0- [preserve_service_PreserveService Assembly Context] : preserve_service_PreserveService Provider
-[admintravel_controller_AdminTravelController Assembly Context] -(0- [admintravel_service_AdminTravelService Assembly Context] : admintravel_service_AdminTravelService Provider
-[security_service_SecurityServiceImpl Assembly Context] -(0- [security_service_RestTemplate Provider Assembly Context] : security_service_RestTemplate Provider
-[auth_service_impl_TokenServiceImpl Assembly Context] -(0- [auth_service_impl_DiscoveryClient Provider Assembly Context] : auth_service_impl_DiscoveryClient Provider
-[waitorder_service_Impl_WaitListOrderServiceImpl Assembly Context] -(0- [waitorder_repository_WaitListOrderRepository Assembly Context] : waitorder_repository_WaitListOrderRepository Provider
-[security_service_SecurityServiceImpl Assembly Context] -(0- [security_service_DiscoveryClient Provider Assembly Context] : security_service_DiscoveryClient Provider
-[travel_controller_TravelController Assembly Context] -(0- [travel_service_TravelServiceImpl Assembly Context] : travel_service_TravelService Provider
-[notification_service_NotificationServiceImpl Assembly Context] -(0- [notification_service_MailService Assembly Context] : notification_service_MailService Provider
-[other_controller_OrderOtherController Assembly Context] -(0- [other_service_OrderOtherServiceImpl Assembly Context] : other_service_OrderOtherService Provider
-[preserve_service_PreserveServiceImpl Assembly Context] -(0- [preserve_service_DiscoveryClient Provider Assembly Context] : preserve_service_DiscoveryClient Provider
-[other_service_OrderOtherServiceImpl Assembly Context] -(0- [other_service_RestTemplate Provider Assembly Context] : other_service_RestTemplate Provider
-[travel_controller_TravelController Assembly Context] -(0- [travel_service_TravelService Assembly Context] : travel_service_TravelService Provider
-[food_delivery_controller_FoodDeliveryController Assembly Context] -(0- [food_delivery_service_FoodDeliveryServiceImpl Assembly Context] : food_delivery_service_FoodDeliveryService Provider
-[adminbasic_service_AdminBasicInfoServiceImpl Assembly Context] -(0- [adminbasic_service_RestTemplate Provider Assembly Context] : adminbasic_service_RestTemplate Provider
-[notification_service_NotificationServiceImpl Assembly Context] -(0- [notification_service_JavaMailSender Provider Assembly Context] : notification_service_JavaMailSender Provider
-[auth_service_impl_TokenServiceImpl Assembly Context] -(0- [auth_repository_UserRepository Assembly Context] : auth_repository_UserRepository Provider
-[foodsearch_service_FoodServiceImpl Assembly Context] -(0- [foodsearch_repository_FoodOrderRepository Assembly Context] : foodsearch_repository_FoodOrderRepository Provider
-[assurance_service_AssuranceServiceImpl Assembly Context] -(0- [assurance_repository_AssuranceRepository Assembly Context] : assurance_repository_AssuranceRepository Provider
-[adminroute_service_AdminRouteServiceImpl Assembly Context] -(0- [adminroute_service_DiscoveryClient Provider Assembly Context] : adminroute_service_DiscoveryClient Provider
-[notification_service_MailService Assembly Context] -(0- [notification_service_Configuration Provider Assembly Context] : notification_service_Configuration Provider
-[travelplan_service_TravelPlanServiceImpl Assembly Context] -(0- [travelplan_service_RestTemplate Provider Assembly Context] : travelplan_service_RestTemplate Provider
-[travelplan_controller_TravelPlanController Assembly Context] -(0- [travelplan_service_TravelPlanServiceImpl Assembly Context] : travelplan_service_TravelPlanService Provider
-[waitorder_controller_WaitListOrderController Assembly Context] -(0- [waitorder_service_WaitListOrderService Assembly Context] : waitorder_service_WaitListOrderService Provider
-[foodsearch_service_FoodServiceImpl Assembly Context] -(0- [foodsearch_service_DiscoveryClient Provider Assembly Context] : foodsearch_service_DiscoveryClient Provider
-[adminroute_service_AdminRouteServiceImpl Assembly Context] -(0- [adminroute_service_RestTemplate Provider Assembly Context] : adminroute_service_RestTemplate Provider
-[adminuser_service_AdminUserServiceImpl Assembly Context] -(0- [adminuser_service_RestTemplate Provider Assembly Context] : adminuser_service_RestTemplate Provider
-[other_service_OrderOtherServiceImpl Assembly Context] -(0- [other_service_DiscoveryClient Provider Assembly Context] : other_service_DiscoveryClient Provider
-[adminorder_service_AdminOrderServiceImpl Assembly Context] -(0- [adminorder_service_RestTemplate Provider Assembly Context] : adminorder_service_RestTemplate Provider
-[consignprice_controller_ConsignPriceController Assembly Context] -(0- [consignprice_service_ConsignPriceServiceImpl Assembly Context] : consignprice_service_ConsignPriceService Provider
-[config_controller_ConfigController Assembly Context] -(0- [config_service_ConfigServiceImpl Assembly Context] : config_service_ConfigService Provider
-[fdse_microservice_controller_StationController Assembly Context] -(0- [fdse_microservice_service_StationServiceImpl Assembly Context] : fdse_microservice_service_StationService Provider
-[travel2_service_TravelServiceImpl Assembly Context] -(0- [travel2_service_RestTemplate Provider Assembly Context] : travel2_service_RestTemplate Provider
-[consignprice_service_ConsignPriceServiceImpl Assembly Context] -(0- [consignprice_repository_ConsignPriceConfigRepository Assembly Context] : consignprice_repository_ConsignPriceConfigRepository Provider
-[preserveOther_controller_PreserveOtherController Assembly Context] -(0- [preserveOther_service_PreserveOtherServiceImpl Assembly Context] : preserveOther_service_PreserveOtherService Provider
-[travel2_service_TravelServiceImpl Assembly Context] -(0- [travel2_service_DiscoveryClient Provider Assembly Context] : travel2_service_DiscoveryClient Provider
-[route_controller_RouteController Assembly Context] -(0- [route_service_RouteServiceImpl Assembly Context] : route_service_RouteService Provider
-[user_service_impl_UserServiceImpl Assembly Context] -(0- [user_service_impl_DiscoveryClient Provider Assembly Context] : user_service_impl_DiscoveryClient Provider
-[travel_service_TravelServiceImpl Assembly Context] -(0- [travel_service_RestTemplate Provider Assembly Context] : travel_service_RestTemplate Provider
-[inside_payment_controller_InsidePaymentController Assembly Context] -(0- [inside_payment_service_InsidePaymentService Assembly Context] : inside_payment_service_InsidePaymentService Provider
-[travelplan_controller_TravelPlanController Assembly Context] -(0- [travelplan_service_TravelPlanService Assembly Context] : travelplan_service_TravelPlanService Provider
-[config_controller_ConfigController Assembly Context] -(0- [config_service_ConfigService Assembly Context] : config_service_ConfigService Provider
-[consign_service_ConsignServiceImpl Assembly Context] -(0- [consign_service_RestTemplate Provider Assembly Context] : consign_service_RestTemplate Provider
-[seat_controller_SeatController Assembly Context] -(0- [seat_service_SeatServiceImpl Assembly Context] : seat_service_SeatService Provider
-[auth_controller_UserController Assembly Context] -(0- [auth_service_impl_TokenServiceImpl Assembly Context] : auth_service_TokenService Provider
-[contacts_controller_ContactsController Assembly Context] -(0- [contacts_service_ContactsService Assembly Context] : contacts_service_ContactsService Provider
-[preserveOther_service_PreserveOtherServiceImpl Assembly Context] -(0- [preserveOther_service_DiscoveryClient Provider Assembly Context] : preserveOther_service_DiscoveryClient Provider
-[travel_service_TravelServiceImpl Assembly Context] -(0- [travel_service_DiscoveryClient Provider Assembly Context] : travel_service_DiscoveryClient Provider
-[train_controller_TrainController Assembly Context] -(0- [train_service_TrainService Assembly Context] : train_service_TrainService Provider
-[com_trainticket_controller_PaymentController Assembly Context] -(0- [com_trainticket_service_PaymentServiceImpl Assembly Context] : com_trainticket_service_PaymentService Provider
-[inside_payment_service_InsidePaymentServiceImpl Assembly Context] -(0- [inside_payment_repository_AddMoneyRepository Assembly Context] : inside_payment_repository_AddMoneyRepository Provider
-[auth_service_impl_UserServiceImpl Assembly Context] -(0- [auth_service_impl_PasswordEncoder Provider Assembly Context] : auth_service_impl_PasswordEncoder Provider
-[notification_controller_NotificationController Assembly Context] -(0- [notification_mq_RabbitSend Assembly Context] : notification_mq_RabbitSend Provider
-[assurance_controller_AssuranceController Assembly Context] -(0- [assurance_service_AssuranceService Assembly Context] : assurance_service_AssuranceService Provider
-[adminuser_controller_AdminUserController Assembly Context] -(0- [adminuser_service_AdminUserService Assembly Context] : adminuser_service_AdminUserService Provider
-[security_controller_SecurityController Assembly Context] -(0- [security_service_SecurityService Assembly Context] : security_service_SecurityService Provider
-[train_controller_TrainController Assembly Context] -(0- [train_service_TrainServiceImpl Assembly Context] : train_service_TrainService Provider
-[adminorder_service_AdminOrderServiceImpl Assembly Context] -(0- [adminorder_service_DiscoveryClient Provider Assembly Context] : adminorder_service_DiscoveryClient Provider
-[user_controller_UserController Assembly Context] -(0- [user_service_UserService Assembly Context] : user_service_UserService Provider
-[assurance_controller_AssuranceController Assembly Context] -(0- [assurance_service_AssuranceServiceImpl Assembly Context] : assurance_service_AssuranceService Provider
-[plan_service_RoutePlanServiceImpl Assembly Context] -(0- [plan_service_RestTemplate Provider Assembly Context] : plan_service_RestTemplate Provider
-[food_controller_StationFoodController Assembly Context] -(0- [food_service_StationFoodServiceImpl Assembly Context] : food_service_StationFoodService Provider
-[com_trainticket_service_PaymentServiceImpl Assembly Context] -(0- [com_trainticket_repository_AddMoneyRepository Assembly Context] : com_trainticket_repository_AddMoneyRepository Provider
-[plan_controller_RoutePlanController Assembly Context] -(0- [plan_service_RoutePlanService Assembly Context] : plan_service_RoutePlanService Provider
-[fdse_microservice_service_BasicServiceImpl Assembly Context] -(0- [fdse_microservice_service_DiscoveryClient Provider Assembly Context] : fdse_microservice_service_DiscoveryClient Provider
-[cancel_controller_CancelController Assembly Context] -(0- [cancel_service_CancelService Assembly Context] : cancel_service_CancelService Provider
-[consign_service_ConsignServiceImpl Assembly Context] -(0- [consign_service_DiscoveryClient Provider Assembly Context] : consign_service_DiscoveryClient Provider
-[preserve_service_PreserveServiceImpl Assembly Context] -(0- [preserve_service_RestTemplate Provider Assembly Context] : preserve_service_RestTemplate Provider
-[verifycode_controller_VerifyCodeController Assembly Context] -(0- [verifycode_service_impl_VerifyCodeServiceImpl Assembly Context] : verifycode_service_VerifyCodeService Provider
-[foodsearch_controller_FoodController Assembly Context] -(0- [foodsearch_service_FoodServiceImpl Assembly Context] : foodsearch_service_FoodService Provider
-[preserveOther_service_PreserveOtherServiceImpl Assembly Context] -(0- [preserveOther_service_RestTemplate Provider Assembly Context] : preserveOther_service_RestTemplate Provider
-[inside_payment_controller_InsidePaymentController Assembly Context] -(0- [inside_payment_service_InsidePaymentServiceImpl Assembly Context] : inside_payment_service_InsidePaymentService Provider
-[rebook_service_RebookServiceImpl Assembly Context] -(0- [rebook_service_DiscoveryClient Provider Assembly Context] : rebook_service_DiscoveryClient Provider
-[auth_controller_UserController Assembly Context] -(0- [auth_service_impl_UserServiceImpl Assembly Context] : auth_service_UserService Provider
-[execute_serivce_ExecuteServiceImpl Assembly Context] -(0- [execute_serivce_RestTemplate Provider Assembly Context] : execute_serivce_RestTemplate Provider
-[price_controller_PriceController Assembly Context] -(0- [price_service_PriceServiceImpl Assembly Context] : price_service_PriceService Provider
-[adminbasic_controller_AdminBasicInfoController Assembly Context] -(0- [adminbasic_service_AdminBasicInfoService Assembly Context] : adminbasic_service_AdminBasicInfoService Provider
-SPRING-APPLICATION/api/v1/foodservice Delegation-Provider - SPRING-APPLICATION/api/v1/foodservice Provider
-SPRING-APPLICATION/api/v1/foodservice Provider - [FoodServiceImpl]
-SPRING-APPLICATION/api/v1/priceservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/priceservice[GET] Provider
-SPRING-APPLICATION/api/v1/priceservice[GET] Provider - [PriceServiceImpl]
-SPRING-APPLICATION/api/v1/verifycode Delegation-Provider - SPRING-APPLICATION/api/v1/verifycode Provider
-SPRING-APPLICATION/api/v1/verifycode Provider - [VerifyCodeController]
-SPRING-APPLICATION/api/v1/orderOtherService Delegation-Provider - SPRING-APPLICATION/api/v1/orderOtherService Provider
-SPRING-APPLICATION/api/v1/orderOtherService Provider - [OrderOtherController]
-SPRING-APPLICATION/api/v1/executeservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/executeservice[GET] Provider
-SPRING-APPLICATION/api/v1/executeservice[GET] Provider - [ExecuteServiceImpl]
-SPRING-APPLICATION/api/v1/trainfoodservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/trainfoodservice[GET] Provider
-SPRING-APPLICATION/api/v1/trainfoodservice[GET] Provider - [TrainFoodController]
-SPRING-APPLICATION/api/v1/travelplanservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/travelplanservice[GET] Provider
-SPRING-APPLICATION/api/v1/travelplanservice[GET] Provider - [TravelPlanServiceImpl]
-SPRING-APPLICATION/api/v1/admintravelservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/admintravelservice[GET] Provider
-SPRING-APPLICATION/api/v1/admintravelservice[GET] Provider - [AdminTravelController]
-SPRING-APPLICATION/api/v1/routeplanservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/routeplanservice[GET] Provider
-SPRING-APPLICATION/api/v1/routeplanservice[GET] Provider - [RoutePlanServiceImpl]
-SPRING-APPLICATION/api/v1/adminorderservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/adminorderservice[GET] Provider
-SPRING-APPLICATION/api/v1/adminorderservice[GET] Provider - [AdminOrderController]
-SPRING-APPLICATION/api/v1/auth[POST] Delegation-Provider - SPRING-APPLICATION/api/v1/auth[POST] Provider
-SPRING-APPLICATION/api/v1/auth[POST] Provider - [TokenServiceImpl]
-SPRING-APPLICATION/api/v1/inside_pay_service[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/inside_pay_service[GET] Provider
-SPRING-APPLICATION/api/v1/inside_pay_service[GET] Provider - [InsidePaymentServiceImpl]
-SPRING-APPLICATION/api/v1/basicservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/basicservice[GET] Provider
-SPRING-APPLICATION/api/v1/basicservice[GET] Provider - [BasicController]
-SPRING-APPLICATION/api/v1/contactservice Delegation-Provider - SPRING-APPLICATION/api/v1/contactservice Provider
-SPRING-APPLICATION/api/v1/contactservice Provider - [ContactsServiceImpl]
-SPRING-APPLICATION/api/v1/adminrouteservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/adminrouteservice[GET] Provider
-SPRING-APPLICATION/api/v1/adminrouteservice[GET] Provider - [AdminRouteController]
-SPRING-APPLICATION/api/v1/securityservice Delegation-Provider - SPRING-APPLICATION/api/v1/securityservice Provider
-SPRING-APPLICATION/api/v1/securityservice Provider - [SecurityController]
-SPRING-APPLICATION/api/v1/adminbasicservice Delegation-Provider - SPRING-APPLICATION/api/v1/adminbasicservice Provider
-SPRING-APPLICATION/api/v1/adminbasicservice Provider - [AdminBasicInfoController]
-SPRING-APPLICATION/api/v1/consignpriceservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/consignpriceservice[GET] Provider
-SPRING-APPLICATION/api/v1/consignpriceservice[GET] Provider - [ConsignPriceServiceImpl]
-SPRING-APPLICATION/api/v1/orderservice Delegation-Provider - SPRING-APPLICATION/api/v1/orderservice Provider
-SPRING-APPLICATION/api/v1/orderservice Provider - [OrderServiceImpl]
-SPRING-APPLICATION/api/v1/trainservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/trainservice[GET] Provider
-SPRING-APPLICATION/api/v1/trainservice[GET] Provider - [TrainController]
-SPRING-APPLICATION/api/v1/travelservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/travelservice[GET] Provider
-SPRING-APPLICATION/api/v1/travelservice[GET] Provider - [TravelServiceImpl]
-SPRING-APPLICATION/api/v1/fooddeliveryservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/fooddeliveryservice[GET] Provider
-SPRING-APPLICATION/api/v1/fooddeliveryservice[GET] Provider - [FoodDeliveryServiceImpl]
-SPRING-APPLICATION/api/v1/rebookservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/rebookservice[GET] Provider
-SPRING-APPLICATION/api/v1/rebookservice[GET] Provider - [RebookServiceImpl]
-SPRING-APPLICATION/api/v1/consignservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/consignservice[GET] Provider
-SPRING-APPLICATION/api/v1/consignservice[GET] Provider - [ConsignController]
-SPRING-APPLICATION/api/v1/paymentservice Delegation-Provider - SPRING-APPLICATION/api/v1/paymentservice Provider
-SPRING-APPLICATION/api/v1/paymentservice Provider - [PaymentController]
-SPRING-APPLICATION/api/v1/assuranceservice Delegation-Provider - SPRING-APPLICATION/api/v1/assuranceservice Provider
-SPRING-APPLICATION/api/v1/assuranceservice Provider - [AssuranceServiceImpl]
-SPRING-APPLICATION/api/v1/routeservice Delegation-Provider - SPRING-APPLICATION/api/v1/routeservice Provider
-SPRING-APPLICATION/api/v1/routeservice Provider - [RouteController]
-SPRING-APPLICATION/api/v1/adminuserservice/users Delegation-Provider - SPRING-APPLICATION/api/v1/adminuserservice/users Provider
-SPRING-APPLICATION/api/v1/adminuserservice/users Provider - [AdminUserController]
-SPRING-APPLICATION/api/v1/configservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/configservice[GET] Provider
-SPRING-APPLICATION/api/v1/configservice[GET] Provider - [ConfigServiceImpl]
-SPRING-APPLICATION/api/v1/notifyservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/notifyservice[GET] Provider
-SPRING-APPLICATION/api/v1/notifyservice[GET] Provider - [NotificationController]
-SPRING-APPLICATION/api/v1/stationfoodservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/stationfoodservice[GET] Provider
-SPRING-APPLICATION/api/v1/stationfoodservice[GET] Provider - [StationFoodServiceImpl]
-SPRING-APPLICATION/api/v1/userservice/users Delegation-Provider - SPRING-APPLICATION/api/v1/userservice/users Provider
-SPRING-APPLICATION/api/v1/userservice/users Provider - [user_controller_UserController]
-SPRING-APPLICATION/api/v1/stationservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/stationservice[GET] Provider
-SPRING-APPLICATION/api/v1/stationservice[GET] Provider - [StationController]
-SPRING-APPLICATION/api/v1/travel2service[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/travel2service[GET] Provider
-SPRING-APPLICATION/api/v1/travel2service[GET] Provider - [TravelServiceImpl]
-SPRING-APPLICATION/api/v1/users Delegation-Provider - SPRING-APPLICATION/api/v1/users Provider
-SPRING-APPLICATION/api/v1/users Provider - [TokenServiceImpl]
-SPRING-APPLICATION/api/v1/seatservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/seatservice[GET] Provider
-SPRING-APPLICATION/api/v1/seatservice[GET] Provider - [SeatController]
-SPRING-APPLICATION/api/v1/preserveotherservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/preserveotherservice[GET] Provider
-SPRING-APPLICATION/api/v1/preserveotherservice[GET] Provider - [PreserveOtherController]
-SPRING-APPLICATION/api/v1/cancelservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/cancelservice[GET] Provider
-SPRING-APPLICATION/api/v1/cancelservice[GET] Provider - [CancelController]
-SPRING-APPLICATION/api/v1/preserveservice[GET] Delegation-Provider - SPRING-APPLICATION/api/v1/preserveservice[GET] Provider
-SPRING-APPLICATION/api/v1/preserveservice[GET] Provider - [PreserveServiceImpl]
-SPRING-APPLICATION/api/v1/waitorderservice Delegation-Provider - SPRING-APPLICATION/api/v1/waitorderservice Provider
-SPRING-APPLICATION/api/v1/waitorderservice Provider - [WaitListOrderController]
-[StationFoodServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminbasic_service_AdminBasicInfoService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[config_controller_ConfigController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel2_service_TravelService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminroute_service_AdminRouteService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[notification_service_NotificationServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[com_trainticket_service_PaymentService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[assurance_service_AssuranceServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel2_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminroute_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[train_service_TrainServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[cancel_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_service_impl_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[contacts_controller_ContactsController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[seat_service_SeatService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consign_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[price_service_PriceServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserveOther_mq_RabbitSend Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[order_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_service_impl_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[ConfigServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel_repository_TripRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[admintravel_service_AdminTravelServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserveOther_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserveOther_service_PreserveOtherService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_service_StationServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[verifycode_service_VerifyCodeService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[price_repository_PriceConfigRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[TravelPlanServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[user_service_UserService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminorder_service_AdminOrderServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserve_controller_PreserveController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travelplan_service_TravelPlanService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[admintravel_service_AdminTravelService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserveOther_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminroute_controller_AdminRouteController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[rebook_service_RebookService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_service_StationFoodService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consignprice_service_ConsignPriceService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[route_repository_RouteRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_service_StationService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserve_mq_RabbitSend Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[price_service_PriceService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consign_repository_ConsignRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[TrainController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[VerifyCodeController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_controller_BasicController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[inside_payment_service_InsidePaymentService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[FoodServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_service_BasicService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[TrainFoodController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[config_service_ConfigServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[admintravel_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travelplan_controller_TravelPlanController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_delivery_repository_FoodDeliveryOrderRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel2_controller_Travel2Controller Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_service_BasicServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[AdminBasicInfoController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[PriceServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[waitorder_controller_WaitListOrderController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[ContactsServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[SeatController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[order_controller_OrderController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[security_service_SecurityServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[other_service_OrderOtherServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[foodsearch_service_FoodServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminuser_service_AdminUserService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[plan_service_RoutePlanServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[waitorder_repository_WaitListOrderRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_service_TokenService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserve_service_PreserveServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consign_controller_ConsignController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminroute_service_AdminRouteServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[WaitListOrderController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[AdminRouteController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[user_repository_UserRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[order_repository_OrderRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[seat_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[trainFood_repository_TrainFoodRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[other_controller_OrderOtherController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[foodsearch_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[config_repository_ConfigRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[price_controller_PriceController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_delivery_service_FoodDeliveryServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel2_service_TravelServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[ExecuteServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[foodsearch_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[seat_controller_SeatController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consignprice_service_ConsignPriceServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[StationController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[route_service_RouteServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[waitorder_service_WaitListOrderService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel_service_TravelServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[cancel_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[AdminOrderController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[other_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[contacts_service_ContactsServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[notification_mq_RabbitSend Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminbasic_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_delivery_controller_FoodDeliveryController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_controller_StationController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminroute_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[execute_serivce_ExecuteServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminbasic_service_AdminBasicInfoServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_controller_AuthController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[inside_payment_controller_InsidePaymentController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[cancel_controller_CancelController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_security_jwt_JWTProvider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[seat_service_SeatServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[com_trainticket_repository_PaymentRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[rebook_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminuser_controller_AdminUserController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[PreserveServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[InsidePaymentServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserveOther_service_PreserveOtherServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminorder_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[rebook_controller_RebookController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[com_trainticket_controller_PaymentController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_controller_StationFoodController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[foodsearch_service_FoodService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[security_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[OrderOtherController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[admintravel_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[config_service_ConfigService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[notification_service_MailService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[rebook_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[RebookServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[plan_controller_RoutePlanController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[execute_serivce_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[notification_service_JavaMailSender Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[cancel_service_CancelServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[inside_payment_repository_PaymentRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_service_impl_AuthenticationManager Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[notification_service_Configuration Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[AdminTravelController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[RouteController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[execute_controller_ExecuteControlller Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consignprice_repository_ConsignPriceConfigRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserveOther_controller_PreserveOtherController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_service_StationFoodServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[CancelController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_service_UserService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[foodsearch_repository_FoodOrderRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travelplan_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travelplan_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[AssuranceServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel_service_TravelService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consign_service_ConsignService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel2_repository_TripRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_delivery_service_FoodDeliveryService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[execute_serivce_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserve_service_PreserveService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[order_service_OrderService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[assurance_controller_AssuranceController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[cancel_service_CancelService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_repository_UserRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[rebook_service_RebookServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_service_impl_UserServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminuser_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[fdse_microservice_repository_StationRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminuser_service_AdminUserServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[route_controller_RouteController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[route_service_RouteService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[PreserveOtherController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[security_controller_SecurityController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_delivery_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserve_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[verifycode_controller_VerifyCodeController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travelplan_service_TravelPlanServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[train_controller_TrainController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[other_service_OrderOtherService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[plan_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[contacts_service_ContactsService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminorder_service_AdminOrderService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[other_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[assurance_service_AssuranceService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[user_service_impl_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_controller_UserController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consign_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[contacts_repository_ContactsRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[order_service_OrderServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_service_impl_PasswordEncoder Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[PaymentController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[BasicController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[security_service_SecurityService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[com_trainticket_service_PaymentServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[other_repository_OrderOtherRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[seat_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[plan_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[preserve_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[ConsignPriceServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[waitorder_service_Impl_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[com_trainticket_repository_AddMoneyRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[waitorder_service_Impl_WaitListOrderServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_repository_StationFoodRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[SecurityController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[user_service_impl_UserServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[ConsignController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[security_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[NotificationController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminorder_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[trainFood_controller_TrainFoodController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[TokenServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[foodsearch_mq_RabbitSend Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[security_repository_SecurityRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[AdminUserController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[plan_service_RoutePlanService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[auth_service_impl_TokenServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[inside_payment_service_InsidePaymentServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[FoodDeliveryServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[notification_service_NotificationService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminbasic_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[execute_serivce_ExecuteService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminorder_controller_AdminOrderController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[RoutePlanServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[trainFood_service_TrainFoodServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[trainFood_service_TrainFoodService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel2_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel_controller_TravelController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[waitorder_service_Impl_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminuser_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[travel_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[user_service_impl_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[TravelServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consignprice_controller_ConsignPriceController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[foodsearch_controller_FoodController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[train_service_TrainService Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[OrderServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[admintravel_controller_AdminTravelController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[train_repository_TrainTypeRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[verifycode_service_impl_VerifyCodeServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[notification_controller_NotificationController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[user_controller_UserController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[adminbasic_controller_AdminBasicInfoController Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[assurance_repository_AssuranceRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[order_service_DiscoveryClient Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[inside_payment_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[consign_service_ConsignServiceImpl Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[inside_payment_repository_AddMoneyRepository Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
-[food_delivery_service_RestTemplate Provider Assembly Context] [[fudanselab-train-ticket.repository#_wrFleLtpEe65rb-scNoIag]]
+() SPRING_APPLICATION_api_v1_adminbasicservice_Delegation_Provider
+() SPRING_APPLICATION_api_v1_adminorderservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_adminrouteservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_admintravelservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_adminuserservice_users_Delegation_Provider
+() SPRING_APPLICATION_api_v1_assuranceservice_Delegation_Provider
+() SPRING_APPLICATION_api_v1_auth_POST_Delegation_Provider
+() SPRING_APPLICATION_api_v1_basicservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_cancelservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_configservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_consignpriceservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_consignservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_contactservice_Delegation_Provider
+() SPRING_APPLICATION_api_v1_executeservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_foodservice_Delegation_Provider
+() SPRING_APPLICATION_api_v1_inside_pay_service_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_notifyservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_orderOtherService_Delegation_Provider
+() SPRING_APPLICATION_api_v1_orderservice_Delegation_Provider
+() SPRING_APPLICATION_api_v1_paymentservice_Delegation_Provider
+() SPRING_APPLICATION_api_v1_preserveotherservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_preserveservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_priceservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_rebookservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_routeplanservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_routeservice_Delegation_Provider
+() SPRING_APPLICATION_api_v1_seatservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_securityservice_Delegation_Provider
+() SPRING_APPLICATION_api_v1_stationfoodservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_stationservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_trainfoodservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_trainservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_travel2service_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_travelplanservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_travelservice_GET_Delegation_Provider
+() SPRING_APPLICATION_api_v1_users_Delegation_Provider
+() SPRING_APPLICATION_api_v1_userservice_users_Delegation_Provider
+() SPRING_APPLICATION_api_v1_verifycode_Delegation_Provider
+() SPRING_APPLICATION_api_v1_waitorderservice_Delegation_Provider
+component null {
+SPRING_APPLICATION_api_v1_adminbasicservice_Delegation_Provider - SPRING_APPLICATION_api_v1_adminbasicservice_Provider
+SPRING_APPLICATION_api_v1_adminbasicservice_Provider - [AdminBasicInfoController]
+SPRING_APPLICATION_api_v1_adminorderservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_adminorderservice_GET_Provider
+SPRING_APPLICATION_api_v1_adminorderservice_GET_Provider - [AdminOrderController]
+SPRING_APPLICATION_api_v1_adminrouteservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_adminrouteservice_GET_Provider
+SPRING_APPLICATION_api_v1_adminrouteservice_GET_Provider - [AdminRouteController]
+SPRING_APPLICATION_api_v1_admintravelservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_admintravelservice_GET_Provider
+SPRING_APPLICATION_api_v1_admintravelservice_GET_Provider - [AdminTravelController]
+SPRING_APPLICATION_api_v1_adminuserservice_users_Delegation_Provider - SPRING_APPLICATION_api_v1_adminuserservice_users_Provider
+SPRING_APPLICATION_api_v1_adminuserservice_users_Provider - [AdminUserController]
+SPRING_APPLICATION_api_v1_assuranceservice_Delegation_Provider - SPRING_APPLICATION_api_v1_assuranceservice_Provider
+SPRING_APPLICATION_api_v1_assuranceservice_Provider - [AssuranceServiceImpl]
+SPRING_APPLICATION_api_v1_auth_POST_Delegation_Provider - SPRING_APPLICATION_api_v1_auth_POST_Provider
+SPRING_APPLICATION_api_v1_auth_POST_Provider - [TokenServiceImpl]
+SPRING_APPLICATION_api_v1_basicservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_basicservice_GET_Provider
+SPRING_APPLICATION_api_v1_basicservice_GET_Provider - [BasicController]
+SPRING_APPLICATION_api_v1_cancelservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_cancelservice_GET_Provider
+SPRING_APPLICATION_api_v1_cancelservice_GET_Provider - [CancelController]
+SPRING_APPLICATION_api_v1_configservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_configservice_GET_Provider
+SPRING_APPLICATION_api_v1_configservice_GET_Provider - [ConfigServiceImpl]
+SPRING_APPLICATION_api_v1_consignpriceservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_consignpriceservice_GET_Provider
+SPRING_APPLICATION_api_v1_consignpriceservice_GET_Provider - [ConsignPriceServiceImpl]
+SPRING_APPLICATION_api_v1_consignservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_consignservice_GET_Provider
+SPRING_APPLICATION_api_v1_consignservice_GET_Provider - [ConsignController]
+SPRING_APPLICATION_api_v1_contactservice_Delegation_Provider - SPRING_APPLICATION_api_v1_contactservice_Provider
+SPRING_APPLICATION_api_v1_contactservice_Provider - [ContactsServiceImpl]
+SPRING_APPLICATION_api_v1_executeservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_executeservice_GET_Provider
+SPRING_APPLICATION_api_v1_executeservice_GET_Provider - [ExecuteServiceImpl]
+SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_Provider
+SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_Provider - [FoodDeliveryServiceImpl]
+SPRING_APPLICATION_api_v1_foodservice_Delegation_Provider - SPRING_APPLICATION_api_v1_foodservice_Provider
+SPRING_APPLICATION_api_v1_foodservice_Provider - [FoodServiceImpl]
+SPRING_APPLICATION_api_v1_inside_pay_service_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_inside_pay_service_GET_Provider
+SPRING_APPLICATION_api_v1_inside_pay_service_GET_Provider - [InsidePaymentServiceImpl]
+SPRING_APPLICATION_api_v1_notifyservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_notifyservice_GET_Provider
+SPRING_APPLICATION_api_v1_notifyservice_GET_Provider - [NotificationController]
+SPRING_APPLICATION_api_v1_orderOtherService_Delegation_Provider - SPRING_APPLICATION_api_v1_orderOtherService_Provider
+SPRING_APPLICATION_api_v1_orderOtherService_Provider - [OrderOtherController]
+SPRING_APPLICATION_api_v1_orderservice_Delegation_Provider - SPRING_APPLICATION_api_v1_orderservice_Provider
+SPRING_APPLICATION_api_v1_orderservice_Provider - [OrderServiceImpl]
+SPRING_APPLICATION_api_v1_paymentservice_Delegation_Provider - SPRING_APPLICATION_api_v1_paymentservice_Provider
+SPRING_APPLICATION_api_v1_paymentservice_Provider - [PaymentController]
+SPRING_APPLICATION_api_v1_preserveotherservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_preserveotherservice_GET_Provider
+SPRING_APPLICATION_api_v1_preserveotherservice_GET_Provider - [PreserveOtherController]
+SPRING_APPLICATION_api_v1_preserveservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_preserveservice_GET_Provider
+SPRING_APPLICATION_api_v1_preserveservice_GET_Provider - [PreserveServiceImpl]
+SPRING_APPLICATION_api_v1_priceservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_priceservice_GET_Provider
+SPRING_APPLICATION_api_v1_priceservice_GET_Provider - [PriceServiceImpl]
+SPRING_APPLICATION_api_v1_rebookservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_rebookservice_GET_Provider
+SPRING_APPLICATION_api_v1_rebookservice_GET_Provider - [RebookServiceImpl]
+SPRING_APPLICATION_api_v1_routeplanservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_routeplanservice_GET_Provider
+SPRING_APPLICATION_api_v1_routeplanservice_GET_Provider - [RoutePlanServiceImpl]
+SPRING_APPLICATION_api_v1_routeservice_Delegation_Provider - SPRING_APPLICATION_api_v1_routeservice_Provider
+SPRING_APPLICATION_api_v1_routeservice_Provider - [RouteController]
+SPRING_APPLICATION_api_v1_seatservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_seatservice_GET_Provider
+SPRING_APPLICATION_api_v1_seatservice_GET_Provider - [SeatController]
+SPRING_APPLICATION_api_v1_securityservice_Delegation_Provider - SPRING_APPLICATION_api_v1_securityservice_Provider
+SPRING_APPLICATION_api_v1_securityservice_Provider - [SecurityController]
+SPRING_APPLICATION_api_v1_stationfoodservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_stationfoodservice_GET_Provider
+SPRING_APPLICATION_api_v1_stationfoodservice_GET_Provider - [StationFoodServiceImpl]
+SPRING_APPLICATION_api_v1_stationservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_stationservice_GET_Provider
+SPRING_APPLICATION_api_v1_stationservice_GET_Provider - [StationController]
+SPRING_APPLICATION_api_v1_trainfoodservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_trainfoodservice_GET_Provider
+SPRING_APPLICATION_api_v1_trainfoodservice_GET_Provider - [TrainFoodController]
+SPRING_APPLICATION_api_v1_trainservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_trainservice_GET_Provider
+SPRING_APPLICATION_api_v1_trainservice_GET_Provider - [TrainController]
+SPRING_APPLICATION_api_v1_travel2service_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_travel2service_GET_Provider
+SPRING_APPLICATION_api_v1_travel2service_GET_Provider - [TravelServiceImpl]
+SPRING_APPLICATION_api_v1_travelplanservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_travelplanservice_GET_Provider
+SPRING_APPLICATION_api_v1_travelplanservice_GET_Provider - [TravelPlanServiceImpl]
+SPRING_APPLICATION_api_v1_travelservice_GET_Delegation_Provider - SPRING_APPLICATION_api_v1_travelservice_GET_Provider
+SPRING_APPLICATION_api_v1_travelservice_GET_Provider - [TravelServiceImpl]
+SPRING_APPLICATION_api_v1_users_Delegation_Provider - SPRING_APPLICATION_api_v1_users_Provider
+SPRING_APPLICATION_api_v1_users_Provider - [TokenServiceImpl]
+SPRING_APPLICATION_api_v1_userservice_users_Delegation_Provider - SPRING_APPLICATION_api_v1_userservice_users_Provider
+SPRING_APPLICATION_api_v1_userservice_users_Provider - [user_controller_UserController]
+SPRING_APPLICATION_api_v1_verifycode_Delegation_Provider - SPRING_APPLICATION_api_v1_verifycode_Provider
+SPRING_APPLICATION_api_v1_verifycode_Provider - [VerifyCodeController]
+SPRING_APPLICATION_api_v1_waitorderservice_Delegation_Provider - SPRING_APPLICATION_api_v1_waitorderservice_Provider
+SPRING_APPLICATION_api_v1_waitorderservice_Provider - [WaitListOrderController]
+[adminbasic_controller_AdminBasicInfoController_Assembly_Context] -(0- [adminbasic_service_AdminBasicInfoServiceImpl_Assembly_Context] : adminbasic_service_AdminBasicInfoService_Provider
+[adminbasic_controller_AdminBasicInfoController_Assembly_Context] -(0- [adminbasic_service_AdminBasicInfoService_Assembly_Context] : adminbasic_service_AdminBasicInfoService_Provider
+[adminbasic_service_AdminBasicInfoServiceImpl_Assembly_Context] -(0- [adminbasic_service_DiscoveryClient_Provider_Assembly_Context] : adminbasic_service_DiscoveryClient_Provider
+[adminbasic_service_AdminBasicInfoServiceImpl_Assembly_Context] -(0- [adminbasic_service_RestTemplate_Provider_Assembly_Context] : adminbasic_service_RestTemplate_Provider
+[adminorder_controller_AdminOrderController_Assembly_Context] -(0- [adminorder_service_AdminOrderServiceImpl_Assembly_Context] : adminorder_service_AdminOrderService_Provider
+[adminorder_controller_AdminOrderController_Assembly_Context] -(0- [adminorder_service_AdminOrderService_Assembly_Context] : adminorder_service_AdminOrderService_Provider
+[adminorder_service_AdminOrderServiceImpl_Assembly_Context] -(0- [adminorder_service_DiscoveryClient_Provider_Assembly_Context] : adminorder_service_DiscoveryClient_Provider
+[adminorder_service_AdminOrderServiceImpl_Assembly_Context] -(0- [adminorder_service_RestTemplate_Provider_Assembly_Context] : adminorder_service_RestTemplate_Provider
+[adminroute_controller_AdminRouteController_Assembly_Context] -(0- [adminroute_service_AdminRouteServiceImpl_Assembly_Context] : adminroute_service_AdminRouteService_Provider
+[adminroute_controller_AdminRouteController_Assembly_Context] -(0- [adminroute_service_AdminRouteService_Assembly_Context] : adminroute_service_AdminRouteService_Provider
+[adminroute_service_AdminRouteServiceImpl_Assembly_Context] -(0- [adminroute_service_DiscoveryClient_Provider_Assembly_Context] : adminroute_service_DiscoveryClient_Provider
+[adminroute_service_AdminRouteServiceImpl_Assembly_Context] -(0- [adminroute_service_RestTemplate_Provider_Assembly_Context] : adminroute_service_RestTemplate_Provider
+[admintravel_controller_AdminTravelController_Assembly_Context] -(0- [admintravel_service_AdminTravelServiceImpl_Assembly_Context] : admintravel_service_AdminTravelService_Provider
+[admintravel_controller_AdminTravelController_Assembly_Context] -(0- [admintravel_service_AdminTravelService_Assembly_Context] : admintravel_service_AdminTravelService_Provider
+[admintravel_service_AdminTravelServiceImpl_Assembly_Context] -(0- [admintravel_service_DiscoveryClient_Provider_Assembly_Context] : admintravel_service_DiscoveryClient_Provider
+[admintravel_service_AdminTravelServiceImpl_Assembly_Context] -(0- [admintravel_service_RestTemplate_Provider_Assembly_Context] : admintravel_service_RestTemplate_Provider
+[adminuser_controller_AdminUserController_Assembly_Context] -(0- [adminuser_service_AdminUserService_Assembly_Context] : adminuser_service_AdminUserService_Provider
+[adminuser_controller_AdminUserController_Assembly_Context] -(0- [adminuser_service_AdminUserServiceImpl_Assembly_Context] : adminuser_service_AdminUserService_Provider
+[adminuser_service_AdminUserServiceImpl_Assembly_Context] -(0- [adminuser_service_DiscoveryClient_Provider_Assembly_Context] : adminuser_service_DiscoveryClient_Provider
+[adminuser_service_AdminUserServiceImpl_Assembly_Context] -(0- [adminuser_service_RestTemplate_Provider_Assembly_Context] : adminuser_service_RestTemplate_Provider
+[assurance_service_AssuranceServiceImpl_Assembly_Context] -(0- [assurance_repository_AssuranceRepository_Assembly_Context] : assurance_repository_AssuranceRepository_Provider
+[assurance_controller_AssuranceController_Assembly_Context] -(0- [assurance_service_AssuranceService_Assembly_Context] : assurance_service_AssuranceService_Provider
+[assurance_controller_AssuranceController_Assembly_Context] -(0- [assurance_service_AssuranceServiceImpl_Assembly_Context] : assurance_service_AssuranceService_Provider
+[auth_service_impl_UserServiceImpl_Assembly_Context] -(0- [auth_repository_UserRepository_Assembly_Context] : auth_repository_UserRepository_Provider
+[auth_service_impl_TokenServiceImpl_Assembly_Context] -(0- [auth_repository_UserRepository_Assembly_Context] : auth_repository_UserRepository_Provider
+[auth_service_impl_TokenServiceImpl_Assembly_Context] -(0- [auth_security_jwt_JWTProvider_Assembly_Context] : auth_security_jwt_JWTProvider_Provider
+[auth_controller_UserController_Assembly_Context] -(0- [auth_service_impl_TokenServiceImpl_Assembly_Context] : auth_service_TokenService_Provider
+[auth_controller_UserController_Assembly_Context] -(0- [auth_service_TokenService_Assembly_Context] : auth_service_TokenService_Provider
+[auth_controller_UserController_Assembly_Context] -(0- [auth_service_impl_UserServiceImpl_Assembly_Context] : auth_service_UserService_Provider
+[auth_controller_AuthController_Assembly_Context] -(0- [auth_service_impl_UserServiceImpl_Assembly_Context] : auth_service_UserService_Provider
+[auth_controller_AuthController_Assembly_Context] -(0- [auth_service_UserService_Assembly_Context] : auth_service_UserService_Provider
+[auth_controller_UserController_Assembly_Context] -(0- [auth_service_UserService_Assembly_Context] : auth_service_UserService_Provider
+[auth_service_impl_TokenServiceImpl_Assembly_Context] -(0- [auth_service_impl_AuthenticationManager_Provider_Assembly_Context] : auth_service_impl_AuthenticationManager_Provider
+[auth_service_impl_TokenServiceImpl_Assembly_Context] -(0- [auth_service_impl_DiscoveryClient_Provider_Assembly_Context] : auth_service_impl_DiscoveryClient_Provider
+[auth_service_impl_UserServiceImpl_Assembly_Context] -(0- [auth_service_impl_PasswordEncoder_Provider_Assembly_Context] : auth_service_impl_PasswordEncoder_Provider
+[auth_service_impl_TokenServiceImpl_Assembly_Context] -(0- [auth_service_impl_RestTemplate_Provider_Assembly_Context] : auth_service_impl_RestTemplate_Provider
+[cancel_controller_CancelController_Assembly_Context] -(0- [cancel_service_CancelService_Assembly_Context] : cancel_service_CancelService_Provider
+[cancel_controller_CancelController_Assembly_Context] -(0- [cancel_service_CancelServiceImpl_Assembly_Context] : cancel_service_CancelService_Provider
+[cancel_service_CancelServiceImpl_Assembly_Context] -(0- [cancel_service_DiscoveryClient_Provider_Assembly_Context] : cancel_service_DiscoveryClient_Provider
+[cancel_service_CancelServiceImpl_Assembly_Context] -(0- [cancel_service_RestTemplate_Provider_Assembly_Context] : cancel_service_RestTemplate_Provider
+[com_trainticket_service_PaymentServiceImpl_Assembly_Context] -(0- [com_trainticket_repository_AddMoneyRepository_Assembly_Context] : com_trainticket_repository_AddMoneyRepository_Provider
+[com_trainticket_service_PaymentServiceImpl_Assembly_Context] -(0- [com_trainticket_repository_PaymentRepository_Assembly_Context] : com_trainticket_repository_PaymentRepository_Provider
+[com_trainticket_controller_PaymentController_Assembly_Context] -(0- [com_trainticket_service_PaymentServiceImpl_Assembly_Context] : com_trainticket_service_PaymentService_Provider
+[com_trainticket_controller_PaymentController_Assembly_Context] -(0- [com_trainticket_service_PaymentService_Assembly_Context] : com_trainticket_service_PaymentService_Provider
+[config_service_ConfigServiceImpl_Assembly_Context] -(0- [config_repository_ConfigRepository_Assembly_Context] : config_repository_ConfigRepository_Provider
+[config_controller_ConfigController_Assembly_Context] -(0- [config_service_ConfigService_Assembly_Context] : config_service_ConfigService_Provider
+[config_controller_ConfigController_Assembly_Context] -(0- [config_service_ConfigServiceImpl_Assembly_Context] : config_service_ConfigService_Provider
+[consign_service_ConsignServiceImpl_Assembly_Context] -(0- [consign_repository_ConsignRepository_Assembly_Context] : consign_repository_ConsignRepository_Provider
+[consign_controller_ConsignController_Assembly_Context] -(0- [consign_service_ConsignService_Assembly_Context] : consign_service_ConsignService_Provider
+[consign_controller_ConsignController_Assembly_Context] -(0- [consign_service_ConsignServiceImpl_Assembly_Context] : consign_service_ConsignService_Provider
+[consign_service_ConsignServiceImpl_Assembly_Context] -(0- [consign_service_DiscoveryClient_Provider_Assembly_Context] : consign_service_DiscoveryClient_Provider
+[consign_service_ConsignServiceImpl_Assembly_Context] -(0- [consign_service_RestTemplate_Provider_Assembly_Context] : consign_service_RestTemplate_Provider
+[consignprice_service_ConsignPriceServiceImpl_Assembly_Context] -(0- [consignprice_repository_ConsignPriceConfigRepository_Assembly_Context] : consignprice_repository_ConsignPriceConfigRepository_Provider
+[consignprice_controller_ConsignPriceController_Assembly_Context] -(0- [consignprice_service_ConsignPriceService_Assembly_Context] : consignprice_service_ConsignPriceService_Provider
+[consignprice_controller_ConsignPriceController_Assembly_Context] -(0- [consignprice_service_ConsignPriceServiceImpl_Assembly_Context] : consignprice_service_ConsignPriceService_Provider
+[contacts_service_ContactsServiceImpl_Assembly_Context] -(0- [contacts_repository_ContactsRepository_Assembly_Context] : contacts_repository_ContactsRepository_Provider
+[contacts_controller_ContactsController_Assembly_Context] -(0- [contacts_service_ContactsService_Assembly_Context] : contacts_service_ContactsService_Provider
+[contacts_controller_ContactsController_Assembly_Context] -(0- [contacts_service_ContactsServiceImpl_Assembly_Context] : contacts_service_ContactsService_Provider
+[execute_serivce_ExecuteServiceImpl_Assembly_Context] -(0- [execute_serivce_DiscoveryClient_Provider_Assembly_Context] : execute_serivce_DiscoveryClient_Provider
+[execute_controller_ExecuteControlller_Assembly_Context] -(0- [execute_serivce_ExecuteServiceImpl_Assembly_Context] : execute_serivce_ExecuteService_Provider
+[execute_controller_ExecuteControlller_Assembly_Context] -(0- [execute_serivce_ExecuteService_Assembly_Context] : execute_serivce_ExecuteService_Provider
+[execute_serivce_ExecuteServiceImpl_Assembly_Context] -(0- [execute_serivce_RestTemplate_Provider_Assembly_Context] : execute_serivce_RestTemplate_Provider
+[fdse_microservice_service_StationServiceImpl_Assembly_Context] -(0- [fdse_microservice_repository_StationRepository_Assembly_Context] : fdse_microservice_repository_StationRepository_Provider
+[fdse_microservice_controller_BasicController_Assembly_Context] -(0- [fdse_microservice_service_BasicServiceImpl_Assembly_Context] : fdse_microservice_service_BasicService_Provider
+[fdse_microservice_controller_BasicController_Assembly_Context] -(0- [fdse_microservice_service_BasicService_Assembly_Context] : fdse_microservice_service_BasicService_Provider
+[fdse_microservice_service_BasicServiceImpl_Assembly_Context] -(0- [fdse_microservice_service_DiscoveryClient_Provider_Assembly_Context] : fdse_microservice_service_DiscoveryClient_Provider
+[fdse_microservice_service_BasicServiceImpl_Assembly_Context] -(0- [fdse_microservice_service_RestTemplate_Provider_Assembly_Context] : fdse_microservice_service_RestTemplate_Provider
+[fdse_microservice_controller_StationController_Assembly_Context] -(0- [fdse_microservice_service_StationServiceImpl_Assembly_Context] : fdse_microservice_service_StationService_Provider
+[fdse_microservice_controller_StationController_Assembly_Context] -(0- [fdse_microservice_service_StationService_Assembly_Context] : fdse_microservice_service_StationService_Provider
+[food_delivery_service_FoodDeliveryServiceImpl_Assembly_Context] -(0- [food_delivery_repository_FoodDeliveryOrderRepository_Assembly_Context] : food_delivery_repository_FoodDeliveryOrderRepository_Provider
+[food_delivery_service_FoodDeliveryServiceImpl_Assembly_Context] -(0- [food_delivery_service_DiscoveryClient_Provider_Assembly_Context] : food_delivery_service_DiscoveryClient_Provider
+[food_delivery_controller_FoodDeliveryController_Assembly_Context] -(0- [food_delivery_service_FoodDeliveryService_Assembly_Context] : food_delivery_service_FoodDeliveryService_Provider
+[food_delivery_controller_FoodDeliveryController_Assembly_Context] -(0- [food_delivery_service_FoodDeliveryServiceImpl_Assembly_Context] : food_delivery_service_FoodDeliveryService_Provider
+[food_delivery_service_FoodDeliveryServiceImpl_Assembly_Context] -(0- [food_delivery_service_RestTemplate_Provider_Assembly_Context] : food_delivery_service_RestTemplate_Provider
+[food_service_StationFoodServiceImpl_Assembly_Context] -(0- [food_repository_StationFoodRepository_Assembly_Context] : food_repository_StationFoodRepository_Provider
+[food_controller_StationFoodController_Assembly_Context] -(0- [food_service_StationFoodService_Assembly_Context] : food_service_StationFoodService_Provider
+[food_controller_StationFoodController_Assembly_Context] -(0- [food_service_StationFoodServiceImpl_Assembly_Context] : food_service_StationFoodService_Provider
+[foodsearch_service_FoodServiceImpl_Assembly_Context] -(0- [foodsearch_mq_RabbitSend_Assembly_Context] : foodsearch_mq_RabbitSend_Provider
+[foodsearch_controller_FoodController_Assembly_Context] -(0- [foodsearch_mq_RabbitSend_Assembly_Context] : foodsearch_mq_RabbitSend_Provider
+[foodsearch_service_FoodServiceImpl_Assembly_Context] -(0- [foodsearch_repository_FoodOrderRepository_Assembly_Context] : foodsearch_repository_FoodOrderRepository_Provider
+[foodsearch_service_FoodServiceImpl_Assembly_Context] -(0- [foodsearch_service_DiscoveryClient_Provider_Assembly_Context] : foodsearch_service_DiscoveryClient_Provider
+[foodsearch_controller_FoodController_Assembly_Context] -(0- [foodsearch_service_FoodServiceImpl_Assembly_Context] : foodsearch_service_FoodService_Provider
+[foodsearch_controller_FoodController_Assembly_Context] -(0- [foodsearch_service_FoodService_Assembly_Context] : foodsearch_service_FoodService_Provider
+[foodsearch_service_FoodServiceImpl_Assembly_Context] -(0- [foodsearch_service_RestTemplate_Provider_Assembly_Context] : foodsearch_service_RestTemplate_Provider
+[inside_payment_service_InsidePaymentServiceImpl_Assembly_Context] -(0- [inside_payment_repository_AddMoneyRepository_Assembly_Context] : inside_payment_repository_AddMoneyRepository_Provider
+[inside_payment_service_InsidePaymentServiceImpl_Assembly_Context] -(0- [inside_payment_repository_PaymentRepository_Assembly_Context] : inside_payment_repository_PaymentRepository_Provider
+[inside_payment_controller_InsidePaymentController_Assembly_Context] -(0- [inside_payment_service_InsidePaymentService_Assembly_Context] : inside_payment_service_InsidePaymentService_Provider
+[inside_payment_controller_InsidePaymentController_Assembly_Context] -(0- [inside_payment_service_InsidePaymentServiceImpl_Assembly_Context] : inside_payment_service_InsidePaymentService_Provider
+[inside_payment_service_InsidePaymentServiceImpl_Assembly_Context] -(0- [inside_payment_service_RestTemplate_Provider_Assembly_Context] : inside_payment_service_RestTemplate_Provider
+[notification_controller_NotificationController_Assembly_Context] -(0- [notification_mq_RabbitSend_Assembly_Context] : notification_mq_RabbitSend_Provider
+[notification_service_MailService_Assembly_Context] -(0- [notification_service_Configuration_Provider_Assembly_Context] : notification_service_Configuration_Provider
+[notification_service_MailService_Assembly_Context] -(0- [notification_service_JavaMailSender_Provider_Assembly_Context] : notification_service_JavaMailSender_Provider
+[notification_service_NotificationServiceImpl_Assembly_Context] -(0- [notification_service_JavaMailSender_Provider_Assembly_Context] : notification_service_JavaMailSender_Provider
+[notification_service_NotificationServiceImpl_Assembly_Context] -(0- [notification_service_MailService_Assembly_Context] : notification_service_MailService_Provider
+[notification_controller_NotificationController_Assembly_Context] -(0- [notification_service_NotificationService_Assembly_Context] : notification_service_NotificationService_Provider
+[notification_controller_NotificationController_Assembly_Context] -(0- [notification_service_NotificationServiceImpl_Assembly_Context] : notification_service_NotificationService_Provider
+[order_service_OrderServiceImpl_Assembly_Context] -(0- [order_repository_OrderRepository_Assembly_Context] : order_repository_OrderRepository_Provider
+[order_service_OrderServiceImpl_Assembly_Context] -(0- [order_service_DiscoveryClient_Provider_Assembly_Context] : order_service_DiscoveryClient_Provider
+[order_controller_OrderController_Assembly_Context] -(0- [order_service_OrderServiceImpl_Assembly_Context] : order_service_OrderService_Provider
+[order_controller_OrderController_Assembly_Context] -(0- [order_service_OrderService_Assembly_Context] : order_service_OrderService_Provider
+[order_service_OrderServiceImpl_Assembly_Context] -(0- [order_service_RestTemplate_Provider_Assembly_Context] : order_service_RestTemplate_Provider
+[other_service_OrderOtherServiceImpl_Assembly_Context] -(0- [other_repository_OrderOtherRepository_Assembly_Context] : other_repository_OrderOtherRepository_Provider
+[other_service_OrderOtherServiceImpl_Assembly_Context] -(0- [other_service_DiscoveryClient_Provider_Assembly_Context] : other_service_DiscoveryClient_Provider
+[other_controller_OrderOtherController_Assembly_Context] -(0- [other_service_OrderOtherService_Assembly_Context] : other_service_OrderOtherService_Provider
+[other_controller_OrderOtherController_Assembly_Context] -(0- [other_service_OrderOtherServiceImpl_Assembly_Context] : other_service_OrderOtherService_Provider
+[other_service_OrderOtherServiceImpl_Assembly_Context] -(0- [other_service_RestTemplate_Provider_Assembly_Context] : other_service_RestTemplate_Provider
+[plan_service_RoutePlanServiceImpl_Assembly_Context] -(0- [plan_service_DiscoveryClient_Provider_Assembly_Context] : plan_service_DiscoveryClient_Provider
+[plan_service_RoutePlanServiceImpl_Assembly_Context] -(0- [plan_service_RestTemplate_Provider_Assembly_Context] : plan_service_RestTemplate_Provider
+[plan_controller_RoutePlanController_Assembly_Context] -(0- [plan_service_RoutePlanService_Assembly_Context] : plan_service_RoutePlanService_Provider
+[plan_controller_RoutePlanController_Assembly_Context] -(0- [plan_service_RoutePlanServiceImpl_Assembly_Context] : plan_service_RoutePlanService_Provider
+[preserveOther_service_PreserveOtherServiceImpl_Assembly_Context] -(0- [preserveOther_mq_RabbitSend_Assembly_Context] : preserveOther_mq_RabbitSend_Provider
+[preserveOther_service_PreserveOtherServiceImpl_Assembly_Context] -(0- [preserveOther_service_DiscoveryClient_Provider_Assembly_Context] : preserveOther_service_DiscoveryClient_Provider
+[preserveOther_controller_PreserveOtherController_Assembly_Context] -(0- [preserveOther_service_PreserveOtherServiceImpl_Assembly_Context] : preserveOther_service_PreserveOtherService_Provider
+[preserveOther_controller_PreserveOtherController_Assembly_Context] -(0- [preserveOther_service_PreserveOtherService_Assembly_Context] : preserveOther_service_PreserveOtherService_Provider
+[preserveOther_service_PreserveOtherServiceImpl_Assembly_Context] -(0- [preserveOther_service_RestTemplate_Provider_Assembly_Context] : preserveOther_service_RestTemplate_Provider
+[preserve_service_PreserveServiceImpl_Assembly_Context] -(0- [preserve_mq_RabbitSend_Assembly_Context] : preserve_mq_RabbitSend_Provider
+[preserve_service_PreserveServiceImpl_Assembly_Context] -(0- [preserve_service_DiscoveryClient_Provider_Assembly_Context] : preserve_service_DiscoveryClient_Provider
+[preserve_controller_PreserveController_Assembly_Context] -(0- [preserve_service_PreserveService_Assembly_Context] : preserve_service_PreserveService_Provider
+[preserve_controller_PreserveController_Assembly_Context] -(0- [preserve_service_PreserveServiceImpl_Assembly_Context] : preserve_service_PreserveService_Provider
+[preserve_service_PreserveServiceImpl_Assembly_Context] -(0- [preserve_service_RestTemplate_Provider_Assembly_Context] : preserve_service_RestTemplate_Provider
+[price_service_PriceServiceImpl_Assembly_Context] -(0- [price_repository_PriceConfigRepository_Assembly_Context] : price_repository_PriceConfigRepository_Provider
+[price_controller_PriceController_Assembly_Context] -(0- [price_service_PriceServiceImpl_Assembly_Context] : price_service_PriceService_Provider
+[price_controller_PriceController_Assembly_Context] -(0- [price_service_PriceService_Assembly_Context] : price_service_PriceService_Provider
+[rebook_service_RebookServiceImpl_Assembly_Context] -(0- [rebook_service_DiscoveryClient_Provider_Assembly_Context] : rebook_service_DiscoveryClient_Provider
+[rebook_controller_RebookController_Assembly_Context] -(0- [rebook_service_RebookService_Assembly_Context] : rebook_service_RebookService_Provider
+[rebook_controller_RebookController_Assembly_Context] -(0- [rebook_service_RebookServiceImpl_Assembly_Context] : rebook_service_RebookService_Provider
+[rebook_service_RebookServiceImpl_Assembly_Context] -(0- [rebook_service_RestTemplate_Provider_Assembly_Context] : rebook_service_RestTemplate_Provider
+[route_service_RouteServiceImpl_Assembly_Context] -(0- [route_repository_RouteRepository_Assembly_Context] : route_repository_RouteRepository_Provider
+[route_controller_RouteController_Assembly_Context] -(0- [route_service_RouteServiceImpl_Assembly_Context] : route_service_RouteService_Provider
+[route_controller_RouteController_Assembly_Context] -(0- [route_service_RouteService_Assembly_Context] : route_service_RouteService_Provider
+[seat_service_SeatServiceImpl_Assembly_Context] -(0- [seat_service_DiscoveryClient_Provider_Assembly_Context] : seat_service_DiscoveryClient_Provider
+[seat_service_SeatServiceImpl_Assembly_Context] -(0- [seat_service_RestTemplate_Provider_Assembly_Context] : seat_service_RestTemplate_Provider
+[seat_controller_SeatController_Assembly_Context] -(0- [seat_service_SeatServiceImpl_Assembly_Context] : seat_service_SeatService_Provider
+[seat_controller_SeatController_Assembly_Context] -(0- [seat_service_SeatService_Assembly_Context] : seat_service_SeatService_Provider
+[security_service_SecurityServiceImpl_Assembly_Context] -(0- [security_repository_SecurityRepository_Assembly_Context] : security_repository_SecurityRepository_Provider
+[security_service_SecurityServiceImpl_Assembly_Context] -(0- [security_service_DiscoveryClient_Provider_Assembly_Context] : security_service_DiscoveryClient_Provider
+[security_service_SecurityServiceImpl_Assembly_Context] -(0- [security_service_RestTemplate_Provider_Assembly_Context] : security_service_RestTemplate_Provider
+[security_controller_SecurityController_Assembly_Context] -(0- [security_service_SecurityService_Assembly_Context] : security_service_SecurityService_Provider
+[security_controller_SecurityController_Assembly_Context] -(0- [security_service_SecurityServiceImpl_Assembly_Context] : security_service_SecurityService_Provider
+[trainFood_service_TrainFoodServiceImpl_Assembly_Context] -(0- [trainFood_repository_TrainFoodRepository_Assembly_Context] : trainFood_repository_TrainFoodRepository_Provider
+[trainFood_controller_TrainFoodController_Assembly_Context] -(0- [trainFood_service_TrainFoodServiceImpl_Assembly_Context] : trainFood_service_TrainFoodService_Provider
+[trainFood_controller_TrainFoodController_Assembly_Context] -(0- [trainFood_service_TrainFoodService_Assembly_Context] : trainFood_service_TrainFoodService_Provider
+[train_service_TrainServiceImpl_Assembly_Context] -(0- [train_repository_TrainTypeRepository_Assembly_Context] : train_repository_TrainTypeRepository_Provider
+[train_controller_TrainController_Assembly_Context] -(0- [train_service_TrainServiceImpl_Assembly_Context] : train_service_TrainService_Provider
+[train_controller_TrainController_Assembly_Context] -(0- [train_service_TrainService_Assembly_Context] : train_service_TrainService_Provider
+[travel2_service_TravelServiceImpl_Assembly_Context] -(0- [travel2_repository_TripRepository_Assembly_Context] : travel2_repository_TripRepository_Provider
+[travel2_service_TravelServiceImpl_Assembly_Context] -(0- [travel2_service_DiscoveryClient_Provider_Assembly_Context] : travel2_service_DiscoveryClient_Provider
+[travel2_service_TravelServiceImpl_Assembly_Context] -(0- [travel2_service_RestTemplate_Provider_Assembly_Context] : travel2_service_RestTemplate_Provider
+[travel2_controller_Travel2Controller_Assembly_Context] -(0- [travel2_service_TravelService_Assembly_Context] : travel2_service_TravelService_Provider
+[travel2_controller_Travel2Controller_Assembly_Context] -(0- [travel2_service_TravelServiceImpl_Assembly_Context] : travel2_service_TravelService_Provider
+[travel_service_TravelServiceImpl_Assembly_Context] -(0- [travel_repository_TripRepository_Assembly_Context] : travel_repository_TripRepository_Provider
+[travel_service_TravelServiceImpl_Assembly_Context] -(0- [travel_service_DiscoveryClient_Provider_Assembly_Context] : travel_service_DiscoveryClient_Provider
+[travel_service_TravelServiceImpl_Assembly_Context] -(0- [travel_service_RestTemplate_Provider_Assembly_Context] : travel_service_RestTemplate_Provider
+[travel_controller_TravelController_Assembly_Context] -(0- [travel_service_TravelServiceImpl_Assembly_Context] : travel_service_TravelService_Provider
+[travel_controller_TravelController_Assembly_Context] -(0- [travel_service_TravelService_Assembly_Context] : travel_service_TravelService_Provider
+[travelplan_service_TravelPlanServiceImpl_Assembly_Context] -(0- [travelplan_service_DiscoveryClient_Provider_Assembly_Context] : travelplan_service_DiscoveryClient_Provider
+[travelplan_service_TravelPlanServiceImpl_Assembly_Context] -(0- [travelplan_service_RestTemplate_Provider_Assembly_Context] : travelplan_service_RestTemplate_Provider
+[travelplan_controller_TravelPlanController_Assembly_Context] -(0- [travelplan_service_TravelPlanService_Assembly_Context] : travelplan_service_TravelPlanService_Provider
+[travelplan_controller_TravelPlanController_Assembly_Context] -(0- [travelplan_service_TravelPlanServiceImpl_Assembly_Context] : travelplan_service_TravelPlanService_Provider
+[user_service_impl_UserServiceImpl_Assembly_Context] -(0- [user_repository_UserRepository_Assembly_Context] : user_repository_UserRepository_Provider
+[user_controller_UserController_Assembly_Context] -(0- [user_service_impl_UserServiceImpl_Assembly_Context] : user_service_UserService_Provider
+[user_controller_UserController_Assembly_Context] -(0- [user_service_UserService_Assembly_Context] : user_service_UserService_Provider
+[user_service_impl_UserServiceImpl_Assembly_Context] -(0- [user_service_impl_DiscoveryClient_Provider_Assembly_Context] : user_service_impl_DiscoveryClient_Provider
+[user_service_impl_UserServiceImpl_Assembly_Context] -(0- [user_service_impl_RestTemplate_Provider_Assembly_Context] : user_service_impl_RestTemplate_Provider
+[verifycode_controller_VerifyCodeController_Assembly_Context] -(0- [verifycode_service_VerifyCodeService_Assembly_Context] : verifycode_service_VerifyCodeService_Provider
+[verifycode_controller_VerifyCodeController_Assembly_Context] -(0- [verifycode_service_impl_VerifyCodeServiceImpl_Assembly_Context] : verifycode_service_VerifyCodeService_Provider
+[waitorder_service_Impl_WaitListOrderServiceImpl_Assembly_Context] -(0- [waitorder_repository_WaitListOrderRepository_Assembly_Context] : waitorder_repository_WaitListOrderRepository_Provider
+[waitorder_service_Impl_WaitListOrderServiceImpl_Assembly_Context] -(0- [waitorder_service_Impl_DiscoveryClient_Provider_Assembly_Context] : waitorder_service_Impl_DiscoveryClient_Provider
+[waitorder_service_Impl_WaitListOrderServiceImpl_Assembly_Context] -(0- [waitorder_service_Impl_RestTemplate_Provider_Assembly_Context] : waitorder_service_Impl_RestTemplate_Provider
+[waitorder_controller_WaitListOrderController_Assembly_Context] -(0- [waitorder_service_WaitListOrderService_Assembly_Context] : waitorder_service_WaitListOrderService_Provider
+[waitorder_controller_WaitListOrderController_Assembly_Context] -(0- [waitorder_service_Impl_WaitListOrderServiceImpl_Assembly_Context] : waitorder_service_WaitListOrderService_Provider
+[AdminBasicInfoController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[AdminOrderController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[AdminRouteController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[AdminTravelController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[AdminUserController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[AssuranceServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[BasicController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[CancelController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[ConfigServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[ConsignController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[ConsignPriceServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[ContactsServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[ExecuteServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[FoodDeliveryServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[FoodServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[InsidePaymentServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[NotificationController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[OrderOtherController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[OrderServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[PaymentController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[PreserveOtherController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[PreserveServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[PriceServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[RebookServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[RouteController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[RoutePlanServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[SeatController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[SecurityController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[StationController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[StationFoodServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[TokenServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[TrainController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[TrainFoodController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[TravelPlanServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[TravelServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[VerifyCodeController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[WaitListOrderController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminbasic_controller_AdminBasicInfoController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminbasic_service_AdminBasicInfoServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminbasic_service_AdminBasicInfoService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminbasic_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminbasic_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminorder_controller_AdminOrderController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminorder_service_AdminOrderServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminorder_service_AdminOrderService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminorder_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminorder_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminroute_controller_AdminRouteController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminroute_service_AdminRouteServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminroute_service_AdminRouteService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminroute_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminroute_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[admintravel_controller_AdminTravelController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[admintravel_service_AdminTravelServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[admintravel_service_AdminTravelService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[admintravel_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[admintravel_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminuser_controller_AdminUserController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminuser_service_AdminUserServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminuser_service_AdminUserService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminuser_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[adminuser_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[assurance_controller_AssuranceController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[assurance_repository_AssuranceRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[assurance_service_AssuranceServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[assurance_service_AssuranceService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_controller_AuthController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_controller_UserController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_repository_UserRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_security_jwt_JWTProvider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_service_TokenService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_service_UserService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_service_impl_AuthenticationManager_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_service_impl_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_service_impl_PasswordEncoder_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_service_impl_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_service_impl_TokenServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[auth_service_impl_UserServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[cancel_controller_CancelController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[cancel_service_CancelServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[cancel_service_CancelService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[cancel_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[cancel_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[com_trainticket_controller_PaymentController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[com_trainticket_repository_AddMoneyRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[com_trainticket_repository_PaymentRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[com_trainticket_service_PaymentServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[com_trainticket_service_PaymentService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[config_controller_ConfigController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[config_repository_ConfigRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[config_service_ConfigServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[config_service_ConfigService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consign_controller_ConsignController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consign_repository_ConsignRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consign_service_ConsignServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consign_service_ConsignService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consign_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consign_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consignprice_controller_ConsignPriceController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consignprice_repository_ConsignPriceConfigRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consignprice_service_ConsignPriceServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[consignprice_service_ConsignPriceService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[contacts_controller_ContactsController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[contacts_repository_ContactsRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[contacts_service_ContactsServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[contacts_service_ContactsService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[execute_controller_ExecuteControlller_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[execute_serivce_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[execute_serivce_ExecuteServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[execute_serivce_ExecuteService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[execute_serivce_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_controller_BasicController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_controller_StationController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_repository_StationRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_service_BasicServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_service_BasicService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_service_StationServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[fdse_microservice_service_StationService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_controller_StationFoodController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_delivery_controller_FoodDeliveryController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_delivery_repository_FoodDeliveryOrderRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_delivery_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_delivery_service_FoodDeliveryServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_delivery_service_FoodDeliveryService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_delivery_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_repository_StationFoodRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_service_StationFoodServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[food_service_StationFoodService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[foodsearch_controller_FoodController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[foodsearch_mq_RabbitSend_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[foodsearch_repository_FoodOrderRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[foodsearch_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[foodsearch_service_FoodServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[foodsearch_service_FoodService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[foodsearch_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[inside_payment_controller_InsidePaymentController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[inside_payment_repository_AddMoneyRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[inside_payment_repository_PaymentRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[inside_payment_service_InsidePaymentServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[inside_payment_service_InsidePaymentService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[inside_payment_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[notification_controller_NotificationController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[notification_mq_RabbitSend_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[notification_service_Configuration_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[notification_service_JavaMailSender_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[notification_service_MailService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[notification_service_NotificationServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[notification_service_NotificationService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[order_controller_OrderController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[order_repository_OrderRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[order_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[order_service_OrderServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[order_service_OrderService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[order_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[other_controller_OrderOtherController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[other_repository_OrderOtherRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[other_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[other_service_OrderOtherServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[other_service_OrderOtherService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[other_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[plan_controller_RoutePlanController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[plan_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[plan_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[plan_service_RoutePlanServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[plan_service_RoutePlanService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserveOther_controller_PreserveOtherController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserveOther_mq_RabbitSend_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserveOther_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserveOther_service_PreserveOtherServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserveOther_service_PreserveOtherService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserveOther_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserve_controller_PreserveController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserve_mq_RabbitSend_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserve_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserve_service_PreserveServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserve_service_PreserveService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[preserve_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[price_controller_PriceController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[price_repository_PriceConfigRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[price_service_PriceServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[price_service_PriceService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[rebook_controller_RebookController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[rebook_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[rebook_service_RebookServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[rebook_service_RebookService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[rebook_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[route_controller_RouteController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[route_repository_RouteRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[route_service_RouteServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[route_service_RouteService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[seat_controller_SeatController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[seat_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[seat_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[seat_service_SeatServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[seat_service_SeatService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[security_controller_SecurityController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[security_repository_SecurityRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[security_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[security_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[security_service_SecurityServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[security_service_SecurityService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[trainFood_controller_TrainFoodController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[trainFood_repository_TrainFoodRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[trainFood_service_TrainFoodServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[trainFood_service_TrainFoodService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[train_controller_TrainController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[train_repository_TrainTypeRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[train_service_TrainServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[train_service_TrainService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel2_controller_Travel2Controller_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel2_repository_TripRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel2_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel2_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel2_service_TravelServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel2_service_TravelService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel_controller_TravelController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel_repository_TripRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel_service_TravelServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travel_service_TravelService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travelplan_controller_TravelPlanController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travelplan_service_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travelplan_service_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travelplan_service_TravelPlanServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[travelplan_service_TravelPlanService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[user_controller_UserController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[user_repository_UserRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[user_service_UserService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[user_service_impl_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[user_service_impl_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[user_service_impl_UserServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[verifycode_controller_VerifyCodeController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[verifycode_service_VerifyCodeService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[verifycode_service_impl_VerifyCodeServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[waitorder_controller_WaitListOrderController_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[waitorder_repository_WaitListOrderRepository_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[waitorder_service_Impl_DiscoveryClient_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[waitorder_service_Impl_RestTemplate_Provider_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[waitorder_service_Impl_WaitListOrderServiceImpl_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
+[waitorder_service_WaitListOrderService_Assembly_Context] [[fudanselab-train-ticket.repository#_43XCRLw4Ee6YZqMqu_-BDQ]]
 }
 
 @enduml

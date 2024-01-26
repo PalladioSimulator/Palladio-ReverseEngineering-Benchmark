@@ -1,102 +1,102 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
-() shopping-cart-service/ Delegation-Provider
-() catalog-service/v1 Delegation-Provider
-() user-service/user Delegation-Provider
-() order-service/ Delegation-Provider
-() inventory-service/v1 Delegation-Provider
-() account-service/ Delegation-Provider
-() user-service/login Delegation-Provider
-() SPRING-APPLICATION/ Delegation-Provider
-component System {
-[demo_api_v1_OrderServiceV1 Assembly Context] -(0- [demo_api_v1_OAuth2RestTemplate Provider Assembly Context] : demo_api_v1_OAuth2RestTemplate Provider
-[demo_v1_InventoryServiceV1 Assembly Context] -(0- [demo_product_ProductRepository Assembly Context] : demo_product_ProductRepository Provider
-[demo_v1_InventoryServiceV1 Assembly Context] -(0- [demo_inventory_InventoryRepository Assembly Context] : demo_inventory_InventoryRepository Provider
-[demo_api_v1_AccountServiceV1 Assembly Context] -(0- [demo_account_AccountRepository Assembly Context] : demo_account_AccountRepository Provider
-[demo_v1_InventoryControllerV1 Assembly Context] -(0- [demo_v1_InventoryServiceV1 Assembly Context] : demo_v1_InventoryServiceV1 Provider
-[demo_api_v1_UserControllerV1 Assembly Context] -(0- [demo_api_v1_UserServiceV1 Assembly Context] : demo_api_v1_UserServiceV1 Provider
-[demo_api_v1_ShoppingCartServiceV1 Assembly Context] -(0- [demo_api_v1_OAuth2RestTemplate Provider Assembly Context] : demo_api_v1_OAuth2RestTemplate Provider
-[demo_api_v1_UserServiceV1 Assembly Context] -(0- [demo_user_UserRepository Assembly Context] : demo_user_UserRepository Provider
-[demo_api_v1_AccountControllerV1 Assembly Context] -(0- [demo_api_v1_AccountServiceV1 Assembly Context] : demo_api_v1_AccountServiceV1 Provider
-[demo_api_v1_CatalogControllerV1 Assembly Context] -(0- [demo_api_v1_CatalogServiceV1 Assembly Context] : demo_api_v1_CatalogServiceV1 Provider
-[demo_api_v1_OrderServiceV1 Assembly Context] -(0- [demo_order_OrderEventRepository Assembly Context] : demo_order_OrderEventRepository Provider
-[demo_UserService Assembly Context] -(0- [demo_UserRepository Assembly Context] : demo_UserRepository Provider
-[demo_v1_InventoryServiceV1 Assembly Context] -(0- [demo_v1_Session Provider Assembly Context] : demo_v1_Session Provider
-[demo_UserController Assembly Context] -(0- [demo_UserService Assembly Context] : demo_UserService Provider
-[demo_login_LoginController Assembly Context] -(0- [demo_login_ClientDetailsService Provider Assembly Context] : demo_login_ClientDetailsService Provider
-[demo_login_LoginController Assembly Context] -(0- [demo_login_HttpSessionSecurityContextRepository Provider Assembly Context] : demo_login_HttpSessionSecurityContextRepository Provider
-[demo_api_v1_CatalogServiceV1 Assembly Context] -(0- [demo_api_v1_RestTemplate Provider Assembly Context] : demo_api_v1_RestTemplate Provider
-[demo_api_v1_ShoppingCartServiceV1 Assembly Context] -(0- [demo_cart_CartEventRepository Assembly Context] : demo_cart_CartEventRepository Provider
-[demo_api_v1_OrderServiceV1 Assembly Context] -(0- [demo_order_OrderRepository Assembly Context] : demo_order_OrderRepository Provider
-[demo_user_UserClientV1 Assembly Context] -(0- [demo_api_v1_UserControllerV1 Assembly Context] : user-service/ Provider
-[demo_api_v1_CatalogServiceV1 Assembly Context] -(0- [demo_catalog_CatalogInfoRepository Assembly Context] : demo_catalog_CatalogInfoRepository Provider
-[demo_api_v1_OrderControllerV1 Assembly Context] -(0- [demo_api_v1_OrderServiceV1 Assembly Context] : demo_api_v1_OrderServiceV1 Provider
-[demo_api_v1_AccountServiceV1 Assembly Context] -(0- [demo_api_v1_OAuth2RestTemplate Provider Assembly Context] : demo_api_v1_OAuth2RestTemplate Provider
-[demo_config_DatabaseInitializer Assembly Context] -(0- [demo_invoice_InvoiceRepository Assembly Context] : demo_invoice_InvoiceRepository Provider
-[demo_login_LoginController Assembly Context] -(0- [demo_login_AuthenticationManager Provider Assembly Context] : demo_login_AuthenticationManager Provider
-[demo_config_DatabaseInitializer Assembly Context] -(0- [demo_order_OrderRepository Assembly Context] : demo_order_OrderRepository Provider
-[demo_user_UserClientV1 Assembly Context] -(0- [UserControllerV1 Assembly Context] : user-service/ Provider
-[demo_api_v1_ShoppingCartServiceV1 Assembly Context] -(0- [demo_api_v1_RestTemplate Provider Assembly Context] : demo_api_v1_RestTemplate Provider
-[demo_api_v1_ShoppingCartControllerV1 Assembly Context] -(0- [demo_api_v1_ShoppingCartServiceV1 Assembly Context] : demo_api_v1_ShoppingCartServiceV1 Provider
-shopping-cart-service/ Delegation-Provider - shopping-cart-service/ Provider
-shopping-cart-service/ Provider - [ShoppingCartControllerV1]
-catalog-service/v1 Delegation-Provider - catalog-service/v1 Provider
-catalog-service/v1 Provider - [CatalogControllerV1]
-user-service/user Delegation-Provider - user-service/user Provider
-user-service/user Provider - [UserController]
-order-service/ Delegation-Provider - order-service/ Provider
-order-service/ Provider - [OrderServiceV1]
-inventory-service/v1 Delegation-Provider - inventory-service/v1 Provider
-inventory-service/v1 Provider - [InventoryControllerV1]
-account-service/ Delegation-Provider - account-service/ Provider
-account-service/ Provider - [AccountServiceV1]
-user-service/login Delegation-Provider - user-service/login Provider
-user-service/login Provider - [LoginController]
-SPRING-APPLICATION/ Delegation-Provider - SPRING-APPLICATION/ Provider
-SPRING-APPLICATION/ Provider - [UserController]
-[demo_login_AuthenticationManager Provider Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_inventory_InventoryRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[ShoppingCartControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_product_ProductRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_CatalogControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[OrderServiceV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_v1_InventoryControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[CatalogControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_login_ClientDetailsService Provider Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[UserControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_AccountServiceV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_login_HttpSessionSecurityContextRepository Provider Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_UserService Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_login_LoginController Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_user_UserRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_AccountControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_user_UserClientV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_account_AccountRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_cart_CartEventRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_ShoppingCartControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[AccountServiceV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[LoginController Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_UserController Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_order_OrderEventRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_RestTemplate Provider Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_invoice_InvoiceRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_UserRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_OAuth2RestTemplate Provider Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_order_OrderRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_OrderServiceV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_ShoppingCartServiceV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_catalog_CatalogInfoRepository Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_config_DatabaseInitializer Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_login_UserController Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[InventoryControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_UserServiceV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_v1_InventoryServiceV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_OrderControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_CatalogServiceV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[UserController Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_api_v1_UserControllerV1 Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[DatabaseInitializer Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
-[demo_v1_Session Provider Assembly Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_qk_J-LtpEe6l7fA9BdzNhg]]
+() SPRING_APPLICATION_Delegation_Provider
+() account_service_Delegation_Provider
+() catalog_service_v1_Delegation_Provider
+() inventory_service_v1_Delegation_Provider
+() order_service_Delegation_Provider
+() shopping_cart_service_Delegation_Provider
+() user_service_login_Delegation_Provider
+() user_service_user_Delegation_Provider
+component null {
+SPRING_APPLICATION_Delegation_Provider - SPRING_APPLICATION_Provider
+SPRING_APPLICATION_Provider - [UserController]
+account_service_Delegation_Provider - account_service_Provider
+account_service_Provider - [AccountServiceV1]
+catalog_service_v1_Delegation_Provider - catalog_service_v1_Provider
+catalog_service_v1_Provider - [CatalogControllerV1]
+[demo_UserService_Assembly_Context] -(0- [demo_UserRepository_Assembly_Context] : demo_UserRepository_Provider
+[demo_UserController_Assembly_Context] -(0- [demo_UserService_Assembly_Context] : demo_UserService_Provider
+[demo_api_v1_AccountServiceV1_Assembly_Context] -(0- [demo_account_AccountRepository_Assembly_Context] : demo_account_AccountRepository_Provider
+[demo_api_v1_AccountControllerV1_Assembly_Context] -(0- [demo_api_v1_AccountServiceV1_Assembly_Context] : demo_api_v1_AccountServiceV1_Provider
+[demo_api_v1_CatalogControllerV1_Assembly_Context] -(0- [demo_api_v1_CatalogServiceV1_Assembly_Context] : demo_api_v1_CatalogServiceV1_Provider
+[demo_api_v1_ShoppingCartServiceV1_Assembly_Context] -(0- [demo_api_v1_OAuth2RestTemplate_Provider_Assembly_Context] : demo_api_v1_OAuth2RestTemplate_Provider
+[demo_api_v1_AccountServiceV1_Assembly_Context] -(0- [demo_api_v1_OAuth2RestTemplate_Provider_Assembly_Context] : demo_api_v1_OAuth2RestTemplate_Provider
+[demo_api_v1_OrderServiceV1_Assembly_Context] -(0- [demo_api_v1_OAuth2RestTemplate_Provider_Assembly_Context] : demo_api_v1_OAuth2RestTemplate_Provider
+[demo_api_v1_OrderControllerV1_Assembly_Context] -(0- [demo_api_v1_OrderServiceV1_Assembly_Context] : demo_api_v1_OrderServiceV1_Provider
+[demo_api_v1_ShoppingCartServiceV1_Assembly_Context] -(0- [demo_api_v1_RestTemplate_Provider_Assembly_Context] : demo_api_v1_RestTemplate_Provider
+[demo_api_v1_CatalogServiceV1_Assembly_Context] -(0- [demo_api_v1_RestTemplate_Provider_Assembly_Context] : demo_api_v1_RestTemplate_Provider
+[demo_api_v1_ShoppingCartControllerV1_Assembly_Context] -(0- [demo_api_v1_ShoppingCartServiceV1_Assembly_Context] : demo_api_v1_ShoppingCartServiceV1_Provider
+[demo_api_v1_UserControllerV1_Assembly_Context] -(0- [demo_api_v1_UserServiceV1_Assembly_Context] : demo_api_v1_UserServiceV1_Provider
+[demo_api_v1_ShoppingCartServiceV1_Assembly_Context] -(0- [demo_cart_CartEventRepository_Assembly_Context] : demo_cart_CartEventRepository_Provider
+[demo_api_v1_CatalogServiceV1_Assembly_Context] -(0- [demo_catalog_CatalogInfoRepository_Assembly_Context] : demo_catalog_CatalogInfoRepository_Provider
+[demo_v1_InventoryServiceV1_Assembly_Context] -(0- [demo_inventory_InventoryRepository_Assembly_Context] : demo_inventory_InventoryRepository_Provider
+[demo_config_DatabaseInitializer_Assembly_Context] -(0- [demo_invoice_InvoiceRepository_Assembly_Context] : demo_invoice_InvoiceRepository_Provider
+[demo_login_LoginController_Assembly_Context] -(0- [demo_login_AuthenticationManager_Provider_Assembly_Context] : demo_login_AuthenticationManager_Provider
+[demo_login_LoginController_Assembly_Context] -(0- [demo_login_ClientDetailsService_Provider_Assembly_Context] : demo_login_ClientDetailsService_Provider
+[demo_login_LoginController_Assembly_Context] -(0- [demo_login_HttpSessionSecurityContextRepository_Provider_Assembly_Context] : demo_login_HttpSessionSecurityContextRepository_Provider
+[demo_api_v1_OrderServiceV1_Assembly_Context] -(0- [demo_order_OrderEventRepository_Assembly_Context] : demo_order_OrderEventRepository_Provider
+[demo_api_v1_OrderServiceV1_Assembly_Context] -(0- [demo_order_OrderRepository_Assembly_Context] : demo_order_OrderRepository_Provider
+[demo_config_DatabaseInitializer_Assembly_Context] -(0- [demo_order_OrderRepository_Assembly_Context] : demo_order_OrderRepository_Provider
+[demo_v1_InventoryServiceV1_Assembly_Context] -(0- [demo_product_ProductRepository_Assembly_Context] : demo_product_ProductRepository_Provider
+[demo_api_v1_UserServiceV1_Assembly_Context] -(0- [demo_user_UserRepository_Assembly_Context] : demo_user_UserRepository_Provider
+[demo_v1_InventoryControllerV1_Assembly_Context] -(0- [demo_v1_InventoryServiceV1_Assembly_Context] : demo_v1_InventoryServiceV1_Provider
+[demo_v1_InventoryServiceV1_Assembly_Context] -(0- [demo_v1_Session_Provider_Assembly_Context] : demo_v1_Session_Provider
+inventory_service_v1_Delegation_Provider - inventory_service_v1_Provider
+inventory_service_v1_Provider - [InventoryControllerV1]
+order_service_Delegation_Provider - order_service_Provider
+order_service_Provider - [OrderServiceV1]
+shopping_cart_service_Delegation_Provider - shopping_cart_service_Provider
+shopping_cart_service_Provider - [ShoppingCartControllerV1]
+[demo_user_UserClientV1_Assembly_Context] -(0- [demo_api_v1_UserControllerV1_Assembly_Context] : user_service_Provider
+[demo_user_UserClientV1_Assembly_Context] -(0- [UserControllerV1_Assembly_Context] : user_service_Provider
+user_service_login_Delegation_Provider - user_service_login_Provider
+user_service_login_Provider - [LoginController]
+user_service_user_Delegation_Provider - user_service_user_Provider
+user_service_user_Provider - [UserController]
+[AccountServiceV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[CatalogControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[DatabaseInitializer_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[InventoryControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[LoginController_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[OrderServiceV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[ShoppingCartControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[UserControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[UserController_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_UserController_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_UserRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_UserService_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_account_AccountRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_AccountControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_AccountServiceV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_CatalogControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_CatalogServiceV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_OAuth2RestTemplate_Provider_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_OrderControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_OrderServiceV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_RestTemplate_Provider_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_ShoppingCartControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_ShoppingCartServiceV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_UserControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_api_v1_UserServiceV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_cart_CartEventRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_catalog_CatalogInfoRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_config_DatabaseInitializer_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_inventory_InventoryRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_invoice_InvoiceRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_login_AuthenticationManager_Provider_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_login_ClientDetailsService_Provider_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_login_HttpSessionSecurityContextRepository_Provider_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_login_LoginController_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_login_UserController_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_order_OrderEventRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_order_OrderRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_product_ProductRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_user_UserClientV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_user_UserRepository_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_v1_InventoryControllerV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_v1_InventoryServiceV1_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
+[demo_v1_Session_Provider_Assembly_Context] [[kbastani-spring-cloud-event-sourcing-example.repository#_xL81yrw4Ee6T_JeXG5hGqQ]]
 }
 
 @enduml
