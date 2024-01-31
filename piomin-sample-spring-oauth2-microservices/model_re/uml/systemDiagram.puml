@@ -1,16 +1,17 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
+skinparam componentStyle uml2
 () SPRING_APPLICATION_Delegation_Provider
 () SPRING_APPLICATION_user_Delegation_Provider
-component null {
+rectangle System {
+[pl_piomin_services_account_api_AccountController] [[piomin-sample-spring-oauth2-microservices.repository#_e7blRMApEe6izvNNV_bhug]]
+[pl_piomin_services_auth_AuthServer] [[piomin-sample-spring-oauth2-microservices.repository#_e7blRMApEe6izvNNV_bhug]]
+port SPRING_APPLICATION_Provider
 SPRING_APPLICATION_Delegation_Provider - SPRING_APPLICATION_Provider
-SPRING_APPLICATION_Provider - [AccountController]
+SPRING_APPLICATION_Provider - [pl_piomin_services_account_api_AccountController]
+port SPRING_APPLICATION_user_Provider
 SPRING_APPLICATION_user_Delegation_Provider - SPRING_APPLICATION_user_Provider
-SPRING_APPLICATION_user_Provider - [AuthServer]
-[AccountController_Assembly_Context] [[piomin-sample-spring-oauth2-microservices.repository#_3WiItLw4Ee6VtKTfnmWHSQ]]
-[AuthServer_Assembly_Context] [[piomin-sample-spring-oauth2-microservices.repository#_3WiItLw4Ee6VtKTfnmWHSQ]]
-[pl_piomin_services_account_api_AccountController_Assembly_Context] [[piomin-sample-spring-oauth2-microservices.repository#_3WiItLw4Ee6VtKTfnmWHSQ]]
-[pl_piomin_services_auth_AuthServer_Assembly_Context] [[piomin-sample-spring-oauth2-microservices.repository#_3WiItLw4Ee6VtKTfnmWHSQ]]
+SPRING_APPLICATION_user_Provider - [pl_piomin_services_auth_AuthServer]
 }
 
 @enduml

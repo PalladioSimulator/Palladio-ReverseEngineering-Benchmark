@@ -1,15 +1,19 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
-component nullCartService\n\n\n\n\n\nnull {
-[io_github_georgwittberger_microserviceexample_cartservice_web_CartController]
+component "CartService\n\n\n\n\n\n" {
 [io_github_georgwittberger_microserviceexample_cartservice_cart_CartService]
+[io_github_georgwittberger_microserviceexample_cartservice_web_CartController]
+portin " " as CartService_requires_SPRING_APPLICATION_GET_
 portin " " as CartService_requires_SPRING_APPLICATION_GET_
 [io_github_georgwittberger_microserviceexample_cartservice_web_CartController]..>[io_github_georgwittberger_microserviceexample_cartservice_cart_CartService] : requires
+"CartService_requires_SPRING_APPLICATION_GET_"--[io_github_georgwittberger_microserviceexample_cartservice_web_CartController]
 "CartService_requires_SPRING_APPLICATION_GET_"--[io_github_georgwittberger_microserviceexample_cartservice_web_CartController]
 }
 interface "SPRING-APPLICATION/[GET]" as interface.SPRING_APPLICATION_GET_
 interface.SPRING_APPLICATION_GET_--"CartService_requires_SPRING_APPLICATION_GET_"
-component nullContentController\n\n\n\n\n\nnull {
+interface "SPRING-APPLICATION/[GET]" as interface.SPRING_APPLICATION_GET_
+interface.SPRING_APPLICATION_GET_--"CartService_requires_SPRING_APPLICATION_GET_"
+component "ContentController\n\n\n\n\n\n" {
 [io_github_georgwittberger_microserviceexample_contentservice_web_ContentController]
 portin " " as ContentController_requires_SPRING_APPLICATION_GET_
 portin " " as ContentController_requires_SPRING_APPLICATION_GET_
@@ -20,17 +24,13 @@ interface "SPRING-APPLICATION/[GET]" as interface.SPRING_APPLICATION_GET_
 interface.SPRING_APPLICATION_GET_--"ContentController_requires_SPRING_APPLICATION_GET_"
 interface "SPRING-APPLICATION/[GET]" as interface.SPRING_APPLICATION_GET_
 interface.SPRING_APPLICATION_GET_--"ContentController_requires_SPRING_APPLICATION_GET_"
-component nullProductController\n\n\n\n\n\nnull {
-[io_github_georgwittberger_microserviceexample_productservice_web_ProductController]
+component "ProductController\n\n\n\n\n\n" {
 [io_github_georgwittberger_microserviceexample_productservice_product_ProductService]
-portin " " as ProductController_requires_SPRING_APPLICATION_GET_
+[io_github_georgwittberger_microserviceexample_productservice_web_ProductController]
 portin " " as ProductController_requires_SPRING_APPLICATION_GET_
 [io_github_georgwittberger_microserviceexample_productservice_web_ProductController]..>[io_github_georgwittberger_microserviceexample_productservice_product_ProductService] : requires
 "ProductController_requires_SPRING_APPLICATION_GET_"--[io_github_georgwittberger_microserviceexample_productservice_web_ProductController]
-"ProductController_requires_SPRING_APPLICATION_GET_"--[io_github_georgwittberger_microserviceexample_productservice_web_ProductController]
 }
-interface "SPRING-APPLICATION/[GET]" as interface.SPRING_APPLICATION_GET_
-interface.SPRING_APPLICATION_GET_--"ProductController_requires_SPRING_APPLICATION_GET_"
 interface "SPRING-APPLICATION/[GET]" as interface.SPRING_APPLICATION_GET_
 interface.SPRING_APPLICATION_GET_--"ProductController_requires_SPRING_APPLICATION_GET_"
 interface "io_github_georgwittberger_microserviceexample_cartservice_cart_RestTemplate" as interface.io_github_georgwittberger_microserviceexample_cartservice_cart_RestTemplate

@@ -1,20 +1,20 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
-component nullBaseController\n\n\n\n\n\nnull {
+component "BaseController\n\n\n\n\n\n" {
 [edu_kit_recipe_recipebackend_controller_BaseController]
 portin " " as BaseController_requires_SPRING_APPLICATION_GET_
 "BaseController_requires_SPRING_APPLICATION_GET_"--[edu_kit_recipe_recipebackend_controller_BaseController]
 }
 interface "SPRING-APPLICATION/[GET]" as interface.SPRING_APPLICATION_GET_
 interface.SPRING_APPLICATION_GET_--"BaseController_requires_SPRING_APPLICATION_GET_"
-component nullCustomerController\n\n\n\n\n\nnull {
+component "CustomerController\n\n\n\n\n\n" {
 [edu_kit_recipe_recipebackend_controller_api_v1_user_CustomerController]
 portin " " as CustomerController_requires_SPRING_APPLICATION_api_v1_user_GET_
 "CustomerController_requires_SPRING_APPLICATION_api_v1_user_GET_"--[edu_kit_recipe_recipebackend_controller_api_v1_user_CustomerController]
 }
 interface "SPRING-APPLICATION/api/v1/user[GET]" as interface.SPRING_APPLICATION_api_v1_user_GET_
 interface.SPRING_APPLICATION_api_v1_user_GET_--"CustomerController_requires_SPRING_APPLICATION_api_v1_user_GET_"
-component nullExceptionController\n\n\n\n\n\nnull {
+component "ExceptionController\n\n\n\n\n\n" {
 [edu_kit_recipe_recipebackend_controller_exception_ExceptionController]
 portin " " as ExceptionController_requires_SPRING_APPLICATION_error
 portin " " as ExceptionController_requires_ErrorController
@@ -25,22 +25,22 @@ interface "ErrorController" as interface.ErrorController
 interface.ErrorController--"ExceptionController_requires_ErrorController"
 interface "SPRING-APPLICATION/error" as interface.SPRING_APPLICATION_error
 interface.SPRING_APPLICATION_error--"ExceptionController_requires_SPRING_APPLICATION_error"
-component nullImageController\n\n\n\n\n\nnull {
-[edu_kit_recipe_recipebackend_service_CustomerService]
-[edu_kit_recipe_recipebackend_repository_CustomerRepository]
-[edu_kit_recipe_recipebackend_service_RecipeService]
+component "ImageController\n\n\n\n\n\n" {
 [edu_kit_recipe_recipebackend_repository_ImageRepository]
+[edu_kit_recipe_recipebackend_service_CustomerService]
+[edu_kit_recipe_recipebackend_service_RecipeService]
 [edu_kit_recipe_recipebackend_repository_RecipeRepository]
-[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController]
+[edu_kit_recipe_recipebackend_repository_CustomerRepository]
 [edu_kit_recipe_recipebackend_controller_api_v1_image_ImageController]
+[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController]
 portin " " as ImageController_requires_SPRING_APPLICATION_api_v1_images
 portin " " as ImageController_requires_SPRING_APPLICATION_api_v1_recipes
-[edu_kit_recipe_recipebackend_service_CustomerService]..>[edu_kit_recipe_recipebackend_repository_RecipeRepository] : requires
-[edu_kit_recipe_recipebackend_service_RecipeService]..>[edu_kit_recipe_recipebackend_repository_ImageRepository] : requires
-[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController]..>[edu_kit_recipe_recipebackend_repository_RecipeRepository] : requires
-[edu_kit_recipe_recipebackend_service_CustomerService]..>[edu_kit_recipe_recipebackend_repository_CustomerRepository] : requires
 [edu_kit_recipe_recipebackend_service_RecipeService]..>[edu_kit_recipe_recipebackend_repository_RecipeRepository] : requires
 [edu_kit_recipe_recipebackend_controller_api_v1_image_ImageController]..>[edu_kit_recipe_recipebackend_repository_ImageRepository] : requires
+[edu_kit_recipe_recipebackend_service_CustomerService]..>[edu_kit_recipe_recipebackend_repository_CustomerRepository] : requires
+[edu_kit_recipe_recipebackend_service_RecipeService]..>[edu_kit_recipe_recipebackend_repository_ImageRepository] : requires
+[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController]..>[edu_kit_recipe_recipebackend_repository_RecipeRepository] : requires
+[edu_kit_recipe_recipebackend_service_CustomerService]..>[edu_kit_recipe_recipebackend_repository_RecipeRepository] : requires
 "ImageController_requires_SPRING_APPLICATION_api_v1_images"--[edu_kit_recipe_recipebackend_controller_api_v1_image_ImageController]
 "ImageController_requires_SPRING_APPLICATION_api_v1_recipes"--[edu_kit_recipe_recipebackend_controller_api_v1_recipe_RecipeController]
 }
@@ -48,24 +48,24 @@ interface "SPRING-APPLICATION/api/v1/images" as interface.SPRING_APPLICATION_api
 interface.SPRING_APPLICATION_api_v1_images--"ImageController_requires_SPRING_APPLICATION_api_v1_images"
 interface "SPRING-APPLICATION/api/v1/recipes" as interface.SPRING_APPLICATION_api_v1_recipes
 interface.SPRING_APPLICATION_api_v1_recipes--"ImageController_requires_SPRING_APPLICATION_api_v1_recipes"
-component nullIngredientsController\n\n\n\n\n\nnull {
+component "IngredientsController\n\n\n\n\n\n" {
+[edu_kit_recipe_recipebackend_repository_IngredientRepository]
 [edu_kit_recipe_recipebackend_controller_api_v1_tag_TagsController]
 [edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]
-[edu_kit_recipe_recipebackend_repository_IngredientRepository]
 [edu_kit_recipe_recipebackend_repository_tag_TagRepository]
 portin " " as IngredientsController_requires_SPRING_APPLICATION_api_v1_ingredients
 portin " " as IngredientsController_requires_SPRING_APPLICATION_api_v1_tags
-[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]..>[edu_kit_recipe_recipebackend_repository_IngredientRepository] : requires
 [edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]..>[edu_kit_recipe_recipebackend_repository_tag_TagRepository] : requires
+[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]..>[edu_kit_recipe_recipebackend_repository_IngredientRepository] : requires
 [edu_kit_recipe_recipebackend_controller_api_v1_tag_TagsController]..>[edu_kit_recipe_recipebackend_repository_tag_TagRepository] : requires
-"IngredientsController_requires_SPRING_APPLICATION_api_v1_ingredients"--[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]
 "IngredientsController_requires_SPRING_APPLICATION_api_v1_tags"--[edu_kit_recipe_recipebackend_controller_api_v1_tag_TagsController]
+"IngredientsController_requires_SPRING_APPLICATION_api_v1_ingredients"--[edu_kit_recipe_recipebackend_controller_api_v1_ingredients_IngredientsController]
 }
 interface "SPRING-APPLICATION/api/v1/ingredients" as interface.SPRING_APPLICATION_api_v1_ingredients
 interface.SPRING_APPLICATION_api_v1_ingredients--"IngredientsController_requires_SPRING_APPLICATION_api_v1_ingredients"
 interface "SPRING-APPLICATION/api/v1/tags" as interface.SPRING_APPLICATION_api_v1_tags
 interface.SPRING_APPLICATION_api_v1_tags--"IngredientsController_requires_SPRING_APPLICATION_api_v1_tags"
-component nullUnitController\n\n\n\n\n\nnull {
+component "UnitController\n\n\n\n\n\n" {
 [edu_kit_recipe_recipebackend_repository_UnitRepository]
 [edu_kit_recipe_recipebackend_controller_api_v1_units_UnitController]
 portin " " as UnitController_requires_SPRING_APPLICATION_api_v1_units
