@@ -96,11 +96,9 @@ jobs:
         run: |
           mkdir -p to_commit/${{ matrix.directory }}/model_re/pcm
           mkdir -p to_commit/${{ matrix.directory }}/model_re/uml
-          shopt -s nullglob
-          mv results/repo/${{ matrix.directory }}/*.puml to_commit/${{ matrix.directory }}/model_re/uml || true
-          mv results/repo/${{ matrix.directory }}/*.txt to_commit/${{ matrix.directory }}/model_re/ || true
-          mv results/repo/${{ matrix.directory }}/* to_commit/${{ matrix.directory }}/model_re/pcm || true
-          shopt -u nullglob
+          mv results/repo/${{ matrix.directory }}/*.puml to_commit/${{ matrix.directory }}/model_re/uml
+          mv results/repo/${{ matrix.directory }}/*.md to_commit/${{ matrix.directory }}/model_re/
+          mv results/repo/${{ matrix.directory }}/* to_commit/${{ matrix.directory }}/model_re/pcm
 
       - name: Render UML diagrams
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
