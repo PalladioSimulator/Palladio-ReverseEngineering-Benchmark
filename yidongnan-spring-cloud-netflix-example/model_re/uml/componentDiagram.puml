@@ -1,15 +1,16 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
+skinparam componentStyle uml2
 component "HystrixWrappedServiceBClient\n\n\n\n\n\n" {
-[net_devh_hystrix_HystrixWrappedServiceBClient]
-[net_devh_controller_AServiceController]
 [net_devh_feign_ServiceBClient]
+[net_devh_controller_AServiceController]
+[net_devh_hystrix_HystrixWrappedServiceBClient]
 portin " " as HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_
 portin " " as HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_
 portout " " as HystrixWrappedServiceBClient_provides_service_b_
-[net_devh_controller_AServiceController]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
 [net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_feign_ServiceBClient] : requires
 [net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
+[net_devh_controller_AServiceController]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
 "HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_"--[net_devh_controller_AServiceController]
 "HystrixWrappedServiceBClient_requires_SPRING_APPLICATION_"--[net_devh_controller_AServiceController]
 [net_devh_feign_ServiceBClient].."HystrixWrappedServiceBClient_provides_service_b_"
