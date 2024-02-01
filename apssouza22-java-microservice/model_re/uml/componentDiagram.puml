@@ -2,22 +2,22 @@
 skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
 component "AccountController\n\n\n\n\n\n" {
+[com_apssouza_services_AccountService]
 [com_apssouza_bootstrap_UserLoader]
+[com_apssouza_services_AccountServiceImpl]
 [com_apssouza_controllers_AccountController]
 [com_apssouza_repositories_AccountRepository]
-[com_apssouza_services_AccountService]
-[com_apssouza_services_AccountServiceImpl]
-portin " " as AccountController_requires_user_accounts
-portin " " as AccountController_requires_user_accounts_GET_
-portin " " as AccountController_requires_ApplicationListener
 portin " " as AccountController_requires_user_accounts_POST_
+portin " " as AccountController_requires_ApplicationListener
+portin " " as AccountController_requires_user_accounts_GET_
+portin " " as AccountController_requires_user_accounts
 [com_apssouza_controllers_AccountController]..>[com_apssouza_services_AccountService] : requires
-[com_apssouza_services_AccountServiceImpl]..>[com_apssouza_repositories_AccountRepository] : requires
 [com_apssouza_bootstrap_UserLoader]..>[com_apssouza_repositories_AccountRepository] : requires
+[com_apssouza_services_AccountServiceImpl]..>[com_apssouza_repositories_AccountRepository] : requires
 [com_apssouza_controllers_AccountController]..>[com_apssouza_services_AccountServiceImpl] : requires
-"AccountController_requires_ApplicationListener"--[com_apssouza_bootstrap_UserLoader]
-"AccountController_requires_user_accounts_GET_"--[com_apssouza_controllers_AccountController]
 "AccountController_requires_user_accounts_POST_"--[com_apssouza_controllers_AccountController]
+"AccountController_requires_user_accounts_GET_"--[com_apssouza_controllers_AccountController]
+"AccountController_requires_ApplicationListener"--[com_apssouza_bootstrap_UserLoader]
 }
 interface "ApplicationListener" as interface.ApplicationListener
 interface.ApplicationListener--"AccountController_requires_ApplicationListener"
@@ -28,8 +28,8 @@ interface.user_accounts_POST_--"AccountController_requires_user_accounts_POST_"
 interface "user/accounts" as interface.user_accounts
 interface.user_accounts--"AccountController_requires_user_accounts"
 component "EmailController\n\n\n\n\n\n" {
-[com_apssouza_mailservice_repository_EmailRepository]
 [com_apssouza_mailservice_controllers_EmailController]
+[com_apssouza_mailservice_repository_EmailRepository]
 portin " " as EmailController_requires_mailer_emails_GET_
 [com_apssouza_mailservice_controllers_EmailController]..>[com_apssouza_mailservice_repository_EmailRepository] : requires
 "EmailController_requires_mailer_emails_GET_"--[com_apssouza_mailservice_controllers_EmailController]
@@ -37,19 +37,19 @@ portin " " as EmailController_requires_mailer_emails_GET_
 interface "mailer/emails[GET]" as interface.mailer_emails_GET_
 interface.mailer_emails_GET_--"EmailController_requires_mailer_emails_GET_"
 component "EventSourcingServiceImpl\n\n\n\n\n\n" {
+[com_apssouza_eventsourcing_services_EventSourcingServiceImpl]
 [com_apssouza_eventsourcing_eventstore_EventStoreRepository]
 [com_apssouza_eventsourcing_eventstore_EventSerializer]
-[com_apssouza_eventsourcing_services_EventSourcingServiceImpl]
 portin " " as EventSourcingServiceImpl_requires_com_apssouza_eventsourcing_services_EventSourcingService
-[com_apssouza_eventsourcing_services_EventSourcingServiceImpl]..>[com_apssouza_eventsourcing_eventstore_EventSerializer] : requires
 [com_apssouza_eventsourcing_services_EventSourcingServiceImpl]..>[com_apssouza_eventsourcing_eventstore_EventStoreRepository] : requires
+[com_apssouza_eventsourcing_services_EventSourcingServiceImpl]..>[com_apssouza_eventsourcing_eventstore_EventSerializer] : requires
 "EventSourcingServiceImpl_requires_com_apssouza_eventsourcing_services_EventSourcingService"--[com_apssouza_eventsourcing_services_EventSourcingServiceImpl]
 }
 interface "com_apssouza_eventsourcing_services_EventSourcingService" as interface.com_apssouza_eventsourcing_services_EventSourcingService
 interface.com_apssouza_eventsourcing_services_EventSourcingService--"EventSourcingServiceImpl_requires_com_apssouza_eventsourcing_services_EventSourcingService"
 component "NotifyController\n\n\n\n\n\n" {
-[com_apssouza_mailservice_controllers_NotifyController]
 [com_apssouza_eventsourcing_commands_EmailCommandHandler]
+[com_apssouza_mailservice_controllers_NotifyController]
 portin " " as NotifyController_requires_mailer_send_email_GET_
 [com_apssouza_mailservice_controllers_NotifyController]..>[com_apssouza_eventsourcing_commands_EmailCommandHandler] : requires
 "NotifyController_requires_mailer_send_email_GET_"--[com_apssouza_mailservice_controllers_NotifyController]
@@ -57,8 +57,8 @@ portin " " as NotifyController_requires_mailer_send_email_GET_
 interface "mailer/send/email[GET]" as interface.mailer_send_email_GET_
 interface.mailer_send_email_GET_--"NotifyController_requires_mailer_send_email_GET_"
 component "TodoChangesController\n\n\n\n\n\n" {
-[com_apssouza_monitors_TodoStoreEventChanges]
 [com_apssouza_controllers_TodoChangesController]
+[com_apssouza_monitors_TodoStoreEventChanges]
 portin " " as TodoChangesController_requires_reminder_todo_changes_GET_
 [com_apssouza_controllers_TodoChangesController]..>[com_apssouza_monitors_TodoStoreEventChanges] : requires
 "TodoChangesController_requires_reminder_todo_changes_GET_"--[com_apssouza_controllers_TodoChangesController]
@@ -67,29 +67,29 @@ interface "reminder/todo-changes[GET]" as interface.reminder_todo_changes_GET_
 interface.reminder_todo_changes_GET_--"TodoChangesController_requires_reminder_todo_changes_GET_"
 component "TodoServiceImpl\n\n\n\n\n\n" {
 [com_apssouza_infra_EventPublisher]
-[com_apssouza_services_TodoService]
-[com_apssouza_bootstrap_TodoLoader]
-[com_apssouza_services_UserServiceImpl]
 [com_apssouza_services_TodoServiceImpl]
-[com_apssouza_repositories_TodoRepository]
+[com_apssouza_services_UserServiceImpl]
 [com_apssouza_services_UserService]
+[com_apssouza_bootstrap_TodoLoader]
 [com_apssouza_controllers_UserController]
+[com_apssouza_repositories_TodoRepository]
 [com_apssouza_controllers_TodoController]
+[com_apssouza_services_TodoService]
 portin " " as TodoServiceImpl_requires_api_gateway_accounts_GET_
-portin " " as TodoServiceImpl_requires_api_gateway_todos_GET_
 portin " " as TodoServiceImpl_requires_ApplicationListener
-[com_apssouza_controllers_UserController]..>[com_apssouza_services_UserService] : requires
+portin " " as TodoServiceImpl_requires_api_gateway_todos_GET_
 [com_apssouza_bootstrap_TodoLoader]..>[com_apssouza_repositories_TodoRepository] : requires
 [com_apssouza_controllers_UserController]..>[com_apssouza_services_TodoService] : requires
-[com_apssouza_controllers_UserController]..>[com_apssouza_services_TodoServiceImpl] : requires
-[com_apssouza_controllers_UserController]..>[com_apssouza_services_UserServiceImpl] : requires
 [com_apssouza_services_TodoServiceImpl]..>[com_apssouza_repositories_TodoRepository] : requires
 [com_apssouza_services_TodoServiceImpl]..>[com_apssouza_infra_EventPublisher] : requires
+[com_apssouza_controllers_UserController]..>[com_apssouza_services_TodoServiceImpl] : requires
+[com_apssouza_controllers_UserController]..>[com_apssouza_services_UserService] : requires
 [com_apssouza_controllers_TodoController]..>[com_apssouza_services_TodoServiceImpl] : requires
+[com_apssouza_controllers_UserController]..>[com_apssouza_services_UserServiceImpl] : requires
 [com_apssouza_controllers_TodoController]..>[com_apssouza_services_TodoService] : requires
+"TodoServiceImpl_requires_api_gateway_accounts_GET_"--[com_apssouza_controllers_UserController]
 "TodoServiceImpl_requires_api_gateway_todos_GET_"--[com_apssouza_controllers_TodoController]
 "TodoServiceImpl_requires_ApplicationListener"--[com_apssouza_bootstrap_TodoLoader]
-"TodoServiceImpl_requires_api_gateway_accounts_GET_"--[com_apssouza_controllers_UserController]
 }
 interface "ApplicationListener" as interface.ApplicationListener
 interface.ApplicationListener--"TodoServiceImpl_requires_ApplicationListener"
@@ -98,8 +98,8 @@ interface.api_gateway_accounts_GET_--"TodoServiceImpl_requires_api_gateway_accou
 interface "api-gateway/todos[GET]" as interface.api_gateway_todos_GET_
 interface.api_gateway_todos_GET_--"TodoServiceImpl_requires_api_gateway_todos_GET_"
 component "TodoServiceStatisticsController\n\n\n\n\n\n" {
-[com_apssouza_controllers_TodoServiceStatisticsController]
 [com_apssouza_monitors_TodoServiceMethodInvokedStore]
+[com_apssouza_controllers_TodoServiceStatisticsController]
 portin " " as TodoServiceStatisticsController_requires_reminder_todo_statistics_GET_
 [com_apssouza_controllers_TodoServiceStatisticsController]..>[com_apssouza_monitors_TodoServiceMethodInvokedStore] : requires
 "TodoServiceStatisticsController_requires_reminder_todo_statistics_GET_"--[com_apssouza_controllers_TodoServiceStatisticsController]
