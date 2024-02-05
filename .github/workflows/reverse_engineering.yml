@@ -62,18 +62,24 @@ jobs:
       - name: Parse .retriever.yml
         run: |
           CONFIG_FILE="benchmark/${{ matrix.directory }}/.retriever.yml"
-          echo "repository=$(yq eval '.repository' $CONFIG_FILE)" >> $GITHUB_ENV
+          # create comma-separated list of repositories
+          readarray -t repos < <(yq e '.repository' "$CONFIG_FILE" | sed 's/- //g')          
+          repos_str=$(IFS=,; echo "${repos[*]}")
+          echo "repositories=$repos_str" >> $GITHUB_ENV
           echo "current_version=$(yq eval '.current_version' $CONFIG_FILE)" >> $GITHUB_ENV
           echo "rules=$(yq eval '.rules[]' $CONFIG_FILE | paste -sd ",")" >> $GITHUB_ENV
           echo "benchmark=$(yq eval '.benchmark // "false"' $CONFIG_FILE)" >> $GITHUB_ENV
           echo "rules_path=$(yq eval '.rules_path // "."' $CONFIG_FILE)" >> $GITHUB_ENV
 
-      - name: Checkout repository
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
-        uses: actions/checkout@v3
-        with:
-          path: repo/${{ matrix.directory }}
-          repository: ${{ env.repository }}
+      - name: Checkout repositories
+        run: |
+          # Assuming repositories is a comma-separated list
+          IFS=',' read -r -a repositories_array <<< "${{ env.repositories }}"
+          for REPOSITORY in "${repositories_array[@]}"; do
+            REPO_NAME=$(basename "$REPOSITORY")
+            echo "Checking out $REPOSITORY to repo/${{ matrix.directory }}/$REPO_NAME"
+            git clone https://github.com/"$REPOSITORY" "repo/${{ matrix.directory }}/$REPO_NAME" --depth=1
+          done
 
       - name: Run Retriever
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
