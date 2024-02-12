@@ -1,495 +1,416 @@
 @startuml
 skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
-component "AdminBasicInfoController\n\n\n\n\n\n" {
-[adminbasic_service_AdminBasicInfoServiceImpl]
+component "adminbasic\n\n\n\n\n\n" {
 [adminbasic_controller_AdminBasicInfoController]
-[adminbasic_service_AdminBasicInfoService]
-portin " " as AdminBasicInfoController_requires_SPRING_APPLICATION_api_v1_adminbasicservice
-[adminbasic_controller_AdminBasicInfoController]..>[adminbasic_service_AdminBasicInfoService] : requires
+[adminbasic_service_AdminBasicInfoServiceImpl]
+portin " " as adminbasic_requires_SPRING_APPLICATION_api_v1_adminbasicservice_POST_DELETE_GET_PUT_
 [adminbasic_controller_AdminBasicInfoController]..>[adminbasic_service_AdminBasicInfoServiceImpl] : requires
-"AdminBasicInfoController_requires_SPRING_APPLICATION_api_v1_adminbasicservice"--[adminbasic_controller_AdminBasicInfoController]
+"adminbasic_requires_SPRING_APPLICATION_api_v1_adminbasicservice_POST_DELETE_GET_PUT_"--[adminbasic_controller_AdminBasicInfoController]
 }
-interface "SPRING-APPLICATION/api/v1/adminbasicservice" as interface.SPRING_APPLICATION_api_v1_adminbasicservice
-interface.SPRING_APPLICATION_api_v1_adminbasicservice--"AdminBasicInfoController_requires_SPRING_APPLICATION_api_v1_adminbasicservice"
-component "AdminOrderController\n\n\n\n\n\n" {
+interface "SPRING-APPLICATION/api/v1/adminbasicservice[POST,DELETE,GET,PUT]" as interface.SPRING_APPLICATION_api_v1_adminbasicservice_POST_DELETE_GET_PUT_
+interface.SPRING_APPLICATION_api_v1_adminbasicservice_POST_DELETE_GET_PUT_--"adminbasic_requires_SPRING_APPLICATION_api_v1_adminbasicservice_POST_DELETE_GET_PUT_"
+component "adminorder\n\n\n\n\n\n" {
 [adminorder_controller_AdminOrderController]
 [adminorder_service_AdminOrderServiceImpl]
-[adminorder_service_AdminOrderService]
-portin " " as AdminOrderController_requires_SPRING_APPLICATION_api_v1_adminorderservice_GET_
-[adminorder_controller_AdminOrderController]..>[adminorder_service_AdminOrderService] : requires
+portin " " as adminorder_requires_SPRING_APPLICATION_api_v1_adminorderservice_GET_
 [adminorder_controller_AdminOrderController]..>[adminorder_service_AdminOrderServiceImpl] : requires
-"AdminOrderController_requires_SPRING_APPLICATION_api_v1_adminorderservice_GET_"--[adminorder_controller_AdminOrderController]
+"adminorder_requires_SPRING_APPLICATION_api_v1_adminorderservice_GET_"--[adminorder_controller_AdminOrderController]
 }
 interface "SPRING-APPLICATION/api/v1/adminorderservice[GET]" as interface.SPRING_APPLICATION_api_v1_adminorderservice_GET_
-interface.SPRING_APPLICATION_api_v1_adminorderservice_GET_--"AdminOrderController_requires_SPRING_APPLICATION_api_v1_adminorderservice_GET_"
-component "AdminRouteController\n\n\n\n\n\n" {
-[adminroute_service_AdminRouteServiceImpl]
+interface.SPRING_APPLICATION_api_v1_adminorderservice_GET_--"adminorder_requires_SPRING_APPLICATION_api_v1_adminorderservice_GET_"
+component "adminroute\n\n\n\n\n\n" {
 [adminroute_controller_AdminRouteController]
-[adminroute_service_AdminRouteService]
-portin " " as AdminRouteController_requires_SPRING_APPLICATION_api_v1_adminrouteservice_GET_
+[adminroute_service_AdminRouteServiceImpl]
+portin " " as adminroute_requires_SPRING_APPLICATION_api_v1_adminrouteservice_GET_
 [adminroute_controller_AdminRouteController]..>[adminroute_service_AdminRouteServiceImpl] : requires
-[adminroute_controller_AdminRouteController]..>[adminroute_service_AdminRouteService] : requires
-"AdminRouteController_requires_SPRING_APPLICATION_api_v1_adminrouteservice_GET_"--[adminroute_controller_AdminRouteController]
+"adminroute_requires_SPRING_APPLICATION_api_v1_adminrouteservice_GET_"--[adminroute_controller_AdminRouteController]
 }
 interface "SPRING-APPLICATION/api/v1/adminrouteservice[GET]" as interface.SPRING_APPLICATION_api_v1_adminrouteservice_GET_
-interface.SPRING_APPLICATION_api_v1_adminrouteservice_GET_--"AdminRouteController_requires_SPRING_APPLICATION_api_v1_adminrouteservice_GET_"
-component "AdminTravelController\n\n\n\n\n\n" {
+interface.SPRING_APPLICATION_api_v1_adminrouteservice_GET_--"adminroute_requires_SPRING_APPLICATION_api_v1_adminrouteservice_GET_"
+component "admintravel\n\n\n\n\n\n" {
 [admintravel_controller_AdminTravelController]
-[admintravel_service_AdminTravelService]
 [admintravel_service_AdminTravelServiceImpl]
-portin " " as AdminTravelController_requires_SPRING_APPLICATION_api_v1_admintravelservice_GET_
-[admintravel_controller_AdminTravelController]..>[admintravel_service_AdminTravelService] : requires
+portin " " as admintravel_requires_SPRING_APPLICATION_api_v1_admintravelservice_GET_
 [admintravel_controller_AdminTravelController]..>[admintravel_service_AdminTravelServiceImpl] : requires
-"AdminTravelController_requires_SPRING_APPLICATION_api_v1_admintravelservice_GET_"--[admintravel_controller_AdminTravelController]
+"admintravel_requires_SPRING_APPLICATION_api_v1_admintravelservice_GET_"--[admintravel_controller_AdminTravelController]
 }
 interface "SPRING-APPLICATION/api/v1/admintravelservice[GET]" as interface.SPRING_APPLICATION_api_v1_admintravelservice_GET_
-interface.SPRING_APPLICATION_api_v1_admintravelservice_GET_--"AdminTravelController_requires_SPRING_APPLICATION_api_v1_admintravelservice_GET_"
-component "AdminUserController\n\n\n\n\n\n" {
+interface.SPRING_APPLICATION_api_v1_admintravelservice_GET_--"admintravel_requires_SPRING_APPLICATION_api_v1_admintravelservice_GET_"
+component "adminuser\n\n\n\n\n\n" {
 [adminuser_service_AdminUserServiceImpl]
-[adminuser_service_AdminUserService]
 [adminuser_controller_AdminUserController]
-portin " " as AdminUserController_requires_SPRING_APPLICATION_api_v1_adminuserservice_users
+portin " " as adminuser_requires_SPRING_APPLICATION_api_v1_adminuserservice_users_POST_DELETE_GET_PUT_
 [adminuser_controller_AdminUserController]..>[adminuser_service_AdminUserServiceImpl] : requires
-[adminuser_controller_AdminUserController]..>[adminuser_service_AdminUserService] : requires
-"AdminUserController_requires_SPRING_APPLICATION_api_v1_adminuserservice_users"--[adminuser_controller_AdminUserController]
+"adminuser_requires_SPRING_APPLICATION_api_v1_adminuserservice_users_POST_DELETE_GET_PUT_"--[adminuser_controller_AdminUserController]
 }
-interface "SPRING-APPLICATION/api/v1/adminuserservice/users" as interface.SPRING_APPLICATION_api_v1_adminuserservice_users
-interface.SPRING_APPLICATION_api_v1_adminuserservice_users--"AdminUserController_requires_SPRING_APPLICATION_api_v1_adminuserservice_users"
-component "AssuranceServiceImpl\n\n\n\n\n\n" {
-[assurance_service_AssuranceService]
+interface "SPRING-APPLICATION/api/v1/adminuserservice/users[POST,DELETE,GET,PUT]" as interface.SPRING_APPLICATION_api_v1_adminuserservice_users_POST_DELETE_GET_PUT_
+interface.SPRING_APPLICATION_api_v1_adminuserservice_users_POST_DELETE_GET_PUT_--"adminuser_requires_SPRING_APPLICATION_api_v1_adminuserservice_users_POST_DELETE_GET_PUT_"
+component "assurance\n\n\n\n\n\n" {
 [assurance_controller_AssuranceController]
 [assurance_repository_AssuranceRepository]
 [assurance_service_AssuranceServiceImpl]
-portin " " as AssuranceServiceImpl_requires_SPRING_APPLICATION_api_v1_assuranceservice
-[assurance_controller_AssuranceController]..>[assurance_service_AssuranceService] : requires
+portin " " as assurance_requires_SPRING_APPLICATION_api_v1_assuranceservice_DELETE_PATCH_GET_
 [assurance_service_AssuranceServiceImpl]..>[assurance_repository_AssuranceRepository] : requires
 [assurance_controller_AssuranceController]..>[assurance_service_AssuranceServiceImpl] : requires
-"AssuranceServiceImpl_requires_SPRING_APPLICATION_api_v1_assuranceservice"--[assurance_controller_AssuranceController]
+"assurance_requires_SPRING_APPLICATION_api_v1_assuranceservice_DELETE_PATCH_GET_"--[assurance_controller_AssuranceController]
 }
-interface "SPRING-APPLICATION/api/v1/assuranceservice" as interface.SPRING_APPLICATION_api_v1_assuranceservice
-interface.SPRING_APPLICATION_api_v1_assuranceservice--"AssuranceServiceImpl_requires_SPRING_APPLICATION_api_v1_assuranceservice"
-component "BasicController\n\n\n\n\n\n" {
-[fdse_microservice_service_BasicService]
-[fdse_microservice_service_BasicServiceImpl]
-[fdse_microservice_controller_BasicController]
-portin " " as BasicController_requires_SPRING_APPLICATION_api_v1_basicservice_GET_
-[fdse_microservice_controller_BasicController]..>[fdse_microservice_service_BasicServiceImpl] : requires
-[fdse_microservice_controller_BasicController]..>[fdse_microservice_service_BasicService] : requires
-"BasicController_requires_SPRING_APPLICATION_api_v1_basicservice_GET_"--[fdse_microservice_controller_BasicController]
+interface "SPRING-APPLICATION/api/v1/assuranceservice[DELETE,PATCH,GET]" as interface.SPRING_APPLICATION_api_v1_assuranceservice_DELETE_PATCH_GET_
+interface.SPRING_APPLICATION_api_v1_assuranceservice_DELETE_PATCH_GET_--"assurance_requires_SPRING_APPLICATION_api_v1_assuranceservice_DELETE_PATCH_GET_"
+component "auth\n\n\n\n\n\n" {
+[auth_controller_UserController]
+[auth_repository_UserRepository]
+[auth_controller_AuthController]
+[auth_service_impl_UserServiceImpl]
+[auth_security_jwt_JWTProvider]
+[auth_service_impl_TokenServiceImpl]
+portin " " as auth_requires_SPRING_APPLICATION_api_v1_auth_POST_
+portin " " as auth_requires_SPRING_APPLICATION_api_v1_users_DELETE_GET_
+[auth_service_impl_TokenServiceImpl]..>[auth_security_jwt_JWTProvider] : requires
+[auth_controller_UserController]..>[auth_service_impl_TokenServiceImpl] : requires
+[auth_service_impl_UserServiceImpl]..>[auth_repository_UserRepository] : requires
+[auth_controller_AuthController]..>[auth_service_impl_UserServiceImpl] : requires
+[auth_controller_UserController]..>[auth_service_impl_UserServiceImpl] : requires
+[auth_service_impl_TokenServiceImpl]..>[auth_repository_UserRepository] : requires
+"auth_requires_SPRING_APPLICATION_api_v1_auth_POST_"--[auth_controller_AuthController]
+"auth_requires_SPRING_APPLICATION_api_v1_users_DELETE_GET_"--[auth_controller_UserController]
 }
-interface "SPRING-APPLICATION/api/v1/basicservice[GET]" as interface.SPRING_APPLICATION_api_v1_basicservice_GET_
-interface.SPRING_APPLICATION_api_v1_basicservice_GET_--"BasicController_requires_SPRING_APPLICATION_api_v1_basicservice_GET_"
-component "CancelController\n\n\n\n\n\n" {
+interface "SPRING-APPLICATION/api/v1/auth[POST]" as interface.SPRING_APPLICATION_api_v1_auth_POST_
+interface.SPRING_APPLICATION_api_v1_auth_POST_--"auth_requires_SPRING_APPLICATION_api_v1_auth_POST_"
+interface "SPRING-APPLICATION/api/v1/users[DELETE,GET]" as interface.SPRING_APPLICATION_api_v1_users_DELETE_GET_
+interface.SPRING_APPLICATION_api_v1_users_DELETE_GET_--"auth_requires_SPRING_APPLICATION_api_v1_users_DELETE_GET_"
+component "cancel\n\n\n\n\n\n" {
 [cancel_service_CancelServiceImpl]
-[cancel_service_CancelService]
 [cancel_controller_CancelController]
-portin " " as CancelController_requires_SPRING_APPLICATION_api_v1_cancelservice_GET_
-[cancel_controller_CancelController]..>[cancel_service_CancelService] : requires
+portin " " as cancel_requires_SPRING_APPLICATION_api_v1_cancelservice_GET_
 [cancel_controller_CancelController]..>[cancel_service_CancelServiceImpl] : requires
-"CancelController_requires_SPRING_APPLICATION_api_v1_cancelservice_GET_"--[cancel_controller_CancelController]
+"cancel_requires_SPRING_APPLICATION_api_v1_cancelservice_GET_"--[cancel_controller_CancelController]
 }
 interface "SPRING-APPLICATION/api/v1/cancelservice[GET]" as interface.SPRING_APPLICATION_api_v1_cancelservice_GET_
-interface.SPRING_APPLICATION_api_v1_cancelservice_GET_--"CancelController_requires_SPRING_APPLICATION_api_v1_cancelservice_GET_"
-component "ConfigServiceImpl\n\n\n\n\n\n" {
+interface.SPRING_APPLICATION_api_v1_cancelservice_GET_--"cancel_requires_SPRING_APPLICATION_api_v1_cancelservice_GET_"
+component "com_trainticket\n\n\n\n\n\n" {
+[com_trainticket_repository_PaymentRepository]
+[com_trainticket_service_PaymentServiceImpl]
+[com_trainticket_controller_PaymentController]
+[com_trainticket_repository_AddMoneyRepository]
+portin " " as com_trainticket_requires_SPRING_APPLICATION_api_v1_paymentservice_POST_GET_
+[com_trainticket_service_PaymentServiceImpl]..>[com_trainticket_repository_AddMoneyRepository] : requires
+[com_trainticket_controller_PaymentController]..>[com_trainticket_service_PaymentServiceImpl] : requires
+[com_trainticket_service_PaymentServiceImpl]..>[com_trainticket_repository_PaymentRepository] : requires
+"com_trainticket_requires_SPRING_APPLICATION_api_v1_paymentservice_POST_GET_"--[com_trainticket_controller_PaymentController]
+}
+interface "SPRING-APPLICATION/api/v1/paymentservice[POST,GET]" as interface.SPRING_APPLICATION_api_v1_paymentservice_POST_GET_
+interface.SPRING_APPLICATION_api_v1_paymentservice_POST_GET_--"com_trainticket_requires_SPRING_APPLICATION_api_v1_paymentservice_POST_GET_"
+component "config\n\n\n\n\n\n" {
 [config_repository_ConfigRepository]
-[config_controller_ConfigController]
 [config_service_ConfigServiceImpl]
-[config_service_ConfigService]
-portin " " as ConfigServiceImpl_requires_SPRING_APPLICATION_api_v1_configservice_GET_
-[config_controller_ConfigController]..>[config_service_ConfigService] : requires
-[config_controller_ConfigController]..>[config_service_ConfigServiceImpl] : requires
+[config_controller_ConfigController]
+portin " " as config_requires_SPRING_APPLICATION_api_v1_configservice_GET_
 [config_service_ConfigServiceImpl]..>[config_repository_ConfigRepository] : requires
-"ConfigServiceImpl_requires_SPRING_APPLICATION_api_v1_configservice_GET_"--[config_controller_ConfigController]
+[config_controller_ConfigController]..>[config_service_ConfigServiceImpl] : requires
+"config_requires_SPRING_APPLICATION_api_v1_configservice_GET_"--[config_controller_ConfigController]
 }
 interface "SPRING-APPLICATION/api/v1/configservice[GET]" as interface.SPRING_APPLICATION_api_v1_configservice_GET_
-interface.SPRING_APPLICATION_api_v1_configservice_GET_--"ConfigServiceImpl_requires_SPRING_APPLICATION_api_v1_configservice_GET_"
-component "ConsignController\n\n\n\n\n\n" {
+interface.SPRING_APPLICATION_api_v1_configservice_GET_--"config_requires_SPRING_APPLICATION_api_v1_configservice_GET_"
+component "consign\n\n\n\n\n\n" {
 [consign_controller_ConsignController]
-[consign_service_ConsignService]
-[consign_service_ConsignServiceImpl]
 [consign_repository_ConsignRepository]
-portin " " as ConsignController_requires_SPRING_APPLICATION_api_v1_consignservice_GET_
+[consign_service_ConsignServiceImpl]
+portin " " as consign_requires_SPRING_APPLICATION_api_v1_consignservice_GET_
 [consign_service_ConsignServiceImpl]..>[consign_repository_ConsignRepository] : requires
-[consign_controller_ConsignController]..>[consign_service_ConsignService] : requires
 [consign_controller_ConsignController]..>[consign_service_ConsignServiceImpl] : requires
-"ConsignController_requires_SPRING_APPLICATION_api_v1_consignservice_GET_"--[consign_controller_ConsignController]
+"consign_requires_SPRING_APPLICATION_api_v1_consignservice_GET_"--[consign_controller_ConsignController]
 }
 interface "SPRING-APPLICATION/api/v1/consignservice[GET]" as interface.SPRING_APPLICATION_api_v1_consignservice_GET_
-interface.SPRING_APPLICATION_api_v1_consignservice_GET_--"ConsignController_requires_SPRING_APPLICATION_api_v1_consignservice_GET_"
-component "ConsignPriceServiceImpl\n\n\n\n\n\n" {
+interface.SPRING_APPLICATION_api_v1_consignservice_GET_--"consign_requires_SPRING_APPLICATION_api_v1_consignservice_GET_"
+component "consignprice\n\n\n\n\n\n" {
+[consignprice_service_ConsignPriceServiceImpl]
 [consignprice_repository_ConsignPriceConfigRepository]
 [consignprice_controller_ConsignPriceController]
-[consignprice_service_ConsignPriceServiceImpl]
-[consignprice_service_ConsignPriceService]
-portin " " as ConsignPriceServiceImpl_requires_SPRING_APPLICATION_api_v1_consignpriceservice_GET_
-[consignprice_controller_ConsignPriceController]..>[consignprice_service_ConsignPriceService] : requires
+portin " " as consignprice_requires_SPRING_APPLICATION_api_v1_consignpriceservice_GET_
 [consignprice_service_ConsignPriceServiceImpl]..>[consignprice_repository_ConsignPriceConfigRepository] : requires
 [consignprice_controller_ConsignPriceController]..>[consignprice_service_ConsignPriceServiceImpl] : requires
-"ConsignPriceServiceImpl_requires_SPRING_APPLICATION_api_v1_consignpriceservice_GET_"--[consignprice_controller_ConsignPriceController]
+"consignprice_requires_SPRING_APPLICATION_api_v1_consignpriceservice_GET_"--[consignprice_controller_ConsignPriceController]
 }
 interface "SPRING-APPLICATION/api/v1/consignpriceservice[GET]" as interface.SPRING_APPLICATION_api_v1_consignpriceservice_GET_
-interface.SPRING_APPLICATION_api_v1_consignpriceservice_GET_--"ConsignPriceServiceImpl_requires_SPRING_APPLICATION_api_v1_consignpriceservice_GET_"
-component "ContactsServiceImpl\n\n\n\n\n\n" {
-[contacts_service_ContactsService]
-[contacts_controller_ContactsController]
+interface.SPRING_APPLICATION_api_v1_consignpriceservice_GET_--"consignprice_requires_SPRING_APPLICATION_api_v1_consignpriceservice_GET_"
+component "contacts\n\n\n\n\n\n" {
 [contacts_service_ContactsServiceImpl]
 [contacts_repository_ContactsRepository]
-portin " " as ContactsServiceImpl_requires_SPRING_APPLICATION_api_v1_contactservice
+[contacts_controller_ContactsController]
+portin " " as contacts_requires_SPRING_APPLICATION_api_v1_contactservice_POST_DELETE_GET_PUT_
 [contacts_service_ContactsServiceImpl]..>[contacts_repository_ContactsRepository] : requires
 [contacts_controller_ContactsController]..>[contacts_service_ContactsServiceImpl] : requires
-[contacts_controller_ContactsController]..>[contacts_service_ContactsService] : requires
-"ContactsServiceImpl_requires_SPRING_APPLICATION_api_v1_contactservice"--[contacts_controller_ContactsController]
+"contacts_requires_SPRING_APPLICATION_api_v1_contactservice_POST_DELETE_GET_PUT_"--[contacts_controller_ContactsController]
 }
-interface "SPRING-APPLICATION/api/v1/contactservice" as interface.SPRING_APPLICATION_api_v1_contactservice
-interface.SPRING_APPLICATION_api_v1_contactservice--"ContactsServiceImpl_requires_SPRING_APPLICATION_api_v1_contactservice"
-component "ExecuteServiceImpl\n\n\n\n\n\n" {
-[execute_serivce_ExecuteServiceImpl]
+interface "SPRING-APPLICATION/api/v1/contactservice[POST,DELETE,GET,PUT]" as interface.SPRING_APPLICATION_api_v1_contactservice_POST_DELETE_GET_PUT_
+interface.SPRING_APPLICATION_api_v1_contactservice_POST_DELETE_GET_PUT_--"contacts_requires_SPRING_APPLICATION_api_v1_contactservice_POST_DELETE_GET_PUT_"
+component "execute\n\n\n\n\n\n" {
 [execute_controller_ExecuteControlller]
-[execute_serivce_ExecuteService]
-portin " " as ExecuteServiceImpl_requires_SPRING_APPLICATION_api_v1_executeservice_GET_
-[execute_controller_ExecuteControlller]..>[execute_serivce_ExecuteService] : requires
+[execute_serivce_ExecuteServiceImpl]
+portin " " as execute_requires_SPRING_APPLICATION_api_v1_executeservice_GET_
 [execute_controller_ExecuteControlller]..>[execute_serivce_ExecuteServiceImpl] : requires
-"ExecuteServiceImpl_requires_SPRING_APPLICATION_api_v1_executeservice_GET_"--[execute_controller_ExecuteControlller]
+"execute_requires_SPRING_APPLICATION_api_v1_executeservice_GET_"--[execute_controller_ExecuteControlller]
 }
 interface "SPRING-APPLICATION/api/v1/executeservice[GET]" as interface.SPRING_APPLICATION_api_v1_executeservice_GET_
-interface.SPRING_APPLICATION_api_v1_executeservice_GET_--"ExecuteServiceImpl_requires_SPRING_APPLICATION_api_v1_executeservice_GET_"
-component "FoodDeliveryServiceImpl\n\n\n\n\n\n" {
+interface.SPRING_APPLICATION_api_v1_executeservice_GET_--"execute_requires_SPRING_APPLICATION_api_v1_executeservice_GET_"
+component "fdse_microservice\n\n\n\n\n\n" {
+[fdse_microservice_service_BasicServiceImpl]
+[fdse_microservice_controller_BasicController]
+portin " " as fdse_microservice_requires_SPRING_APPLICATION_api_v1_basicservice_GET_
+[fdse_microservice_controller_BasicController]..>[fdse_microservice_service_BasicServiceImpl] : requires
+"fdse_microservice_requires_SPRING_APPLICATION_api_v1_basicservice_GET_"--[fdse_microservice_controller_BasicController]
+}
+interface "SPRING-APPLICATION/api/v1/basicservice[GET]" as interface.SPRING_APPLICATION_api_v1_basicservice_GET_
+interface.SPRING_APPLICATION_api_v1_basicservice_GET_--"fdse_microservice_requires_SPRING_APPLICATION_api_v1_basicservice_GET_"
+component "fdse_microservice 2\n\n\n\n\n\n" {
+[fdse_microservice_controller_StationController]
+[fdse_microservice_repository_StationRepository]
+[fdse_microservice_service_StationServiceImpl]
+portin " " as fdse_microservice_2_requires_SPRING_APPLICATION_api_v1_stationservice_GET_
+[fdse_microservice_controller_StationController]..>[fdse_microservice_service_StationServiceImpl] : requires
+[fdse_microservice_service_StationServiceImpl]..>[fdse_microservice_repository_StationRepository] : requires
+"fdse_microservice_2_requires_SPRING_APPLICATION_api_v1_stationservice_GET_"--[fdse_microservice_controller_StationController]
+}
+interface "SPRING-APPLICATION/api/v1/stationservice[GET]" as interface.SPRING_APPLICATION_api_v1_stationservice_GET_
+interface.SPRING_APPLICATION_api_v1_stationservice_GET_--"fdse_microservice_2_requires_SPRING_APPLICATION_api_v1_stationservice_GET_"
+component "food\n\n\n\n\n\n" {
+[food_repository_StationFoodRepository]
+[food_service_StationFoodServiceImpl]
+[food_controller_StationFoodController]
+portin " " as food_requires_SPRING_APPLICATION_api_v1_stationfoodservice_GET_
+[food_service_StationFoodServiceImpl]..>[food_repository_StationFoodRepository] : requires
+[food_controller_StationFoodController]..>[food_service_StationFoodServiceImpl] : requires
+"food_requires_SPRING_APPLICATION_api_v1_stationfoodservice_GET_"--[food_controller_StationFoodController]
+}
+interface "SPRING-APPLICATION/api/v1/stationfoodservice[GET]" as interface.SPRING_APPLICATION_api_v1_stationfoodservice_GET_
+interface.SPRING_APPLICATION_api_v1_stationfoodservice_GET_--"food_requires_SPRING_APPLICATION_api_v1_stationfoodservice_GET_"
+component "food_delivery\n\n\n\n\n\n" {
+[food_delivery_controller_FoodDeliveryController]
 [food_delivery_service_FoodDeliveryServiceImpl]
 [food_delivery_repository_FoodDeliveryOrderRepository]
-[food_delivery_service_FoodDeliveryService]
-[food_delivery_controller_FoodDeliveryController]
-portin " " as FoodDeliveryServiceImpl_requires_SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_
-[food_delivery_controller_FoodDeliveryController]..>[food_delivery_service_FoodDeliveryService] : requires
-[food_delivery_service_FoodDeliveryServiceImpl]..>[food_delivery_repository_FoodDeliveryOrderRepository] : requires
+portin " " as food_delivery_requires_SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_
 [food_delivery_controller_FoodDeliveryController]..>[food_delivery_service_FoodDeliveryServiceImpl] : requires
-"FoodDeliveryServiceImpl_requires_SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_"--[food_delivery_controller_FoodDeliveryController]
+[food_delivery_service_FoodDeliveryServiceImpl]..>[food_delivery_repository_FoodDeliveryOrderRepository] : requires
+"food_delivery_requires_SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_"--[food_delivery_controller_FoodDeliveryController]
 }
 interface "SPRING-APPLICATION/api/v1/fooddeliveryservice[GET]" as interface.SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_
-interface.SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_--"FoodDeliveryServiceImpl_requires_SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_"
-component "FoodServiceImpl\n\n\n\n\n\n" {
-[foodsearch_service_FoodService]
-[foodsearch_controller_FoodController]
+interface.SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_--"food_delivery_requires_SPRING_APPLICATION_api_v1_fooddeliveryservice_GET_"
+component "foodsearch\n\n\n\n\n\n" {
 [foodsearch_service_FoodServiceImpl]
 [foodsearch_mq_RabbitSend]
+[foodsearch_controller_FoodController]
 [foodsearch_repository_FoodOrderRepository]
-portin " " as FoodServiceImpl_requires_SPRING_APPLICATION_api_v1_foodservice
-[foodsearch_controller_FoodController]..>[foodsearch_service_FoodService] : requires
-[foodsearch_controller_FoodController]..>[foodsearch_service_FoodServiceImpl] : requires
-[foodsearch_service_FoodServiceImpl]..>[foodsearch_mq_RabbitSend] : requires
+portin " " as foodsearch_requires_SPRING_APPLICATION_api_v1_foodservice_POST_DELETE_GET_PUT_
 [foodsearch_controller_FoodController]..>[foodsearch_mq_RabbitSend] : requires
+[foodsearch_controller_FoodController]..>[foodsearch_service_FoodServiceImpl] : requires
 [foodsearch_service_FoodServiceImpl]..>[foodsearch_repository_FoodOrderRepository] : requires
-"FoodServiceImpl_requires_SPRING_APPLICATION_api_v1_foodservice"--[foodsearch_controller_FoodController]
+[foodsearch_service_FoodServiceImpl]..>[foodsearch_mq_RabbitSend] : requires
+"foodsearch_requires_SPRING_APPLICATION_api_v1_foodservice_POST_DELETE_GET_PUT_"--[foodsearch_controller_FoodController]
 }
-interface "SPRING-APPLICATION/api/v1/foodservice" as interface.SPRING_APPLICATION_api_v1_foodservice
-interface.SPRING_APPLICATION_api_v1_foodservice--"FoodServiceImpl_requires_SPRING_APPLICATION_api_v1_foodservice"
-component "InsidePaymentServiceImpl\n\n\n\n\n\n" {
+interface "SPRING-APPLICATION/api/v1/foodservice[POST,DELETE,GET,PUT]" as interface.SPRING_APPLICATION_api_v1_foodservice_POST_DELETE_GET_PUT_
+interface.SPRING_APPLICATION_api_v1_foodservice_POST_DELETE_GET_PUT_--"foodsearch_requires_SPRING_APPLICATION_api_v1_foodservice_POST_DELETE_GET_PUT_"
+component "inside_payment\n\n\n\n\n\n" {
 [inside_payment_repository_PaymentRepository]
-[inside_payment_service_InsidePaymentServiceImpl]
-[inside_payment_service_InsidePaymentService]
 [inside_payment_repository_AddMoneyRepository]
 [inside_payment_controller_InsidePaymentController]
-portin " " as InsidePaymentServiceImpl_requires_SPRING_APPLICATION_api_v1_inside_pay_service_GET_
-[inside_payment_service_InsidePaymentServiceImpl]..>[inside_payment_repository_AddMoneyRepository] : requires
-[inside_payment_controller_InsidePaymentController]..>[inside_payment_service_InsidePaymentService] : requires
-[inside_payment_service_InsidePaymentServiceImpl]..>[inside_payment_repository_PaymentRepository] : requires
+[inside_payment_service_InsidePaymentServiceImpl]
+portin " " as inside_payment_requires_SPRING_APPLICATION_api_v1_inside_pay_service_GET_
 [inside_payment_controller_InsidePaymentController]..>[inside_payment_service_InsidePaymentServiceImpl] : requires
-"InsidePaymentServiceImpl_requires_SPRING_APPLICATION_api_v1_inside_pay_service_GET_"--[inside_payment_controller_InsidePaymentController]
+[inside_payment_service_InsidePaymentServiceImpl]..>[inside_payment_repository_PaymentRepository] : requires
+[inside_payment_service_InsidePaymentServiceImpl]..>[inside_payment_repository_AddMoneyRepository] : requires
+"inside_payment_requires_SPRING_APPLICATION_api_v1_inside_pay_service_GET_"--[inside_payment_controller_InsidePaymentController]
 }
 interface "SPRING-APPLICATION/api/v1/inside_pay_service[GET]" as interface.SPRING_APPLICATION_api_v1_inside_pay_service_GET_
-interface.SPRING_APPLICATION_api_v1_inside_pay_service_GET_--"InsidePaymentServiceImpl_requires_SPRING_APPLICATION_api_v1_inside_pay_service_GET_"
-component "NotificationController\n\n\n\n\n\n" {
-[notification_controller_NotificationController]
+interface.SPRING_APPLICATION_api_v1_inside_pay_service_GET_--"inside_payment_requires_SPRING_APPLICATION_api_v1_inside_pay_service_GET_"
+component "notification\n\n\n\n\n\n" {
 [notification_service_NotificationServiceImpl]
-[notification_service_NotificationService]
-[notification_mq_RabbitSend]
 [notification_service_MailService]
-portin " " as NotificationController_requires_SPRING_APPLICATION_api_v1_notifyservice_GET_
+[notification_controller_NotificationController]
+[notification_mq_RabbitSend]
+portin " " as notification_requires_SPRING_APPLICATION_api_v1_notifyservice_GET_
 [notification_controller_NotificationController]..>[notification_mq_RabbitSend] : requires
 [notification_controller_NotificationController]..>[notification_service_NotificationServiceImpl] : requires
 [notification_service_NotificationServiceImpl]..>[notification_service_MailService] : requires
-[notification_controller_NotificationController]..>[notification_service_NotificationService] : requires
-"NotificationController_requires_SPRING_APPLICATION_api_v1_notifyservice_GET_"--[notification_controller_NotificationController]
+"notification_requires_SPRING_APPLICATION_api_v1_notifyservice_GET_"--[notification_controller_NotificationController]
 }
 interface "SPRING-APPLICATION/api/v1/notifyservice[GET]" as interface.SPRING_APPLICATION_api_v1_notifyservice_GET_
-interface.SPRING_APPLICATION_api_v1_notifyservice_GET_--"NotificationController_requires_SPRING_APPLICATION_api_v1_notifyservice_GET_"
-component "OrderOtherController\n\n\n\n\n\n" {
-[other_service_OrderOtherServiceImpl]
-[other_repository_OrderOtherRepository]
-[other_controller_OrderOtherController]
-[other_service_OrderOtherService]
-portin " " as OrderOtherController_requires_SPRING_APPLICATION_api_v1_orderOtherService
-[other_service_OrderOtherServiceImpl]..>[other_repository_OrderOtherRepository] : requires
-[other_controller_OrderOtherController]..>[other_service_OrderOtherServiceImpl] : requires
-[other_controller_OrderOtherController]..>[other_service_OrderOtherService] : requires
-"OrderOtherController_requires_SPRING_APPLICATION_api_v1_orderOtherService"--[other_controller_OrderOtherController]
-}
-interface "SPRING-APPLICATION/api/v1/orderOtherService" as interface.SPRING_APPLICATION_api_v1_orderOtherService
-interface.SPRING_APPLICATION_api_v1_orderOtherService--"OrderOtherController_requires_SPRING_APPLICATION_api_v1_orderOtherService"
-component "OrderServiceImpl\n\n\n\n\n\n" {
-[order_service_OrderService]
+interface.SPRING_APPLICATION_api_v1_notifyservice_GET_--"notification_requires_SPRING_APPLICATION_api_v1_notifyservice_GET_"
+component "order\n\n\n\n\n\n" {
+[order_service_OrderServiceImpl]
 [order_controller_OrderController]
 [order_repository_OrderRepository]
-[order_service_OrderServiceImpl]
-portin " " as OrderServiceImpl_requires_SPRING_APPLICATION_api_v1_orderservice
-[order_controller_OrderController]..>[order_service_OrderServiceImpl] : requires
+portin " " as order_requires_SPRING_APPLICATION_api_v1_orderservice_POST_DELETE_GET_PUT_
 [order_service_OrderServiceImpl]..>[order_repository_OrderRepository] : requires
-[order_controller_OrderController]..>[order_service_OrderService] : requires
-"OrderServiceImpl_requires_SPRING_APPLICATION_api_v1_orderservice"--[order_controller_OrderController]
+[order_controller_OrderController]..>[order_service_OrderServiceImpl] : requires
+"order_requires_SPRING_APPLICATION_api_v1_orderservice_POST_DELETE_GET_PUT_"--[order_controller_OrderController]
 }
-interface "SPRING-APPLICATION/api/v1/orderservice" as interface.SPRING_APPLICATION_api_v1_orderservice
-interface.SPRING_APPLICATION_api_v1_orderservice--"OrderServiceImpl_requires_SPRING_APPLICATION_api_v1_orderservice"
-component "PaymentController\n\n\n\n\n\n" {
-[com_trainticket_service_PaymentService]
-[com_trainticket_service_PaymentServiceImpl]
-[com_trainticket_repository_PaymentRepository]
-[com_trainticket_repository_AddMoneyRepository]
-[com_trainticket_controller_PaymentController]
-portin " " as PaymentController_requires_SPRING_APPLICATION_api_v1_paymentservice
-[com_trainticket_service_PaymentServiceImpl]..>[com_trainticket_repository_AddMoneyRepository] : requires
-[com_trainticket_controller_PaymentController]..>[com_trainticket_service_PaymentService] : requires
-[com_trainticket_service_PaymentServiceImpl]..>[com_trainticket_repository_PaymentRepository] : requires
-[com_trainticket_controller_PaymentController]..>[com_trainticket_service_PaymentServiceImpl] : requires
-"PaymentController_requires_SPRING_APPLICATION_api_v1_paymentservice"--[com_trainticket_controller_PaymentController]
+interface "SPRING-APPLICATION/api/v1/orderservice[POST,DELETE,GET,PUT]" as interface.SPRING_APPLICATION_api_v1_orderservice_POST_DELETE_GET_PUT_
+interface.SPRING_APPLICATION_api_v1_orderservice_POST_DELETE_GET_PUT_--"order_requires_SPRING_APPLICATION_api_v1_orderservice_POST_DELETE_GET_PUT_"
+component "other\n\n\n\n\n\n" {
+[other_controller_OrderOtherController]
+[other_service_OrderOtherServiceImpl]
+[other_repository_OrderOtherRepository]
+portin " " as other_requires_SPRING_APPLICATION_api_v1_orderOtherService_POST_DELETE_GET_PUT_
+[other_service_OrderOtherServiceImpl]..>[other_repository_OrderOtherRepository] : requires
+[other_controller_OrderOtherController]..>[other_service_OrderOtherServiceImpl] : requires
+"other_requires_SPRING_APPLICATION_api_v1_orderOtherService_POST_DELETE_GET_PUT_"--[other_controller_OrderOtherController]
 }
-interface "SPRING-APPLICATION/api/v1/paymentservice" as interface.SPRING_APPLICATION_api_v1_paymentservice
-interface.SPRING_APPLICATION_api_v1_paymentservice--"PaymentController_requires_SPRING_APPLICATION_api_v1_paymentservice"
-component "PreserveOtherController\n\n\n\n\n\n" {
-[preserveOther_mq_RabbitSend]
-[preserveOther_controller_PreserveOtherController]
-[preserveOther_service_PreserveOtherServiceImpl]
-[preserveOther_service_PreserveOtherService]
-portin " " as PreserveOtherController_requires_SPRING_APPLICATION_api_v1_preserveotherservice_GET_
-[preserveOther_service_PreserveOtherServiceImpl]..>[preserveOther_mq_RabbitSend] : requires
-[preserveOther_controller_PreserveOtherController]..>[preserveOther_service_PreserveOtherServiceImpl] : requires
-[preserveOther_controller_PreserveOtherController]..>[preserveOther_service_PreserveOtherService] : requires
-"PreserveOtherController_requires_SPRING_APPLICATION_api_v1_preserveotherservice_GET_"--[preserveOther_controller_PreserveOtherController]
-}
-interface "SPRING-APPLICATION/api/v1/preserveotherservice[GET]" as interface.SPRING_APPLICATION_api_v1_preserveotherservice_GET_
-interface.SPRING_APPLICATION_api_v1_preserveotherservice_GET_--"PreserveOtherController_requires_SPRING_APPLICATION_api_v1_preserveotherservice_GET_"
-component "PreserveServiceImpl\n\n\n\n\n\n" {
-[preserve_service_PreserveServiceImpl]
-[preserve_service_PreserveService]
-[preserve_mq_RabbitSend]
-[preserve_controller_PreserveController]
-portin " " as PreserveServiceImpl_requires_SPRING_APPLICATION_api_v1_preserveservice_GET_
-[preserve_service_PreserveServiceImpl]..>[preserve_mq_RabbitSend] : requires
-[preserve_controller_PreserveController]..>[preserve_service_PreserveServiceImpl] : requires
-[preserve_controller_PreserveController]..>[preserve_service_PreserveService] : requires
-"PreserveServiceImpl_requires_SPRING_APPLICATION_api_v1_preserveservice_GET_"--[preserve_controller_PreserveController]
-}
-interface "SPRING-APPLICATION/api/v1/preserveservice[GET]" as interface.SPRING_APPLICATION_api_v1_preserveservice_GET_
-interface.SPRING_APPLICATION_api_v1_preserveservice_GET_--"PreserveServiceImpl_requires_SPRING_APPLICATION_api_v1_preserveservice_GET_"
-component "PriceServiceImpl\n\n\n\n\n\n" {
-[price_repository_PriceConfigRepository]
-[price_controller_PriceController]
-[price_service_PriceServiceImpl]
-[price_service_PriceService]
-portin " " as PriceServiceImpl_requires_SPRING_APPLICATION_api_v1_priceservice_GET_
-[price_controller_PriceController]..>[price_service_PriceServiceImpl] : requires
-[price_service_PriceServiceImpl]..>[price_repository_PriceConfigRepository] : requires
-[price_controller_PriceController]..>[price_service_PriceService] : requires
-"PriceServiceImpl_requires_SPRING_APPLICATION_api_v1_priceservice_GET_"--[price_controller_PriceController]
-}
-interface "SPRING-APPLICATION/api/v1/priceservice[GET]" as interface.SPRING_APPLICATION_api_v1_priceservice_GET_
-interface.SPRING_APPLICATION_api_v1_priceservice_GET_--"PriceServiceImpl_requires_SPRING_APPLICATION_api_v1_priceservice_GET_"
-component "RebookServiceImpl\n\n\n\n\n\n" {
-[rebook_service_RebookServiceImpl]
-[rebook_service_RebookService]
-[rebook_controller_RebookController]
-portin " " as RebookServiceImpl_requires_SPRING_APPLICATION_api_v1_rebookservice_GET_
-[rebook_controller_RebookController]..>[rebook_service_RebookServiceImpl] : requires
-[rebook_controller_RebookController]..>[rebook_service_RebookService] : requires
-"RebookServiceImpl_requires_SPRING_APPLICATION_api_v1_rebookservice_GET_"--[rebook_controller_RebookController]
-}
-interface "SPRING-APPLICATION/api/v1/rebookservice[GET]" as interface.SPRING_APPLICATION_api_v1_rebookservice_GET_
-interface.SPRING_APPLICATION_api_v1_rebookservice_GET_--"RebookServiceImpl_requires_SPRING_APPLICATION_api_v1_rebookservice_GET_"
-component "RouteController\n\n\n\n\n\n" {
-[route_repository_RouteRepository]
-[route_service_RouteService]
-[route_service_RouteServiceImpl]
-[route_controller_RouteController]
-portin " " as RouteController_requires_SPRING_APPLICATION_api_v1_routeservice
-[route_controller_RouteController]..>[route_service_RouteService] : requires
-[route_controller_RouteController]..>[route_service_RouteServiceImpl] : requires
-[route_service_RouteServiceImpl]..>[route_repository_RouteRepository] : requires
-"RouteController_requires_SPRING_APPLICATION_api_v1_routeservice"--[route_controller_RouteController]
-}
-interface "SPRING-APPLICATION/api/v1/routeservice" as interface.SPRING_APPLICATION_api_v1_routeservice
-interface.SPRING_APPLICATION_api_v1_routeservice--"RouteController_requires_SPRING_APPLICATION_api_v1_routeservice"
-component "RoutePlanServiceImpl\n\n\n\n\n\n" {
-[plan_service_RoutePlanService]
-[plan_service_RoutePlanServiceImpl]
+interface "SPRING-APPLICATION/api/v1/orderOtherService[POST,DELETE,GET,PUT]" as interface.SPRING_APPLICATION_api_v1_orderOtherService_POST_DELETE_GET_PUT_
+interface.SPRING_APPLICATION_api_v1_orderOtherService_POST_DELETE_GET_PUT_--"other_requires_SPRING_APPLICATION_api_v1_orderOtherService_POST_DELETE_GET_PUT_"
+component "plan\n\n\n\n\n\n" {
 [plan_controller_RoutePlanController]
-portin " " as RoutePlanServiceImpl_requires_SPRING_APPLICATION_api_v1_routeplanservice_GET_
-[plan_controller_RoutePlanController]..>[plan_service_RoutePlanService] : requires
+[plan_service_RoutePlanServiceImpl]
+portin " " as plan_requires_SPRING_APPLICATION_api_v1_routeplanservice_GET_
 [plan_controller_RoutePlanController]..>[plan_service_RoutePlanServiceImpl] : requires
-"RoutePlanServiceImpl_requires_SPRING_APPLICATION_api_v1_routeplanservice_GET_"--[plan_controller_RoutePlanController]
+"plan_requires_SPRING_APPLICATION_api_v1_routeplanservice_GET_"--[plan_controller_RoutePlanController]
 }
 interface "SPRING-APPLICATION/api/v1/routeplanservice[GET]" as interface.SPRING_APPLICATION_api_v1_routeplanservice_GET_
-interface.SPRING_APPLICATION_api_v1_routeplanservice_GET_--"RoutePlanServiceImpl_requires_SPRING_APPLICATION_api_v1_routeplanservice_GET_"
-component "SeatController\n\n\n\n\n\n" {
+interface.SPRING_APPLICATION_api_v1_routeplanservice_GET_--"plan_requires_SPRING_APPLICATION_api_v1_routeplanservice_GET_"
+component "preserve\n\n\n\n\n\n" {
+[preserve_mq_RabbitSend]
+[preserve_controller_PreserveController]
+[preserve_service_PreserveServiceImpl]
+portin " " as preserve_requires_SPRING_APPLICATION_api_v1_preserveservice_GET_
+[preserve_controller_PreserveController]..>[preserve_service_PreserveServiceImpl] : requires
+[preserve_service_PreserveServiceImpl]..>[preserve_mq_RabbitSend] : requires
+"preserve_requires_SPRING_APPLICATION_api_v1_preserveservice_GET_"--[preserve_controller_PreserveController]
+}
+interface "SPRING-APPLICATION/api/v1/preserveservice[GET]" as interface.SPRING_APPLICATION_api_v1_preserveservice_GET_
+interface.SPRING_APPLICATION_api_v1_preserveservice_GET_--"preserve_requires_SPRING_APPLICATION_api_v1_preserveservice_GET_"
+component "preserveOther\n\n\n\n\n\n" {
+[preserveOther_controller_PreserveOtherController]
+[preserveOther_service_PreserveOtherServiceImpl]
+[preserveOther_mq_RabbitSend]
+portin " " as preserveOther_requires_SPRING_APPLICATION_api_v1_preserveotherservice_GET_
+[preserveOther_controller_PreserveOtherController]..>[preserveOther_service_PreserveOtherServiceImpl] : requires
+[preserveOther_service_PreserveOtherServiceImpl]..>[preserveOther_mq_RabbitSend] : requires
+"preserveOther_requires_SPRING_APPLICATION_api_v1_preserveotherservice_GET_"--[preserveOther_controller_PreserveOtherController]
+}
+interface "SPRING-APPLICATION/api/v1/preserveotherservice[GET]" as interface.SPRING_APPLICATION_api_v1_preserveotherservice_GET_
+interface.SPRING_APPLICATION_api_v1_preserveotherservice_GET_--"preserveOther_requires_SPRING_APPLICATION_api_v1_preserveotherservice_GET_"
+component "price\n\n\n\n\n\n" {
+[price_repository_PriceConfigRepository]
+[price_service_PriceServiceImpl]
+[price_controller_PriceController]
+portin " " as price_requires_SPRING_APPLICATION_api_v1_priceservice_GET_
+[price_service_PriceServiceImpl]..>[price_repository_PriceConfigRepository] : requires
+[price_controller_PriceController]..>[price_service_PriceServiceImpl] : requires
+"price_requires_SPRING_APPLICATION_api_v1_priceservice_GET_"--[price_controller_PriceController]
+}
+interface "SPRING-APPLICATION/api/v1/priceservice[GET]" as interface.SPRING_APPLICATION_api_v1_priceservice_GET_
+interface.SPRING_APPLICATION_api_v1_priceservice_GET_--"price_requires_SPRING_APPLICATION_api_v1_priceservice_GET_"
+component "rebook\n\n\n\n\n\n" {
+[rebook_service_RebookServiceImpl]
+[rebook_controller_RebookController]
+portin " " as rebook_requires_SPRING_APPLICATION_api_v1_rebookservice_GET_
+[rebook_controller_RebookController]..>[rebook_service_RebookServiceImpl] : requires
+"rebook_requires_SPRING_APPLICATION_api_v1_rebookservice_GET_"--[rebook_controller_RebookController]
+}
+interface "SPRING-APPLICATION/api/v1/rebookservice[GET]" as interface.SPRING_APPLICATION_api_v1_rebookservice_GET_
+interface.SPRING_APPLICATION_api_v1_rebookservice_GET_--"rebook_requires_SPRING_APPLICATION_api_v1_rebookservice_GET_"
+component "route\n\n\n\n\n\n" {
+[route_controller_RouteController]
+[route_service_RouteServiceImpl]
+[route_repository_RouteRepository]
+portin " " as route_requires_SPRING_APPLICATION_api_v1_routeservice_POST_DELETE_GET_
+[route_controller_RouteController]..>[route_service_RouteServiceImpl] : requires
+[route_service_RouteServiceImpl]..>[route_repository_RouteRepository] : requires
+"route_requires_SPRING_APPLICATION_api_v1_routeservice_POST_DELETE_GET_"--[route_controller_RouteController]
+}
+interface "SPRING-APPLICATION/api/v1/routeservice[POST,DELETE,GET]" as interface.SPRING_APPLICATION_api_v1_routeservice_POST_DELETE_GET_
+interface.SPRING_APPLICATION_api_v1_routeservice_POST_DELETE_GET_--"route_requires_SPRING_APPLICATION_api_v1_routeservice_POST_DELETE_GET_"
+component "seat\n\n\n\n\n\n" {
 [seat_service_SeatServiceImpl]
-[seat_service_SeatService]
 [seat_controller_SeatController]
-portin " " as SeatController_requires_SPRING_APPLICATION_api_v1_seatservice_GET_
+portin " " as seat_requires_SPRING_APPLICATION_api_v1_seatservice_GET_
 [seat_controller_SeatController]..>[seat_service_SeatServiceImpl] : requires
-[seat_controller_SeatController]..>[seat_service_SeatService] : requires
-"SeatController_requires_SPRING_APPLICATION_api_v1_seatservice_GET_"--[seat_controller_SeatController]
+"seat_requires_SPRING_APPLICATION_api_v1_seatservice_GET_"--[seat_controller_SeatController]
 }
 interface "SPRING-APPLICATION/api/v1/seatservice[GET]" as interface.SPRING_APPLICATION_api_v1_seatservice_GET_
-interface.SPRING_APPLICATION_api_v1_seatservice_GET_--"SeatController_requires_SPRING_APPLICATION_api_v1_seatservice_GET_"
-component "SecurityController\n\n\n\n\n\n" {
-[security_repository_SecurityRepository]
-[security_service_SecurityService]
+interface.SPRING_APPLICATION_api_v1_seatservice_GET_--"seat_requires_SPRING_APPLICATION_api_v1_seatservice_GET_"
+component "security\n\n\n\n\n\n" {
 [security_service_SecurityServiceImpl]
+[security_repository_SecurityRepository]
 [security_controller_SecurityController]
-portin " " as SecurityController_requires_SPRING_APPLICATION_api_v1_securityservice
+portin " " as security_requires_SPRING_APPLICATION_api_v1_securityservice_POST_DELETE_GET_PUT_
 [security_service_SecurityServiceImpl]..>[security_repository_SecurityRepository] : requires
-[security_controller_SecurityController]..>[security_service_SecurityService] : requires
 [security_controller_SecurityController]..>[security_service_SecurityServiceImpl] : requires
-"SecurityController_requires_SPRING_APPLICATION_api_v1_securityservice"--[security_controller_SecurityController]
+"security_requires_SPRING_APPLICATION_api_v1_securityservice_POST_DELETE_GET_PUT_"--[security_controller_SecurityController]
 }
-interface "SPRING-APPLICATION/api/v1/securityservice" as interface.SPRING_APPLICATION_api_v1_securityservice
-interface.SPRING_APPLICATION_api_v1_securityservice--"SecurityController_requires_SPRING_APPLICATION_api_v1_securityservice"
-component "StationController\n\n\n\n\n\n" {
-[fdse_microservice_service_StationService]
-[fdse_microservice_service_StationServiceImpl]
-[fdse_microservice_controller_StationController]
-[fdse_microservice_repository_StationRepository]
-portin " " as StationController_requires_SPRING_APPLICATION_api_v1_stationservice_GET_
-[fdse_microservice_controller_StationController]..>[fdse_microservice_service_StationService] : requires
-[fdse_microservice_service_StationServiceImpl]..>[fdse_microservice_repository_StationRepository] : requires
-[fdse_microservice_controller_StationController]..>[fdse_microservice_service_StationServiceImpl] : requires
-"StationController_requires_SPRING_APPLICATION_api_v1_stationservice_GET_"--[fdse_microservice_controller_StationController]
-}
-interface "SPRING-APPLICATION/api/v1/stationservice[GET]" as interface.SPRING_APPLICATION_api_v1_stationservice_GET_
-interface.SPRING_APPLICATION_api_v1_stationservice_GET_--"StationController_requires_SPRING_APPLICATION_api_v1_stationservice_GET_"
-component "StationFoodServiceImpl\n\n\n\n\n\n" {
-[food_service_StationFoodService]
-[food_service_StationFoodServiceImpl]
-[food_controller_StationFoodController]
-[food_repository_StationFoodRepository]
-portin " " as StationFoodServiceImpl_requires_SPRING_APPLICATION_api_v1_stationfoodservice_GET_
-[food_controller_StationFoodController]..>[food_service_StationFoodService] : requires
-[food_service_StationFoodServiceImpl]..>[food_repository_StationFoodRepository] : requires
-[food_controller_StationFoodController]..>[food_service_StationFoodServiceImpl] : requires
-"StationFoodServiceImpl_requires_SPRING_APPLICATION_api_v1_stationfoodservice_GET_"--[food_controller_StationFoodController]
-}
-interface "SPRING-APPLICATION/api/v1/stationfoodservice[GET]" as interface.SPRING_APPLICATION_api_v1_stationfoodservice_GET_
-interface.SPRING_APPLICATION_api_v1_stationfoodservice_GET_--"StationFoodServiceImpl_requires_SPRING_APPLICATION_api_v1_stationfoodservice_GET_"
-component "TokenServiceImpl\n\n\n\n\n\n" {
-[auth_service_impl_UserServiceImpl]
-[auth_repository_UserRepository]
-[auth_service_UserService]
-[auth_controller_AuthController]
-[auth_service_impl_TokenServiceImpl]
-[auth_controller_UserController]
-[auth_security_jwt_JWTProvider]
-[auth_service_TokenService]
-portin " " as TokenServiceImpl_requires_SPRING_APPLICATION_api_v1_users
-portin " " as TokenServiceImpl_requires_SPRING_APPLICATION_api_v1_auth_POST_
-[auth_controller_UserController]..>[auth_service_impl_TokenServiceImpl] : requires
-[auth_service_impl_TokenServiceImpl]..>[auth_security_jwt_JWTProvider] : requires
-[auth_service_impl_TokenServiceImpl]..>[auth_repository_UserRepository] : requires
-[auth_service_impl_UserServiceImpl]..>[auth_repository_UserRepository] : requires
-[auth_controller_UserController]..>[auth_service_TokenService] : requires
-[auth_controller_AuthController]..>[auth_service_impl_UserServiceImpl] : requires
-[auth_controller_UserController]..>[auth_service_UserService] : requires
-[auth_controller_AuthController]..>[auth_service_UserService] : requires
-[auth_controller_UserController]..>[auth_service_impl_UserServiceImpl] : requires
-"TokenServiceImpl_requires_SPRING_APPLICATION_api_v1_users"--[auth_controller_UserController]
-"TokenServiceImpl_requires_SPRING_APPLICATION_api_v1_auth_POST_"--[auth_controller_AuthController]
-}
-interface "SPRING-APPLICATION/api/v1/auth[POST]" as interface.SPRING_APPLICATION_api_v1_auth_POST_
-interface.SPRING_APPLICATION_api_v1_auth_POST_--"TokenServiceImpl_requires_SPRING_APPLICATION_api_v1_auth_POST_"
-interface "SPRING-APPLICATION/api/v1/users" as interface.SPRING_APPLICATION_api_v1_users
-interface.SPRING_APPLICATION_api_v1_users--"TokenServiceImpl_requires_SPRING_APPLICATION_api_v1_users"
-component "TrainController\n\n\n\n\n\n" {
+interface "SPRING-APPLICATION/api/v1/securityservice[POST,DELETE,GET,PUT]" as interface.SPRING_APPLICATION_api_v1_securityservice_POST_DELETE_GET_PUT_
+interface.SPRING_APPLICATION_api_v1_securityservice_POST_DELETE_GET_PUT_--"security_requires_SPRING_APPLICATION_api_v1_securityservice_POST_DELETE_GET_PUT_"
+component "train\n\n\n\n\n\n" {
 [train_repository_TrainTypeRepository]
 [train_controller_TrainController]
-[train_service_TrainService]
 [train_service_TrainServiceImpl]
-portin " " as TrainController_requires_SPRING_APPLICATION_api_v1_trainservice_GET_
+portin " " as train_requires_SPRING_APPLICATION_api_v1_trainservice_GET_
 [train_service_TrainServiceImpl]..>[train_repository_TrainTypeRepository] : requires
-[train_controller_TrainController]..>[train_service_TrainService] : requires
 [train_controller_TrainController]..>[train_service_TrainServiceImpl] : requires
-"TrainController_requires_SPRING_APPLICATION_api_v1_trainservice_GET_"--[train_controller_TrainController]
+"train_requires_SPRING_APPLICATION_api_v1_trainservice_GET_"--[train_controller_TrainController]
 }
 interface "SPRING-APPLICATION/api/v1/trainservice[GET]" as interface.SPRING_APPLICATION_api_v1_trainservice_GET_
-interface.SPRING_APPLICATION_api_v1_trainservice_GET_--"TrainController_requires_SPRING_APPLICATION_api_v1_trainservice_GET_"
-component "TrainFoodController\n\n\n\n\n\n" {
-[trainFood_repository_TrainFoodRepository]
-[trainFood_service_TrainFoodService]
-[trainFood_service_TrainFoodServiceImpl]
+interface.SPRING_APPLICATION_api_v1_trainservice_GET_--"train_requires_SPRING_APPLICATION_api_v1_trainservice_GET_"
+component "trainFood\n\n\n\n\n\n" {
 [trainFood_controller_TrainFoodController]
-portin " " as TrainFoodController_requires_SPRING_APPLICATION_api_v1_trainfoodservice_GET_
+[trainFood_repository_TrainFoodRepository]
+[trainFood_service_TrainFoodServiceImpl]
+portin " " as trainFood_requires_SPRING_APPLICATION_api_v1_trainfoodservice_GET_
 [trainFood_controller_TrainFoodController]..>[trainFood_service_TrainFoodServiceImpl] : requires
 [trainFood_service_TrainFoodServiceImpl]..>[trainFood_repository_TrainFoodRepository] : requires
-[trainFood_controller_TrainFoodController]..>[trainFood_service_TrainFoodService] : requires
-"TrainFoodController_requires_SPRING_APPLICATION_api_v1_trainfoodservice_GET_"--[trainFood_controller_TrainFoodController]
+"trainFood_requires_SPRING_APPLICATION_api_v1_trainfoodservice_GET_"--[trainFood_controller_TrainFoodController]
 }
 interface "SPRING-APPLICATION/api/v1/trainfoodservice[GET]" as interface.SPRING_APPLICATION_api_v1_trainfoodservice_GET_
-interface.SPRING_APPLICATION_api_v1_trainfoodservice_GET_--"TrainFoodController_requires_SPRING_APPLICATION_api_v1_trainfoodservice_GET_"
-component "TravelPlanServiceImpl\n\n\n\n\n\n" {
-[travelplan_controller_TravelPlanController]
-[travelplan_service_TravelPlanService]
-[travelplan_service_TravelPlanServiceImpl]
-portin " " as TravelPlanServiceImpl_requires_SPRING_APPLICATION_api_v1_travelplanservice_GET_
-[travelplan_controller_TravelPlanController]..>[travelplan_service_TravelPlanService] : requires
-[travelplan_controller_TravelPlanController]..>[travelplan_service_TravelPlanServiceImpl] : requires
-"TravelPlanServiceImpl_requires_SPRING_APPLICATION_api_v1_travelplanservice_GET_"--[travelplan_controller_TravelPlanController]
-}
-interface "SPRING-APPLICATION/api/v1/travelplanservice[GET]" as interface.SPRING_APPLICATION_api_v1_travelplanservice_GET_
-interface.SPRING_APPLICATION_api_v1_travelplanservice_GET_--"TravelPlanServiceImpl_requires_SPRING_APPLICATION_api_v1_travelplanservice_GET_"
-component "TravelServiceImpl\n\n\n\n\n\n" {
-[travel_service_TravelServiceImpl]
-[travel2_repository_TripRepository]
-[travel2_controller_Travel2Controller]
-[travel_service_TravelService]
+interface.SPRING_APPLICATION_api_v1_trainfoodservice_GET_--"trainFood_requires_SPRING_APPLICATION_api_v1_trainfoodservice_GET_"
+component "travel2\n\n\n\n\n\n" {
 [travel_controller_TravelController]
-[travel2_service_TravelServiceImpl]
-[travel2_service_TravelService]
+[travel2_controller_Travel2Controller]
 [travel_repository_TripRepository]
-portin " " as TravelServiceImpl_requires_SPRING_APPLICATION_api_v1_travelservice_GET_
-portin " " as TravelServiceImpl_requires_SPRING_APPLICATION_api_v1_travel2service_GET_
-[travel_service_TravelServiceImpl]..>[travel_repository_TripRepository] : requires
-[travel_controller_TravelController]..>[travel_service_TravelService] : requires
+[travel2_repository_TripRepository]
+[travel2_service_TravelServiceImpl]
+[travel_service_TravelServiceImpl]
+portin " " as travel2_requires_SPRING_APPLICATION_api_v1_travelservice_GET_
+portin " " as travel2_requires_SPRING_APPLICATION_api_v1_travel2service_GET_
 [travel2_service_TravelServiceImpl]..>[travel2_repository_TripRepository] : requires
-[travel2_controller_Travel2Controller]..>[travel2_service_TravelService] : requires
+[travel_service_TravelServiceImpl]..>[travel_repository_TripRepository] : requires
 [travel_controller_TravelController]..>[travel_service_TravelServiceImpl] : requires
 [travel2_controller_Travel2Controller]..>[travel2_service_TravelServiceImpl] : requires
-"TravelServiceImpl_requires_SPRING_APPLICATION_api_v1_travelservice_GET_"--[travel_controller_TravelController]
-"TravelServiceImpl_requires_SPRING_APPLICATION_api_v1_travel2service_GET_"--[travel2_controller_Travel2Controller]
+"travel2_requires_SPRING_APPLICATION_api_v1_travelservice_GET_"--[travel_controller_TravelController]
+"travel2_requires_SPRING_APPLICATION_api_v1_travel2service_GET_"--[travel2_controller_Travel2Controller]
 }
 interface "SPRING-APPLICATION/api/v1/travel2service[GET]" as interface.SPRING_APPLICATION_api_v1_travel2service_GET_
-interface.SPRING_APPLICATION_api_v1_travel2service_GET_--"TravelServiceImpl_requires_SPRING_APPLICATION_api_v1_travel2service_GET_"
+interface.SPRING_APPLICATION_api_v1_travel2service_GET_--"travel2_requires_SPRING_APPLICATION_api_v1_travel2service_GET_"
 interface "SPRING-APPLICATION/api/v1/travelservice[GET]" as interface.SPRING_APPLICATION_api_v1_travelservice_GET_
-interface.SPRING_APPLICATION_api_v1_travelservice_GET_--"TravelServiceImpl_requires_SPRING_APPLICATION_api_v1_travelservice_GET_"
-component "VerifyCodeController\n\n\n\n\n\n" {
-[verifycode_service_VerifyCodeService]
+interface.SPRING_APPLICATION_api_v1_travelservice_GET_--"travel2_requires_SPRING_APPLICATION_api_v1_travelservice_GET_"
+component "travelplan\n\n\n\n\n\n" {
+[travelplan_controller_TravelPlanController]
+[travelplan_service_TravelPlanServiceImpl]
+portin " " as travelplan_requires_SPRING_APPLICATION_api_v1_travelplanservice_GET_
+[travelplan_controller_TravelPlanController]..>[travelplan_service_TravelPlanServiceImpl] : requires
+"travelplan_requires_SPRING_APPLICATION_api_v1_travelplanservice_GET_"--[travelplan_controller_TravelPlanController]
+}
+interface "SPRING-APPLICATION/api/v1/travelplanservice[GET]" as interface.SPRING_APPLICATION_api_v1_travelplanservice_GET_
+interface.SPRING_APPLICATION_api_v1_travelplanservice_GET_--"travelplan_requires_SPRING_APPLICATION_api_v1_travelplanservice_GET_"
+component "verifycode\n\n\n\n\n\n" {
 [verifycode_controller_VerifyCodeController]
 [verifycode_service_impl_VerifyCodeServiceImpl]
-portin " " as VerifyCodeController_requires_SPRING_APPLICATION_api_v1_verifycode
+portin " " as verifycode_requires_SPRING_APPLICATION_api_v1_verifycode_GET_
 [verifycode_controller_VerifyCodeController]..>[verifycode_service_impl_VerifyCodeServiceImpl] : requires
-[verifycode_controller_VerifyCodeController]..>[verifycode_service_VerifyCodeService] : requires
-"VerifyCodeController_requires_SPRING_APPLICATION_api_v1_verifycode"--[verifycode_controller_VerifyCodeController]
+"verifycode_requires_SPRING_APPLICATION_api_v1_verifycode_GET_"--[verifycode_controller_VerifyCodeController]
 }
-interface "SPRING-APPLICATION/api/v1/verifycode" as interface.SPRING_APPLICATION_api_v1_verifycode
-interface.SPRING_APPLICATION_api_v1_verifycode--"VerifyCodeController_requires_SPRING_APPLICATION_api_v1_verifycode"
-component "WaitListOrderController\n\n\n\n\n\n" {
-[waitorder_controller_WaitListOrderController]
-[waitorder_service_WaitListOrderService]
+interface "SPRING-APPLICATION/api/v1/verifycode[GET]" as interface.SPRING_APPLICATION_api_v1_verifycode_GET_
+interface.SPRING_APPLICATION_api_v1_verifycode_GET_--"verifycode_requires_SPRING_APPLICATION_api_v1_verifycode_GET_"
+component "waitorder\n\n\n\n\n\n" {
 [waitorder_service_Impl_WaitListOrderServiceImpl]
 [waitorder_repository_WaitListOrderRepository]
-portin " " as WaitListOrderController_requires_SPRING_APPLICATION_api_v1_waitorderservice
+[waitorder_controller_WaitListOrderController]
+portin " " as waitorder_requires_SPRING_APPLICATION_api_v1_waitorderservice_POST_GET_
 [waitorder_controller_WaitListOrderController]..>[waitorder_service_Impl_WaitListOrderServiceImpl] : requires
 [waitorder_service_Impl_WaitListOrderServiceImpl]..>[waitorder_repository_WaitListOrderRepository] : requires
-[waitorder_controller_WaitListOrderController]..>[waitorder_service_WaitListOrderService] : requires
-"WaitListOrderController_requires_SPRING_APPLICATION_api_v1_waitorderservice"--[waitorder_controller_WaitListOrderController]
+"waitorder_requires_SPRING_APPLICATION_api_v1_waitorderservice_POST_GET_"--[waitorder_controller_WaitListOrderController]
 }
-interface "SPRING-APPLICATION/api/v1/waitorderservice" as interface.SPRING_APPLICATION_api_v1_waitorderservice
-interface.SPRING_APPLICATION_api_v1_waitorderservice--"WaitListOrderController_requires_SPRING_APPLICATION_api_v1_waitorderservice"
+interface "SPRING-APPLICATION/api/v1/waitorderservice[POST,GET]" as interface.SPRING_APPLICATION_api_v1_waitorderservice_POST_GET_
+interface.SPRING_APPLICATION_api_v1_waitorderservice_POST_GET_--"waitorder_requires_SPRING_APPLICATION_api_v1_waitorderservice_POST_GET_"
 interface "adminbasic_service_DiscoveryClient" as interface.adminbasic_service_DiscoveryClient
 interface.adminbasic_service_DiscoveryClient--[adminbasic_service_DiscoveryClient_Provider]
 interface "adminbasic_service_RestTemplate" as interface.adminbasic_service_RestTemplate
@@ -592,13 +513,16 @@ interface "travelplan_service_DiscoveryClient" as interface.travelplan_service_D
 interface.travelplan_service_DiscoveryClient--[travelplan_service_DiscoveryClient_Provider]
 interface "travelplan_service_RestTemplate" as interface.travelplan_service_RestTemplate
 interface.travelplan_service_RestTemplate--[travelplan_service_RestTemplate_Provider]
-interface "SPRING-APPLICATION/api/v1/userservice/users" as interface.SPRING_APPLICATION_api_v1_userservice_users
-interface.SPRING_APPLICATION_api_v1_userservice_users--[user_controller_UserController]
-[user_controller_UserController]..>[user_service_UserService] : requires
+interface "SPRING-APPLICATION/api/v1/userservice/users[DELETE,GET,PUT]" as interface.SPRING_APPLICATION_api_v1_userservice_users_DELETE_GET_PUT_
+interface.SPRING_APPLICATION_api_v1_userservice_users_DELETE_GET_PUT_--[user_controller_UserController]
+interface "user_service_UserService" as interface.user_service_UserService
+[user_controller_UserController]..>interface.user_service_UserService : requires
 interface "user_service_impl_DiscoveryClient" as interface.user_service_impl_DiscoveryClient
 interface.user_service_impl_DiscoveryClient--[user_service_impl_DiscoveryClient_Provider]
 interface "user_service_impl_RestTemplate" as interface.user_service_impl_RestTemplate
 interface.user_service_impl_RestTemplate--[user_service_impl_RestTemplate_Provider]
+interface "user_service_UserService" as interface.user_service_UserService
+interface.user_service_UserService--[user_service_impl_UserServiceImpl]
 [user_service_impl_UserServiceImpl]..>[user_repository_UserRepository] : requires
 interface "user_service_impl_DiscoveryClient" as interface.user_service_impl_DiscoveryClient
 [user_service_impl_UserServiceImpl]..>interface.user_service_impl_DiscoveryClient : requires
