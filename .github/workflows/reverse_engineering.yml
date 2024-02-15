@@ -72,6 +72,7 @@ jobs:
           echo "rules_path=$(yq eval '.rules_path // "."' $CONFIG_FILE)" >> $GITHUB_ENV
 
       - name: Checkout repositories
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
         run: |
           # Assuming repositories is a comma-separated list
           IFS=',' read -r -a repositories_array <<< "${{ env.repositories }}"
