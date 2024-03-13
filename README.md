@@ -25,27 +25,25 @@ The easiest way to use our approach is to use the CLI that we have [released](ht
 
 Here, replace `/path/to/input/directory` with the path to the root directory of the project you want to reverse engineer, `/path/to/output/directory` with the path to the output directory where you want to store the generated models, and `supported_rules` with the [rules](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever/tree/main/bundles/org.palladiosimulator.retriever.extraction.rules/src/org/palladiosimulator/retriever/extraction/rules) you want to use for reverse engineering.
 
-# Palladio Reverse Engineering Benchmark GitHub Workflow
+## GitHub Workflow
 
 This GitHub workflow is designed for reverse-engineering case studies using the [Palladio Reverse-Engineering Retriever]((https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever)).
 It automates the process of collecting information, generating the PCM (Palladio Component Model) and committing these results back to the repository.
 It ensures that the latest version is always used and that results are consistently integrated back into the repository.
 
-## Overview
-
 The workflow can be dispatched manually, allowing to overwrite the `benchmark` parameter for all projects to force the retriever action to use the `hyperfine` benchmark to measure the execution time.
 In addition to that, the workflow is automatically triggered every day at 2:00 AM UTC to keep the results up-to-date.
 Since the workflow commits the analysis results back to the repository it requires the `contents: write` permissions.
 
-## How it works
+### How it works
 
 The workflow consists of 3 jobs:
 
-### 1. Collect Information (`collect_info`)
+#### 1. Collect Information (`collect_info`)
 
 This job determines the benchmark projects by searching for `.retriever.yml` files.
 
-#### Outputs
+##### Outputs
 
 * `array`:
   A list of directories that contain a `.retriever.yml` file.
@@ -53,7 +51,7 @@ This job determines the benchmark projects by searching for `.retriever.yml` fil
   The latest version tag of the Palladio-ReverseEngineering-Retriever on GitHub.
   Used to determine if the retriever action needs to be run for a project or not.
 
-#### Steps
+##### Steps
 
 1. **Checkout Repository**
 2. **Find Directories**:
@@ -61,13 +59,13 @@ This job determines the benchmark projects by searching for `.retriever.yml` fil
 3. **Get Latest Retriever Version**:
    Fetches the latest version of the Palladio-ReverseEngineering-Retriever from GitHub and outputs it.
 
-### 2. Generate PCM (`generate_pcm`)
+#### 2. Generate PCM (`generate_pcm`)
 
 This job performs the actual benchmark on the projects found in the previous job.
 It is a matrix job built from the directories output from the `collect_info` job.
 If one project fails the job still continues.
 
-#### Steps
+##### Steps
 
 1. **Checkout Benchmark Repository**
 2. **Parse configuration**:
@@ -88,11 +86,11 @@ If one project fails the job still continues.
 Steps 3-8 are only executed if the `current_version` in the `.retriever.yml` file doesn't match the `latest_version` that was determined in the previous job.
 This avoids unnecessary execution as the workflow is scheduled every day.
 
-### 3. Commit Results (`commit_results`)
+#### 3. Commit Results (`commit_results`)
 
 This job commits the results back to the benchmark repository. 
 
-#### Steps
+##### Steps
 
 1. **Checkout Benchmark Repository**
 2. **Download Artifacts**:
@@ -101,7 +99,7 @@ This job commits the results back to the benchmark repository.
    Commits and pushes the changes back to the repository, using a commit message that includes the latest version of the Retriever tool.
    This updates the PCM, the `README.md` and the UML diagrams for all benchmarked projects. 
 
-## Example usage
+### Example usage
 
 In order to add a new benchmark project, create a folder for the project and add the following `.retriever.yml` file:
 
