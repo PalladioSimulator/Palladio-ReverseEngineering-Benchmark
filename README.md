@@ -33,7 +33,7 @@ It ensures that the latest version is always used and that results are consisten
 
 The workflow can be dispatched manually, allowing to overwrite the `benchmark` parameter for all projects to force the retriever action to use the `hyperfine` benchmark to measure the execution time.
 In addition to that, the workflow is automatically triggered every day at 2:00 AM UTC to keep the results up-to-date.
-Since the workflow commits the analysis results back to the repository it requires the `contents: write` permissions.
+Since the workflow commits the analysis results back to the repository it requires the `contents: write` permission.
 
 ### How it works
 
@@ -62,8 +62,9 @@ This job determines the benchmark projects by searching for `.retriever.yml` fil
 #### 2. Generate PCM (`generate_pcm`)
 
 This job performs the actual benchmark on the projects found in the previous job.
-It is a matrix job built from the directories output from the `collect_info` job.
-If one project fails the job still continues.
+It is a matrix job that takes the output `array` of the `collect_info` job as an input (list of project directories).
+The job is executed in parallel on the projects and if one project fails, the others still continue.
+This ensures that the results of one project don't affect other projects.
 
 ##### Steps
 
@@ -80,7 +81,7 @@ If one project fails the job still continues.
    Prepares the results for upload and renders the UML diagrams.
 7. **Update Version**:
    Updates the version in `.retriever.yml` to the latest version that was used for the analysis.
-8. **Upload Artefact**:
+8. **Upload Artifact**:
    Uploads the results as an artifact for the next job.
 
 Steps 3-8 are only executed if the `current_version` in the `.retriever.yml` file doesn't match the `latest_version` that was determined in the previous job.
@@ -101,7 +102,7 @@ This job commits the results back to the benchmark repository.
 
 ### Example usage
 
-In order to add a new benchmark project, create a folder for the project and add the following `.retriever.yml` file:
+In order to add a new project to the benchmark repository, create a folder for the project and add the following `.retriever.yml` file:
 
 ```yaml
 repository: [GitHub repository id]
