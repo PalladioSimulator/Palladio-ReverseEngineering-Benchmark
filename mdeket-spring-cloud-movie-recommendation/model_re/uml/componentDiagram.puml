@@ -2,17 +2,17 @@
 skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
 component "com_example\n\n\n\n\n\n" {
+[com_example_service_UserService]
 [com_example_service_RecommendationClientService]
 [com_example_MainController]
-[com_example_service_UserService]
 portin " " as com_example_requires_SPRING_APPLICATION_api_GET_
-portout " " as com_example_provides_user_service_user
 portout " " as com_example_provides_user_service_newuser
-[com_example_MainController]..>[com_example_service_UserService] : requires
+portout " " as com_example_provides_user_service_user
 [com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
+[com_example_MainController]..>[com_example_service_UserService] : requires
 "com_example_requires_SPRING_APPLICATION_api_GET_"--[com_example_MainController]
-[com_example_service_UserService].."com_example_provides_user_service_newuser"
 [com_example_service_UserService].."com_example_provides_user_service_user"
+[com_example_service_UserService].."com_example_provides_user_service_newuser"
 }
 interface "SPRING-APPLICATION/api[GET]" as interface.SPRING_APPLICATION_api_GET_
 interface.SPRING_APPLICATION_api_GET_--"com_example_requires_SPRING_APPLICATION_api_GET_"
@@ -20,6 +20,21 @@ interface "user-service/newuser" as interface.user_service_newuser
 "com_example_provides_user_service_newuser"..>interface.user_service_newuser : requires
 interface "user-service/user" as interface.user_service_user
 "com_example_provides_user_service_user"..>interface.user_service_user : requires
+component "com_example 2\n\n\n\n\n\n" {
+[com_example_UserController]
+[com_example_RecommendationController]
+[com_example_UserRepo]
+portin " " as com_example_2_requires_SPRING_APPLICATION_recommendation_
+portin " " as com_example_2_requires_SPRING_APPLICATION_user
+[com_example_RecommendationController]..>[com_example_UserRepo] : requires
+[com_example_UserController]..>[com_example_UserRepo] : requires
+"com_example_2_requires_SPRING_APPLICATION_user"--[com_example_UserController]
+"com_example_2_requires_SPRING_APPLICATION_recommendation_"--[com_example_RecommendationController]
+}
+interface "SPRING-APPLICATION/recommendation[*]" as interface.SPRING_APPLICATION_recommendation_
+interface.SPRING_APPLICATION_recommendation_--"com_example_2_requires_SPRING_APPLICATION_recommendation_"
+interface "SPRING-APPLICATION/user" as interface.SPRING_APPLICATION_user
+interface.SPRING_APPLICATION_user--"com_example_2_requires_SPRING_APPLICATION_user"
 component "com_example_MovieController\n\n\n\n\n\n" {
 [com_example_MovieController]
 portin " " as com_example_MovieController_requires_SPRING_APPLICATION_movie
@@ -27,24 +42,8 @@ portin " " as com_example_MovieController_requires_SPRING_APPLICATION_movie
 }
 interface "SPRING-APPLICATION/movie" as interface.SPRING_APPLICATION_movie
 interface.SPRING_APPLICATION_movie--"com_example_MovieController_requires_SPRING_APPLICATION_movie"
-component "com_example_RecommendationController\n\n\n\n\n\n" {
-[com_example_RecommendationController]
-portin " " as com_example_RecommendationController_requires_SPRING_APPLICATION_recommendation_
-"com_example_RecommendationController_requires_SPRING_APPLICATION_recommendation_"--[com_example_RecommendationController]
-}
-interface "SPRING-APPLICATION/recommendation[*]" as interface.SPRING_APPLICATION_recommendation_
-interface.SPRING_APPLICATION_recommendation_--"com_example_RecommendationController_requires_SPRING_APPLICATION_recommendation_"
-component "com_example_UserController\n\n\n\n\n\n" {
-[com_example_UserController]
-portin " " as com_example_UserController_requires_SPRING_APPLICATION_user
-"com_example_UserController_requires_SPRING_APPLICATION_user"--[com_example_UserController]
-}
-interface "SPRING-APPLICATION/user" as interface.SPRING_APPLICATION_user
-interface.SPRING_APPLICATION_user--"com_example_UserController_requires_SPRING_APPLICATION_user"
 interface "com_example_MovieRepo" as interface.com_example_MovieRepo
 interface.com_example_MovieRepo--[com_example_MovieRepo_Provider]
-interface "com_example_UserRepo" as interface.com_example_UserRepo
-interface.com_example_UserRepo--[com_example_UserRepo_Provider]
 interface "com_example_service_RestTemplate" as interface.com_example_service_RestTemplate
 interface.com_example_service_RestTemplate--[com_example_service_RestTemplate_Provider]
 interface "user-service/newuser" as interface.user_service_newuser

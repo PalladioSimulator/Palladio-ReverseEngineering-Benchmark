@@ -1,0 +1,35 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+skinparam componentStyle uml2
+() SPRING_APPLICATION_GET_Delegation_Provider
+() SPRING_APPLICATION_api_logs_POST_Delegation_Provider
+() SPRING_APPLICATION_error_Delegation_Provider
+() SPRING_APPLICATION_portal_api_logs_GET_Delegation_Provider
+rectangle System {
+[app_coronawarn_logupload_controller_LogDownloadApiController] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+[app_coronawarn_logupload_controller_LogUploadApiController] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+[app_coronawarn_logupload_controller_LogUploadErrorController] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+[app_coronawarn_logupload_controller_LogUploadPortalController] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+[app_coronawarn_logupload_repository_LogRepository] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+[app_coronawarn_logupload_service_FileStorageService] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+[app_coronawarn_logupload_service_LogCleanupService] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+[app_coronawarn_logupload_service_LogService] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+[app_coronawarn_logupload_service_OtpService] [[corona-warn-app-cwa-log-upload.repository#_UblWouWWEe6T8cV9VYLBqQ]]
+port SPRING_APPLICATION_GET_Provider
+SPRING_APPLICATION_GET_Delegation_Provider - SPRING_APPLICATION_GET_Provider
+SPRING_APPLICATION_GET_Provider - [app_coronawarn_logupload_controller_LogUploadPortalController]
+port SPRING_APPLICATION_api_logs_POST_Provider
+SPRING_APPLICATION_api_logs_POST_Delegation_Provider - SPRING_APPLICATION_api_logs_POST_Provider
+SPRING_APPLICATION_api_logs_POST_Provider - [app_coronawarn_logupload_controller_LogUploadApiController]
+port SPRING_APPLICATION_error_Provider
+SPRING_APPLICATION_error_Delegation_Provider - SPRING_APPLICATION_error_Provider
+SPRING_APPLICATION_error_Provider - [app_coronawarn_logupload_controller_LogUploadErrorController]
+port SPRING_APPLICATION_portal_api_logs_GET_Provider
+SPRING_APPLICATION_portal_api_logs_GET_Delegation_Provider - SPRING_APPLICATION_portal_api_logs_GET_Provider
+SPRING_APPLICATION_portal_api_logs_GET_Provider - [app_coronawarn_logupload_controller_LogDownloadApiController]
+[app_coronawarn_logupload_service_LogService] -(0- [app_coronawarn_logupload_repository_LogRepository] : app_coronawarn_logupload_repository_LogRepository_Provider
+[app_coronawarn_logupload_service_FileStorageService] -(0- [app_coronawarn_logupload_repository_LogRepository] : app_coronawarn_logupload_repository_LogRepository_Provider
+[app_coronawarn_logupload_service_LogCleanupService] -(0- [app_coronawarn_logupload_repository_LogRepository] : app_coronawarn_logupload_repository_LogRepository_Provider
+}
+
+@enduml
