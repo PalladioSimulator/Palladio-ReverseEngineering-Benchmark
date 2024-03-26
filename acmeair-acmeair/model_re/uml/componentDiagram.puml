@@ -2,71 +2,71 @@
 skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
 component "com_acmeair\n\n\n\n\n\n" {
-[com_acmeair_loader_CustomerLoader]
-[com_acmeair_web_CustomerREST]
-[com_acmeair_web_LoginREST]
-[com_acmeair_morphia_services_FlightServiceImpl]
-[com_acmeair_wxs_utils_WXSSessionManager]
+[com_acmeair_config_LoaderREST]
+[com_acmeair_loader_Loader]
+portin " " as com_acmeair_requires_SERVICE_HOST_loader
+[com_acmeair_config_LoaderREST]..>[com_acmeair_loader_Loader] : requires
+"com_acmeair_requires_SERVICE_HOST_loader"--[com_acmeair_config_LoaderREST]
+}
+interface "SERVICE-HOST/loader" as interface.SERVICE_HOST_loader
+interface.SERVICE_HOST_loader--"com_acmeair_requires_SERVICE_HOST_loader"
+component "com_acmeair 2\n\n\n\n\n\n" {
+[com_acmeair_loader_FlightLoader]
 [com_acmeair_morphia_services_CustomerServiceImpl]
-[com_acmeair_wxs_service_CustomerServiceImpl]
-[com_acmeair_wxs_service_BookingServiceImpl]
 [com_acmeair_config_AcmeAirConfiguration]
-[com_acmeair_web_BookingsREST]
-[com_acmeair_morphia_services_BookingServiceImpl]
 [com_acmeair_web_RESTCookieSessionFilter]
+[com_acmeair_loader_CustomerLoader]
+[com_acmeair_web_BookingsREST]
+[com_acmeair_wxs_utils_WXSSessionManager]
 [com_acmeair_wxs_service_FlightServiceImpl]
 [com_acmeair_web_FlightsREST]
-[com_acmeair_loader_FlightLoader]
-portin " " as com_acmeair_requires_SERVICE_HOST_customer_byid_
-portin " " as com_acmeair_requires_SERVICE_HOST_bookings_
-portin " " as com_acmeair_requires_SERVICE_HOST_login_
-portin " " as com_acmeair_requires_SERVICE_HOST_config_
-portin " " as com_acmeair_requires_SERVICE_HOST_flights_
-[com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_wxs_utils_WXSSessionManager] : requires
-[com_acmeair_loader_FlightLoader]..>[com_acmeair_wxs_service_FlightServiceImpl] : requires
-[com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_wxs_service_CustomerServiceImpl] : requires
-[com_acmeair_web_CustomerREST]..>[com_acmeair_morphia_services_CustomerServiceImpl] : requires
+[com_acmeair_web_CustomerREST]
+[com_acmeair_morphia_services_BookingServiceImpl]
+[com_acmeair_wxs_service_CustomerServiceImpl]
+[com_acmeair_morphia_services_FlightServiceImpl]
+[com_acmeair_web_LoginREST]
+[com_acmeair_wxs_service_BookingServiceImpl]
+portin " " as com_acmeair_2_requires_SERVICE_HOST_config
+portin " " as com_acmeair_2_requires_SERVICE_HOST_login
+portin " " as com_acmeair_2_requires_SERVICE_HOST_flights
+portin " " as com_acmeair_2_requires_SERVICE_HOST_customer_byid
+portin " " as com_acmeair_2_requires_SERVICE_HOST_bookings
+[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_morphia_services_CustomerServiceImpl] : requires
 [com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_wxs_service_CustomerServiceImpl] : requires
-[com_acmeair_loader_CustomerLoader]..>[com_acmeair_wxs_service_CustomerServiceImpl] : requires
-[com_acmeair_web_LoginREST]..>[com_acmeair_wxs_service_CustomerServiceImpl] : requires
-[com_acmeair_web_FlightsREST]..>[com_acmeair_wxs_service_FlightServiceImpl] : requires
-[com_acmeair_web_BookingsREST]..>[com_acmeair_wxs_service_BookingServiceImpl] : requires
-[com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_morphia_services_CustomerServiceImpl] : requires
+[com_acmeair_web_FlightsREST]..>[com_acmeair_morphia_services_FlightServiceImpl] : requires
 [com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_wxs_service_BookingServiceImpl] : requires
 [com_acmeair_web_CustomerREST]..>[com_acmeair_wxs_service_CustomerServiceImpl] : requires
+[com_acmeair_web_CustomerREST]..>[com_acmeair_morphia_services_CustomerServiceImpl] : requires
+[com_acmeair_web_FlightsREST]..>[com_acmeair_wxs_service_FlightServiceImpl] : requires
 [com_acmeair_loader_CustomerLoader]..>[com_acmeair_morphia_services_CustomerServiceImpl] : requires
-[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_morphia_services_BookingServiceImpl] : requires
-[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_morphia_services_CustomerServiceImpl] : requires
-[com_acmeair_loader_FlightLoader]..>[com_acmeair_morphia_services_FlightServiceImpl] : requires
-[com_acmeair_web_FlightsREST]..>[com_acmeair_morphia_services_FlightServiceImpl] : requires
-[com_acmeair_web_BookingsREST]..>[com_acmeair_morphia_services_BookingServiceImpl] : requires
+[com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_wxs_service_CustomerServiceImpl] : requires
 [com_acmeair_web_LoginREST]..>[com_acmeair_morphia_services_CustomerServiceImpl] : requires
-[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_wxs_service_FlightServiceImpl] : requires
 [com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_morphia_services_FlightServiceImpl] : requires
-"com_acmeair_requires_SERVICE_HOST_login_"--[com_acmeair_web_LoginREST]
-"com_acmeair_requires_SERVICE_HOST_customer_byid_"--[com_acmeair_web_CustomerREST]
-"com_acmeair_requires_SERVICE_HOST_bookings_"--[com_acmeair_web_BookingsREST]
-"com_acmeair_requires_SERVICE_HOST_config_"--[com_acmeair_config_AcmeAirConfiguration]
-"com_acmeair_requires_SERVICE_HOST_flights_"--[com_acmeair_web_FlightsREST]
+[com_acmeair_loader_FlightLoader]..>[com_acmeair_morphia_services_FlightServiceImpl] : requires
+[com_acmeair_web_BookingsREST]..>[com_acmeair_morphia_services_BookingServiceImpl] : requires
+[com_acmeair_web_BookingsREST]..>[com_acmeair_wxs_service_BookingServiceImpl] : requires
+[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_morphia_services_BookingServiceImpl] : requires
+[com_acmeair_config_AcmeAirConfiguration]..>[com_acmeair_wxs_service_FlightServiceImpl] : requires
+[com_acmeair_loader_FlightLoader]..>[com_acmeair_wxs_service_FlightServiceImpl] : requires
+[com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_wxs_utils_WXSSessionManager] : requires
+[com_acmeair_loader_CustomerLoader]..>[com_acmeair_wxs_service_CustomerServiceImpl] : requires
+[com_acmeair_web_LoginREST]..>[com_acmeair_wxs_service_CustomerServiceImpl] : requires
+[com_acmeair_web_RESTCookieSessionFilter]..>[com_acmeair_morphia_services_CustomerServiceImpl] : requires
+"com_acmeair_2_requires_SERVICE_HOST_bookings"--[com_acmeair_web_BookingsREST]
+"com_acmeair_2_requires_SERVICE_HOST_config"--[com_acmeair_config_AcmeAirConfiguration]
+"com_acmeair_2_requires_SERVICE_HOST_flights"--[com_acmeair_web_FlightsREST]
+"com_acmeair_2_requires_SERVICE_HOST_customer_byid"--[com_acmeair_web_CustomerREST]
+"com_acmeair_2_requires_SERVICE_HOST_login"--[com_acmeair_web_LoginREST]
 }
-interface "SERVICE-HOST/bookings[*]" as interface.SERVICE_HOST_bookings_
-interface.SERVICE_HOST_bookings_--"com_acmeair_requires_SERVICE_HOST_bookings_"
-interface "SERVICE-HOST/config[*]" as interface.SERVICE_HOST_config_
-interface.SERVICE_HOST_config_--"com_acmeair_requires_SERVICE_HOST_config_"
-interface "SERVICE-HOST/customer/byid[*]" as interface.SERVICE_HOST_customer_byid_
-interface.SERVICE_HOST_customer_byid_--"com_acmeair_requires_SERVICE_HOST_customer_byid_"
-interface "SERVICE-HOST/flights[*]" as interface.SERVICE_HOST_flights_
-interface.SERVICE_HOST_flights_--"com_acmeair_requires_SERVICE_HOST_flights_"
-interface "SERVICE-HOST/login[*]" as interface.SERVICE_HOST_login_
-interface.SERVICE_HOST_login_--"com_acmeair_requires_SERVICE_HOST_login_"
-component "com_acmeair 2\n\n\n\n\n\n" {
-[com_acmeair_loader_Loader]
-[com_acmeair_config_LoaderREST]
-portin " " as com_acmeair_2_requires_SERVICE_HOST_loader_
-[com_acmeair_config_LoaderREST]..>[com_acmeair_loader_Loader] : requires
-"com_acmeair_2_requires_SERVICE_HOST_loader_"--[com_acmeair_config_LoaderREST]
-}
-interface "SERVICE-HOST/loader[*]" as interface.SERVICE_HOST_loader_
-interface.SERVICE_HOST_loader_--"com_acmeair_2_requires_SERVICE_HOST_loader_"
+interface "SERVICE-HOST/bookings" as interface.SERVICE_HOST_bookings
+interface.SERVICE_HOST_bookings--"com_acmeair_2_requires_SERVICE_HOST_bookings"
+interface "SERVICE-HOST/config" as interface.SERVICE_HOST_config
+interface.SERVICE_HOST_config--"com_acmeair_2_requires_SERVICE_HOST_config"
+interface "SERVICE-HOST/customer/byid" as interface.SERVICE_HOST_customer_byid
+interface.SERVICE_HOST_customer_byid--"com_acmeair_2_requires_SERVICE_HOST_customer_byid"
+interface "SERVICE-HOST/flights" as interface.SERVICE_HOST_flights
+interface.SERVICE_HOST_flights--"com_acmeair_2_requires_SERVICE_HOST_flights"
+interface "SERVICE-HOST/login" as interface.SERVICE_HOST_login
+interface.SERVICE_HOST_login--"com_acmeair_2_requires_SERVICE_HOST_login"
 
 @enduml
