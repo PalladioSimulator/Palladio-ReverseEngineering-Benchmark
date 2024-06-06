@@ -1,14 +1,17 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
 | Version | Date |
 | ------- | ---- |
-| v5.2.0.202404221423 | Tue Apr 30 05:08:28 UTC 2024 |
+| v5.2.0.202406050756 | Thu Jun  6 02:23:47 UTC 2024 |
 
 ## Git repository information
-|    Attribute   | Value |
-| -------------- | ----- |
-| Repository URL | https://github.com/cloudscale-project/cloudstore |
-| Branch         | master |
-| Commit         | dcbf23a2b9150ba69733e6776085e96bbfd96572 |
+|      Attribute    | Value |
+| ----------------- | ----- |
+| Repository URL    | https://github.com/cloudscale-project/cloudstore |
+| Branch            | master |
+| Commit            | dcbf23a2b9150ba69733e6776085e96bbfd96572 |
+| Number of Commits | 200 |
+| Stars             | 9 |
+| Contributors      | 4 |
 
 
 ## System information
@@ -16,17 +19,17 @@
 | --------- | ----- |
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
-| Kernel | 6.5.0-1018-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.239GHz  |
+| Kernel | 6.5.0-1021-azure  |
+| CPU | AMD EPYC 7763 (4) @ 3.504GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 774MiB / 15981MiB  |
+| Memory | 790MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 4.99 |
-| User CPU Time | 15.73 |
-| System CPU Time | 0.61 |
+| Real CPU Time | 9.01 |
+| User CPU Time | 15.92 |
+| System CPU Time | 0.63 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -35,7 +38,7 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.30 s (454.2 files/s, 78262.7 lines/s)
+cloc v 1.90  T=0.28 s (477.8 files/s, 82324.6 lines/s)
 
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:

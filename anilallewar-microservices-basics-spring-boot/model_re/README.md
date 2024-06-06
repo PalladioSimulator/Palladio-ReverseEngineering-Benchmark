@@ -1,14 +1,17 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
 | Version | Date |
 | ------- | ---- |
-| v5.2.0.202404221423 | Tue Apr 30 05:08:27 UTC 2024 |
+| v5.2.0.202406050756 | Thu Jun  6 02:23:47 UTC 2024 |
 
 ## Git repository information
-|    Attribute   | Value |
-| -------------- | ----- |
-| Repository URL | https://github.com/anilallewar/microservices-basics-spring-boot |
-| Branch         | master |
-| Commit         | ac0a249156471ad98fa5ba5508fda9deabba6975 |
+|      Attribute    | Value |
+| ----------------- | ----- |
+| Repository URL    | https://github.com/anilallewar/microservices-basics-spring-boot |
+| Branch            | master |
+| Commit            | ac0a249156471ad98fa5ba5508fda9deabba6975 |
+| Number of Commits | 46 |
+| Stars             | 713 |
+| Contributors      | 5 |
 
 
 ## System information
@@ -16,17 +19,17 @@
 | --------- | ----- |
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
-| Kernel | 6.5.0-1018-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.236GHz  |
+| Kernel | 6.5.0-1021-azure  |
+| CPU | AMD EPYC 7763 (4) @ 3.244GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 799MiB / 15981MiB  |
+| Memory | 762MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 4.59 |
-| User CPU Time | 12.85 |
-| System CPU Time | 0.53 |
+| Real CPU Time | 8.26 |
+| User CPU Time | 13.65 |
+| System CPU Time | 0.59 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -35,7 +38,7 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=1.30 s (115.2 files/s, 5684.4 lines/s)
+cloc v 1.90  T=1.31 s (114.3 files/s, 5640.4 lines/s)
 
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:

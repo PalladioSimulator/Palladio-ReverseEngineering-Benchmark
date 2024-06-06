@@ -1,14 +1,17 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
 | Version | Date |
 | ------- | ---- |
-| v5.2.0.202404221423 | Tue Apr 30 05:09:16 UTC 2024 |
+| v5.2.0.202406050756 | Thu Jun  6 02:24:37 UTC 2024 |
 
 ## Git repository information
-|    Attribute   | Value |
-| -------------- | ----- |
-| Repository URL | https://github.com/meet-eat/meet-eat-server |
-| Branch         | master |
-| Commit         | 9aca89940ef3d524cba46da1434029c95c5a70e3 |
+|      Attribute    | Value |
+| ----------------- | ----- |
+| Repository URL    | https://github.com/meet-eat/meet-eat-server |
+| Branch            | master |
+| Commit            | 9aca89940ef3d524cba46da1434029c95c5a70e3 |
+| Number of Commits | 320 |
+| Stars             | 0 |
+| Contributors      | 3 |
 
 
 ## System information
@@ -16,17 +19,17 @@
 | --------- | ----- |
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
-| Kernel | 6.5.0-1018-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.203GHz  |
+| Kernel | 6.5.0-1021-azure  |
+| CPU | AMD EPYC 7763 (4) @ 3.239GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 765MiB / 15981MiB  |
+| Memory | 781MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 6.17 |
-| User CPU Time | 18.92 |
-| System CPU Time | 0.60 |
+| Real CPU Time | 6.22 |
+| User CPU Time | 18.37 |
+| System CPU Time | 0.62 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -35,7 +38,7 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.18 s (517.4 files/s, 63480.5 lines/s)
+cloc v 1.90  T=0.17 s (521.7 files/s, 64000.2 lines/s)
 
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:
