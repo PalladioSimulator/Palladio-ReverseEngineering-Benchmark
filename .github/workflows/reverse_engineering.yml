@@ -8,6 +8,11 @@ on:
         required: false
         default: "false"
         type: "string"
+      analyzeVulnerabilities:
+        description: "Analyze vulnerabilities (use snyk)"
+        required: false
+        default: "false"
+        type: "string"
 
   # Every day at 2:00.
   schedule:
@@ -51,6 +56,7 @@ jobs:
     continue-on-error: true
     strategy:
       fail-fast: false
+      max-parallel: ${{ inputs.analyzeVulnerabilities == 'true' && 1 || 1000 }}
       matrix:
         directory: ${{ fromJson(needs.collect_info.outputs.array) }}
 
@@ -84,7 +90,7 @@ jobs:
           fi
 
       - name: Checkout repositories
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         run: |
           # Assuming repositories is a comma-separated list
           IFS=',' read -r -a repositories_array <<< "${{ env.repositories }}"
@@ -95,23 +101,26 @@ jobs:
           done
 
       - name: Run Retriever
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         uses: PalladioSimulator/Palladio-ReverseEngineering-Retriever@main
         with:
           source_path: repo/${{ matrix.directory }}
           rules: ${{ env.rules }}
+          analyze_vulnerabilities: ${{ github.event.inputs.analyzeVulnerabilities }}
+          snyk_token: ${{ secrets.SNYK_TOKEN }}
+          nist_nvd_token: ${{ secrets.NVD_TOKEN }}
           benchmark: ${{ env.benchmark }}
           rules_path: ${{ env.rules_path }}
 
       - name: Download results
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         uses: actions/download-artifact@v3
         with:
           name: retriever
           path: results
 
       - name: Prepare upload
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         run: |
           mkdir -p to_commit/${{ matrix.directory }}/model_re/pcm
           mkdir -p to_commit/${{ matrix.directory }}/model_re/uml
@@ -120,7 +129,7 @@ jobs:
           mv results/repo/${{ matrix.directory }}/* to_commit/${{ matrix.directory }}/model_re/pcm
 
       - name: Render UML diagrams
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         run: |
           sudo apt-get install graphviz
           wget https://github.com/plantuml/plantuml/releases/download/v1.2023.13/plantuml-1.2023.13.jar -O plantuml.jar
@@ -131,13 +140,13 @@ jobs:
           done
 
       - name: Update version
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         run: |
           yq eval -i '.current_version = "${{ needs.collect_info.outputs.latest_version }}"' "benchmark/${{ matrix.directory }}/.retriever.yml"
           mv "benchmark/${{ matrix.directory }}/.retriever.yml" to_commit/${{ matrix.directory }}/.retriever.yml
 
       - name: Upload artifact
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         uses: actions/upload-artifact@v3
         with:
           name: to_commit
