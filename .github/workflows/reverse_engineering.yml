@@ -145,7 +145,7 @@ jobs:
       - name: Update version
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         run: |
-          yq eval -i '.current_version = "${{ needs.collect_info.outputs.latest_version }}"' "benchmark/${{ matrix.directory }}/.retriever.yml"
+          yq eval -i -y '.current_version = "${{ needs.collect_info.outputs.latest_version }}"' "benchmark/${{ matrix.directory }}/.retriever.yml"
           mv "benchmark/${{ matrix.directory }}/.retriever.yml" to_commit/${{ matrix.directory }}/.retriever.yml
 
       - name: Upload artifact
