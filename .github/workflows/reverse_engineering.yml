@@ -126,7 +126,8 @@ jobs:
           mkdir -p to_commit/${{ matrix.directory }}/model_re/uml
           mkdir -p to_commit/${{ matrix.directory }}/model_re/snyk
           mv results/repo/${{ matrix.directory }}/*.puml to_commit/${{ matrix.directory }}/model_re/uml
-          mv results/repo/${{ matrix.directory }}/*.log to_commit/${{ matrix.directory }}/model_re/snyk
+          # Move snyk *.log files, if there are any.
+          find results/repo/${{ matrix.directory }} -maxdepth 1 -name "*.log" -exec mv -t to_commit/${{ matrix.directory }}/model_re/snyk {} +
           mv results/repo/${{ matrix.directory }}/*.md to_commit/${{ matrix.directory }}/model_re/
           mv results/repo/${{ matrix.directory }}/* to_commit/${{ matrix.directory }}/model_re/pcm
 
