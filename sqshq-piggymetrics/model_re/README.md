@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:27:57 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Wed Jun 26 11:24:38 UTC 2024 |
+| #Components        | 29 |
+| #Source Files      | 148 |
+| Lines of Code      | 6286 |
+| #Technologies      | 5 |
+| Abstraction        | 5.10 |
+| Execution Time [s] | 9.83 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -10,7 +17,7 @@
 | Branch            | master |
 | Commit            | 6bb2cf9ddbca980b664d3edbb6ff775d75369278 |
 | Number of Commits | 290 |
-| Stars             | 13056 |
+| Stars             | 13058 |
 | Contributors      | 13 |
 
 
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
+| CPU | AMD EPYC 7763 (4) @ 2.445GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 789MiB / 15981MiB  |
+| Memory | 783MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 5.33 |
-| User CPU Time | 15.99 |
-| System CPU Time | 0.63 |
+| Real CPU Time | 9.83 |
+| User CPU Time | 18.50 |
+| System CPU Time | 0.85 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,19 +45,14 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.48 s (328.3 files/s, 45241.6 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-SVG|3|0|0|8188
-CSS|3|84|50|4744
-Java|97|1013|178|3292
-JavaScript|8|171|177|1664
-Maven|10|62|0|684
-YAML|23|70|11|588
-HTML|2|32|8|519
-Markdown|2|86|0|179
-Dockerfile|10|22|0|58
-Bourne Shell|1|5|2|26
---------|--------|--------|--------|--------
-SUM:|159|1545|426|19942
+<!-- github.com/AlDanial/cloc v 1.90  T=0.53 s (302.8 files/s, 41732.2 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|97|1013|178|3292|
+|Maven|10|62|0|684|
+|YAML|23|70|11|588|
+|Dockerfile|10|22|0|58|
+|ECMAScript|8|171|177|1664|
+|**SUM:**|**148**|**1338**|**366**|**6286**|

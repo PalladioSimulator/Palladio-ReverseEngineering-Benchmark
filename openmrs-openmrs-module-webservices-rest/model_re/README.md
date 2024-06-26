@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:27:48 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Wed Jun 26 11:24:36 UTC 2024 |
+| #Components        | 50 |
+| #Source Files      | 739 |
+| Lines of Code      | 58135 |
+| #Technologies      | 6 |
+| Abstraction        | 14.78 |
+| Execution Time [s] | 10.27 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -11,7 +18,7 @@
 | Commit            | ff78c3ab8adc3ca31485cb1f858ad16496c8475d |
 | Number of Commits | 1725 |
 | Stars             | 83 |
-| Contributors      | 30 |
+| Contributors      | 139 |
 
 
 ## System information
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 2.657GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.250GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 804MiB / 15981MiB  |
+| Memory | 778MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 9.54 |
-| User CPU Time | 30.54 |
-| System CPU Time | 1.16 |
+| Real CPU Time | 10.27 |
+| User CPU Time | 32.69 |
+| System CPU Time | 1.49 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,18 +45,15 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=2.01 s (373.3 files/s, 44111.8 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|672|11684|16730|54066
-Maven|14|253|4|2253
-XML|43|184|157|1182
-JSP|7|180|68|921
-JSON|6|2|0|503
-JavaScript|3|0|62|79
-Markdown|2|39|0|77
-YAML|1|5|2|52
-CSS|1|0|1|1
---------|--------|--------|--------|--------
-SUM:|749|12347|17024|59134
+<!-- github.com/AlDanial/cloc v 1.90  T=2.08 s (360.0 files/s, 42536.1 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|672|11684|16730|54066|
+|Maven|14|253|4|2253|
+|XML|43|184|157|1182|
+|JSON|6|2|0|503|
+|YAML|1|5|2|52|
+|ECMAScript|3|0|62|79|
+|**SUM:**|**739**|**12128**|**16955**|**58135**|

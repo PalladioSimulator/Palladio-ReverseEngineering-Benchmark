@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:26:50 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Wed Jun 26 11:23:55 UTC 2024 |
+| #Components        | 8 |
+| #Source Files      | 35 |
+| Lines of Code      | 1878 |
+| #Technologies      | 6 |
+| Abstraction        | 4.37 |
+| Execution Time [s] | 7.77 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 2.793GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.242GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 784MiB / 15981MiB  |
+| Memory | 770MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 7.75 |
-| User CPU Time | 14.46 |
-| System CPU Time | 0.59 |
+| Real CPU Time | 7.77 |
+| User CPU Time | 13.98 |
+| System CPU Time | 0.44 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,19 +45,15 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.12 s (409.4 files/s, 30158.5 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|20|239|571|1145
-Markdown|10|171|0|404
-XML|1|7|17|294
-YAML|8|10|0|260
-CSS|1|28|0|214
-HTML|4|9|8|170
-Maven|1|11|0|97
-JavaScript|4|5|1|76
-Groovy|1|1|5|8
-Dockerfile|1|0|0|6
---------|--------|--------|--------|--------
-SUM:|51|481|602|2674
+<!-- github.com/AlDanial/cloc v 1.90  T=0.12 s (414.8 files/s, 30559.4 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|20|239|571|1145|
+|XML|1|7|17|294|
+|YAML|8|10|0|260|
+|Maven|1|11|0|97|
+|Dockerfile|1|0|0|6|
+|ECMAScript|4|5|1|76|
+|**SUM:**|**35**|**272**|**589**|**1878**|

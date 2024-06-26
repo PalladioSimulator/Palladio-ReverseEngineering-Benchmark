@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:27:54 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Wed Jun 26 11:25:06 UTC 2024 |
+| #Components        | 9 |
+| #Source Files      | 41 |
+| Lines of Code      | 1046 |
+| #Technologies      | 4 |
+| Abstraction        | 4.55 |
+| Execution Time [s] | 7.24 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.244GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.237GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 791MiB / 15981MiB  |
+| Memory | 783MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 3.92 |
-| User CPU Time | 11.66 |
-| System CPU Time | 0.48 |
+| Real CPU Time | 7.24 |
+| User CPU Time | 12.32 |
+| System CPU Time | 0.47 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,17 +45,13 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.13 s (371.7 files/s, 13264.4 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-YAML|14|47|9|560
-Java|11|62|50|292
-Gradle|9|6|0|142
-Bourne Again Shell|1|20|21|123
-Markdown|2|42|26|115
-DOS Batch|2|25|2|68
-Dockerfile|7|6|0|52
-Bourne Shell|1|3|0|6
---------|--------|--------|--------|--------
-SUM:|47|211|108|1358
+<!-- github.com/AlDanial/cloc v 1.90  T=0.13 s (355.6 files/s, 12689.7 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|YAML|14|47|9|560|
+|Java|11|62|50|292|
+|Gradle|9|6|0|142|
+|Dockerfile|7|6|0|52|
+|**SUM:**|**41**|**121**|**59**|**1046**|

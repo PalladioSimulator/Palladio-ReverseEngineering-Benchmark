@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:26:48 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Wed Jun 26 11:23:53 UTC 2024 |
+| #Components        | 15 |
+| #Source Files      | 59 |
+| Lines of Code      | 3466 |
+| #Technologies      | 6 |
+| Abstraction        | 3.93 |
+| Execution Time [s] | 5.07 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.236GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 791MiB / 15981MiB  |
+| Memory | 784MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 7.78 |
-| User CPU Time | 14.14 |
-| System CPU Time | 0.59 |
+| Real CPU Time | 5.07 |
+| User CPU Time | 14.37 |
+| System CPU Time | 0.57 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,18 +45,15 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.38 s (200.7 files/s, 16449.9 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|32|403|642|1644
-JavaScript|9|103|79|802
-YAML|14|24|0|565
-CSS|4|77|23|529
-Markdown|10|202|0|494
-XML|2|7|17|306
-HTML|4|16|10|201
-Maven|1|13|0|137
-Dockerfile|1|5|0|12
---------|--------|--------|--------|--------
-SUM:|77|850|771|4690
+<!-- github.com/AlDanial/cloc v 1.90  T=0.39 s (199.2 files/s, 16324.8 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|32|403|642|1644|
+|YAML|14|24|0|565|
+|XML|2|7|17|306|
+|Maven|1|13|0|137|
+|Dockerfile|1|5|0|12|
+|ECMAScript|9|103|79|802|
+|**SUM:**|**59**|**555**|**738**|**3466**|

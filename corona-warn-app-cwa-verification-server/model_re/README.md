@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:26:59 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Wed Jun 26 11:24:05 UTC 2024 |
+| #Components        | 12 |
+| #Source Files      | 85 |
+| Lines of Code      | 5121 |
+| #Technologies      | 7 |
+| Abstraction        | 7.08 |
+| Execution Time [s] | 5.35 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -11,7 +18,7 @@
 | Commit            | bbc28be761c89bdda30f761f79f3a190e4c3a7c6 |
 | Number of Commits | 211 |
 | Stars             | 345 |
-| Contributors      | 30 |
+| Contributors      | 35 |
 
 
 ## System information
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 2.445GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 818MiB / 15981MiB  |
+| Memory | 781MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 7.67 |
-| User CPU Time | 15.77 |
-| System CPU Time | 0.62 |
+| Real CPU Time | 5.35 |
+| User CPU Time | 15.83 |
+| System CPU Time | 0.72 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,19 +45,16 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.18 s (541.5 files/s, 49445.9 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|58|716|2115|3618
-Markdown|11|264|0|762
-YAML|22|2|0|610
-JSON|1|0|0|409
-XML|1|7|17|294
-Maven|1|16|0|142
-JavaScript|1|0|0|40
-Dockerfile|1|0|0|8
-Groovy|1|1|5|8
-SVG|2|0|0|6
---------|--------|--------|--------|--------
-SUM:|99|1006|2137|5897
+<!-- github.com/AlDanial/cloc v 1.90  T=0.19 s (527.5 files/s, 48166.8 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|58|716|2115|3618|
+|YAML|22|2|0|610|
+|JSON|1|0|0|409|
+|XML|1|7|17|294|
+|Maven|1|16|0|142|
+|Dockerfile|1|0|0|8|
+|ECMAScript|1|0|0|40|
+|**SUM:**|**85**|**741**|**2132**|**5121**|

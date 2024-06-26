@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:26:48 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Wed Jun 26 11:23:57 UTC 2024 |
+| #Components        | 10 |
+| #Source Files      | 107 |
+| Lines of Code      | 3859 |
+| #Technologies      | 7 |
+| Abstraction        | 10.70 |
+| Execution Time [s] | 6.62 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.251GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 783MiB / 15981MiB  |
+| Memory | 778MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 7.50 |
-| User CPU Time | 13.98 |
-| System CPU Time | 0.55 |
+| Real CPU Time | 6.62 |
+| User CPU Time | 14.02 |
+| System CPU Time | 0.53 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,24 +45,16 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=1.32 s (114.0 files/s, 5629.4 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|37|329|867|1385
-YAML|34|98|30|1294
-Gradle|9|137|162|691
-Markdown|13|165|0|511
-XML|9|0|0|182
-HTML|6|13|15|160
-Bourne Shell|5|27|24|157
-JavaScript|8|34|349|153
-INI|14|0|0|150
-Dockerfile|9|72|45|126
-Freemarker Template|2|1|0|62
-DOS Batch|1|23|2|59
-Groovy|1|2|0|42
-SQL|1|2|0|28
-CSS|1|1|5|1
---------|--------|--------|--------|--------
-SUM:|150|904|1499|5001
+<!-- github.com/AlDanial/cloc v 1.90  T=1.31 s (114.9 files/s, 5673.4 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|37|329|867|1385|
+|YAML|34|98|30|1294|
+|Gradle|9|137|162|691|
+|XML|9|0|0|182|
+|Dockerfile|9|72|45|126|
+|ECMAScript|8|34|349|153|
+|SQL|1|2|0|28|
+|**SUM:**|**107**|**672**|**1453**|**3859**|

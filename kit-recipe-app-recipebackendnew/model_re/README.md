@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:27:28 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Wed Jun 26 11:24:19 UTC 2024 |
+| #Components        | 22 |
+| #Source Files      | 68 |
+| Lines of Code      | 2321 |
+| #Technologies      | 5 |
+| Abstraction        | 3.09 |
+| Execution Time [s] | 10.69 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -22,14 +29,14 @@
 | Kernel | 6.5.0-1022-azure  |
 | CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 772MiB / 15981MiB  |
+| Memory | 771MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 19.52 |
-| User CPU Time | 15.94 |
-| System CPU Time | 0.64 |
+| Real CPU Time | 10.69 |
+| User CPU Time | 14.54 |
+| System CPU Time | 0.51 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,17 +45,14 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.09 s (786.4 files/s, 45029.0 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|57|534|422|1977
-Bourne Shell|1|34|62|220
-Markdown|3|82|0|203
-YAML|7|39|65|183
-DOS Batch|1|35|0|153
-Maven|1|10|0|118
-XML|2|0|0|38
-Dockerfile|1|0|0|5
---------|--------|--------|--------|--------
-SUM:|73|734|549|2897
+<!-- github.com/AlDanial/cloc v 1.90  T=0.09 s (822.8 files/s, 47115.6 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|57|534|422|1977|
+|YAML|7|39|65|183|
+|Maven|1|10|0|118|
+|XML|2|0|0|38|
+|Dockerfile|1|0|0|5|
+|**SUM:**|**68**|**583**|**487**|**2321**|
