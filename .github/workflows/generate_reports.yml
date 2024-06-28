@@ -28,6 +28,7 @@ jobs:
       run: |
         echo "import os
         import pandas as pd
+        import re
 
         project_data = []
         cloc_data = []
@@ -55,6 +56,9 @@ jobs:
                             if len(parts) == 4:
                                 key = parts[1].strip()
                                 value = parts[2].strip()
+                                if key == 'Execution Time [s]':
+                                    # only mean time without standard deviation
+                                    value = re.match(r'([\d.]+)', value).group(1)
                                 data[key] = value
                             if len(parts) == 7:
                                 values = {}
