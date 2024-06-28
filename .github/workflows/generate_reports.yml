@@ -91,10 +91,12 @@ jobs:
 
                     cloc_data.append(project_cloc)
 
-        df_project = pd.DataFrame(project_data).sort_values(by='project')
+        df_project = pd.DataFrame(project_data)
+        df_project = df_project[df_project['execution_time'] != ''].sort_values(by='project') # Filter and sort
         df_project.to_csv('project_data.csv', index=False)
         
-        df_cloc = pd.DataFrame(cloc_data).sort_values(by='project')
+        df_cloc = pd.DataFrame(cloc_data)
+        df_cloc = df_cloc[df_cloc['project'].isin(df_project['project'])].sort_values(by='project')  # Filter and sort
         df_cloc.to_csv('cloc_data.csv', index=False)" > generate_reports.py
         python generate_reports.py
 
