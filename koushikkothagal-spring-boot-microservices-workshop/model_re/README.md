@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:27:42 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Fri Jun 28 13:15:45 UTC 2024 |
+| #Components        | 9 |
+| #Source Files      | 27 |
+| Lines of Code      | 947 |
+| #Technologies      | 3 |
+| Abstraction        | 3.00 |
+| Execution Time [s] | 4.39 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -10,7 +17,7 @@
 | Branch            | master |
 | Commit            | 8b01c6d153f7b6aee49fa91a5b1c62c1a0c09408 |
 | Number of Commits | 12 |
-| Stars             | 721 |
+| Stars             | 722 |
 | Contributors      | 1 |
 
 
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
+| CPU | AMD EPYC 7763 (4) @ 2.445GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 816MiB / 15981MiB  |
+| Memory | 776MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 8.26 |
+| Real CPU Time | 4.39 |
 | User CPU Time | 12.45 |
-| System CPU Time | 0.53 |
+| System CPU Time | 0.51 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,14 +45,12 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.05 s (573.8 files/s, 30789.3 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|19|129|5|383
-XML|4|0|0|314
-Maven|4|28|0|250
-Bourne Shell|1|31|60|195
-DOS Batch|1|32|0|129
---------|--------|--------|--------|--------
-SUM:|29|220|65|1271
+<!-- github.com/AlDanial/cloc v 1.90  T=0.05 s (602.2 files/s, 32311.6 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|19|129|5|383|
+|XML|4|0|0|314|
+|Maven|4|28|0|250|
+|**SUM:**|**27**|**157**|**5**|**947**|

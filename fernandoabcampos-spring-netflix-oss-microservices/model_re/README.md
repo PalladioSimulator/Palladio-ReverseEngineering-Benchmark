@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:26:50 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Fri Jun 28 13:15:23 UTC 2024 |
+| #Components        | 10 |
+| #Source Files      | 55 |
+| Lines of Code      | 1551 |
+| #Technologies      | 4 |
+| Abstraction        | 5.50 |
+| Execution Time [s] | 4.23 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.245GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 797MiB / 15981MiB  |
+| Memory | 766MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 8.47 |
-| User CPU Time | 12.58 |
-| System CPU Time | 0.56 |
+| Real CPU Time | 4.23 |
+| User CPU Time | 12.55 |
+| System CPU Time | 0.57 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,16 +45,13 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.07 s (789.2 files/s, 31459.4 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Maven|9|87|0|692
-Java|26|154|0|560
-Bourne Shell|2|33|68|286
-YAML|11|18|2|243
-DOS Batch|1|32|0|113
-Dockerfile|9|0|5|56
-Markdown|1|0|0|3
---------|--------|--------|--------|--------
-SUM:|59|324|75|1953
+<!-- github.com/AlDanial/cloc v 1.90  T=0.07 s (832.2 files/s, 33173.9 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Maven|9|87|0|692|
+|Java|26|154|0|560|
+|YAML|11|18|2|243|
+|Dockerfile|9|0|5|56|
+|**SUM:**|**55**|**259**|**7**|**1551**|

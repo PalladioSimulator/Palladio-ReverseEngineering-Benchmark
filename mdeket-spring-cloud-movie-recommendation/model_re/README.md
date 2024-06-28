@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:27:39 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Fri Jun 28 13:15:38 UTC 2024 |
+| #Components        | 14 |
+| #Source Files      | 52 |
+| Lines of Code      | 1886 |
+| #Technologies      | 5 |
+| Abstraction        | 3.71 |
+| Execution Time [s] | 4.51 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.236GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.220GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 794MiB / 15981MiB  |
+| Memory | 778MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 5.25 |
-| User CPU Time | 12.85 |
-| System CPU Time | 0.55 |
+| Real CPU Time | 4.51 |
+| User CPU Time | 13.33 |
+| System CPU Time | 0.53 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,17 +45,14 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.10 s (531.6 files/s, 28156.1 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|37|273|228|931
-Maven|6|65|2|467
-JSON|3|0|0|309
-Bourne Shell|1|30|65|138
-XML|5|0|0|128
-DOS Batch|1|32|0|113
-SQL|1|1|9|51
-Markdown|1|24|0|47
---------|--------|--------|--------|--------
-SUM:|55|425|304|2184
+<!-- github.com/AlDanial/cloc v 1.90  T=0.11 s (519.9 files/s, 27537.2 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|37|273|228|931|
+|Maven|6|65|2|467|
+|JSON|3|0|0|309|
+|XML|5|0|0|128|
+|SQL|1|1|9|51|
+|**SUM:**|**52**|**339**|**239**|**1886**|

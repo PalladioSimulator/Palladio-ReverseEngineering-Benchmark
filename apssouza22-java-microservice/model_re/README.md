@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:26:47 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Fri Jun 28 13:15:36 UTC 2024 |
+| #Components        | 38 |
+| #Source Files      | 159 |
+| Lines of Code      | 5596 |
+| #Technologies      | 5 |
+| Abstraction        | 4.18 |
+| Execution Time [s] | 11.44 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.240GHz  |
+| CPU | AMD EPYC 7763 (4) @ 2.445GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 804MiB / 15981MiB  |
+| Memory | 762MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 11.11 |
-| User CPU Time | 18.13 |
-| System CPU Time | 0.79 |
+| Real CPU Time | 11.44 |
+| User CPU Time | 17.20 |
+| System CPU Time | 0.70 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,16 +45,14 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.20 s (823.6 files/s, 39499.5 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|116|937|741|3147
-Maven|11|122|99|1376
-YAML|19|77|16|743
-XML|9|0|12|233
-Markdown|1|65|0|145
-Dockerfile|4|41|18|97
-Bourne Shell|6|27|13|52
---------|--------|--------|--------|--------
-SUM:|166|1269|899|5793
+<!-- github.com/AlDanial/cloc v 1.90  T=0.20 s (826.3 files/s, 39629.3 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|116|937|741|3147|
+|Maven|11|122|99|1376|
+|YAML|19|77|16|743|
+|XML|9|0|12|233|
+|Dockerfile|4|41|18|97|
+|**SUM:**|**159**|**1177**|**886**|**5596**|

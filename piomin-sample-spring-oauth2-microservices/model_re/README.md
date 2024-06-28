@@ -1,7 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202406231021 | Mon Jun 24 02:27:43 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202406240805 |
+| Date               | Fri Jun 28 13:16:10 UTC 2024 |
+| #Components        | 4 |
+| #Source Files      | 19 |
+| Lines of Code      | 470 |
+| #Technologies      | 3 |
+| Abstraction        | 4.75 |
+| Execution Time [s] | 12.97 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -10,7 +17,7 @@
 | Branch            | master |
 | Commit            | 05f390ee4351247a9c5803098059238424b58bae |
 | Number of Commits | 6 |
-| Stars             | 130 |
+| Stars             | 131 |
 | Contributors      | 1 |
 
 
@@ -20,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.244GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 778MiB / 15981MiB  |
+| Memory | 797MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 3.85 |
-| User CPU Time | 11.23 |
-| System CPU Time | 0.52 |
+| Real CPU Time | 12.97 |
+| User CPU Time | 11.97 |
+| System CPU Time | 0.56 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -38,14 +45,12 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.03 s (879.2 files/s, 28254.0 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|10|65|70|204
-Maven|5|17|0|167
-YAML|4|17|17|99
-HTML|2|0|1|45
-Markdown|1|3|0|2
---------|--------|--------|--------|--------
-SUM:|22|102|88|517
+<!-- github.com/AlDanial/cloc v 1.90  T=0.02 s (886.0 files/s, 28473.5 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|10|65|70|204|
+|Maven|5|17|0|167|
+|YAML|4|17|17|99|
+|**SUM:**|**19**|**99**|**87**|**470**|
