@@ -33,12 +33,12 @@ jobs:
 
         for root, dirs, files in os.walk('.'):
             for file in files:
-                if file == 'README.md' and 'model_re' in root:
-                    print(file)
+                if file == 'README.md' and 'model_re' in root:  
                     with open(os.path.join(root, file), 'r') as f:
                         lines = f.readlines()
-
+                    print(root)
                     project = root.split('/')[1]
+                    print(project)
                     data = {
                         '#Components': '',
                         '#Source Files': '',
@@ -54,6 +54,7 @@ jobs:
                                 key = parts[1].strip()
                                 value = parts[2].strip()
                                 data[key] = value
+                                print(line)
                     print(data)
                     projects.append({
                         'project': project,
