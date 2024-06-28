@@ -31,7 +31,7 @@ jobs:
 
         project_data = []
         cloc_data = []
-        possible_technologies = ['CSV', 'Dockerfile', 'Gradle', 'Java', 'JSON', 'Maven', 'Properties', 'SQL', 'ECMAScript', 'XML', 'YAML']
+        possible_technologies = ['CSV', 'Dockerfile', 'Gradle', 'Java', 'JSON', 'Maven', 'Properties', 'SQL', 'ECMAScript', 'XML', 'YAML', 'SUM']
         
         for root, dirs, files in os.walk('.'):
             for file in files:
@@ -58,11 +58,11 @@ jobs:
                                 data[key] = value
                             if len(parts) == 7:
                                 values = {}
-                                values['files'] = parts[2].strip()
-                                values['blank'] = parts[3].strip()
-                                values['comment'] = parts[4].strip()
-                                values['code'] = parts[5].strip()
-                                technology = parts[1].strip()
+                                values['files'] = parts[2].replace('**', '').strip()
+                                values['blank'] = parts[3].replace('**', '').strip()
+                                values['comment'] = parts[4].replace('**', '').strip()
+                                values['code'] = parts[5].replace('**', '').strip()
+                                technology = parts[1].replace('**', '').replace(':', '').strip()
                                 if technology in technologies:
                                     technologies[technology] = values
                     
@@ -73,8 +73,7 @@ jobs:
                         'lines_of_code': data.get('Lines of Code', ''),
                         'technologies': data.get('#Technologies', ''),
                         'abstraction': data.get('Abstraction', ''),
-                        'execution_time': data.get('Execution Time [s]', ''),
-                        'technologies': technologies
+                        'execution_time': data.get('Execution Time [s]', '')
                     })
 
                     project_cloc = {'project': project}
@@ -88,10 +87,10 @@ jobs:
                     print(project_cloc)
                     cloc_data.append(project_cloc)
 
-        df = pd.DataFrame(project_data)
+        df = pd.DataFrame(project_data).sort_values(by='project')
         df.to_csv('project_data.csv', index=False)
         
-        df_cloc = pd.DataFrame(cloc_data)
+        df_cloc = pd.DataFrame(cloc_data).sort_values(by='project')
         df_cloc.to_csv('cloc_data.csv', index=False)" > generate_reports.py
         python generate_reports.py
 
