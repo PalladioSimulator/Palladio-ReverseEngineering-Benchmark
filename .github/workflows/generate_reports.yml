@@ -39,7 +39,7 @@ jobs:
                     with open(os.path.join(root, file), 'r') as f:
                         lines = f.readlines()
                     project = root.split('/')[1]
-                    print(project)
+
                     data = {
                         '#Components': '',
                         '#Source Files': '',
@@ -84,11 +84,11 @@ jobs:
                             f'{tech}_comment': technologies[tech]['comment'],
                             f'{tech}_code': technologies[tech]['code']
                         })
-                    print(project_cloc)
+
                     cloc_data.append(project_cloc)
 
-        df = pd.DataFrame(project_data).sort_values(by='project')
-        df.to_csv('project_data.csv', index=False)
+        df_project = pd.DataFrame(project_data).sort_values(by='project')
+        df_project.to_csv('project_data.csv', index=False)
         
         df_cloc = pd.DataFrame(cloc_data).sort_values(by='project')
         df_cloc.to_csv('cloc_data.csv', index=False)" > generate_reports.py
