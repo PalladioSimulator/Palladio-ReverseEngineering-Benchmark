@@ -1,0 +1,76 @@
+name: Generate CSV Reports
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-reports:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas
+
+    - name: Generate CSV reports
+      run: |
+        echo "import os
+        import pandas as pd
+
+        projects = []
+
+        for root, dirs, files in os.walk('.'):
+            for file in files:
+                if file == 'README.md' and 'model_re' in root:
+                    print(file)
+                    with open(os.path.join(root, file), 'r') as f:
+                        lines = f.readlines()
+
+                    project = root.split('/')[1]
+                    data = {
+                        '#Components': '',
+                        '#Source Files': '',
+                        'Lines of Code': '',
+                        '#Technologies': '',
+                        'Abstraction': '',
+                        'Execution Time [s]': ''
+                    }
+                    for line in lines:
+                        if '|' in line and '---' not in line:
+                            parts = line.strip().split('|')
+                            if len(parts) == 3:
+                                key = parts[1].strip()
+                                value = parts[2].strip()
+                                data[key] = value
+                    print(data)
+                    projects.append({
+                        'project': project,
+                        'components': data.get('#Components', ''),
+                        'source_files': data.get('#Source Files', ''),
+                        'lines_of_code': data.get('Lines of Code', ''),
+                        'technologies': data.get('#Technologies', ''),
+                        'abstraction': data.get('Abstraction', ''),
+                        'execution_time': data.get('Execution Time [s]', '')
+                    })
+
+        df = pd.DataFrame(projects)
+        df.to_csv('report1.csv', index=False)" > generate_reports.py
+        python generate_reports.py
+
+    - name: Upload CSV reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: report1
+        path: report1.csv
