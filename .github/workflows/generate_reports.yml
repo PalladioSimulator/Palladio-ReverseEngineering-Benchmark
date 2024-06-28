@@ -29,8 +29,10 @@ jobs:
         echo "import os
         import pandas as pd
 
-        projects = []
-
+        project_data = []
+        cloc_data = []
+        possible_technologies = ['CSV', 'Dockerfile', 'Gradle', 'Java', 'JSON', 'Maven', 'Properties', 'SQL', 'ECMAScript', 'XML', 'YAML']
+        
         for root, dirs, files in os.walk('.'):
             for file in files:
                 if file == 'README.md' and 'model_re' in root:  
@@ -46,6 +48,7 @@ jobs:
                         'Abstraction': '',
                         'Execution Time [s]': ''
                     }
+                    technologies = {tech: {'files': '0', 'blank': '0', 'comment': '0', 'code': '0'} for tech in possible_technologies}
                     for line in lines:
                         if '|' in line and '---' not in line:
                             parts = line.strip().split('|')
@@ -53,23 +56,47 @@ jobs:
                                 key = parts[1].strip()
                                 value = parts[2].strip()
                                 data[key] = value
-                    print(data)
-                    projects.append({
+                            if len(parts) == 7:
+                                values = {}
+                                values['files'] = parts[2].strip()
+                                values['blank'] = parts[3].strip()
+                                values['comment'] = parts[4].strip()
+                                values['code'] = parts[5].strip()
+                                technology = parts[1].strip()
+                                if technology in technologies:
+                                    technologies[technology] = values
+                    
+                    project_data.append({
                         'project': project,
                         'components': data.get('#Components', ''),
                         'source_files': data.get('#Source Files', ''),
                         'lines_of_code': data.get('Lines of Code', ''),
                         'technologies': data.get('#Technologies', ''),
                         'abstraction': data.get('Abstraction', ''),
-                        'execution_time': data.get('Execution Time [s]', '')
+                        'execution_time': data.get('Execution Time [s]', ''),
+                        'technologies': technologies
                     })
 
-        df = pd.DataFrame(projects)
-        df.to_csv('report1.csv', index=False)" > generate_reports.py
+                    project_cloc = {'project': project}
+                    for tech in possible_technologies:
+                        project_cloc.update({
+                            f'{tech}_files': technologies[tech]['files'],
+                            f'{tech}_blank': technologies[tech]['blank'],
+                            f'{tech}_comment': technologies[tech]['comment'],
+                            f'{tech}_code': technologies[tech]['code']
+                        })
+                    print(porject_cloc)
+                    cloc_data.append(project_cloc)
+
+        df = pd.DataFrame(project_data)
+        df.to_csv('project_data.csv', index=False)
+        
+        df_cloc = pd.DataFrame(cloc_data)
+        df_cloc.to_csv('cloc_data.csv', index=False)" > generate_reports.py
         python generate_reports.py
 
     - name: Upload CSV reports
       uses: actions/upload-artifact@v2
       with:
-        name: report1
-        path: report1.csv
+        name: reports
+        path: project_data.csv,cloc_data.csv
