@@ -2,22 +2,22 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202406240805 |
-| Date               | Sat Jun 29 02:25:18 UTC 2024 |
+| Date               | Sun Jun 30 02:31:05 UTC 2024 |
 | #Components        | 259 |
 | #Source Files      | 482 |
 | Lines of Code      | 64407 |
 | #Technologies      | 8 |
 | Abstraction        | 1.86 |
-| Execution Time [s] | 19.71 |
+| Execution Time [s] | 16.63 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/webgoat/webgoat |
 | Branch            | main |
-| Commit            | 900702481bc2f883304fda1c61dc1d15d93e0a68 |
-| Number of Commits | 2990 |
-| Stars             | 6613 |
+| Commit            | bec6580c8481ca7396d5d5e7f0e0a8f01de83921 |
+| Number of Commits | 2991 |
+| Stars             | 6615 |
 | Contributors      | 105 |
 
 
@@ -27,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.241GHz  |
+| CPU | AMD EPYC 7763 (4) @ 2.863GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 767MiB / 15981MiB  |
+| Memory | 759MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 19.71 |
-| User CPU Time | 36.23 |
-| System CPU Time | 2.33 |
+| Real CPU Time | 16.63 |
+| User CPU Time | 35.34 |
+| System CPU Time | 2.24 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -46,7 +46,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=2.71 s (309.0 files/s, 39947.7 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=2.71 s (309.4 files/s, 39993.1 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
