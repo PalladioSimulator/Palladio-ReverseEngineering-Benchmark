@@ -1,14 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
 | Attribute          | Value |
 | ------------------ | ----- |
-| Retriever Version  | v5.2.0.202406240805 |
-| Date               | Fri Jun 28 11:34:57 UTC 2024 |
+| Retriever Version  | v5.2.0.202407010739 |
+| Date               | Mon Jul  1 08:53:41 UTC 2024 |
 | #Components        | 18 |
 | #Source Files      | 70 |
 | Lines of Code      | 2366 |
 | #Technologies      | 4 |
 | Abstraction        | 3.88 |
-| Execution Time [s] | 3.674 |
+| Execution Time [s] | 6.91 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -17,7 +17,7 @@
 | Branch            | master |
 | Commit            | d1ccf504df5617288479902ad9eb2111df73ed65 |
 | Number of Commits | 140 |
-| Stars             | 710 |
+| Stars             | 711 |
 | Contributors      | 8 |
 
 
@@ -27,18 +27,26 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.032GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.223GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 767MiB / 15981MiB  |
+| Memory | 771MiB / 15981MiB  |
 
 ## Retriever execution time
-| Mean [s] | Min [s] | Max [s] | Relative |
-|---:|---:|---:|---:|
-| 3.674 ± 0.046 | 3.604 | 3.734 | 1.00 |
+| Metric | Time (seconds) |
+| --- | ---: |
+| Real CPU Time | 6.91 |
+| User CPU Time | 14.87 |
+| System CPU Time | 0.58 |
+<!--
+Explainations:
+- __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
+- __User CPU Time__: time the command has spent running in user mode
+- __System CPU Time__: time the command has spent running in system or kernel mode
+-->
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=0.10 s (955.7 files/s, 46677.3 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=0.10 s (953.3 files/s, 46560.7 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
