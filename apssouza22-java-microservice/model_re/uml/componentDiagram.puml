@@ -2,36 +2,17 @@
 skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
 component "com_apssouza\n\n\n\n\n\n" {
-[com_apssouza_services_AccountServiceImpl]
-[com_apssouza_controllers_AccountController]
-[com_apssouza_bootstrap_UserLoader]
-[com_apssouza_repositories_AccountRepository]
-portin " " as com_apssouza_requires_user_accounts
-portin " " as com_apssouza_requires_user_accounts_POST_
-portin " " as com_apssouza_requires_user_accounts_GET_
-portin " " as com_apssouza_requires_user_accounts_search_GET_
-portin " " as com_apssouza_requires_user_accounts_GET_2
-[com_apssouza_services_AccountServiceImpl]..>[com_apssouza_repositories_AccountRepository] : requires
-[com_apssouza_bootstrap_UserLoader]..>[com_apssouza_repositories_AccountRepository] : requires
-[com_apssouza_controllers_AccountController]..>[com_apssouza_services_AccountServiceImpl] : requires
-"com_apssouza_requires_user_accounts_GET_"--[com_apssouza_controllers_AccountController]
-"com_apssouza_requires_user_accounts_search_GET_"--[com_apssouza_controllers_AccountController]
-"com_apssouza_requires_user_accounts_POST_"--[com_apssouza_controllers_AccountController]
-"com_apssouza_requires_user_accounts_GET_2"--[com_apssouza_controllers_AccountController]
+[com_apssouza_eventsourcing_commands_EmailCommandHandler]
+[com_apssouza_mailservice_controllers_NotifyController]
+portin " " as com_apssouza_requires_mailer_send_email_GET_
+[com_apssouza_mailservice_controllers_NotifyController]..>[com_apssouza_eventsourcing_commands_EmailCommandHandler] : requires
+"com_apssouza_requires_mailer_send_email_GET_"--[com_apssouza_mailservice_controllers_NotifyController]
 }
-interface "user/accounts[GET]$2" as interface.user_accounts_GET_2
-interface.user_accounts_GET_2--"com_apssouza_requires_user_accounts_GET_2"
-interface "user/accounts[GET]" as interface.user_accounts_GET_
-interface.user_accounts_GET_--"com_apssouza_requires_user_accounts_GET_"
-interface "user/accounts[POST]" as interface.user_accounts_POST_
-interface.user_accounts_POST_--"com_apssouza_requires_user_accounts_POST_"
-interface "user/accounts" as interface.user_accounts
-interface.user_accounts--"com_apssouza_requires_user_accounts"
-interface "user/accounts/search[GET]" as interface.user_accounts_search_GET_
-interface.user_accounts_search_GET_--"com_apssouza_requires_user_accounts_search_GET_"
+interface "mailer/send/email[GET]" as interface.mailer_send_email_GET_
+interface.mailer_send_email_GET_--"com_apssouza_requires_mailer_send_email_GET_"
 component "com_apssouza 2\n\n\n\n\n\n" {
-[com_apssouza_controllers_TodoChangesController]
 [com_apssouza_monitors_TodoStoreEventChanges]
+[com_apssouza_controllers_TodoChangesController]
 portin " " as com_apssouza_2_requires_reminder_todo_changes_GET_
 [com_apssouza_controllers_TodoChangesController]..>[com_apssouza_monitors_TodoStoreEventChanges] : requires
 "com_apssouza_2_requires_reminder_todo_changes_GET_"--[com_apssouza_controllers_TodoChangesController]
@@ -48,28 +29,47 @@ portin " " as com_apssouza_3_requires_reminder_todo_statistics_GET_
 interface "reminder/todo-statistics[GET]" as interface.reminder_todo_statistics_GET_
 interface.reminder_todo_statistics_GET_--"com_apssouza_3_requires_reminder_todo_statistics_GET_"
 component "com_apssouza 4\n\n\n\n\n\n" {
-[com_apssouza_mailservice_controllers_NotifyController]
-[com_apssouza_eventsourcing_commands_EmailCommandHandler]
-portin " " as com_apssouza_4_requires_mailer_send_email_GET_
-[com_apssouza_mailservice_controllers_NotifyController]..>[com_apssouza_eventsourcing_commands_EmailCommandHandler] : requires
-"com_apssouza_4_requires_mailer_send_email_GET_"--[com_apssouza_mailservice_controllers_NotifyController]
+[com_apssouza_controllers_AccountController]
+[com_apssouza_repositories_AccountRepository]
+[com_apssouza_services_AccountServiceImpl]
+[com_apssouza_bootstrap_UserLoader]
+portin " " as com_apssouza_4_requires_user_accounts_search_GET_
+portin " " as com_apssouza_4_requires_user_accounts
+portin " " as com_apssouza_4_requires_user_accounts_GET_2
+portin " " as com_apssouza_4_requires_user_accounts_POST_
+portin " " as com_apssouza_4_requires_user_accounts_GET_
+[com_apssouza_bootstrap_UserLoader]..>[com_apssouza_repositories_AccountRepository] : requires
+[com_apssouza_services_AccountServiceImpl]..>[com_apssouza_repositories_AccountRepository] : requires
+[com_apssouza_controllers_AccountController]..>[com_apssouza_services_AccountServiceImpl] : requires
+"com_apssouza_4_requires_user_accounts_GET_2"--[com_apssouza_controllers_AccountController]
+"com_apssouza_4_requires_user_accounts_POST_"--[com_apssouza_controllers_AccountController]
+"com_apssouza_4_requires_user_accounts_GET_"--[com_apssouza_controllers_AccountController]
+"com_apssouza_4_requires_user_accounts_search_GET_"--[com_apssouza_controllers_AccountController]
 }
-interface "mailer/send/email[GET]" as interface.mailer_send_email_GET_
-interface.mailer_send_email_GET_--"com_apssouza_4_requires_mailer_send_email_GET_"
+interface "user/accounts[GET]$2" as interface.user_accounts_GET_2
+interface.user_accounts_GET_2--"com_apssouza_4_requires_user_accounts_GET_2"
+interface "user/accounts[GET]" as interface.user_accounts_GET_
+interface.user_accounts_GET_--"com_apssouza_4_requires_user_accounts_GET_"
+interface "user/accounts[POST]" as interface.user_accounts_POST_
+interface.user_accounts_POST_--"com_apssouza_4_requires_user_accounts_POST_"
+interface "user/accounts" as interface.user_accounts
+interface.user_accounts--"com_apssouza_4_requires_user_accounts"
+interface "user/accounts/search[GET]" as interface.user_accounts_search_GET_
+interface.user_accounts_search_GET_--"com_apssouza_4_requires_user_accounts_search_GET_"
 component "com_apssouza 5\n\n\n\n\n\n" {
-[com_apssouza_services_TodoServiceImpl]
-[com_apssouza_controllers_UserController]
 [com_apssouza_infra_EventPublisher]
-[com_apssouza_repositories_TodoRepository]
 [com_apssouza_services_UserServiceImpl]
+[com_apssouza_services_TodoServiceImpl]
 [com_apssouza_controllers_TodoController]
 [com_apssouza_bootstrap_TodoLoader]
-portin " " as com_apssouza_5_requires_api_gateway_todos_GET_
+[com_apssouza_repositories_TodoRepository]
+[com_apssouza_controllers_UserController]
 portin " " as com_apssouza_5_requires_api_gateway_accounts
-[com_apssouza_controllers_TodoController]..>[com_apssouza_services_TodoServiceImpl] : requires
-[com_apssouza_bootstrap_TodoLoader]..>[com_apssouza_repositories_TodoRepository] : requires
-[com_apssouza_services_TodoServiceImpl]..>[com_apssouza_infra_EventPublisher] : requires
+portin " " as com_apssouza_5_requires_api_gateway_todos_GET_
 [com_apssouza_services_TodoServiceImpl]..>[com_apssouza_repositories_TodoRepository] : requires
+[com_apssouza_controllers_TodoController]..>[com_apssouza_services_TodoServiceImpl] : requires
+[com_apssouza_services_TodoServiceImpl]..>[com_apssouza_infra_EventPublisher] : requires
+[com_apssouza_bootstrap_TodoLoader]..>[com_apssouza_repositories_TodoRepository] : requires
 [com_apssouza_controllers_UserController]..>[com_apssouza_services_UserServiceImpl] : requires
 [com_apssouza_controllers_UserController]..>[com_apssouza_services_TodoServiceImpl] : requires
 "com_apssouza_5_requires_api_gateway_todos_GET_"--[com_apssouza_controllers_TodoController]
@@ -80,18 +80,18 @@ interface.api_gateway_accounts--"com_apssouza_5_requires_api_gateway_accounts"
 interface "api-gateway/todos[GET]" as interface.api_gateway_todos_GET_
 interface.api_gateway_todos_GET_--"com_apssouza_5_requires_api_gateway_todos_GET_"
 component "com_apssouza_eventsourcing\n\n\n\n\n\n" {
-[com_apssouza_eventsourcing_eventstore_EventSerializer]
 [com_apssouza_eventsourcing_services_EventSourcingServiceImpl]
+[com_apssouza_eventsourcing_eventstore_EventSerializer]
 [com_apssouza_eventsourcing_eventstore_EventStoreRepository]
-[com_apssouza_eventsourcing_services_EventSourcingServiceImpl]..>[com_apssouza_eventsourcing_eventstore_EventSerializer] : requires
 [com_apssouza_eventsourcing_services_EventSourcingServiceImpl]..>[com_apssouza_eventsourcing_eventstore_EventStoreRepository] : requires
+[com_apssouza_eventsourcing_services_EventSourcingServiceImpl]..>[com_apssouza_eventsourcing_eventstore_EventSerializer] : requires
 }
 component "com_apssouza_integrations_socket_TodoSocketController\n\n\n\n\n\n" {
 [com_apssouza_integrations_socket_TodoSocketController]
 }
 component "com_apssouza_mailservice\n\n\n\n\n\n" {
-[com_apssouza_mailservice_repository_EmailRepository]
 [com_apssouza_mailservice_controllers_EmailController]
+[com_apssouza_mailservice_repository_EmailRepository]
 portin " " as com_apssouza_mailservice_requires_mailer_emails_GET_
 [com_apssouza_mailservice_controllers_EmailController]..>[com_apssouza_mailservice_repository_EmailRepository] : requires
 "com_apssouza_mailservice_requires_mailer_emails_GET_"--[com_apssouza_mailservice_controllers_EmailController]
