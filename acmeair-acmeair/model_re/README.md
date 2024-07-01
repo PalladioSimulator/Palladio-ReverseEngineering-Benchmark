@@ -1,14 +1,24 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
-| Version | Date |
-| ------- | ---- |
-| v5.2.0.202404221423 | Tue Apr 30 05:08:32 UTC 2024 |
+| Attribute          | Value |
+| ------------------ | ----- |
+| Retriever Version  | v5.2.0.202407010739 |
+| Date               | Mon Jul  1 08:04:42 UTC 2024 |
+| #Components        | 19 |
+| #Source Files      | 106 |
+| Lines of Code      | 7426 |
+| #Technologies      | 6 |
+| Abstraction        | 5.57 |
+| Execution Time [s] | 9.01 |
 
 ## Git repository information
-|    Attribute   | Value |
-| -------------- | ----- |
-| Repository URL | https://github.com/acmeair/acmeair |
-| Branch         | master |
-| Commit         | f16122729873ef0449ea276dfb2d2a1d45bebb40 |
+|      Attribute    | Value |
+| ----------------- | ----- |
+| Repository URL    | https://github.com/acmeair/acmeair |
+| Branch            | master |
+| Commit            | f16122729873ef0449ea276dfb2d2a1d45bebb40 |
+| Number of Commits | 77 |
+| Stars             | 134 |
+| Contributors      | 2 |
 
 
 ## System information
@@ -16,17 +26,17 @@
 | --------- | ----- |
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
-| Kernel | 6.5.0-1018-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.242GHz  |
+| Kernel | 6.5.0-1022-azure  |
+| CPU | AMD EPYC 7763 (4) @ 3.249GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 799MiB / 15981MiB  |
+| Memory | 769MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 9.21 |
-| User CPU Time | 17.06 |
-| System CPU Time | 0.70 |
+| Real CPU Time | 9.01 |
+| User CPU Time | 18.22 |
+| System CPU Time | 0.73 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -35,20 +45,15 @@ Explainations:
 -->
 
 ## Cloc analysis
-cloc v 1.90  T=0.29 s (420.8 files/s, 45500.4 lines/s)
 
-Language|files|blank|comment|code
-:-------|-------:|-------:|-------:|-------:
-Java|81|1426|1266|6207
-HTML|7|222|105|1501
-JavaScript|5|148|111|708
-Markdown|7|180|0|390
-XML|16|34|130|349
-CSS|2|21|32|134
-Bourne Again Shell|1|20|21|123
-Gradle|2|22|0|75
-DOS Batch|1|24|2|64
-Maven|1|0|6|56
-CSV|1|0|0|31
---------|--------|--------|--------|--------
-SUM:|124|2097|1673|9638
+<!-- github.com/AlDanial/cloc v 1.90  T=0.29 s (421.4 files/s, 45561.9 lines/s) -->
+
+|Technology|files|blank|comment|code|
+|:-------|-------:|-------:|-------:|-------:|
+|Java|81|1426|1266|6207|
+|XML|16|34|130|349|
+|Gradle|2|22|0|75|
+|Maven|1|0|6|56|
+|CSV|1|0|0|31|
+|ECMAScript|5|148|111|708|
+|**SUM:**|**106**|**1630**|**1513**|**7426**|
