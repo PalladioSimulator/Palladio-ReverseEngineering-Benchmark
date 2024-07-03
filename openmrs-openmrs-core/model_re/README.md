@@ -2,22 +2,22 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202407010739 |
-| Date               | Tue Jul  2 02:27:59 UTC 2024 |
+| Date               | Wed Jul  3 02:25:54 UTC 2024 |
 | #Components        | 49 |
 | #Source Files      | 2250 |
 | Lines of Code      | 341130 |
 | #Technologies      | 9 |
 | Abstraction        | 45.91 |
-| Execution Time [s] | 26.77 |
+| Execution Time [s] | 22.13 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-core |
 | Branch            | master |
-| Commit            | 3933fb312cafe98c56924eb7e63ebf53f29e8a6a |
-| Number of Commits | 12204 |
-| Stars             | 1362 |
+| Commit            | 758715f819a712b06a554a8cba91cbaf31f63267 |
+| Number of Commits | 12205 |
+| Stars             | 1363 |
 | Contributors      | 344 |
 
 |      Attribute    | Value |
@@ -26,7 +26,7 @@
 | Branch            | master |
 | Commit            | ff78c3ab8adc3ca31485cb1f858ad16496c8475d |
 | Number of Commits | 1725 |
-| Stars             | 83 |
+| Stars             | 84 |
 | Contributors      | 139 |
 
 
@@ -36,16 +36,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.251GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 779MiB / 15981MiB  |
+| Memory | 771MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 26.77 |
-| User CPU Time | 55.58 |
-| System CPU Time | 2.72 |
+| Real CPU Time | 22.13 |
+| User CPU Time | 57.06 |
+| System CPU Time | 2.89 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -55,7 +55,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=9.70 s (240.5 files/s, 51406.8 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=9.81 s (238.0 files/s, 50861.0 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
