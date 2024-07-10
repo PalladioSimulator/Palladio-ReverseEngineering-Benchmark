@@ -2,23 +2,23 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202407010739 |
-| Date               | Tue Jul  9 02:28:58 UTC 2024 |
+| Date               | Wed Jul 10 02:27:45 UTC 2024 |
 | #Components        | 50 |
 | #Source Files      | 739 |
-| Lines of Code      | 58135 |
+| Lines of Code      | 58136 |
 | #Technologies      | 6 |
 | Abstraction        | 14.78 |
-| Execution Time [s] | 15.55 |
+| Execution Time [s] | 12.97 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-module-webservices.rest |
 | Branch            | master |
-| Commit            | ff78c3ab8adc3ca31485cb1f858ad16496c8475d |
-| Number of Commits | 1725 |
+| Commit            | 57b2e5ed9ce59201a351093ea68e62de408799ff |
+| Number of Commits | 1726 |
 | Stars             | 84 |
-| Contributors      | 139 |
+| Contributors      | 140 |
 
 
 ## System information
@@ -27,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.241GHz  |
+| CPU | AMD EPYC 7763 (4) @ 2.553GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 797MiB / 15981MiB  |
+| Memory | 773MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 15.55 |
-| User CPU Time | 33.53 |
-| System CPU Time | 1.44 |
+| Real CPU Time | 12.97 |
+| User CPU Time | 34.18 |
+| System CPU Time | 1.62 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -46,7 +46,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=2.08 s (360.2 files/s, 42560.0 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=2.14 s (349.6 files/s, 41309.4 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
@@ -54,6 +54,6 @@ Explainations:
 |Maven|14|253|4|2253|
 |XML|43|184|157|1182|
 |JSON|6|2|0|503|
-|YAML|1|5|2|52|
+|YAML|1|5|2|53|
 |ECMAScript|3|0|62|79|
-|**SUM:**|**739**|**12128**|**16955**|**58135**|
+|**SUM:**|**739**|**12128**|**16955**|**58136**|

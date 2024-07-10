@@ -2,22 +2,22 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202407010739 |
-| Date               | Tue Jul  9 02:28:25 UTC 2024 |
+| Date               | Wed Jul 10 02:27:56 UTC 2024 |
 | #Components        | 259 |
-| #Source Files      | 482 |
-| Lines of Code      | 64407 |
+| #Source Files      | 484 |
+| Lines of Code      | 64399 |
 | #Technologies      | 8 |
 | Abstraction        | 1.86 |
-| Execution Time [s] | 19.32 |
+| Execution Time [s] | 16.62 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/webgoat/webgoat |
 | Branch            | main |
-| Commit            | 1531987da5a4983dbbcaed2de81ee22d5913b68a |
-| Number of Commits | 2992 |
-| Stars             | 6631 |
+| Commit            | 777cec5a57d6a0163604c230b299a761317cd4bb |
+| Number of Commits | 2997 |
+| Stars             | 6649 |
 | Contributors      | 105 |
 
 
@@ -26,17 +26,17 @@
 | --------- | ----- |
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
-| Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.242GHz  |
+| Kernel | 6.5.0-1023-azure  |
+| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 792MiB / 15981MiB  |
+| Memory | 776MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 19.32 |
-| User CPU Time | 40.62 |
-| System CPU Time | 2.49 |
+| Real CPU Time | 16.62 |
+| User CPU Time | 35.29 |
+| System CPU Time | 2.35 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -46,16 +46,16 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=2.95 s (284.7 files/s, 36796.6 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=2.73 s (308.0 files/s, 39715.6 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
-|Java|355|3053|6631|18144|
-|Maven|1|15|10|856|
+|Java|356|3054|6626|18131|
+|Maven|1|15|10|852|
 |XML|5|11|23|582|
-|YAML|10|31|14|326|
+|YAML|10|31|11|319|
 |JSON|5|0|0|181|
 |Dockerfile|1|6|0|29|
-|ECMAScript|90|6708|3437|44099|
-|SQL|15|20|16|190|
-|**SUM:**|**482**|**9844**|**10131**|**64407**|
+|ECMAScript|90|6708|3437|44097|
+|SQL|16|24|16|208|
+|**SUM:**|**484**|**9849**|**10123**|**64399**|

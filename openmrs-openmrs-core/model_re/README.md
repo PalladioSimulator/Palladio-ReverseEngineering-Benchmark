@@ -2,32 +2,32 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202407010739 |
-| Date               | Tue Jul  9 02:28:41 UTC 2024 |
+| Date               | Wed Jul 10 02:27:53 UTC 2024 |
 | #Components        | 49 |
 | #Source Files      | 2250 |
-| Lines of Code      | 341130 |
+| Lines of Code      | 341131 |
 | #Technologies      | 9 |
 | Abstraction        | 45.91 |
-| Execution Time [s] | 22.56 |
+| Execution Time [s] | 17.61 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-core |
 | Branch            | master |
-| Commit            | de6c77f431f9eb767fd7637ef75c644865fe5321 |
-| Number of Commits | 12207 |
-| Stars             | 1366 |
+| Commit            | 18b97aec8f8dc12358b9ca72154c3e5def86d65f |
+| Number of Commits | 12209 |
+| Stars             | 1367 |
 | Contributors      | 344 |
 
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-module-webservices.rest |
 | Branch            | master |
-| Commit            | ff78c3ab8adc3ca31485cb1f858ad16496c8475d |
-| Number of Commits | 1725 |
+| Commit            | 57b2e5ed9ce59201a351093ea68e62de408799ff |
+| Number of Commits | 1726 |
 | Stars             | 84 |
-| Contributors      | 139 |
+| Contributors      | 140 |
 
 
 ## System information
@@ -36,16 +36,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1022-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.241GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 779MiB / 15981MiB  |
+| Memory | 759MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 22.56 |
-| User CPU Time | 57.98 |
-| System CPU Time | 2.81 |
+| Real CPU Time | 17.61 |
+| User CPU Time | 51.57 |
+| System CPU Time | 2.80 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -55,17 +55,17 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=9.60 s (243.1 files/s, 51966.4 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=9.48 s (246.3 files/s, 52635.0 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
 |Java|1878|47399|90821|190939|
 |XML|305|3179|2879|134433|
 |Maven|21|319|105|4575|
-|YAML|11|107|79|787|
+|YAML|11|107|79|788|
 |JSON|6|2|0|503|
 |Dockerfile|1|38|26|81|
 |CSV|2|0|0|2|
 |ECMAScript|21|542|1178|4346|
 |SQL|5|918|741|5464|
-|**SUM:**|**2250**|**52504**|**95829**|**341130**|
+|**SUM:**|**2250**|**52504**|**95829**|**341131**|
