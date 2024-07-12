@@ -2,21 +2,21 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202407010739 |
-| Date               | Thu Jul 11 02:30:32 UTC 2024 |
+| Date               | Fri Jul 12 02:27:23 UTC 2024 |
 | #Components        | 49 |
 | #Source Files      | 2250 |
 | Lines of Code      | 341131 |
 | #Technologies      | 9 |
 | Abstraction        | 45.91 |
-| Execution Time [s] | 25.96 |
+| Execution Time [s] | 20.36 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-core |
 | Branch            | master |
-| Commit            | 18b97aec8f8dc12358b9ca72154c3e5def86d65f |
-| Number of Commits | 12209 |
+| Commit            | b4426232e5a97f7035c7e70f4b22f5e12e19680b |
+| Number of Commits | 12211 |
 | Stars             | 1367 |
 | Contributors      | 344 |
 
@@ -36,16 +36,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1023-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.257GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 781MiB / 15981MiB  |
+| Memory | 777MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 25.96 |
-| User CPU Time | 56.89 |
-| System CPU Time | 2.83 |
+| Real CPU Time | 20.36 |
+| User CPU Time | 56.33 |
+| System CPU Time | 2.99 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -55,7 +55,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=9.58 s (243.5 files/s, 52050.4 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=9.59 s (243.4 files/s, 52028.8 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
