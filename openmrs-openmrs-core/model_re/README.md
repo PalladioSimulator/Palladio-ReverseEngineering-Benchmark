@@ -2,13 +2,13 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202407010739 |
-| Date               | Thu Jul 25 02:29:22 UTC 2024 |
-| #Components        | 49 |
-| #Source Files      | 2250 |
-| Lines of Code      | 341317 |
+| Date               | Fri Jul 26 02:29:07 UTC 2024 |
+| #Components        | 51 |
+| #Source Files      | 2257 |
+| Lines of Code      | 341724 |
 | #Technologies      | 9 |
-| Abstraction        | 45.91 |
-| Execution Time [s] | 18.69 |
+| Abstraction        | 44.25 |
+| Execution Time [s] | 19.24 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -24,8 +24,8 @@
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-module-webservices.rest |
 | Branch            | master |
-| Commit            | 57b2e5ed9ce59201a351093ea68e62de408799ff |
-| Number of Commits | 1726 |
+| Commit            | 96a8cb0e9c6922d186d088924b4ab37cb3a2a10c |
+| Number of Commits | 1728 |
 | Stars             | 84 |
 | Contributors      | 140 |
 
@@ -36,16 +36,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1024-azure  |
-| CPU | AMD EPYC 7763 (4) @ 2.445GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.238GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 785MiB / 15981MiB  |
+| Memory | 793MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 18.69 |
-| User CPU Time | 54.81 |
-| System CPU Time | 2.78 |
+| Real CPU Time | 19.24 |
+| User CPU Time | 55.43 |
+| System CPU Time | 2.81 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -55,17 +55,17 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=9.49 s (246.0 files/s, 52617.4 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=9.49 s (246.6 files/s, 52654.9 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
-|Java|1878|47440|90952|191124|
-|XML|305|3179|2879|134434|
-|Maven|21|319|105|4575|
+|Java|1882|47477|91017|191312|
+|XML|307|3189|2895|134453|
+|Maven|22|348|105|4775|
 |YAML|11|107|79|788|
 |JSON|6|2|0|503|
 |Dockerfile|1|38|26|81|
 |CSV|2|0|0|2|
 |ECMAScript|21|542|1178|4346|
 |SQL|5|918|741|5464|
-|**SUM:**|**2250**|**52545**|**95960**|**341317**|
+|**SUM:**|**2257**|**52621**|**96041**|**341724**|
