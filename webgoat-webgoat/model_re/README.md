@@ -2,22 +2,22 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202407010739 |
-| Date               | Sun Jul 28 02:32:39 UTC 2024 |
+| Date               | Mon Jul 29 02:32:03 UTC 2024 |
 | #Components        | 259 |
 | #Source Files      | 484 |
-| Lines of Code      | 64386 |
+| Lines of Code      | 64391 |
 | #Technologies      | 8 |
 | Abstraction        | 1.86 |
-| Execution Time [s] | 17.08 |
+| Execution Time [s] | 17.50 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/webgoat/webgoat |
 | Branch            | main |
-| Commit            | 2b0c22ac683c9d8b465c9fd29dfbeb4b8cc04a73 |
-| Number of Commits | 3004 |
-| Stars             | 6757 |
+| Commit            | 58b762eadebec2fa5380c1f382faf3d7f11b6498 |
+| Number of Commits | 3005 |
+| Stars             | 6758 |
 | Contributors      | 105 |
 
 
@@ -27,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1024-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.242GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.230GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 788MiB / 15981MiB  |
+| Memory | 772MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 17.08 |
-| User CPU Time | 36.46 |
-| System CPU Time | 2.33 |
+| Real CPU Time | 17.50 |
+| User CPU Time | 36.48 |
+| System CPU Time | 2.45 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -46,11 +46,11 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=2.72 s (309.0 files/s, 39841.7 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=2.69 s (312.6 files/s, 40299.3 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
-|Java|356|3053|6626|18116|
+|Java|356|3053|6628|18121|
 |Maven|1|15|10|852|
 |XML|5|11|23|582|
 |YAML|10|31|11|319|
@@ -58,4 +58,4 @@ Explainations:
 |Dockerfile|1|7|0|31|
 |ECMAScript|90|6708|3437|44097|
 |SQL|16|24|16|208|
-|**SUM:**|**484**|**9849**|**10123**|**64386**|
+|**SUM:**|**484**|**9849**|**10125**|**64391**|
