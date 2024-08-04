@@ -2,23 +2,23 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202407010739 |
-| Date               | Fri Aug  2 02:30:11 UTC 2024 |
+| Date               | Sun Aug  4 02:33:23 UTC 2024 |
 | #Components        | 51 |
 | #Source Files      | 2257 |
 | Lines of Code      | 341839 |
 | #Technologies      | 9 |
 | Abstraction        | 44.25 |
-| Execution Time [s] | 22.93 |
+| Execution Time [s] | 23.30 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-core |
 | Branch            | master |
-| Commit            | 4510cb29a7c7d0ddf402b016196d9855a78f7c37 |
-| Number of Commits | 12230 |
-| Stars             | 1378 |
-| Contributors      | 343 |
+| Commit            | e52c2a15d6ea3fa72e7e3a4600705514b14a8757 |
+| Number of Commits | 12231 |
+| Stars             | 1379 |
+| Contributors      | 344 |
 
 |      Attribute    | Value |
 | ----------------- | ----- |
@@ -27,7 +27,7 @@
 | Commit            | ed1702647530d5dd58e849deba3747fb36c8d00b |
 | Number of Commits | 1731 |
 | Stars             | 84 |
-| Contributors      | 140 |
+| Contributors      | 141 |
 
 
 ## System information
@@ -35,17 +35,17 @@
 | --------- | ----- |
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
-| Kernel | 6.5.0-1024-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.169GHz  |
+| Kernel | 6.5.0-1025-azure  |
+| CPU | AMD EPYC 7763 (4) @ 2.950GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 786MiB / 15981MiB  |
+| Memory | 798MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 22.93 |
-| User CPU Time | 57.06 |
-| System CPU Time | 3.07 |
+| Real CPU Time | 23.30 |
+| User CPU Time | 56.22 |
+| System CPU Time | 2.99 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -55,7 +55,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=9.91 s (236.2 files/s, 50436.4 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=9.70 s (241.3 files/s, 51531.9 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
