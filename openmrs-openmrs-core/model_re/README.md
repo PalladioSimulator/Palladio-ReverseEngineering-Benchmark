@@ -2,21 +2,21 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202408041728 |
-| Date               | Sun Aug  4 17:32:16 UTC 2024 |
+| Date               | Tue Aug  6 02:30:25 UTC 2024 |
 | #Components        | 51 |
 | #Source Files      | 2257 |
-| Lines of Code      | 341839 |
+| Lines of Code      | 341918 |
 | #Technologies      | 9 |
 | Abstraction        | 44.25 |
-| Execution Time [s] | 19.20 |
+| Execution Time [s] | 24.04 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-core |
 | Branch            | master |
-| Commit            | e52c2a15d6ea3fa72e7e3a4600705514b14a8757 |
-| Number of Commits | 12231 |
+| Commit            | f4d8a38bc9203ecbde28bbb1807962b49bf19612 |
+| Number of Commits | 12232 |
 | Stars             | 1380 |
 | Contributors      | 344 |
 
@@ -36,16 +36,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1025-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.244GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.237GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 792MiB / 15981MiB  |
+| Memory | 788MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 19.20 |
-| User CPU Time | 55.42 |
-| System CPU Time | 2.76 |
+| Real CPU Time | 24.04 |
+| User CPU Time | 59.61 |
+| System CPU Time | 2.92 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -55,11 +55,11 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=9.56 s (245.0 files/s, 52312.8 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=10.33 s (226.5 files/s, 48392.0 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
-|Java|1882|47501|91022|191427|
+|Java|1882|47525|91081|191506|
 |XML|307|3189|2895|134453|
 |Maven|22|348|105|4775|
 |YAML|11|107|79|788|
@@ -68,4 +68,4 @@ Explainations:
 |CSV|2|0|0|2|
 |ECMAScript|21|542|1178|4346|
 |SQL|5|918|741|5464|
-|**SUM:**|**2257**|**52645**|**96046**|**341839**|
+|**SUM:**|**2257**|**52669**|**96105**|**341918**|
