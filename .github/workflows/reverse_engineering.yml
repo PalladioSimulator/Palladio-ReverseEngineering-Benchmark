@@ -80,8 +80,14 @@ jobs:
           echo "repositories=$repos_str" >> $GITHUB_ENV
           echo "current_version=$(yq eval '.current_version' $CONFIG_FILE)" >> $GITHUB_ENV
           echo "rules=$(yq eval '.rules[]' $CONFIG_FILE | paste -sd ",")" >> $GITHUB_ENV
-          echo "rules_path=$(yq eval '.rules_path // ""' $CONFIG_FILE)" >> $GITHUB_ENV
 
+          RULES_PATH=$(yq eval '.rules_path // ""' $CONFIG_FILE)
+          if [ -n "$RULES_PATH" ]; then
+            echo "rules_path=benchmark/${{ matrix.directory }}/$RULES_PATH" >> $GITHUB_ENV
+          else
+            echo "rules_path=" >> $GITHUB_ENV
+          fi
+          
           # Check for overrideBenchmark input
           if [ "${{ github.event.inputs.overrideBenchmark }}" == "true" ]; then
             echo "benchmark="true"" >> $GITHUB_ENV
