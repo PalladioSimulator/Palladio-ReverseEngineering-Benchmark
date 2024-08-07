@@ -2,21 +2,21 @@
 skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
 component "demo\n\n\n\n\n\n" {
-[demo_api_v1_AccountServiceV1]
-[demo_account_AccountRepository]
-[demo_api_v1_AccountControllerV1]
-portin " " as demo_requires_account_service_
-[demo_api_v1_AccountServiceV1]..>[demo_account_AccountRepository] : requires
-[demo_api_v1_AccountControllerV1]..>[demo_api_v1_AccountServiceV1] : requires
-"demo_requires_account_service_"--[demo_api_v1_AccountControllerV1]
+[demo_api_v1_UserControllerV1]
+[demo_api_v1_UserServiceV1]
+[demo_user_UserRepository]
+portin " " as demo_requires_user_service_
+[demo_api_v1_UserServiceV1]..>[demo_user_UserRepository] : requires
+[demo_api_v1_UserControllerV1]..>[demo_api_v1_UserServiceV1] : requires
+"demo_requires_user_service_"--[demo_api_v1_UserControllerV1]
 }
-interface "account-service/" as interface.account_service_
-interface.account_service_--"demo_requires_account_service_"
+interface "user-service/" as interface.user_service_
+interface.user_service_--"demo_requires_user_service_"
 component "demo 2\n\n\n\n\n\n" {
 [demo_login_UserController]
 [demo_UserController]
-[demo_UserRepository]
 [demo_UserService]
+[demo_UserRepository]
 portin " " as demo_2_requires_SPRING_APPLICATION_
 portin " " as demo_2_requires_user_service_user
 [demo_UserService]..>[demo_UserRepository] : requires
@@ -29,56 +29,56 @@ interface.SPRING_APPLICATION_--"demo_2_requires_SPRING_APPLICATION_"
 interface "user-service/user" as interface.user_service_user
 interface.user_service_user--"demo_2_requires_user_service_user"
 component "demo 3\n\n\n\n\n\n" {
-[demo_invoice_InvoiceRepository]
-[demo_config_DatabaseInitializer]
-[DatabaseInitializer]
-[demo_order_OrderRepository]
-[demo_api_v1_OrderControllerV1]
-[demo_order_OrderEventRepository]
-[demo_api_v1_OrderServiceV1]
-portin " " as demo_3_requires_order_service_
-[demo_api_v1_OrderControllerV1]..>[demo_api_v1_OrderServiceV1] : requires
-[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
-[demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
-[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
-[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
-"demo_3_requires_order_service_"--[demo_api_v1_OrderControllerV1]
-}
-interface "order-service/" as interface.order_service_
-interface.order_service_--"demo_3_requires_order_service_"
-component "demo 4\n\n\n\n\n\n" {
-[demo_catalog_CatalogInfoRepository]
-[demo_api_v1_CatalogServiceV1]
-[demo_api_v1_CatalogControllerV1]
-portin " " as demo_4_requires_catalog_service_v1
-[demo_api_v1_CatalogServiceV1]..>[demo_catalog_CatalogInfoRepository] : requires
-[demo_api_v1_CatalogControllerV1]..>[demo_api_v1_CatalogServiceV1] : requires
-"demo_4_requires_catalog_service_v1"--[demo_api_v1_CatalogControllerV1]
-}
-interface "catalog-service/v1" as interface.catalog_service_v1
-interface.catalog_service_v1--"demo_4_requires_catalog_service_v1"
-component "demo 5\n\n\n\n\n\n" {
-[demo_api_v1_UserServiceV1]
-[demo_user_UserRepository]
-[demo_api_v1_UserControllerV1]
-portin " " as demo_5_requires_user_service_
-[demo_api_v1_UserControllerV1]..>[demo_api_v1_UserServiceV1] : requires
-[demo_api_v1_UserServiceV1]..>[demo_user_UserRepository] : requires
-"demo_5_requires_user_service_"--[demo_api_v1_UserControllerV1]
-}
-interface "user-service/" as interface.user_service_
-interface.user_service_--"demo_5_requires_user_service_"
-component "demo 6\n\n\n\n\n\n" {
+[demo_api_v1_ShoppingCartControllerV1]
 [demo_api_v1_ShoppingCartServiceV1]
 [demo_cart_CartEventRepository]
-[demo_api_v1_ShoppingCartControllerV1]
-portin " " as demo_6_requires_shopping_cart_service_
-[demo_api_v1_ShoppingCartServiceV1]..>[demo_cart_CartEventRepository] : requires
+portin " " as demo_3_requires_shopping_cart_service_
 [demo_api_v1_ShoppingCartControllerV1]..>[demo_api_v1_ShoppingCartServiceV1] : requires
-"demo_6_requires_shopping_cart_service_"--[demo_api_v1_ShoppingCartControllerV1]
+[demo_api_v1_ShoppingCartServiceV1]..>[demo_cart_CartEventRepository] : requires
+"demo_3_requires_shopping_cart_service_"--[demo_api_v1_ShoppingCartControllerV1]
 }
 interface "shopping-cart-service/" as interface.shopping_cart_service_
-interface.shopping_cart_service_--"demo_6_requires_shopping_cart_service_"
+interface.shopping_cart_service_--"demo_3_requires_shopping_cart_service_"
+component "demo 4\n\n\n\n\n\n" {
+[demo_api_v1_OrderControllerV1]
+[DatabaseInitializer]
+[demo_invoice_InvoiceRepository]
+[demo_order_OrderRepository]
+[demo_api_v1_OrderServiceV1]
+[demo_order_OrderEventRepository]
+[demo_config_DatabaseInitializer]
+portin " " as demo_4_requires_order_service_
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderEventRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_invoice_InvoiceRepository] : requires
+[demo_api_v1_OrderControllerV1]..>[demo_api_v1_OrderServiceV1] : requires
+[demo_api_v1_OrderServiceV1]..>[demo_order_OrderRepository] : requires
+[demo_config_DatabaseInitializer]..>[demo_order_OrderRepository] : requires
+"demo_4_requires_order_service_"--[demo_api_v1_OrderControllerV1]
+}
+interface "order-service/" as interface.order_service_
+interface.order_service_--"demo_4_requires_order_service_"
+component "demo 5\n\n\n\n\n\n" {
+[demo_api_v1_AccountControllerV1]
+[demo_api_v1_AccountServiceV1]
+[demo_account_AccountRepository]
+portin " " as demo_5_requires_account_service_
+[demo_api_v1_AccountControllerV1]..>[demo_api_v1_AccountServiceV1] : requires
+[demo_api_v1_AccountServiceV1]..>[demo_account_AccountRepository] : requires
+"demo_5_requires_account_service_"--[demo_api_v1_AccountControllerV1]
+}
+interface "account-service/" as interface.account_service_
+interface.account_service_--"demo_5_requires_account_service_"
+component "demo 6\n\n\n\n\n\n" {
+[demo_api_v1_CatalogControllerV1]
+[demo_api_v1_CatalogServiceV1]
+[demo_catalog_CatalogInfoRepository]
+portin " " as demo_6_requires_catalog_service_v1
+[demo_api_v1_CatalogServiceV1]..>[demo_catalog_CatalogInfoRepository] : requires
+[demo_api_v1_CatalogControllerV1]..>[demo_api_v1_CatalogServiceV1] : requires
+"demo_6_requires_catalog_service_v1"--[demo_api_v1_CatalogControllerV1]
+}
+interface "catalog-service/v1" as interface.catalog_service_v1
+interface.catalog_service_v1--"demo_6_requires_catalog_service_v1"
 component "demo_login_LoginController\n\n\n\n\n\n" {
 [demo_login_LoginController]
 portin " " as demo_login_LoginController_requires_user_service_login
@@ -87,8 +87,8 @@ portin " " as demo_login_LoginController_requires_user_service_login
 interface "user-service/login" as interface.user_service_login
 interface.user_service_login--"demo_login_LoginController_requires_user_service_login"
 component "demo_v1\n\n\n\n\n\n" {
-[demo_v1_InventoryControllerV1]
 [demo_v1_InventoryServiceV1]
+[demo_v1_InventoryControllerV1]
 portin " " as demo_v1_requires_inventory_service_v1
 [demo_v1_InventoryControllerV1]..>[demo_v1_InventoryServiceV1] : requires
 "demo_v1_requires_inventory_service_v1"--[demo_v1_InventoryControllerV1]

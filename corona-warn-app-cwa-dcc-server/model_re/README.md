@@ -1,14 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
 | Attribute          | Value |
 | ------------------ | ----- |
-| Retriever Version  | v5.2.0.202408041728 |
-| Date               | Sun Aug  4 17:31:11 UTC 2024 |
+| Retriever Version  | v5.2.0.202408070511 |
+| Date               | Wed Aug  7 05:15:59 UTC 2024 |
 | #Components        | 20 |
 | #Source Files      | 77 |
 | Lines of Code      | 4723 |
 | #Technologies      | 7 |
 | Abstraction        | 3.85 |
-| Execution Time [s] | 5.25 |
+| Execution Time [s] | 9.30 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -27,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1025-azure  |
-| CPU | AMD EPYC 7763 (4) @ 2.445GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 791MiB / 15981MiB  |
+| Memory | 801MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 5.25 |
-| User CPU Time | 15.11 |
-| System CPU Time | 0.65 |
+| Real CPU Time | 9.30 |
+| User CPU Time | 15.37 |
+| System CPU Time | 0.59 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -46,7 +46,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=0.17 s (543.2 files/s, 47429.4 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=0.17 s (543.9 files/s, 47495.6 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
