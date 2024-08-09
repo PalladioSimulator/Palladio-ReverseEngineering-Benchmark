@@ -2,23 +2,23 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202408070511 |
-| Date               | Thu Aug  8 02:31:03 UTC 2024 |
+| Date               | Fri Aug  9 02:32:21 UTC 2024 |
 | #Components        | 52 |
 | #Source Files      | 746 |
-| Lines of Code      | 58638 |
+| Lines of Code      | 58655 |
 | #Technologies      | 6 |
 | Abstraction        | 14.34 |
-| Execution Time [s] | 14.52 |
+| Execution Time [s] | 10.13 |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-module-webservices.rest |
 | Branch            | master |
-| Commit            | ed1702647530d5dd58e849deba3747fb36c8d00b |
-| Number of Commits | 1731 |
+| Commit            | 1390386fce0b9e3c8b69cac69abafc67945f2611 |
+| Number of Commits | 1734 |
 | Stars             | 84 |
-| Contributors      | 141 |
+| Contributors      | 142 |
 
 
 ## System information
@@ -27,15 +27,15 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1025-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.240GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.038GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 791MiB / 15981MiB  |
+| Memory | 786MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 14.52 |
-| User CPU Time | 32.20 |
+| Real CPU Time | 10.13 |
+| User CPU Time | 31.95 |
 | System CPU Time | 1.39 |
 <!--
 Explainations:
@@ -46,14 +46,14 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=2.04 s (369.7 files/s, 43621.3 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=2.09 s (361.5 files/s, 42662.4 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
-|Java|676|11745|16800|54349|
+|Java|676|11746|16800|54366|
 |Maven|15|282|4|2453|
 |XML|45|194|173|1201|
 |JSON|6|2|0|503|
 |YAML|1|5|2|53|
 |ECMAScript|3|0|62|79|
-|**SUM:**|**746**|**12228**|**17041**|**58638**|
+|**SUM:**|**746**|**12229**|**17041**|**58655**|
