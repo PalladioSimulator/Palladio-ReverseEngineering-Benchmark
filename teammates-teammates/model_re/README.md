@@ -2,13 +2,13 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202408070511 |
-| Date               | Fri Aug  9 02:32:49 UTC 2024 |
+| Date               | Sat Aug 10 02:31:09 UTC 2024 |
 | #Components        | 17 |
 | #Source Files      | 2125 |
 | Lines of Code      | 283776 |
 | #Technologies      | 7 |
 | Abstraction        | 125.00 |
-| Execution Time [s] | 37.61 |
+| Execution Time [s] | 33.27 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -17,7 +17,7 @@
 | Branch            | master |
 | Commit            | 6d4f9f461ad256d9a3e7a2f10e1b6c1281e076eb |
 | Number of Commits | 18767 |
-| Stars             | 1640 |
+| Stars             | 1641 |
 | Contributors      | 368 |
 
 
@@ -27,16 +27,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1025-azure  |
-| CPU | AMD EPYC 7763 (4) @ 2.445GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 771MiB / 15981MiB  |
+| Memory | 786MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 37.61 |
-| User CPU Time | 69.37 |
-| System CPU Time | 10.43 |
+| Real CPU Time | 33.27 |
+| User CPU Time | 68.60 |
+| System CPU Time | 11.04 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -46,7 +46,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=6.40 s (407.1 files/s, 58716.3 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=6.39 s (407.5 files/s, 58765.5 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
