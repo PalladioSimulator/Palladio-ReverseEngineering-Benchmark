@@ -75,7 +75,7 @@ class ProjectSpecificRules implements Rule {
 				pcmDetector.detectComponent(identifier)
 			} else if (identifier.name().endsWith("RegistryClient")) {
 				pcmDetector.detectComponent(identifier)
-				pcmDetector.detectRequiredInterface(identifier, new RESTName("tools.descartes.teastore.registry", "/services"))
+				pcmDetector.detectRequiredInterface(identifier, new RESTName("SERVICE-HOST", "/services"))
 			}
 		}
 	}
