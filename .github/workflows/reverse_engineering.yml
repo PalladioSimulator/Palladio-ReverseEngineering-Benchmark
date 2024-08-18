@@ -151,7 +151,7 @@ jobs:
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         run: |
           # manually overwrite current_version to avoid bug with yq
-          sed -i 's/current_version: ".*"/current_version: "${{ needs.collect_info.outputs.latest_version }}"/' "benchmark/${{ matrix.directory }}/.retriever.yml"
+          sed -i 's/current_version:.*/current_version: "${{ needs.collect_info.outputs.latest_version }}"/' "benchmark/${{ matrix.directory }}/.retriever.yml"
           # yq '.current_version = "${{ needs.collect_info.outputs.latest_version }}"' -i "benchmark/${{ matrix.directory }}/.retriever.yml"
           mv "benchmark/${{ matrix.directory }}/.retriever.yml" to_commit/${{ matrix.directory }}/.retriever.yml
 
