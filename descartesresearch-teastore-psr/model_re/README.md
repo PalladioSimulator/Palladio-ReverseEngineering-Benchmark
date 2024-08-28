@@ -1,14 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
 | Attribute          | Value |
 | ------------------ | ----- |
-| Retriever Version  | v5.2.0.202408070511 |
-| Date               | Sun Aug 18 07:09:32 UTC 2024 |
+| Retriever Version  | v5.2.0.202408280745 |
+| Date               | Wed Aug 28 07:56:10 UTC 2024 |
 | #Components        | 53 |
 | #Source Files      | 335 |
 | Lines of Code      | 23186 |
 | #Technologies      | 9 |
 | Abstraction        | 6.32 |
-| Execution Time [s] | 12.07 |
+| Execution Time [s] | 12.08 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -34,9 +34,9 @@
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 12.07 |
-| User CPU Time | 36.24 |
-| System CPU Time | 2.01 |
+| Real CPU Time | 12.08 |
+| User CPU Time | 36.49 |
+| System CPU Time | 1.99 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -46,7 +46,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=1.37 s (295.0 files/s, 32946.0 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=1.38 s (293.7 files/s, 32802.6 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|

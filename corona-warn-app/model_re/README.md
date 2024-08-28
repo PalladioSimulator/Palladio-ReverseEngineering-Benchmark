@@ -1,14 +1,14 @@
 # [Retriever](https://github.com/PalladioSimulator/Palladio-ReverseEngineering-Retriever) Report
 | Attribute          | Value |
 | ------------------ | ----- |
-| Retriever Version  | v5.2.0.202408070511 |
-| Date               | Wed Aug  7 05:16:19 UTC 2024 |
+| Retriever Version  | v5.2.0.202408280745 |
+| Date               | Wed Aug 28 07:56:27 UTC 2024 |
 | #Components        | 117 |
 | #Source Files      | 1516 |
 | Lines of Code      | 380470 |
 | #Technologies      | 8 |
 | Abstraction        | 12.95 |
-| Execution Time [s] | 18.69 |
+| Execution Time [s] | 22.12 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -26,7 +26,7 @@
 | Branch            | master |
 | Commit            | 4d9b378e7fc1f1fccc28c4b9403e7b86118b7613 |
 | Number of Commits | 33 |
-| Stars             | 5 |
+| Stars             | 4 |
 | Contributors      | 6 |
 
 |      Attribute    | Value |
@@ -35,7 +35,7 @@
 | Branch            | main |
 | Commit            | d441e874d111b5f50abc90b1c1d682e51da7206e |
 | Number of Commits | 658 |
-| Stars             | 18 |
+| Stars             | 17 |
 | Contributors      | 17 |
 
 |      Attribute    | Value |
@@ -44,8 +44,8 @@
 | Branch            | main |
 | Commit            | c61d55f6f83b6d005cb6aca9e9b455afac572d72 |
 | Number of Commits | 1406 |
-| Stars             | 1913 |
-| Contributors      | 79 |
+| Stars             | 1916 |
+| Contributors      | 78 |
 
 |      Attribute    | Value |
 | ----------------- | ----- |
@@ -53,7 +53,7 @@
 | Branch            | master |
 | Commit            | d2068cc7427d05683b0b38b7852343ce8bc79cd2 |
 | Number of Commits | 110 |
-| Stars             | 92 |
+| Stars             | 91 |
 | Contributors      | 17 |
 
 |      Attribute    | Value |
@@ -62,7 +62,7 @@
 | Branch            | master |
 | Commit            | e9b30bccc888157bb52b2639f9b2713097b55beb |
 | Number of Commits | 84 |
-| Stars             | 94 |
+| Stars             | 92 |
 | Contributors      | 22 |
 
 |      Attribute    | Value |
@@ -81,16 +81,16 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1025-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.203GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.239GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 765MiB / 15981MiB  |
+| Memory | 777MiB / 15981MiB  |
 
 ## Retriever execution time
 | Metric | Time (seconds) |
 | --- | ---: |
-| Real CPU Time | 18.69 |
-| User CPU Time | 42.50 |
-| System CPU Time | 6.31 |
+| Real CPU Time | 22.12 |
+| User CPU Time | 40.82 |
+| System CPU Time | 5.98 |
 <!--
 Explainations:
 - __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
@@ -100,7 +100,7 @@ Explainations:
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=4.59 s (363.6 files/s, 91208.3 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=4.32 s (386.0 files/s, 96818.2 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|

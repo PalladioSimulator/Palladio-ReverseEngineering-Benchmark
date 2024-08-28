@@ -1,493 +1,510 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.2" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.2" id="_7ApcFF0wEe-Wu8KbJAEusA">
-  <components__Repository xsi:type="repository:BasicComponent" id="_7ARBkl0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_LogoutServlet">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7ARBkF0wEe-Wu8KbJAEusA" entityName="LogoutServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQahl0wEe-Wu8KbJAEusA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7ARBkV0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_7AQajF0wEe-Wu8KbJAEusA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_aF810wEe-Wu8KbJAEusA" describedService__SEFF="_69FKsF0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_Ze4V0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_Ze4l0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Ze4l0wEe-Wu8KbJAEusA" entityName="req.getSession().invalidate()" predecessor_AbstractAction="_6_Ze4V0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Ze410wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Ze410wEe-Wu8KbJAEusA" entityName="resp.addCookie(cookie)" predecessor_AbstractAction="_6_Ze4l0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Ze6V0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_Ze6V0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_Ze410wEe-Wu8KbJAEusA" successor_AbstractAction="_6_aF8F0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_Ze5l0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_Ze6F0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_Ze5F0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_Ze5V0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_Ze5V0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_Ze5F0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(frontendUrl == null)"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_aF8F0wEe-Wu8KbJAEusA" entityName="log.request(req,HttpStatus.SC_MOVED_TEMPORARILY,&quot;Redirect to home page after logging out&quot;)" predecessor_AbstractAction="_6_Ze6V0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_aF8V0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_aF8V0wEe-Wu8KbJAEusA" entityName="resp.sendRedirect(frontendUrl + &quot;/web&quot;)" predecessor_AbstractAction="_6_aF8F0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_aF8l0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_aF8l0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_aF8V0wEe-Wu8KbJAEusA"/>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.2" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.2" id="_NIN4gGUTEe-b5Y3SHUCmhQ">
+  <components__Repository xsi:type="repository:BasicComponent" id="_NHyapWUTEe-b5Y3SHUCmhQ" entityName="Gateway">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NHxzmmUTEe-b5Y3SHUCmhQ" entityName="API-HOST/ Provider" providedInterface__OperationProvidedRole="_NHxzkGUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NHxzm2UTEe-b5Y3SHUCmhQ" entityName="WebApiServlet/[DELETE,GET,POST,PUT] Consumer" requiredInterface__OperationRequiredRole="_NHxzlWUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NHxznGUTEe-b5Y3SHUCmhQ" entityName="WebPageServlet/[GET] Consumer" requiredInterface__OperationRequiredRole="_NHxzkmUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NHyaoGUTEe-b5Y3SHUCmhQ" entityName="LoginServlet/[GET] Consumer" requiredInterface__OperationRequiredRole="_NHxzlGUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NHyaoWUTEe-b5Y3SHUCmhQ" entityName="LegacyUrlMapper/[GET] Consumer" requiredInterface__OperationRequiredRole="_NHxzk2UTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NHyaomUTEe-b5Y3SHUCmhQ" entityName="LogoutServlet/[GET] Consumer" requiredInterface__OperationRequiredRole="_NHxzmGUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NHyao2UTEe-b5Y3SHUCmhQ" entityName="OAuth2CallbackServlet/[GET] Consumer" requiredInterface__OperationRequiredRole="_NHxzl2UTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NHyapGUTEe-b5Y3SHUCmhQ" entityName="HealthCheckServlet/[GET] Consumer" requiredInterface__OperationRequiredRole="_NHxzmWUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NH024mUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEpAAmUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NH024GUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NH024WUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NH024WUTEe-b5Y3SHUCmhQ" predecessor_AbstractAction="_NH024GUTEe-b5Y3SHUCmhQ"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_7ATd1F0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_HealthCheckServlet">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7ATd010wEe-Wu8KbJAEusA" entityName="HealthCheckServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQaiF0wEe-Wu8KbJAEusA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_aF-V0wEe-Wu8KbJAEusA" describedService__SEFF="_69IOAl0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_aF9V0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_aF9l0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_aF9l0wEe-Wu8KbJAEusA" entityName="resp.setStatus(HttpStatus.SC_OK)" predecessor_AbstractAction="_6_aF9V0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_aF910wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_aF910wEe-Wu8KbJAEusA" entityName="resp.getWriter().write(&quot;OK&quot;)" predecessor_AbstractAction="_6_aF9l0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_aF-F0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_aF-F0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_aF910wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_7AVTDl0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_DevServerLoginServlet">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AVTDV0wEe-Wu8KbJAEusA" entityName="SERVICE-HOST/[GET,POST] Provider" providedInterface__OperationProvidedRole="_7AQail0wEe-Wu8KbJAEusA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_HLAl0wEe-Wu8KbJAEusA" describedService__SEFF="_69D8kF0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_69ezVF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6-9aAF0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6-9aAF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_69ezVF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_BrdF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_69h2oF0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_69idsF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_69hPkF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_69hPkV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_69hPkV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_69hPkF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(nextUrl == null)"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_BrdF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6-9aAF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_EuxF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_BrcV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_Brc10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6--oIF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_AdUF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_AdUF0wEe-Wu8KbJAEusA" entityName="resp.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY)" predecessor_AbstractAction="_6--oIF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_BEYF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_BEYF0wEe-Wu8KbJAEusA" entityName="resp.setHeader(&quot;Location&quot;,Const.WebPageURIs.LOGIN + &quot;?nextUrl=&quot; + nextUrl.replace(&quot;&amp;&quot;,&quot;%26&quot;))" predecessor_AbstractAction="_6_AdUF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_BrcF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_BrcF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_BEYF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(!Config.isDevServerLoginEnabled())"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_EuxF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_BrdF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_F84F0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_EuwV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_Euw10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_DgoF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_EHsF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_EHsF0wEe-Wu8KbJAEusA" entityName="resp.sendRedirect(nextUrl)" predecessor_AbstractAction="_6_DgoF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_EuwF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_EuwF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_EHsF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(!isLoginNeeded)"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_F84F0wEe-Wu8KbJAEusA" entityName="resp.setContentType(&quot;text/html&quot;)" predecessor_AbstractAction="_6_EuxF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_HLAF0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_HLAF0wEe-Wu8KbJAEusA" entityName="pw.print(html)" predecessor_AbstractAction="_6_F84F0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_HLAV0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_HLAV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_HLAF0wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_Mqkl0wEe-Wu8KbJAEusA" describedService__SEFF="_69EjoF0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_HLA10wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_JAMV0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_JAMV0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_HLA10wEe-Wu8KbJAEusA" successor_AbstractAction="_6_JnRV0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_IZIl0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_JAMF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_HyEF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_IZIF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_IZIF0wEe-Wu8KbJAEusA" entityName="resp.setStatus(HttpStatus.SC_FORBIDDEN)" predecessor_AbstractAction="_6_HyEF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_IZIV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_IZIV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_IZIF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(!Config.isDevServerLoginEnabled())"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_JnRV0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_JAMV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_K1YF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_JnQl0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_JnRF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_JnQF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_JnQV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_JnQV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_JnQF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(email == null)"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_K1YF0wEe-Wu8KbJAEusA" entityName="resp.addCookie(cookie)" predecessor_AbstractAction="_6_JnRV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_MDhF0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_MDhF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_K1YF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_MqkF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_MDgV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_MDg10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_LccF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_MDgF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_MDgF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_LccF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(nextUrl == null)"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_MqkF0wEe-Wu8KbJAEusA" entityName="resp.sendRedirect(nextUrl)" predecessor_AbstractAction="_6_MDhF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_MqkV0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_MqkV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_MqkF0wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_7AY9bl0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_OAuth2CallbackServlet">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AY9bF0wEe-Wu8KbJAEusA" entityName="OAuth2CallbackServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQaiV0wEe-Wu8KbJAEusA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7AY9bV0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_7AQajF0wEe-Wu8KbJAEusA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_V0gV0wEe-Wu8KbJAEusA" describedService__SEFF="_69FxwF0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_Q8AV0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_SKJF0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_SKJF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_Q8AV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_SxNF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_RjEl0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_RjFF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_RjEF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_RjEV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_RjEV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_RjEF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Config.isUsingFirebase())"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_SKIV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_SKI10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_RjFV0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_SKIF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_SKIF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_RjFV0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: else"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_SxNF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_SKJF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_UmZF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_SxMV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_SxM10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_SKJV0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_SxMF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_SxMF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_SKJV0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(authResult == null)"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_UmZF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_SxNF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_UmZV0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_T_UV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_T_U10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_TYQF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_TYQV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_TYQV0wEe-Wu8KbJAEusA" entityName="req.getSession().invalidate()" predecessor_AbstractAction="_6_TYQF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_T_UF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_T_UF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_TYQV0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(authResult.email == null)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_UmYV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_UmY10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_T_VF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_UmYF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_UmYF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_T_VF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: else"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_UmZV0wEe-Wu8KbJAEusA" entityName="log.info(&quot;Going to redirect to: &quot; + authResult.nextUrl)" predecessor_AbstractAction="_6_UmZF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_VNcF0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_VNcF0wEe-Wu8KbJAEusA" entityName="log.request(req,HttpStatus.SC_MOVED_TEMPORARILY,&quot;Login successful&quot;)" predecessor_AbstractAction="_6_UmZV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_VNcV0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_VNcV0wEe-Wu8KbJAEusA" entityName="resp.addCookie(cookie)" predecessor_AbstractAction="_6_VNcF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_VNcl0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_VNcl0wEe-Wu8KbJAEusA" entityName="resp.sendRedirect(authResult.nextUrl)" predecessor_AbstractAction="_6_VNcV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_V0gF0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_V0gF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_VNcl0wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_7Aaynl0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger Provider">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AaynV0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger Provider" providedInterface__OperationProvidedRole="_7AQajF0wEe-Wu8KbJAEusA"/>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_7AayoV0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_LegacyUrlMapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7Aayn10wEe-Wu8KbJAEusA" entityName="LegacyUrlMapper/[GET] Provider" providedInterface__OperationProvidedRole="_7AQai10wEe-Wu8KbJAEusA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7AayoF0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_7AQajF0wEe-Wu8KbJAEusA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_iBw10wEe-Wu8KbJAEusA" describedService__SEFF="_68TuoF0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_aF-10wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_atBF0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_atBF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_aF-10wEe-Wu8KbJAEusA" successor_AbstractAction="_6_hatV0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_atAV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_atA10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_aF_F0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_atAF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_atAF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_aF_F0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(uri.contains(&quot;;&quot;))"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_hatV0wEe-Wu8KbJAEusA" entityName="Switch Branch" predecessor_AbstractAction="_6_atBF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_iBwF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_ciMV0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_ciM10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_b7IF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_ciMF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_ciMF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_b7IF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.INSTRUCTOR_COURSE_JOIN)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_ciNl0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_ciOF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_ciNF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_ciNV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_ciNV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_ciNF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_COURSE_JOIN)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_dJQV0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_dJQ10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_ciOV0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_dJQF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_dJQF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_ciOV0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_COURSE_JOIN_NEW)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_dJRl0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_dJSF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_dJRF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_dJRV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_dJRV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_dJRF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_HOME_PAGE)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_dwUV0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_dwU10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_dJSV0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_dwUF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_dwUF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_dJSV0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.INSTRUCTOR_HOME_PAGE)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_eXYV0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_eXY10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_dwVF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_eXYF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_eXYF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_dwVF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_FEEDBACK_SUBMISSION_EDIT_PAGE)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_e-cV0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_e-c10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_eXZF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_e-cF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_e-cF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_eXZF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.INSTRUCTOR_FEEDBACK_SUBMISSION_EDIT_PAGE)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_gMkV0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_gMk10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_e-dF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_gMkF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_gMkF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_e-dF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_FEEDBACK_RESULTS_PAGE)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_gzoV0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_gzo10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_gMlF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_gzoF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_gzoF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_gMlF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.INSTRUCTOR_FEEDBACK_RESULTS_PAGE)"/>
-        </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_hasl0wEe-Wu8KbJAEusA">
-          <branchBehaviour_BranchTransition id="_6_hatF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_gzpF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_hasF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_hasF0wEe-Wu8KbJAEusA" entityName="log.warning(&quot;Unmapped legacy URL: &quot; + uri)" predecessor_AbstractAction="_6_gzpF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_hasV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_hasV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_hasF0wEe-Wu8KbJAEusA"/>
-          </branchBehaviour_BranchTransition>
-          <branchCondition_GuardedBranchTransition specification="@position: Condition: if()"/>
-        </branches_Branch>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_iBwF0wEe-Wu8KbJAEusA" entityName="log.request(req,HttpStatus.SC_MOVED_PERMANENTLY,&quot;Redirect legacy URL from &quot; + uri + &quot; to &quot;+ baseRedirectUrl)" predecessor_AbstractAction="_6_hatV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_iBwV0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_iBwV0wEe-Wu8KbJAEusA" entityName="resp.sendRedirect(redirectUrl)" predecessor_AbstractAction="_6_iBwF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_iBwl0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_iBwl0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_iBwV0wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_7Acnz10wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_WebApiServlet">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AcnzV0wEe-Wu8KbJAEusA" entityName="WebApiServlet/[DELETE,GET,POST,PUT] Provider" providedInterface__OperationProvidedRole="_7AQahV0wEe-Wu8KbJAEusA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7Acnzl0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_7AQajF0wEe-Wu8KbJAEusA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_Y30l0wEe-Wu8KbJAEusA" describedService__SEFF="_69G_4l0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_YQzF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_Y30F0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Y30F0wEe-Wu8KbJAEusA" entityName="invokeServlet(req,resp)" predecessor_AbstractAction="_6_YQzF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Y30V0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_Y30V0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_Y30F0wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_Y31l0wEe-Wu8KbJAEusA" describedService__SEFF="_69G_4F0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_Y3010wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_Y31F0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Y31F0wEe-Wu8KbJAEusA" entityName="invokeServlet(req,resp)" predecessor_AbstractAction="_6_Y3010wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Y31V0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_Y31V0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_Y31F0wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_Y33l0wEe-Wu8KbJAEusA" describedService__SEFF="_69Hm8V0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_Y3210wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_Y33F0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Y33F0wEe-Wu8KbJAEusA" entityName="invokeServlet(req,resp)" predecessor_AbstractAction="_6_Y3210wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Y33V0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_Y33V0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_Y33F0wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_Y32l0wEe-Wu8KbJAEusA" describedService__SEFF="_69GY0F0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_Y3110wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_Y32F0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Y32F0wEe-Wu8KbJAEusA" entityName="invokeServlet(req,resp)" predecessor_AbstractAction="_6_Y3110wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Y32V0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_Y32V0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_Y32F0wEe-Wu8KbJAEusA"/>
-    </serviceEffectSpecifications__BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_7AjVf10wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_WebPageServlet">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AjVfV0wEe-Wu8KbJAEusA" entityName="WebPageServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQajV0wEe-Wu8KbJAEusA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7AjVfl0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_7AQajF0wEe-Wu8KbJAEusA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_QVAV0wEe-Wu8KbJAEusA" describedService__SEFF="_69Hm9F0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_MqlF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_QU_10wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_QU_10wEe-Wu8KbJAEusA" entityName="Try Catch Branch" predecessor_AbstractAction="_6_MqlF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_QVAF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_N4sl0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_N4tF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_NRoF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_N4sF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_N4sF0wEe-Wu8KbJAEusA" entityName="req.getRequestDispatcher(&quot;/index.html&quot;).forward(req,resp)" predecessor_AbstractAction="_6_NRoF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_N4sV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_N4sV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_N4sF0wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NH025WUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_WebPageServlet">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NH0242UTEe-b5Y3SHUCmhQ" entityName="WebPageServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzkmUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NH025GUTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_NHxzkWUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NG8GG2UTEe-b5Y3SHUCmhQ" describedService__SEFF="_NDxdUGUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NG4bu2UTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG8GGWUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NG8GGWUTEe-b5Y3SHUCmhQ" entityName="Try Catch Branch" predecessor_AbstractAction="_NG4bu2UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG8GGmUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG5Cw2UTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NG5CxWUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NG5CwGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG5CwWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NG5CwWUTEe-b5Y3SHUCmhQ" entityName="req.getRequestDispatcher(&quot;/index.html&quot;).forward(req,resp)" predecessor_AbstractAction="_NG5CwGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG5CwmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NG5CwmUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG5CwWUTEe-b5Y3SHUCmhQ"/>
           </branchBehaviour_BranchTransition>
           <branchCondition_GuardedBranchTransition specification="@position: Try Block"/>
         </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_QU_F0wEe-Wu8KbJAEusA" entityName="Try Catch Branch">
-          <branchBehaviour_BranchTransition id="_6_QU_l0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_OfwF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_QU-l0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:BranchAction" id="_6_QU-l0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_OfwF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_QU-10wEe-Wu8KbJAEusA">
-              <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_QU8l0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-                <branchBehaviour_BranchTransition id="_6_QU9F0wEe-Wu8KbJAEusA">
-                  <steps_Behaviour xsi:type="seff:StartAction" id="_6_OfwV0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_PG0F0wEe-Wu8KbJAEusA"/>
-                  <steps_Behaviour xsi:type="seff:InternalAction" id="_6_PG0F0wEe-Wu8KbJAEusA" entityName="log.warning(&quot;&quot;,e)" predecessor_AbstractAction="_6_OfwV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Pt4F0wEe-Wu8KbJAEusA"/>
-                  <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Pt4F0wEe-Wu8KbJAEusA" entityName="resp.setStatus(HttpStatus.SC_BAD_REQUEST)" predecessor_AbstractAction="_6_PG0F0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_QU8F0wEe-Wu8KbJAEusA"/>
-                  <steps_Behaviour xsi:type="seff:InternalAction" id="_6_QU8F0wEe-Wu8KbJAEusA" entityName="resp.getWriter().write(e.getMessage())" predecessor_AbstractAction="_6_Pt4F0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_QU8V0wEe-Wu8KbJAEusA"/>
-                  <steps_Behaviour xsi:type="seff:StopAction" id="_6_QU8V0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_QU8F0wEe-Wu8KbJAEusA"/>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG8GFmUTEe-b5Y3SHUCmhQ" entityName="Try Catch Branch">
+          <branchBehaviour_BranchTransition id="_NG8GGGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NG5p0GUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG8GFGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:BranchAction" id="_NG8GFGUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NG5p0GUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG8GFWUTEe-b5Y3SHUCmhQ">
+              <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG638mUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+                <branchBehaviour_BranchTransition id="_NG639GUTEe-b5Y3SHUCmhQ">
+                  <steps_Behaviour xsi:type="seff:StartAction" id="_NG5p0WUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG6Q4GUTEe-b5Y3SHUCmhQ"/>
+                  <steps_Behaviour xsi:type="seff:InternalAction" id="_NG6Q4GUTEe-b5Y3SHUCmhQ" entityName="log.warning(&quot;&quot;,e)" predecessor_AbstractAction="_NG5p0WUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG6Q4WUTEe-b5Y3SHUCmhQ"/>
+                  <steps_Behaviour xsi:type="seff:InternalAction" id="_NG6Q4WUTEe-b5Y3SHUCmhQ" entityName="resp.setStatus(HttpStatus.SC_BAD_REQUEST)" predecessor_AbstractAction="_NG6Q4GUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG638GUTEe-b5Y3SHUCmhQ"/>
+                  <steps_Behaviour xsi:type="seff:InternalAction" id="_NG638GUTEe-b5Y3SHUCmhQ" entityName="resp.getWriter().write(e.getMessage())" predecessor_AbstractAction="_NG6Q4WUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG638WUTEe-b5Y3SHUCmhQ"/>
+                  <steps_Behaviour xsi:type="seff:StopAction" id="_NG638WUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG638GUTEe-b5Y3SHUCmhQ"/>
                 </branchBehaviour_BranchTransition>
                 <branchCondition_GuardedBranchTransition specification="@position: Condition: if(&quot;BadMessageException&quot;.equals(e.getClass().getSimpleName()))"/>
               </branches_Branch>
-              <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_QU910wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-                <branchBehaviour_BranchTransition id="_6_QU-V0wEe-Wu8KbJAEusA">
-                  <steps_Behaviour xsi:type="seff:StartAction" id="_6_QU9V0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_QU9l0wEe-Wu8KbJAEusA"/>
-                  <steps_Behaviour xsi:type="seff:StopAction" id="_6_QU9l0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_QU9V0wEe-Wu8KbJAEusA"/>
+              <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG8GEWUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+                <branchBehaviour_BranchTransition id="_NG8GE2UTEe-b5Y3SHUCmhQ">
+                  <steps_Behaviour xsi:type="seff:StartAction" id="_NG639WUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG8GEGUTEe-b5Y3SHUCmhQ"/>
+                  <steps_Behaviour xsi:type="seff:StopAction" id="_NG8GEGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG639WUTEe-b5Y3SHUCmhQ"/>
                 </branchBehaviour_BranchTransition>
                 <branchCondition_GuardedBranchTransition specification="@position: Condition: else"/>
               </branches_Branch>
             </steps_Behaviour>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_QU-10wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_QU-l0wEe-Wu8KbJAEusA"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NG8GFWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG8GFGUTEe-b5Y3SHUCmhQ"/>
           </branchBehaviour_BranchTransition>
           <branchCondition_GuardedBranchTransition specification="@position: Condition: catch RuntimeException"/>
         </branches_Branch>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_QVAF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_QU_10wEe-Wu8KbJAEusA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NG8GGmUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG8GGWUTEe-b5Y3SHUCmhQ"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_7AlKr10wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_LoginServlet">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AlKrV0wEe-Wu8KbJAEusA" entityName="LoginServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQah10wEe-Wu8KbJAEusA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7AlKrl0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_7AQajF0wEe-Wu8KbJAEusA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_6_YQyl0wEe-Wu8KbJAEusA" describedService__SEFF="_69I1El0wEe-Wu8KbJAEusA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_6_V0g10wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_V0iV0wEe-Wu8KbJAEusA"/>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_V0iV0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_V0g10wEe-Wu8KbJAEusA" successor_AbstractAction="_6_XCoF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_V0hl0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_V0iF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_V0hF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_V0hV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_V0hV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_V0hF0wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NH3TImUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_LegacyUrlMapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NH3TIGUTEe-b5Y3SHUCmhQ" entityName="LegacyUrlMapper/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzk2UTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NH3TIWUTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_NHxzkWUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NG4buWUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEjgcGUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NGwf4WUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGxG9GUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGxG9GUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGwf4WUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG4btWUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGxG8WUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGxG82UTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGwf4mUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGxG8GUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGxG8GUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGwf4mUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(uri.contains(&quot;;&quot;))"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NG4btWUTEe-b5Y3SHUCmhQ" entityName="Switch Branch" predecessor_AbstractAction="_NGxG9GUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG4btmUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGy8IGUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NGy8ImUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGyVEGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGyVEWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGyVEWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGyVEGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.INSTRUCTOR_COURSE_JOIN)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGy8JWUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NGy8J2UTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGy8I2UTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGy8JGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGy8JGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGy8I2UTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_COURSE_JOIN)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGzjMWUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NGzjM2UTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGy8KGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGzjMGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGzjMGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGy8KGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_COURSE_JOIN_NEW)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGzjNmUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NGzjOGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGzjNGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGzjNWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGzjNWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGzjNGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_HOME_PAGE)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG0KQmUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NG0KRGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NG0KQGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG0KQWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NG0KQWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG0KQGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.INSTRUCTOR_HOME_PAGE)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG3NkmUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NG3NlGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NG3NkGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG3NkWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NG3NkWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG3NkGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_FEEDBACK_SUBMISSION_EDIT_PAGE)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG30oWUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NG30o2UTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NG3NlWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG30oGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NG30oGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG3NlWUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.INSTRUCTOR_FEEDBACK_SUBMISSION_EDIT_PAGE)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG30pmUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NG30qGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NG30pGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG30pWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NG30pWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG30pGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.STUDENT_FEEDBACK_RESULTS_PAGE)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG30q2UTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NG30rWUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NG30qWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG30qmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NG30qmUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG30qWUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Const.LegacyURIs.INSTRUCTOR_FEEDBACK_RESULTS_PAGE)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NG4bsmUTEe-b5Y3SHUCmhQ">
+          <branchBehaviour_BranchTransition id="_NG4btGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NG30rmUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG4bsGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NG4bsGUTEe-b5Y3SHUCmhQ" entityName="log.warning(&quot;Unmapped legacy URL: &quot; + uri)" predecessor_AbstractAction="_NG30rmUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG4bsWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NG4bsWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG4bsGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if()"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NG4btmUTEe-b5Y3SHUCmhQ" entityName="log.request(req,HttpStatus.SC_MOVED_PERMANENTLY,&quot;Redirect legacy URL from &quot; + uri + &quot; to &quot;+ baseRedirectUrl)" predecessor_AbstractAction="_NG4btWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG4bt2UTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NG4bt2UTEe-b5Y3SHUCmhQ" entityName="resp.sendRedirect(redirectUrl)" predecessor_AbstractAction="_NG4btmUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG4buGUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NG4buGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG4bt2UTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NH5IWGUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_LoginServlet">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NH5IVmUTEe-b5Y3SHUCmhQ" entityName="LoginServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzlGUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NH5IV2UTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_NHxzkWUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NGvRw2UTEe-b5Y3SHUCmhQ" describedService__SEFF="_NElVoGUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NGs1hGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGs1imUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGs1imUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGs1hGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGtcmGUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGs1h2UTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGs1iWUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGs1hWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGs1hmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGs1hmUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGs1hWUTEe-b5Y3SHUCmhQ"/>
           </branchBehaviour_BranchTransition>
           <branchCondition_GuardedBranchTransition specification="@position: Condition: if(nextUrl == null)"/>
         </branches_Branch>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_XCoF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_V0iV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_XpsV0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_WblV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_Wbl10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_WbkF0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_WbkV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_WbkV0wEe-Wu8KbJAEusA" entityName="resp.setStatus(HttpStatus.SC_MOVED_PERMANENTLY)" predecessor_AbstractAction="_6_WbkF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Wbkl0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Wbkl0wEe-Wu8KbJAEusA" entityName="resp.setHeader(&quot;Location&quot;,&quot;/devServerLogin?nextUrl=&quot; + nextUrl.replace(&quot;&amp;&quot;,&quot;%26&quot;))" predecessor_AbstractAction="_6_WbkV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_Wbk10wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Wbk10wEe-Wu8KbJAEusA" entityName="log.request(req,HttpStatus.SC_MOVED_PERMANENTLY,&quot;Redirect to dev server login page&quot;)" predecessor_AbstractAction="_6_Wbkl0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_WblF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_WblF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_Wbk10wEe-Wu8KbJAEusA"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGtcmGUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGs1imUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuDp2UTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGtclWUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGtcl2UTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGtckGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGtckWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGtckWUTEe-b5Y3SHUCmhQ" entityName="resp.setStatus(HttpStatus.SC_MOVED_PERMANENTLY)" predecessor_AbstractAction="_NGtckGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGtckmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGtckmUTEe-b5Y3SHUCmhQ" entityName="resp.setHeader(&quot;Location&quot;,&quot;/devServerLogin?nextUrl=&quot; + nextUrl.replace(&quot;&amp;&quot;,&quot;%26&quot;))" predecessor_AbstractAction="_NGtckWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGtck2UTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGtck2UTEe-b5Y3SHUCmhQ" entityName="log.request(req,HttpStatus.SC_MOVED_PERMANENTLY,&quot;Redirect to dev server login page&quot;)" predecessor_AbstractAction="_NGtckmUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGtclGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGtclGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGtck2UTEe-b5Y3SHUCmhQ"/>
           </branchBehaviour_BranchTransition>
           <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Config.isDevServerLoginEnabled())"/>
         </branches_Branch>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_XpsV0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_XCoF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_YQyF0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_XCpV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_XpsF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_XCoV0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_XCol0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_XCol0wEe-Wu8KbJAEusA" entityName="log.request(req,HttpStatus.SC_MOVED_TEMPORARILY,&quot;Redirect to next URL&quot;)" predecessor_AbstractAction="_6_XCoV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_XCo10wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_XCo10wEe-Wu8KbJAEusA" entityName="resp.sendRedirect(nextUrl)" predecessor_AbstractAction="_6_XCol0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_XCpF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_XCpF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_XCo10wEe-Wu8KbJAEusA"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGuDp2UTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGtcmGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGvRwWUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGuDpGUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGuDpmUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGuDoGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGuDoWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGuDoWUTEe-b5Y3SHUCmhQ" entityName="log.request(req,HttpStatus.SC_MOVED_TEMPORARILY,&quot;Redirect to next URL&quot;)" predecessor_AbstractAction="_NGuDoGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuDomUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGuDomUTEe-b5Y3SHUCmhQ" entityName="resp.sendRedirect(nextUrl)" predecessor_AbstractAction="_NGuDoWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuDo2UTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGuDo2UTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGuDomUTEe-b5Y3SHUCmhQ"/>
           </branchBehaviour_BranchTransition>
           <branchCondition_GuardedBranchTransition specification="@position: Condition: if(!isLoginNeeded)"/>
         </branches_Branch>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:BranchAction" id="_6_YQyF0wEe-Wu8KbJAEusA" entityName="If Branch" predecessor_AbstractAction="_6_XpsV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_YQyV0wEe-Wu8KbJAEusA">
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_Xptl0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_XpuF0wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_Xpsl0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_Xps10wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_Xps10wEe-Wu8KbJAEusA" entityName="log.request(req,HttpStatus.SC_MOVED_PERMANENTLY,&quot;Redirect to web login page&quot;)" predecessor_AbstractAction="_6_Xpsl0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_XptF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_XptF0wEe-Wu8KbJAEusA" entityName="resp.sendRedirect(&quot;/web/login?nextUrl=&quot; + nextUrl.replace(&quot;?&quot;,&quot;%3f&quot;).replace(&quot;&amp;&quot;,&quot;%26&quot;))" predecessor_AbstractAction="_6_Xps10wEe-Wu8KbJAEusA" successor_AbstractAction="_6_XptV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_XptV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_XptF0wEe-Wu8KbJAEusA"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGvRwWUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGuDp2UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGvRwmUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGuqsWUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGuqs2UTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGuDqGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGuDqWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGuDqWUTEe-b5Y3SHUCmhQ" entityName="log.request(req,HttpStatus.SC_MOVED_PERMANENTLY,&quot;Redirect to web login page&quot;)" predecessor_AbstractAction="_NGuDqGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuDqmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGuDqmUTEe-b5Y3SHUCmhQ" entityName="resp.sendRedirect(&quot;/web/login?nextUrl=&quot; + nextUrl.replace(&quot;?&quot;,&quot;%3f&quot;).replace(&quot;&amp;&quot;,&quot;%26&quot;))" predecessor_AbstractAction="_NGuDqWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuqsGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGuqsGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGuDqmUTEe-b5Y3SHUCmhQ"/>
           </branchBehaviour_BranchTransition>
           <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Config.isUsingFirebase())"/>
         </branches_Branch>
-        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_6_YQxV0wEe-Wu8KbJAEusA" entityName="Guarded Branch Transition">
-          <branchBehaviour_BranchTransition id="_6_YQx10wEe-Wu8KbJAEusA">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_6_XpuV0wEe-Wu8KbJAEusA" entityName="Start Action" successor_AbstractAction="_6_YQwF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_YQwF0wEe-Wu8KbJAEusA" entityName="authorizationUrl.setRedirectUri(getRedirectUri(req))" predecessor_AbstractAction="_6_XpuV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_YQwV0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_YQwV0wEe-Wu8KbJAEusA" entityName="authorizationUrl.setState(StringHelper.encrypt(JsonUtils.toCompactJson(state)))" predecessor_AbstractAction="_6_YQwF0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_YQwl0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_YQwl0wEe-Wu8KbJAEusA" entityName="log.request(req,HttpStatus.SC_MOVED_TEMPORARILY,&quot;Redirect to Google sign-in page&quot;)" predecessor_AbstractAction="_6_YQwV0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_YQw10wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:InternalAction" id="_6_YQw10wEe-Wu8KbJAEusA" entityName="resp.sendRedirect(authorizationUrl.build())" predecessor_AbstractAction="_6_YQwl0wEe-Wu8KbJAEusA" successor_AbstractAction="_6_YQxF0wEe-Wu8KbJAEusA"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_6_YQxF0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_YQw10wEe-Wu8KbJAEusA"/>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGuqumUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGvRwGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGuqtGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGuqtWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGuqtWUTEe-b5Y3SHUCmhQ" entityName="authorizationUrl.setRedirectUri(getRedirectUri(req))" predecessor_AbstractAction="_NGuqtGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuqtmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGuqtmUTEe-b5Y3SHUCmhQ" entityName="authorizationUrl.setState(StringHelper.encrypt(JsonUtils.toCompactJson(state)))" predecessor_AbstractAction="_NGuqtWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuqt2UTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGuqt2UTEe-b5Y3SHUCmhQ" entityName="log.request(req,HttpStatus.SC_MOVED_TEMPORARILY,&quot;Redirect to Google sign-in page&quot;)" predecessor_AbstractAction="_NGuqtmUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuquGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGuquGUTEe-b5Y3SHUCmhQ" entityName="resp.sendRedirect(authorizationUrl.build())" predecessor_AbstractAction="_NGuqt2UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGuquWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGuquWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGuquGUTEe-b5Y3SHUCmhQ"/>
           </branchBehaviour_BranchTransition>
           <branchCondition_GuardedBranchTransition specification="@position: Condition: else"/>
         </branches_Branch>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_6_YQyV0wEe-Wu8KbJAEusA" entityName="Stop Action" predecessor_AbstractAction="_6_YQyF0wEe-Wu8KbJAEusA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NGvRwmUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGvRwWUTEe-b5Y3SHUCmhQ"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_7AoN8V0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_OAuth2CallbackServlet">
-    <assemblyContexts__ComposedStructure id="_7Ao1Al0wEe-Wu8KbJAEusA" encapsulatedComponent__AssemblyContext="_7AY9bl0wEe-Wu8KbJAEusA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7ArRQF0wEe-Wu8KbJAEusA" innerProvidedRole_ProvidedDelegationConnector="_7AY9bF0wEe-Wu8KbJAEusA" outerProvidedRole_ProvidedDelegationConnector="_7AoN8F0wEe-Wu8KbJAEusA" assemblyContext_ProvidedDelegationConnector="_7Ao1Al0wEe-Wu8KbJAEusA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AoN8F0wEe-Wu8KbJAEusA" entityName="OAuth2CallbackServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQaiV0wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NH69j2UTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_OAuth2CallbackServlet">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NH69jWUTEe-b5Y3SHUCmhQ" entityName="OAuth2CallbackServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzl2UTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NH69jmUTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_NHxzkWUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NGn9A2UTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEkukGUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NFJ9YWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGk5sGUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGk5sGUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NFJ9YWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGlgxGUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NFNAsGUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NFNnwGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NFMZoGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NFMZoWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NFMZoWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NFMZoGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(Config.isUsingFirebase())"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGkSoWUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGkSo2UTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGjrkGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGkSoGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGkSoGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGjrkGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: else"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGlgxGUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGk5sGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGnV8WUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGlgwWUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGlgw2UTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGk5sWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGlgwGUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGlgwGUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGk5sWUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(authResult == null)"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGnV8WUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGlgxGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGnV8mUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGmu4mUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGmu5GUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGlgxWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGmu4GUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGmu4GUTEe-b5Y3SHUCmhQ" entityName="req.getSession().invalidate()" predecessor_AbstractAction="_NGlgxWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGmu4WUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGmu4WUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGmu4GUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(authResult.email == null)"/>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGmu52UTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGnV8GUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGmu5WUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGmu5mUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGmu5mUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGmu5WUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: else"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGnV8mUTEe-b5Y3SHUCmhQ" entityName="log.info(&quot;Going to redirect to: &quot; + authResult.nextUrl)" predecessor_AbstractAction="_NGnV8WUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGnV82UTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGnV82UTEe-b5Y3SHUCmhQ" entityName="log.request(req,HttpStatus.SC_MOVED_TEMPORARILY,&quot;Login successful&quot;)" predecessor_AbstractAction="_NGnV8mUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGn9AGUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGn9AGUTEe-b5Y3SHUCmhQ" entityName="resp.addCookie(cookie)" predecessor_AbstractAction="_NGnV82UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGn9AWUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGn9AWUTEe-b5Y3SHUCmhQ" entityName="resp.sendRedirect(authResult.nextUrl)" predecessor_AbstractAction="_NGn9AGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGn9AmUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NGn9AmUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGn9AWUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_7AoN810wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_LogoutServlet">
-    <assemblyContexts__ComposedStructure id="_7Ao1Bl0wEe-Wu8KbJAEusA" encapsulatedComponent__AssemblyContext="_7ARBkl0wEe-Wu8KbJAEusA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7ArRQ10wEe-Wu8KbJAEusA" innerProvidedRole_ProvidedDelegationConnector="_7ARBkF0wEe-Wu8KbJAEusA" outerProvidedRole_ProvidedDelegationConnector="_7AoN8l0wEe-Wu8KbJAEusA" assemblyContext_ProvidedDelegationConnector="_7Ao1Bl0wEe-Wu8KbJAEusA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AoN8l0wEe-Wu8KbJAEusA" entityName="LogoutServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQahl0wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NH8yvmUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_DevServerLoginServlet">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NH8yvWUTEe-b5Y3SHUCmhQ" entityName="SERVICE-HOST/[GET,POST] Provider" providedInterface__OperationProvidedRole="_NHxzlmUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NGqZQmUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEnK0WUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NGn9BWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGokFmUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGokFmUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGn9BWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGpLJWUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGokE2UTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGokFWUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGokEGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGokEWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGokEWUTEe-b5Y3SHUCmhQ" entityName="resp.setStatus(HttpStatus.SC_FORBIDDEN)" predecessor_AbstractAction="_NGokEGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGokEmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGokEmUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGokEWUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(!Config.isDevServerLoginEnabled())"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGpLJWUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGokFmUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGpyMGUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGpLImUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGpLJGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGpLIGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGpLIWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGpLIWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGpLIGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(email == null)"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGpyMGUTEe-b5Y3SHUCmhQ" entityName="resp.addCookie(cookie)" predecessor_AbstractAction="_NGpLJWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGpyNmUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGpyNmUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGpyMGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGqZQGUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGpyM2UTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGpyNWUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGpyMWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGpyMmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGpyMmUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGpyMWUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(nextUrl == null)"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGqZQGUTEe-b5Y3SHUCmhQ" entityName="resp.sendRedirect(nextUrl)" predecessor_AbstractAction="_NGpyNmUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGqZQWUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NGqZQWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGqZQGUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NGs1gmUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEmjwmUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NGqZQ2UTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGrAVWUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGrAVWUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGqZQ2UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGsOcGUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGrAUmUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGrAVGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGrAUGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGrAUWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGrAUWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGrAUGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(nextUrl == null)"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGsOcGUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGrAVWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGsOd2UTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGrnZGUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGrnZmUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGrnYGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGrnYWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGrnYWUTEe-b5Y3SHUCmhQ" entityName="resp.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY)" predecessor_AbstractAction="_NGrnYGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGrnYmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGrnYmUTEe-b5Y3SHUCmhQ" entityName="resp.setHeader(&quot;Location&quot;,Const.WebPageURIs.LOGIN + &quot;?nextUrl=&quot; + nextUrl.replace(&quot;&amp;&quot;,&quot;%26&quot;))" predecessor_AbstractAction="_NGrnYWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGrnY2UTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGrnY2UTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGrnYmUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(!Config.isDevServerLoginEnabled())"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGsOd2UTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGsOcGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGsOeGUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGsOdGUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGsOdmUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGsOcWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGsOcmUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_NGsOcmUTEe-b5Y3SHUCmhQ" entityName="resp.sendRedirect(nextUrl)" predecessor_AbstractAction="_NGsOcWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGsOc2UTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGsOc2UTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGsOcmUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(!isLoginNeeded)"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGsOeGUTEe-b5Y3SHUCmhQ" entityName="resp.setContentType(&quot;text/html&quot;)" predecessor_AbstractAction="_NGsOd2UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGs1gGUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGs1gGUTEe-b5Y3SHUCmhQ" entityName="pw.print(html)" predecessor_AbstractAction="_NGsOeGUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGs1gWUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NGs1gWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGs1gGUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_7AoN9V0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_LoginServlet">
-    <assemblyContexts__ComposedStructure id="_7Ao1AF0wEe-Wu8KbJAEusA" encapsulatedComponent__AssemblyContext="_7AlKr10wEe-Wu8KbJAEusA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7ArRRF0wEe-Wu8KbJAEusA" innerProvidedRole_ProvidedDelegationConnector="_7AlKrV0wEe-Wu8KbJAEusA" outerProvidedRole_ProvidedDelegationConnector="_7AoN9F0wEe-Wu8KbJAEusA" assemblyContext_ProvidedDelegationConnector="_7Ao1AF0wEe-Wu8KbJAEusA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AoN9F0wEe-Wu8KbJAEusA" entityName="LoginServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQah10wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NIAdH2UTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_LogoutServlet">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NIAdHWUTEe-b5Y3SHUCmhQ" entityName="LogoutServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzmGUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NIAdHmUTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_NHxzkWUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NGv41GUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEl8s2UTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NGvRxWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGvRxmUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGvRxmUTEe-b5Y3SHUCmhQ" entityName="req.getSession().invalidate()" predecessor_AbstractAction="_NGvRxWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGvRx2UTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGvRx2UTEe-b5Y3SHUCmhQ" entityName="resp.addCookie(cookie)" predecessor_AbstractAction="_NGvRxmUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGv40GUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_NGv40GUTEe-b5Y3SHUCmhQ" entityName="If Branch" predecessor_AbstractAction="_NGvRx2UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGv40WUTEe-b5Y3SHUCmhQ">
+        <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_NGvRymUTEe-b5Y3SHUCmhQ" entityName="Guarded Branch Transition">
+          <branchBehaviour_BranchTransition id="_NGvRzGUTEe-b5Y3SHUCmhQ">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_NGvRyGUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGvRyWUTEe-b5Y3SHUCmhQ"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_NGvRyWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGvRyGUTEe-b5Y3SHUCmhQ"/>
+          </branchBehaviour_BranchTransition>
+          <branchCondition_GuardedBranchTransition specification="@position: Condition: if(frontendUrl == null)"/>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGv40WUTEe-b5Y3SHUCmhQ" entityName="log.request(req,HttpStatus.SC_MOVED_TEMPORARILY,&quot;Redirect to home page after logging out&quot;)" predecessor_AbstractAction="_NGv40GUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGv40mUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGv40mUTEe-b5Y3SHUCmhQ" entityName="resp.sendRedirect(frontendUrl + &quot;/web&quot;)" predecessor_AbstractAction="_NGv40WUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGv402UTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NGv402UTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGv40mUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_7AoN910wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_HealthCheckServlet">
-    <assemblyContexts__ComposedStructure id="_7ApcEl0wEe-Wu8KbJAEusA" encapsulatedComponent__AssemblyContext="_7ATd1F0wEe-Wu8KbJAEusA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7ArRRV0wEe-Wu8KbJAEusA" innerProvidedRole_ProvidedDelegationConnector="_7ATd010wEe-Wu8KbJAEusA" outerProvidedRole_ProvidedDelegationConnector="_7AoN9l0wEe-Wu8KbJAEusA" assemblyContext_ProvidedDelegationConnector="_7ApcEl0wEe-Wu8KbJAEusA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AoN9l0wEe-Wu8KbJAEusA" entityName="HealthCheckServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQaiF0wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NICST2UTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_WebApiServlet">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NICSTWUTEe-b5Y3SHUCmhQ" entityName="WebApiServlet/[DELETE,GET,POST,PUT] Provider" providedInterface__OperationProvidedRole="_NHxzlWUTEe-b5Y3SHUCmhQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NICSTmUTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger Consumer" requiredInterface__OperationRequiredRole="_NHxzkWUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NG8tImUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEq1MWUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NG8GIWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG8tIGUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NG8tIGUTEe-b5Y3SHUCmhQ" entityName="invokeServlet(req,resp)" predecessor_AbstractAction="_NG8GIWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG8tIWUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NG8tIWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG8tIGUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NG8GIGUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NErcQWUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NG8GHWUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG8GHmUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NG8GHmUTEe-b5Y3SHUCmhQ" entityName="invokeServlet(req,resp)" predecessor_AbstractAction="_NG8GHWUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG8GH2UTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NG8GH2UTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG8GHmUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NG8tJmUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEpnEWUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NG8tI2UTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG8tJGUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NG8tJGUTEe-b5Y3SHUCmhQ" entityName="invokeServlet(req,resp)" predecessor_AbstractAction="_NG8tI2UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG8tJWUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NG8tJWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG8tJGUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NG8tKmUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEqOIWUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NG8tJ2UTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NG8tKGUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NG8tKGUTEe-b5Y3SHUCmhQ" entityName="invokeServlet(req,resp)" predecessor_AbstractAction="_NG8tJ2UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NG8tKWUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NG8tKWUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NG8tKGUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_7AoN-V0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_WebPageServlet">
-    <assemblyContexts__ComposedStructure id="_7ApcEF0wEe-Wu8KbJAEusA" encapsulatedComponent__AssemblyContext="_7AjVf10wEe-Wu8KbJAEusA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7ArRRl0wEe-Wu8KbJAEusA" innerProvidedRole_ProvidedDelegationConnector="_7AjVfV0wEe-Wu8KbJAEusA" outerProvidedRole_ProvidedDelegationConnector="_7AoN-F0wEe-Wu8KbJAEusA" assemblyContext_ProvidedDelegationConnector="_7ApcEF0wEe-Wu8KbJAEusA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AoN-F0wEe-Wu8KbJAEusA" entityName="WebPageServlet/[GET] Provider" providedInterface__OperationProvidedRole="_7AQajV0wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NIJnDmUTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger Provider">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NIJnDWUTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger Provider" providedInterface__OperationProvidedRole="_NHxzkWUTEe-b5Y3SHUCmhQ"/>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_7AoN-10wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_LegacyUrlMapper">
-    <assemblyContexts__ComposedStructure id="_7Ao1Cl0wEe-Wu8KbJAEusA" encapsulatedComponent__AssemblyContext="_7AayoV0wEe-Wu8KbJAEusA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7ArRQl0wEe-Wu8KbJAEusA" innerProvidedRole_ProvidedDelegationConnector="_7Aayn10wEe-Wu8KbJAEusA" outerProvidedRole_ProvidedDelegationConnector="_7AoN-l0wEe-Wu8KbJAEusA" assemblyContext_ProvidedDelegationConnector="_7Ao1Cl0wEe-Wu8KbJAEusA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AoN-l0wEe-Wu8KbJAEusA" entityName="LegacyUrlMapper/[GET] Provider" providedInterface__OperationProvidedRole="_7AQai10wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_NIJnEGUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_HealthCheckServlet">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NIJnD2UTEe-b5Y3SHUCmhQ" entityName="HealthCheckServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzmWUTEe-b5Y3SHUCmhQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NGv42mUTEe-b5Y3SHUCmhQ" describedService__SEFF="_NEoY8GUTEe-b5Y3SHUCmhQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_NGv41mUTEe-b5Y3SHUCmhQ" entityName="Start Action" successor_AbstractAction="_NGv412UTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGv412UTEe-b5Y3SHUCmhQ" entityName="resp.setStatus(HttpStatus.SC_OK)" predecessor_AbstractAction="_NGv41mUTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGv42GUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_NGv42GUTEe-b5Y3SHUCmhQ" entityName="resp.getWriter().write(&quot;OK&quot;)" predecessor_AbstractAction="_NGv412UTEe-b5Y3SHUCmhQ" successor_AbstractAction="_NGv42WUTEe-b5Y3SHUCmhQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_NGv42WUTEe-b5Y3SHUCmhQ" entityName="Stop Action" predecessor_AbstractAction="_NGv42GUTEe-b5Y3SHUCmhQ"/>
+    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_7AoN_V0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_DevServerLoginServlet">
-    <assemblyContexts__ComposedStructure id="_7Ao1CF0wEe-Wu8KbJAEusA" encapsulatedComponent__AssemblyContext="_7AVTDl0wEe-Wu8KbJAEusA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7ArRQV0wEe-Wu8KbJAEusA" innerProvidedRole_ProvidedDelegationConnector="_7AVTDV0wEe-Wu8KbJAEusA" outerProvidedRole_ProvidedDelegationConnector="_7AoN_F0wEe-Wu8KbJAEusA" assemblyContext_ProvidedDelegationConnector="_7Ao1CF0wEe-Wu8KbJAEusA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AoN_F0wEe-Wu8KbJAEusA" entityName="SERVICE-HOST/[GET,POST] Provider" providedInterface__OperationProvidedRole="_7AQail0wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_NIMqUWUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_WebApiServlet">
+    <assemblyContexts__ComposedStructure id="_NIN4eGUTEe-b5Y3SHUCmhQ" encapsulatedComponent__AssemblyContext="_NICST2UTEe-b5Y3SHUCmhQ"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_NIPtoGUTEe-b5Y3SHUCmhQ" innerProvidedRole_ProvidedDelegationConnector="_NICSTWUTEe-b5Y3SHUCmhQ" outerProvidedRole_ProvidedDelegationConnector="_NIMqUGUTEe-b5Y3SHUCmhQ" assemblyContext_ProvidedDelegationConnector="_NIN4eGUTEe-b5Y3SHUCmhQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NIMqUGUTEe-b5Y3SHUCmhQ" entityName="WebApiServlet/[DELETE,GET,POST,PUT] Provider" providedInterface__OperationProvidedRole="_NHxzlWUTEe-b5Y3SHUCmhQ"/>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_7AoN_10wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_WebApiServlet">
-    <assemblyContexts__ComposedStructure id="_7Ao1BF0wEe-Wu8KbJAEusA" encapsulatedComponent__AssemblyContext="_7Acnz10wEe-Wu8KbJAEusA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7ArRR10wEe-Wu8KbJAEusA" innerProvidedRole_ProvidedDelegationConnector="_7AcnzV0wEe-Wu8KbJAEusA" outerProvidedRole_ProvidedDelegationConnector="_7AoN_l0wEe-Wu8KbJAEusA" assemblyContext_ProvidedDelegationConnector="_7Ao1BF0wEe-Wu8KbJAEusA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7AoN_l0wEe-Wu8KbJAEusA" entityName="WebApiServlet/[DELETE,GET,POST,PUT] Provider" providedInterface__OperationProvidedRole="_7AQahV0wEe-Wu8KbJAEusA"/>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_NIMqU2UTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_WebPageServlet">
+    <assemblyContexts__ComposedStructure id="_NIN4cGUTEe-b5Y3SHUCmhQ" encapsulatedComponent__AssemblyContext="_NH025WUTEe-b5Y3SHUCmhQ"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_NIPto2UTEe-b5Y3SHUCmhQ" innerProvidedRole_ProvidedDelegationConnector="_NH0242UTEe-b5Y3SHUCmhQ" outerProvidedRole_ProvidedDelegationConnector="_NIMqUmUTEe-b5Y3SHUCmhQ" assemblyContext_ProvidedDelegationConnector="_NIN4cGUTEe-b5Y3SHUCmhQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NIMqUmUTEe-b5Y3SHUCmhQ" entityName="WebPageServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzkmUTEe-b5Y3SHUCmhQ"/>
   </components__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQahV0wEe-Wu8KbJAEusA" entityName="WebApiServlet/[DELETE,GET,POST,PUT]">
-    <signatures__OperationInterface id="_69G_4l0wEe-Wu8KbJAEusA" entityName="WebApiServlet/[GET]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
-    </signatures__OperationInterface>
-    <signatures__OperationInterface id="_69G_4F0wEe-Wu8KbJAEusA" entityName="WebApiServlet/[PUT]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
-    </signatures__OperationInterface>
-    <signatures__OperationInterface id="_69Hm8V0wEe-Wu8KbJAEusA" entityName="WebApiServlet/[POST]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
-    </signatures__OperationInterface>
-    <signatures__OperationInterface id="_69GY0F0wEe-Wu8KbJAEusA" entityName="WebApiServlet/[DELETE]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_NINRYWUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_LogoutServlet">
+    <assemblyContexts__ComposedStructure id="_NIN4cmUTEe-b5Y3SHUCmhQ" encapsulatedComponent__AssemblyContext="_NIAdH2UTEe-b5Y3SHUCmhQ"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_NIPtpGUTEe-b5Y3SHUCmhQ" innerProvidedRole_ProvidedDelegationConnector="_NIAdHWUTEe-b5Y3SHUCmhQ" outerProvidedRole_ProvidedDelegationConnector="_NINRYGUTEe-b5Y3SHUCmhQ" assemblyContext_ProvidedDelegationConnector="_NIN4cmUTEe-b5Y3SHUCmhQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NINRYGUTEe-b5Y3SHUCmhQ" entityName="LogoutServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzmGUTEe-b5Y3SHUCmhQ"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_NINRY2UTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_HealthCheckServlet">
+    <assemblyContexts__ComposedStructure id="_NIN4fGUTEe-b5Y3SHUCmhQ" encapsulatedComponent__AssemblyContext="_NIJnEGUTEe-b5Y3SHUCmhQ"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_NIPGkGUTEe-b5Y3SHUCmhQ" innerProvidedRole_ProvidedDelegationConnector="_NIJnD2UTEe-b5Y3SHUCmhQ" outerProvidedRole_ProvidedDelegationConnector="_NINRYmUTEe-b5Y3SHUCmhQ" assemblyContext_ProvidedDelegationConnector="_NIN4fGUTEe-b5Y3SHUCmhQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NINRYmUTEe-b5Y3SHUCmhQ" entityName="HealthCheckServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzmWUTEe-b5Y3SHUCmhQ"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_NINRZWUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_DevServerLoginServlet">
+    <assemblyContexts__ComposedStructure id="_NIN4emUTEe-b5Y3SHUCmhQ" encapsulatedComponent__AssemblyContext="_NH8yvmUTEe-b5Y3SHUCmhQ"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_NIPtpmUTEe-b5Y3SHUCmhQ" innerProvidedRole_ProvidedDelegationConnector="_NH8yvWUTEe-b5Y3SHUCmhQ" outerProvidedRole_ProvidedDelegationConnector="_NINRZGUTEe-b5Y3SHUCmhQ" assemblyContext_ProvidedDelegationConnector="_NIN4emUTEe-b5Y3SHUCmhQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NINRZGUTEe-b5Y3SHUCmhQ" entityName="SERVICE-HOST/[GET,POST] Provider" providedInterface__OperationProvidedRole="_NHxzlmUTEe-b5Y3SHUCmhQ"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_NINRZ2UTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_LegacyUrlMapper">
+    <assemblyContexts__ComposedStructure id="_NIN4fmUTEe-b5Y3SHUCmhQ" encapsulatedComponent__AssemblyContext="_NH3TImUTEe-b5Y3SHUCmhQ"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_NIPtomUTEe-b5Y3SHUCmhQ" innerProvidedRole_ProvidedDelegationConnector="_NH3TIGUTEe-b5Y3SHUCmhQ" outerProvidedRole_ProvidedDelegationConnector="_NINRZmUTEe-b5Y3SHUCmhQ" assemblyContext_ProvidedDelegationConnector="_NIN4fmUTEe-b5Y3SHUCmhQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NINRZmUTEe-b5Y3SHUCmhQ" entityName="LegacyUrlMapper/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzk2UTEe-b5Y3SHUCmhQ"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_NINRaWUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_LoginServlet">
+    <assemblyContexts__ComposedStructure id="_NIN4dmUTEe-b5Y3SHUCmhQ" encapsulatedComponent__AssemblyContext="_NH5IWGUTEe-b5Y3SHUCmhQ"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_NIPtoWUTEe-b5Y3SHUCmhQ" innerProvidedRole_ProvidedDelegationConnector="_NH5IVmUTEe-b5Y3SHUCmhQ" outerProvidedRole_ProvidedDelegationConnector="_NINRaGUTEe-b5Y3SHUCmhQ" assemblyContext_ProvidedDelegationConnector="_NIN4dmUTEe-b5Y3SHUCmhQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NINRaGUTEe-b5Y3SHUCmhQ" entityName="LoginServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzlGUTEe-b5Y3SHUCmhQ"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_NINRa2UTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_OAuth2CallbackServlet">
+    <assemblyContexts__ComposedStructure id="_NIN4dGUTEe-b5Y3SHUCmhQ" encapsulatedComponent__AssemblyContext="_NH69j2UTEe-b5Y3SHUCmhQ"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_NIPtpWUTEe-b5Y3SHUCmhQ" innerProvidedRole_ProvidedDelegationConnector="_NH69jWUTEe-b5Y3SHUCmhQ" outerProvidedRole_ProvidedDelegationConnector="_NINRamUTEe-b5Y3SHUCmhQ" assemblyContext_ProvidedDelegationConnector="_NIN4dGUTEe-b5Y3SHUCmhQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_NINRamUTEe-b5Y3SHUCmhQ" entityName="OAuth2CallbackServlet/[GET] Provider" providedInterface__OperationProvidedRole="_NHxzl2UTEe-b5Y3SHUCmhQ"/>
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzkGUTEe-b5Y3SHUCmhQ" entityName="API-HOST/">
+    <signatures__OperationInterface id="_NEpAAmUTEe-b5Y3SHUCmhQ" entityName="API-HOST/"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzkWUTEe-b5Y3SHUCmhQ" entityName="teammates_common_util_Logger"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzkmUTEe-b5Y3SHUCmhQ" entityName="WebPageServlet/[GET]">
+    <signatures__OperationInterface id="_NDxdUGUTEe-b5Y3SHUCmhQ" entityName="WebPageServlet/[GET]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQahl0wEe-Wu8KbJAEusA" entityName="LogoutServlet/[GET]">
-    <signatures__OperationInterface id="_69FKsF0wEe-Wu8KbJAEusA" entityName="LogoutServlet/[GET]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzk2UTEe-b5Y3SHUCmhQ" entityName="LegacyUrlMapper/[GET]">
+    <signatures__OperationInterface id="_NEjgcGUTEe-b5Y3SHUCmhQ" entityName="LegacyUrlMapper/[GET]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQah10wEe-Wu8KbJAEusA" entityName="LoginServlet/[GET]">
-    <signatures__OperationInterface id="_69I1El0wEe-Wu8KbJAEusA" entityName="LoginServlet/[GET]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzlGUTEe-b5Y3SHUCmhQ" entityName="LoginServlet/[GET]">
+    <signatures__OperationInterface id="_NElVoGUTEe-b5Y3SHUCmhQ" entityName="LoginServlet/[GET]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQaiF0wEe-Wu8KbJAEusA" entityName="HealthCheckServlet/[GET]">
-    <signatures__OperationInterface id="_69IOAl0wEe-Wu8KbJAEusA" entityName="HealthCheckServlet/[GET]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzlWUTEe-b5Y3SHUCmhQ" entityName="WebApiServlet/[DELETE,GET,POST,PUT]">
+    <signatures__OperationInterface id="_NEq1MWUTEe-b5Y3SHUCmhQ" entityName="WebApiServlet/[POST]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_NErcQWUTEe-b5Y3SHUCmhQ" entityName="WebApiServlet/[PUT]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_NEpnEWUTEe-b5Y3SHUCmhQ" entityName="WebApiServlet/[GET]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_NEqOIWUTEe-b5Y3SHUCmhQ" entityName="WebApiServlet/[DELETE]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQaiV0wEe-Wu8KbJAEusA" entityName="OAuth2CallbackServlet/[GET]">
-    <signatures__OperationInterface id="_69FxwF0wEe-Wu8KbJAEusA" entityName="OAuth2CallbackServlet/[GET]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzlmUTEe-b5Y3SHUCmhQ" entityName="SERVICE-HOST/[GET,POST]">
+    <signatures__OperationInterface id="_NEnK0WUTEe-b5Y3SHUCmhQ" entityName="SERVICE-HOST/[POST]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_NEmjwmUTEe-b5Y3SHUCmhQ" entityName="SERVICE-HOST/[GET]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQail0wEe-Wu8KbJAEusA" entityName="SERVICE-HOST/[GET,POST]">
-    <signatures__OperationInterface id="_69D8kF0wEe-Wu8KbJAEusA" entityName="SERVICE-HOST/[GET]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
-    </signatures__OperationInterface>
-    <signatures__OperationInterface id="_69EjoF0wEe-Wu8KbJAEusA" entityName="SERVICE-HOST/[POST]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzl2UTEe-b5Y3SHUCmhQ" entityName="OAuth2CallbackServlet/[GET]">
+    <signatures__OperationInterface id="_NEkukGUTEe-b5Y3SHUCmhQ" entityName="OAuth2CallbackServlet/[GET]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQai10wEe-Wu8KbJAEusA" entityName="LegacyUrlMapper/[GET]">
-    <signatures__OperationInterface id="_68TuoF0wEe-Wu8KbJAEusA" entityName="LegacyUrlMapper/[GET]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzmGUTEe-b5Y3SHUCmhQ" entityName="LogoutServlet/[GET]">
+    <signatures__OperationInterface id="_NEl8s2UTEe-b5Y3SHUCmhQ" entityName="LogoutServlet/[GET]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQajF0wEe-Wu8KbJAEusA" entityName="teammates_common_util_Logger"/>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7AQajV0wEe-Wu8KbJAEusA" entityName="WebPageServlet/[GET]">
-    <signatures__OperationInterface id="_69Hm9F0wEe-Wu8KbJAEusA" entityName="WebPageServlet/[GET]" returnType__OperationSignature="_68SggF0wEe-Wu8KbJAEusA">
-      <parameters__OperationSignature dataType__Parameter="_68QrUF0wEe-Wu8KbJAEusA" parameterName="req" modifier__Parameter="in"/>
-      <parameters__OperationSignature dataType__Parameter="_68R5cF0wEe-Wu8KbJAEusA" parameterName="resp" modifier__Parameter="in"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NHxzmWUTEe-b5Y3SHUCmhQ" entityName="HealthCheckServlet/[GET]">
+    <signatures__OperationInterface id="_NEoY8GUTEe-b5Y3SHUCmhQ" entityName="HealthCheckServlet/[GET]" returnType__OperationSignature="_NDw2QGUTEe-b5Y3SHUCmhQ">
+      <parameters__OperationSignature dataType__Parameter="_NDvBEGUTEe-b5Y3SHUCmhQ" parameterName="req" modifier__Parameter="in"/>
+      <parameters__OperationSignature dataType__Parameter="_NDvoIGUTEe-b5Y3SHUCmhQ" parameterName="resp" modifier__Parameter="in"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_68QrUF0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_HttpServletRequest"/>
-  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_68R5cF0wEe-Wu8KbJAEusA" entityName="teammates_ui_servlets_HttpServletResponse"/>
-  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_68SggF0wEe-Wu8KbJAEusA" entityName="Void"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_NDvBEGUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_HttpServletRequest"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_NDvoIGUTEe-b5Y3SHUCmhQ" entityName="teammates_ui_servlets_HttpServletResponse"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_NDw2QGUTEe-b5Y3SHUCmhQ" entityName="Void"/>
 </repository:Repository>
