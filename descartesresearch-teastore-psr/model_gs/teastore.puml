@@ -1,0 +1,59 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+skinparam componentStyle uml2
+
+package "Frontend" {
+    component [Web UI]
+        interface "Shopping Cart" as interface.CartActions
+        [Web UI] -u- interface.CartActions
+        interface "Products" as interface.ProductActions
+        [Web UI] -u- interface.ProductActions
+}
+
+package "Services" {
+    component [Authentication Service]
+        interface "Shopping Cart\nAuthentication" as interface.AuthCart
+
+    component [Registry Service]
+
+    component [Image Service]
+        [Registry Service]..>[Image Service] : requires
+
+    component [Persistence Service]
+        [Registry Service]..>[Persistence Service] : requires
+
+    component [Recommendation Service]
+        [Registry Service]..>[Recommendation Service] : requires
+    
+}
+
+interface "Load Balancer" as interface.LoadBalancer
+
+    [Authentication Service] -u- interface.AuthCart
+    [Registry Service]..>interface.AuthCart : requires
+
+    [Registry Service] -l- interface.LoadBalancer
+    [Authentication Service] .l.> interface.LoadBalancer : requires
+    [Web UI] .d.> interface.LoadBalancer : requires
+
+    interface "Recommendation Strategy" as interface.RecommenderStrategy
+    [Recommendation Service]..>interface.RecommenderStrategy : requires
+
+package "Recommendation Strategies" {
+    component [Dummy Strategy]
+        interface.RecommenderStrategy--[Dummy Strategy]
+
+    component [Order-Based Strategy]
+        interface.RecommenderStrategy--[Order-Based Strategy]
+
+    component [Popularity-Based Strategy]
+        interface.RecommenderStrategy--[Popularity-Based Strategy]
+
+    component [SlopeOne Strategy]
+        interface.RecommenderStrategy--[SlopeOne Strategy]
+
+    component [Preprocessed SlopeOne Strategy]
+        interface.RecommenderStrategy--[Preprocessed SlopeOne Strategy]
+}
+
+@enduml

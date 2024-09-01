@@ -1,0 +1,33 @@
+@startuml
+skinparam fixCircleLabelOverlapping true
+skinparam componentStyle uml2
+ 
+package Frontend {
+    [Browser]
+    [Client]
+}
+
+package Backend {
+    [Logic]
+    [Storage]
+    [User Interface]
+}
+
+package Tests {
+    [End-to-End Tests]
+    [Test Driver]
+}
+
+package "Google App Engine" {
+    [Datastore]
+}
+
+[Browser] ..> [User Interface] : requires
+[Client] ..> [Datastore] : requires
+[End-to-End Tests] ..> [User Interface] : requires
+[Logic] ..> [Storage] : requires
+[Storage] ..> [Datastore] : requires
+[Test Driver] ..> [User Interface] : requires
+[User Interface] ..> [Logic] : requires
+
+@enduml
