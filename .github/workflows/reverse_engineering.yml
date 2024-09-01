@@ -94,6 +94,16 @@ jobs:
             echo "benchmark=$(yq eval '.benchmark // "false"' $CONFIG_FILE)" >> $GITHUB_ENV
           fi
 
+      - name: Check for gold standard
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
+        run: |
+          # only analyze vulnerabilities if a gold standard is present
+          if [ -d "benchmark/${{ matrix.directory }}/model_gs" ]; then
+            echo "analyze_vulnerabilities=${{ github.event.inputs.analyzeVulnerabilities }}" >> $GITHUB_ENV
+          else
+            echo "analyze_vulnerabilities="false"" >> $GITHUB_ENV
+          fi
+
       - name: Checkout repositories
         if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         run: |
@@ -111,7 +121,7 @@ jobs:
         with:
           source_path: repo/${{ matrix.directory }}
           rules: ${{ env.rules }}
-          analyze_vulnerabilities: ${{ github.event.inputs.analyzeVulnerabilities }}
+          analyze_vulnerabilities: ${{ env.analyze_vulnerabilities }}
           snyk_token: ${{ secrets.SNYK_TOKEN }}
           nist_nvd_token: ${{ secrets.NVD_TOKEN }}
           benchmark: ${{ env.benchmark }}
