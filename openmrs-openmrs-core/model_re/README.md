@@ -2,22 +2,22 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202408280745 |
-| Date               | Wed Aug 28 07:57:24 UTC 2024 |
+| Date               | Sun Sep  1 17:31:29 UTC 2024 |
 | #Components        | 51 |
 | #Source Files      | 2259 |
 | Lines of Code      | 342518 |
 | #Technologies      | 9 |
 | Abstraction        | 44.29 |
-| Execution Time [s] | 22.30 |
+| Execution Time [s] | 26.251 ± 0.195  |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-core |
 | Branch            | master |
-| Commit            | af1c46c8255447fc4f16355edadacbe3eb340ecf |
-| Number of Commits | 12256 |
-| Stars             | 1392 |
+| Commit            | 444f88df8c283bd26f71f0ba558b437d3988313b |
+| Number of Commits | 12260 |
+| Stars             | 1393 |
 | Contributors      | 344 |
 
 |      Attribute    | Value |
@@ -36,26 +36,18 @@
 | OS | Linux  |
 | Distro | Ubuntu 22.04.4 LTS x86_64  |
 | Kernel | 6.5.0-1025-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.243GHz  |
+| CPU | AMD EPYC 7763 (4) @ 3.244GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 768MiB / 15981MiB  |
+| Memory | 799MiB / 15981MiB  |
 
 ## Retriever execution time
-| Metric | Time (seconds) |
-| --- | ---: |
-| Real CPU Time | 22.30 |
-| User CPU Time | 54.16 |
-| System CPU Time | 2.84 |
-<!--
-Explainations:
-- __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
-- __User CPU Time__: time the command has spent running in user mode
-- __System CPU Time__: time the command has spent running in system or kernel mode
--->
+| Mean [s] | Min [s] | Max [s] | Relative |
+|---:|---:|---:|---:|
+| 26.251 ± 0.195 | 25.936 | 26.647 | 1.00 |
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=9.48 s (247.2 files/s, 52882.0 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=9.44 s (248.1 files/s, 53075.2 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
