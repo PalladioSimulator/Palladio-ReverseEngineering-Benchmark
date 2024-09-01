@@ -95,7 +95,6 @@ jobs:
           fi
 
       - name: Check for gold standard
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
         run: |
           # only analyze vulnerabilities if a gold standard is present
           if [ -d "benchmark/${{ matrix.directory }}/model_gs" ]; then
@@ -105,7 +104,7 @@ jobs:
           fi
 
       - name: Checkout repositories
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || env.analyze_vulnerabilities == 'true' }}
         run: |
           # Assuming repositories is a comma-separated list
           IFS=',' read -r -a repositories_array <<< "${{ env.repositories }}"
@@ -116,7 +115,7 @@ jobs:
           done
 
       - name: Run Retriever
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || env.analyze_vulnerabilities == 'true' }}
         uses: PalladioSimulator/Palladio-ReverseEngineering-Retriever@main
         with:
           source_path: repo/${{ matrix.directory }}
@@ -128,14 +127,14 @@ jobs:
           rules_path: ${{ env.rules_path }}
 
       - name: Download results
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || env.analyze_vulnerabilities == 'true' }}
         uses: actions/download-artifact@v3
         with:
           name: retriever
           path: results
 
       - name: Prepare upload
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || env.analyze_vulnerabilities == 'true' }}
         run: |
           mkdir -p to_commit/${{ matrix.directory }}/model_re/pcm
           mkdir -p to_commit/${{ matrix.directory }}/model_re/uml
@@ -147,7 +146,7 @@ jobs:
           mv results/repo/${{ matrix.directory }}/* to_commit/${{ matrix.directory }}/model_re/pcm
 
       - name: Render UML diagrams
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || env.analyze_vulnerabilities == 'true' }}
         run: |
           sudo apt-get install graphviz
           wget https://github.com/plantuml/plantuml/releases/download/v1.2023.13/plantuml-1.2023.13.jar -O plantuml.jar
@@ -158,7 +157,7 @@ jobs:
           done
 
       - name: Update version
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || env.analyze_vulnerabilities == 'true' }}
         run: |
           # manually overwrite current_version to avoid bug with yq
           sed -i 's/current_version:.*/current_version: "${{ needs.collect_info.outputs.latest_version }}"/' "benchmark/${{ matrix.directory }}/.retriever.yml"
@@ -166,7 +165,7 @@ jobs:
           mv "benchmark/${{ matrix.directory }}/.retriever.yml" to_commit/${{ matrix.directory }}/.retriever.yml
 
       - name: Upload artifact
-        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || inputs.analyzeVulnerabilities == 'true' }}
+        if: ${{ needs.collect_info.outputs.latest_version != env.current_version || inputs.overrideBenchmark == 'true' || env.analyze_vulnerabilities == 'true' }}
         uses: actions/upload-artifact@v3
         with:
           name: to_commit
