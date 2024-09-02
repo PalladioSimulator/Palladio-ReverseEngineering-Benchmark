@@ -2,20 +2,20 @@
 skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
 component "com_ewolff_microservice_catalog\n\n\n\n\n\n" {
-[com_ewolff_microservice_catalog_web_CatalogController]
-[com_ewolff_microservice_catalog_ItemRepository]
 [com_ewolff_microservice_catalog_CatalogApp]
-portin " " as com_ewolff_microservice_catalog_requires_catalog__html
-portin " " as com_ewolff_microservice_catalog_requires_catalog_searchByName_html
-portin " " as com_ewolff_microservice_catalog_requires_catalog_searchForm_html
-portin " " as com_ewolff_microservice_catalog_requires_catalog_list_html
+[com_ewolff_microservice_catalog_ItemRepository]
+[com_ewolff_microservice_catalog_web_CatalogController]
 portin " " as com_ewolff_microservice_catalog_requires_catalog_form_html
-[com_ewolff_microservice_catalog_CatalogApp]..>[com_ewolff_microservice_catalog_ItemRepository] : requires
+portin " " as com_ewolff_microservice_catalog_requires_catalog__html
+portin " " as com_ewolff_microservice_catalog_requires_catalog_list_html
+portin " " as com_ewolff_microservice_catalog_requires_catalog_searchForm_html
+portin " " as com_ewolff_microservice_catalog_requires_catalog_searchByName_html
 [com_ewolff_microservice_catalog_web_CatalogController]..>[com_ewolff_microservice_catalog_ItemRepository] : requires
+[com_ewolff_microservice_catalog_CatalogApp]..>[com_ewolff_microservice_catalog_ItemRepository] : requires
 "com_ewolff_microservice_catalog_requires_catalog_searchForm_html"--[com_ewolff_microservice_catalog_web_CatalogController]
-"com_ewolff_microservice_catalog_requires_catalog__html"--[com_ewolff_microservice_catalog_web_CatalogController]
 "com_ewolff_microservice_catalog_requires_catalog_form_html"--[com_ewolff_microservice_catalog_web_CatalogController]
 "com_ewolff_microservice_catalog_requires_catalog_searchByName_html"--[com_ewolff_microservice_catalog_web_CatalogController]
+"com_ewolff_microservice_catalog_requires_catalog__html"--[com_ewolff_microservice_catalog_web_CatalogController]
 "com_ewolff_microservice_catalog_requires_catalog_list_html"--[com_ewolff_microservice_catalog_web_CatalogController]
 }
 interface "catalog/*_html" as interface.catalog__html
@@ -32,14 +32,14 @@ component "com_ewolff_microservice_customer\n\n\n\n\n\n" {
 [com_ewolff_microservice_customer_web_CustomerController]
 [com_ewolff_microservice_customer_CustomerRepository]
 [com_ewolff_microservice_customer_CustomerApp]
-portin " " as com_ewolff_microservice_customer_requires_customer_list_html
-portin " " as com_ewolff_microservice_customer_requires_customer_form_html
 portin " " as com_ewolff_microservice_customer_requires_customer__html
+portin " " as com_ewolff_microservice_customer_requires_customer_form_html
+portin " " as com_ewolff_microservice_customer_requires_customer_list_html
 [com_ewolff_microservice_customer_CustomerApp]..>[com_ewolff_microservice_customer_CustomerRepository] : requires
 [com_ewolff_microservice_customer_web_CustomerController]..>[com_ewolff_microservice_customer_CustomerRepository] : requires
+"com_ewolff_microservice_customer_requires_customer_list_html"--[com_ewolff_microservice_customer_web_CustomerController]
 "com_ewolff_microservice_customer_requires_customer_form_html"--[com_ewolff_microservice_customer_web_CustomerController]
 "com_ewolff_microservice_customer_requires_customer__html"--[com_ewolff_microservice_customer_web_CustomerController]
-"com_ewolff_microservice_customer_requires_customer_list_html"--[com_ewolff_microservice_customer_web_CustomerController]
 }
 interface "customer/*_html" as interface.customer__html
 interface.customer__html--"com_ewolff_microservice_customer_requires_customer__html"
@@ -48,34 +48,34 @@ interface.customer_form_html--"com_ewolff_microservice_customer_requires_custome
 interface "customer/list_html" as interface.customer_list_html
 interface.customer_list_html--"com_ewolff_microservice_customer_requires_customer_list_html"
 component "com_ewolff_microservice_order\n\n\n\n\n\n" {
-[com_ewolff_microservice_order_logic_OrderRepository]
-[com_ewolff_microservice_order_clients_CustomerClient]
-[com_ewolff_microservice_order_clients_CatalogClient]
 [com_ewolff_microservice_order_logic_OrderController]
+[com_ewolff_microservice_order_clients_CustomerClient]
 [com_ewolff_microservice_order_logic_OrderService]
-portin " " as com_ewolff_microservice_order_requires_order_line
-portin " " as com_ewolff_microservice_order_requires_order_2
+[com_ewolff_microservice_order_logic_OrderRepository]
+[com_ewolff_microservice_order_clients_CatalogClient]
 portin " " as com_ewolff_microservice_order_requires_order_3
-portin " " as com_ewolff_microservice_order_requires_order_form_html
 portin " " as com_ewolff_microservice_order_requires_order_
+portin " " as com_ewolff_microservice_order_requires_order_form_html
+portin " " as com_ewolff_microservice_order_requires_order_line
 portin " " as com_ewolff_microservice_order_requires_order_4
-portout " " as com_ewolff_microservice_order_provides_catalog__html
+portin " " as com_ewolff_microservice_order_requires_order_2
 portout " " as com_ewolff_microservice_order_provides_customer__html
-[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_clients_CustomerClient] : requires
-[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_clients_CustomerClient] : requires
-[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_clients_CatalogClient] : requires
-[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
-[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderService] : requires
-[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_clients_CatalogClient] : requires
+portout " " as com_ewolff_microservice_order_provides_catalog__html
 [com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
+[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_clients_CustomerClient] : requires
+[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_logic_OrderRepository] : requires
+[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_clients_CustomerClient] : requires
+[com_ewolff_microservice_order_logic_OrderService]..>[com_ewolff_microservice_order_clients_CatalogClient] : requires
+[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_logic_OrderService] : requires
+[com_ewolff_microservice_order_logic_OrderController]..>[com_ewolff_microservice_order_clients_CatalogClient] : requires
+"com_ewolff_microservice_order_requires_order_2"--[com_ewolff_microservice_order_logic_OrderController]
+"com_ewolff_microservice_order_requires_order_3"--[com_ewolff_microservice_order_logic_OrderController]
 "com_ewolff_microservice_order_requires_order_line"--[com_ewolff_microservice_order_logic_OrderController]
 "com_ewolff_microservice_order_requires_order_"--[com_ewolff_microservice_order_logic_OrderController]
-"com_ewolff_microservice_order_requires_order_3"--[com_ewolff_microservice_order_logic_OrderController]
-"com_ewolff_microservice_order_requires_order_2"--[com_ewolff_microservice_order_logic_OrderController]
 "com_ewolff_microservice_order_requires_order_form_html"--[com_ewolff_microservice_order_logic_OrderController]
 "com_ewolff_microservice_order_requires_order_4"--[com_ewolff_microservice_order_logic_OrderController]
-[com_ewolff_microservice_order_clients_CatalogClient].."com_ewolff_microservice_order_provides_catalog__html"
 [com_ewolff_microservice_order_clients_CustomerClient].."com_ewolff_microservice_order_provides_customer__html"
+[com_ewolff_microservice_order_clients_CatalogClient].."com_ewolff_microservice_order_provides_catalog__html"
 }
 interface "order/$2" as interface.order_2
 interface.order_2--"com_ewolff_microservice_order_requires_order_2"
