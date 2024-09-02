@@ -2,28 +2,28 @@
 skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
 component "net_devh\n\n\n\n\n\n" {
-[net_devh_hystrix_HystrixWrappedServiceBClient]
 [net_devh_controller_AServiceController]
+[net_devh_hystrix_HystrixWrappedServiceBClient]
 [net_devh_feign_ServiceBClient]
-portin " " as net_devh_requires_SPRING_APPLICATION_
+portin " " as net_devh_requires_SPRING_APPLICATION_2
 portout " " as net_devh_provides_service_b_
-[net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_feign_ServiceBClient] : requires
 [net_devh_controller_AServiceController]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
+[net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_feign_ServiceBClient] : requires
 [net_devh_hystrix_HystrixWrappedServiceBClient]..>[net_devh_hystrix_HystrixWrappedServiceBClient] : requires
-"net_devh_requires_SPRING_APPLICATION_"--[net_devh_controller_AServiceController]
+"net_devh_requires_SPRING_APPLICATION_2"--[net_devh_controller_AServiceController]
 [net_devh_feign_ServiceBClient].."net_devh_provides_service_b_"
 }
-interface "SPRING-APPLICATION/" as interface.SPRING_APPLICATION_
-interface.SPRING_APPLICATION_--"net_devh_requires_SPRING_APPLICATION_"
+interface "SPRING-APPLICATION/$2" as interface.SPRING_APPLICATION_2
+interface.SPRING_APPLICATION_2--"net_devh_requires_SPRING_APPLICATION_2"
 interface "service-b/" as interface.service_b_
 "net_devh_provides_service_b_"..>interface.service_b_ : requires
 component "net_devh_ServiceB1Controller\n\n\n\n\n\n" {
 [net_devh_ServiceB1Controller]
-portin " " as net_devh_ServiceB1Controller_requires_SPRING_APPLICATION_2
-"net_devh_ServiceB1Controller_requires_SPRING_APPLICATION_2"--[net_devh_ServiceB1Controller]
+portin " " as net_devh_ServiceB1Controller_requires_SPRING_APPLICATION_
+"net_devh_ServiceB1Controller_requires_SPRING_APPLICATION_"--[net_devh_ServiceB1Controller]
 }
-interface "SPRING-APPLICATION/$2" as interface.SPRING_APPLICATION_2
-interface.SPRING_APPLICATION_2--"net_devh_ServiceB1Controller_requires_SPRING_APPLICATION_2"
+interface "SPRING-APPLICATION/" as interface.SPRING_APPLICATION_
+interface.SPRING_APPLICATION_--"net_devh_ServiceB1Controller_requires_SPRING_APPLICATION_"
 interface "net_devh_Registration" as interface.net_devh_Registration
 interface.net_devh_Registration--[net_devh_Registration_Provider]
 interface "net_devh_controller_Registration" as interface.net_devh_controller_Registration
