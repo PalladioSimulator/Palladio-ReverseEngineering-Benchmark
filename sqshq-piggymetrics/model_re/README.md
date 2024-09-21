@@ -2,13 +2,13 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202408280745 |
-| Date               | Mon Sep  2 11:42:53 UTC 2024 |
+| Date               | Sat Sep 21 18:40:00 UTC 2024 |
 | #Components        | 29 |
 | #Source Files      | 148 |
 | Lines of Code      | 6286 |
 | #Technologies      | 5 |
 | Abstraction        | 5.10 |
-| Execution Time [s] | 4.043 ± 0.077  |
+| Execution Time [s] | 335.35 |
 
 ## Git repository information
 |      Attribute    | Value |
@@ -17,7 +17,7 @@
 | Branch            | master |
 | Commit            | 6bb2cf9ddbca980b664d3edbb6ff775d75369278 |
 | Number of Commits | 290 |
-| Stars             | 13141 |
+| Stars             | 13178 |
 | Contributors      | 13 |
 
 
@@ -25,20 +25,28 @@
 | Attribute | Value |
 | --------- | ----- |
 | OS | Linux  |
-| Distro | Ubuntu 22.04.4 LTS x86_64  |
-| Kernel | 6.5.0-1025-azure  |
-| CPU | AMD EPYC 7763 (4) @ 3.244GHz  |
+| Distro | Ubuntu 22.04.5 LTS x86_64  |
+| Kernel | 6.8.0-1014-azure  |
+| CPU | AMD EPYC 7763 (4) @ 3.254GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 779MiB / 15981MiB  |
+| Memory | 864MiB / 15990MiB  |
 
 ## Retriever execution time
-| Mean [s] | Min [s] | Max [s] | Relative |
-|---:|---:|---:|---:|
-| 4.043 ± 0.077 | 3.928 | 4.162 | 1.00 |
+| Metric | Time (seconds) |
+| --- | ---: |
+| Real CPU Time | 335.35 |
+| User CPU Time | 101.41 |
+| System CPU Time | 6.56 |
+<!--
+Explainations:
+- __Real CPU Time__: actual time the command has run (can be less than total time spent in user and system mode for multi-threaded processes)
+- __User CPU Time__: time the command has spent running in user mode
+- __System CPU Time__: time the command has spent running in system or kernel mode
+-->
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=0.47 s (335.4 files/s, 46224.8 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=0.50 s (319.8 files/s, 44077.4 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
