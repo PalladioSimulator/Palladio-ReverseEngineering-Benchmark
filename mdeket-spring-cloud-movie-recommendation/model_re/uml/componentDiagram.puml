@@ -3,31 +3,31 @@ skinparam fixCircleLabelOverlapping true
 skinparam componentStyle uml2
 component "com_example\n\n\n\n\n\n" {
 [com_example_RecommendationController]
-[com_example_UserController]
 [com_example_UserRepo]
-portin " " as com_example_requires_SPRING_APPLICATION_recommendation
+[com_example_UserController]
 portin " " as com_example_requires_SPRING_APPLICATION_user
+portin " " as com_example_requires_SPRING_APPLICATION_recommendation
 [com_example_UserController]..>[com_example_UserRepo] : requires
 [com_example_RecommendationController]..>[com_example_UserRepo] : requires
-"com_example_requires_SPRING_APPLICATION_user"--[com_example_UserController]
 "com_example_requires_SPRING_APPLICATION_recommendation"--[com_example_RecommendationController]
+"com_example_requires_SPRING_APPLICATION_user"--[com_example_UserController]
 }
 interface "SPRING-APPLICATION/recommendation" as interface.SPRING_APPLICATION_recommendation
 interface.SPRING_APPLICATION_recommendation--"com_example_requires_SPRING_APPLICATION_recommendation"
 interface "SPRING-APPLICATION/user" as interface.SPRING_APPLICATION_user
 interface.SPRING_APPLICATION_user--"com_example_requires_SPRING_APPLICATION_user"
 component "com_example 2\n\n\n\n\n\n" {
-[com_example_service_UserService]
 [com_example_service_RecommendationClientService]
 [com_example_MainController]
+[com_example_service_UserService]
 portin " " as com_example_2_requires_SPRING_APPLICATION_api
 portout " " as com_example_2_provides_user_service_user
 portout " " as com_example_2_provides_user_service_newuser
-[com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
 [com_example_MainController]..>[com_example_service_UserService] : requires
+[com_example_MainController]..>[com_example_service_RecommendationClientService] : requires
 "com_example_2_requires_SPRING_APPLICATION_api"--[com_example_MainController]
-[com_example_service_UserService].."com_example_2_provides_user_service_newuser"
 [com_example_service_UserService].."com_example_2_provides_user_service_user"
+[com_example_service_UserService].."com_example_2_provides_user_service_newuser"
 }
 interface "SPRING-APPLICATION/api" as interface.SPRING_APPLICATION_api
 interface.SPRING_APPLICATION_api--"com_example_2_requires_SPRING_APPLICATION_api"

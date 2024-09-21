@@ -1,86 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.2" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.2" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" id="_H57eemkgEe-X6Oe0aWH4jA">
-  <components__Repository xsi:type="repository:BasicComponent" id="_H5gnumkgEe-X6Oe0aWH4jA" entityName="se_callista_microservises_support_monitordashboard_HystrixDashboardApplication">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5gnuWkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/$3 Provider" providedInterface__OperationProvidedRole="_H5gntmkgEe-X6Oe0aWH4jA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4es8mkgEe-X6Oe0aWH4jA" describedService__SEFF="_HyqY02kgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_HzHEwWkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4es8GkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_H4es8GkgEe-X6Oe0aWH4jA" entityName="&quot;forward:/hystrix&quot;" predecessor_AbstractAction="_HzHEwWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4es8WkgEe-X6Oe0aWH4jA">
-        <localVariableUsages_SetVariableAction>
-          <variableCharacterisation_VariableUsage type="VALUE">
-            <specification_VariableCharacterisation specification="PrimitiveType.STRING"/>
-          </variableCharacterisation_VariableUsage>
-          <namedReference__VariableUsage xsi:type="stoex:NamespaceReference" referenceName="PrimitiveType">
-            <innerReference_NamespaceReference xsi:type="stoex:VariableReference" referenceName="STRING"/>
-          </namedReference__VariableUsage>
-        </localVariableUsages_SetVariableAction>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4es8WkgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4es8GkgEe-X6Oe0aWH4jA"/>
-    </serviceEffectSpecifications__BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_H5jrBWkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_core_product_service_ProductService">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5jrA2kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/product Provider" providedInterface__OperationProvidedRole="_H5gnt2kgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5jrBGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time Provider" providedInterface__OperationProvidedRole="_H5gnsmkgEe-X6Oe0aWH4jA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4giJGkgEe-X6Oe0aWH4jA" describedService__SEFF="_Hx3HkGkgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4f7FGkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4f7FWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4f7FWkgEe-X6Oe0aWH4jA" entityName="LOG.info(&quot;/product called, processing time: {}&quot;,pt)" predecessor_AbstractAction="_H4f7FGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4f7FmkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4f7FmkgEe-X6Oe0aWH4jA" entityName="sleep(pt)" predecessor_AbstractAction="_H4f7FWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4giIGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4giIGkgEe-X6Oe0aWH4jA" entityName="cpuCruncher.exec()" predecessor_AbstractAction="_H4f7FmkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4giIWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4giIWkgEe-X6Oe0aWH4jA" entityName="LOG.debug(&quot;/product return the found product&quot;)" predecessor_AbstractAction="_H4giIGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4giImkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_H4giImkgEe-X6Oe0aWH4jA" entityName="new Product(productId,&quot;name&quot;,123,util.getServiceAddress())" predecessor_AbstractAction="_H4giIWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4giI2kgEe-X6Oe0aWH4jA">
-        <localVariableUsages_SetVariableAction>
-          <variableCharacterisation_VariableUsage type="VALUE">
-            <specification_VariableCharacterisation specification="PrimitiveType.new Product(productId,&quot;name&quot;,123,util_getServiceAddress())"/>
-          </variableCharacterisation_VariableUsage>
-          <namedReference__VariableUsage xsi:type="stoex:NamespaceReference" referenceName="PrimitiveType">
-            <innerReference_NamespaceReference xsi:type="stoex:VariableReference" referenceName="new Product(productId,&quot;name&quot;,123,util_getServiceAddress())"/>
-          </namedReference__VariableUsage>
-        </localVariableUsages_SetVariableAction>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4giI2kgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4giImkgEe-X6Oe0aWH4jA"/>
-    </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4f7EmkgEe-X6Oe0aWH4jA" describedService__SEFF="_HypKsWkgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4es9GkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4fUAGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4fUAGkgEe-X6Oe0aWH4jA" entityName="LOG.info(&quot;/set-processing-time called: {} - {} ms&quot;,minMs,maxMs)" predecessor_AbstractAction="_H4es9GkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4f7EGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4f7EGkgEe-X6Oe0aWH4jA" entityName="setProcTimeBean.setDefaultProcessingTime(minMs,maxMs)" predecessor_AbstractAction="_H4fUAGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4f7EWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4f7EWkgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4f7EGkgEe-X6Oe0aWH4jA"/>
-    </serviceEffectSpecifications__BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_H5ojhWkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_core_recommendation_service_RecommendationService">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5ojg2kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time$3 Provider" providedInterface__OperationProvidedRole="_H5gntGkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5ojhGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/recommendation Provider" providedInterface__OperationProvidedRole="_H5gns2kgEe-X6Oe0aWH4jA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4hJOGkgEe-X6Oe0aWH4jA" describedService__SEFF="_Hyq_42kgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4hJNGkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4hJNWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4hJNWkgEe-X6Oe0aWH4jA" entityName="LOG.info(&quot;/set-processing-time called: {} - {} ms&quot;,minMs,maxMs)" predecessor_AbstractAction="_H4hJNGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4hJNmkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4hJNmkgEe-X6Oe0aWH4jA" entityName="setProcTimeBean.setDefaultProcessingTime(minMs,maxMs)" predecessor_AbstractAction="_H4hJNWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4hJN2kgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4hJN2kgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4hJNmkgEe-X6Oe0aWH4jA"/>
-    </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4iXVmkgEe-X6Oe0aWH4jA" describedService__SEFF="_Hyq_4GkgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4hJOmkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4hwQGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4hwQGkgEe-X6Oe0aWH4jA" entityName="LOG.info(&quot;/recommendation called, processing time: {}&quot;,pt)" predecessor_AbstractAction="_H4hJOmkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4hwQWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4hwQWkgEe-X6Oe0aWH4jA" entityName="sleep(pt)" predecessor_AbstractAction="_H4hwQGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4hwQmkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4hwQmkgEe-X6Oe0aWH4jA" entityName="cpuCruncher.exec()" predecessor_AbstractAction="_H4hwQWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4iXUGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4iXUGkgEe-X6Oe0aWH4jA" entityName="list.add(new Recommendation(productId,1,&quot;Author 1&quot;,1,&quot;Content 1&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_H4hwQmkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4iXUWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4iXUWkgEe-X6Oe0aWH4jA" entityName="list.add(new Recommendation(productId,2,&quot;Author 2&quot;,2,&quot;Content 2&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_H4iXUGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4iXUmkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4iXUmkgEe-X6Oe0aWH4jA" entityName="list.add(new Recommendation(productId,3,&quot;Author 3&quot;,3,&quot;Content 3&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_H4iXUWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4iXU2kgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4iXU2kgEe-X6Oe0aWH4jA" entityName="LOG.debug(&quot;/recommendation response size: {}&quot;,list.size())" predecessor_AbstractAction="_H4iXUmkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4iXVGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_H4iXVGkgEe-X6Oe0aWH4jA" entityName="list" predecessor_AbstractAction="_H4iXU2kgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4iXVWkgEe-X6Oe0aWH4jA">
-        <localVariableUsages_SetVariableAction>
-          <variableCharacterisation_VariableUsage type="VALUE">
-            <specification_VariableCharacterisation specification="PrimitiveType.list"/>
-          </variableCharacterisation_VariableUsage>
-          <namedReference__VariableUsage xsi:type="stoex:NamespaceReference" referenceName="PrimitiveType">
-            <innerReference_NamespaceReference xsi:type="stoex:VariableReference" referenceName="list"/>
-          </namedReference__VariableUsage>
-        </localVariableUsages_SetVariableAction>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4iXVWkgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4iXVGkgEe-X6Oe0aWH4jA"/>
-    </serviceEffectSpecifications__BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_H5s0-WkgEe-X6Oe0aWH4jA" entityName="se_callista_microservises_support_oauth_AuthserverApplication">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5s0-GkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/user Provider" providedInterface__OperationProvidedRole="_H5gnsGkgEe-X6Oe0aWH4jA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4hJMmkgEe-X6Oe0aWH4jA" describedService__SEFF="_Hyrm8WkgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4giJmkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4hJMGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_H4hJMGkgEe-X6Oe0aWH4jA" entityName="user" predecessor_AbstractAction="_H4giJmkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4hJMWkgEe-X6Oe0aWH4jA">
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.2" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.2" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" id="_UKi6HnhLEe-xyoZuaXv7tg">
+  <components__Repository xsi:type="repository:BasicComponent" id="_UKHcS3hLEe-xyoZuaXv7tg" entityName="se_callista_microservises_support_oauth_AuthserverApplication">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKHcSnhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/user Provider" providedInterface__OperationProvidedRole="_UKHcQ3hLEe-xyoZuaXv7tg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJMPN3hLEe-xyoZuaXv7tg" describedService__SEFF="_UCkCwHhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UJMPNHhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UJMPNXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_UJMPNXhLEe-xyoZuaXv7tg" entityName="user" predecessor_AbstractAction="_UJMPNHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJMPNnhLEe-xyoZuaXv7tg">
         <localVariableUsages_SetVariableAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="PrimitiveType.user"/>
@@ -90,23 +14,39 @@
           </namedReference__VariableUsage>
         </localVariableUsages_SetVariableAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4hJMWkgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4hJMGkgEe-X6Oe0aWH4jA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJMPNnhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJMPNXhLEe-xyoZuaXv7tg"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_H5uqL2kgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_core_review_service_ReviewService">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5uqLWkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/review Provider" providedInterface__OperationProvidedRole="_H5gnsWkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5uqLmkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time$2 Provider" providedInterface__OperationProvidedRole="_H5gnuGkgEe-X6Oe0aWH4jA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4mBsmkgEe-X6Oe0aWH4jA" describedService__SEFF="_Hyrm9GkgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4kMgWkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4kMgmkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4kMgmkgEe-X6Oe0aWH4jA" entityName="LOG.info(&quot;/reviews called, processing time: {}&quot;,pt)" predecessor_AbstractAction="_H4kMgWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4kMg2kgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4kMg2kgEe-X6Oe0aWH4jA" entityName="LOG.info(&quot;mySecretProperty: {}&quot;,mySecretProperty)" predecessor_AbstractAction="_H4kMgmkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4kzkGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4kzkGkgEe-X6Oe0aWH4jA" entityName="sleep(pt)" predecessor_AbstractAction="_H4kMg2kgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4kzkWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4kzkWkgEe-X6Oe0aWH4jA" entityName="cpuCruncher.exec()" predecessor_AbstractAction="_H4kzkGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4kzkmkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4kzkmkgEe-X6Oe0aWH4jA" entityName="list.add(new Review(productId,1,&quot;Author 1&quot;,&quot;Subject 1&quot;,&quot;Content 1&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_H4kzkWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4kzk2kgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4kzk2kgEe-X6Oe0aWH4jA" entityName="list.add(new Review(productId,2,&quot;Author 2&quot;,&quot;Subject 2&quot;,&quot;Content 2&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_H4kzkmkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4laoGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4laoGkgEe-X6Oe0aWH4jA" entityName="list.add(new Review(productId,3,&quot;Author 3&quot;,&quot;Subject 3&quot;,&quot;Content 3&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_H4kzk2kgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4laoWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4laoWkgEe-X6Oe0aWH4jA" entityName="LOG.debug(&quot;/reviews response size: {}&quot;,list.size())" predecessor_AbstractAction="_H4laoGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4mBsGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_H4mBsGkgEe-X6Oe0aWH4jA" entityName="list" predecessor_AbstractAction="_H4laoWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4mBsWkgEe-X6Oe0aWH4jA">
+  <components__Repository xsi:type="repository:BasicComponent" id="_UKKfmHhLEe-xyoZuaXv7tg" entityName="se_callista_microservises_support_monitordashboard_HystrixDashboardApplication">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKKfl3hLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/$2 Provider" providedInterface__OperationProvidedRole="_UKHcSHhLEe-xyoZuaXv7tg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJJL5nhLEe-xyoZuaXv7tg" describedService__SEFF="_UDXUBXhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UJJL43hLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UJJL5HhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_UJJL5HhLEe-xyoZuaXv7tg" entityName="&quot;forward:/hystrix&quot;" predecessor_AbstractAction="_UJJL43hLEe-xyoZuaXv7tg" successor_AbstractAction="_UJJL5XhLEe-xyoZuaXv7tg">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage type="VALUE">
+            <specification_VariableCharacterisation specification="PrimitiveType.STRING"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:NamespaceReference" referenceName="PrimitiveType">
+            <innerReference_NamespaceReference xsi:type="stoex:VariableReference" referenceName="STRING"/>
+          </namedReference__VariableUsage>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJJL5XhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJJL5HhLEe-xyoZuaXv7tg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_UKM73HhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_core_recommendation_service_RecommendationService">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKM72nhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/recommendation Provider" providedInterface__OperationProvidedRole="_UKHcR3hLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKM723hLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time$3 Provider" providedInterface__OperationProvidedRole="_UKHcQXhLEe-xyoZuaXv7tg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJHWsnhLEe-xyoZuaXv7tg" describedService__SEFF="_UDWs8XhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UD2cNHhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UD2cNXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD2cNXhLEe-xyoZuaXv7tg" entityName="LOG.info(&quot;/recommendation called, processing time: {}&quot;,pt)" predecessor_AbstractAction="_UD2cNHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UD3DQHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD3DQHhLEe-xyoZuaXv7tg" entityName="sleep(pt)" predecessor_AbstractAction="_UD2cNXhLEe-xyoZuaXv7tg" successor_AbstractAction="_UD3DQXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD3DQXhLEe-xyoZuaXv7tg" entityName="cpuCruncher.exec()" predecessor_AbstractAction="_UD3DQHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UD3DQnhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD3DQnhLEe-xyoZuaXv7tg" entityName="list.add(new Recommendation(productId,1,&quot;Author 1&quot;,1,&quot;Content 1&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_UD3DQXhLEe-xyoZuaXv7tg" successor_AbstractAction="_UD3qUHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD3qUHhLEe-xyoZuaXv7tg" entityName="list.add(new Recommendation(productId,2,&quot;Author 2&quot;,2,&quot;Content 2&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_UD3DQnhLEe-xyoZuaXv7tg" successor_AbstractAction="_UD3qUXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD3qUXhLEe-xyoZuaXv7tg" entityName="list.add(new Recommendation(productId,3,&quot;Author 3&quot;,3,&quot;Content 3&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_UD3qUHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UD4RYHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD4RYHhLEe-xyoZuaXv7tg" entityName="LOG.debug(&quot;/recommendation response size: {}&quot;,list.size())" predecessor_AbstractAction="_UD3qUXhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJHWsHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_UJHWsHhLEe-xyoZuaXv7tg" entityName="list" predecessor_AbstractAction="_UD4RYHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJHWsXhLEe-xyoZuaXv7tg">
         <localVariableUsages_SetVariableAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="PrimitiveType.list"/>
@@ -116,22 +56,21 @@
           </namedReference__VariableUsage>
         </localVariableUsages_SetVariableAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4mBsWkgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4mBsGkgEe-X6Oe0aWH4jA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJHWsXhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJHWsHhLEe-xyoZuaXv7tg"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4jleGkgEe-X6Oe0aWH4jA" describedService__SEFF="_Hypxw2kgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4jldGkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4jldWkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4jldWkgEe-X6Oe0aWH4jA" entityName="LOG.info(&quot;/set-processing-time called: {} - {} ms&quot;,minMs,maxMs)" predecessor_AbstractAction="_H4jldGkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4jldmkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_H4jldmkgEe-X6Oe0aWH4jA" entityName="setProcTimeBean.setDefaultProcessingTime(minMs,maxMs)" predecessor_AbstractAction="_H4jldWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4jld2kgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4jld2kgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4jldmkgEe-X6Oe0aWH4jA"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UD2cMnhLEe-xyoZuaXv7tg" describedService__SEFF="_UDXUAnhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UDzY4XhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UD11IHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD11IHhLEe-xyoZuaXv7tg" entityName="LOG.info(&quot;/set-processing-time called: {} - {} ms&quot;,minMs,maxMs)" predecessor_AbstractAction="_UDzY4XhLEe-xyoZuaXv7tg" successor_AbstractAction="_UD2cMHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UD2cMHhLEe-xyoZuaXv7tg" entityName="setProcTimeBean.setDefaultProcessingTime(minMs,maxMs)" predecessor_AbstractAction="_UD11IHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UD2cMXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UD2cMXhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UD2cMHhLEe-xyoZuaXv7tg"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_H5y7lmkgEe-X6Oe0aWH4jA" entityName="se_callista_microservises_support_edge_ZuulApplication"/>
-  <components__Repository xsi:type="repository:BasicComponent" id="_H5y7mWkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_composite_product_service_ProductCompositeService">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5y7l2kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/$2 Provider" providedInterface__OperationProvidedRole="_H5gntWkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H5y7mGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/ Provider" providedInterface__OperationProvidedRole="_H5gAqmkgEe-X6Oe0aWH4jA"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4jlcmkgEe-X6Oe0aWH4jA" describedService__SEFF="_HyqY0GkgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4i-ZmkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4jlcGkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_H4jlcGkgEe-X6Oe0aWH4jA" entityName="&quot;{\&quot;timestamp\&quot;:\&quot;&quot; + new Date() + &quot;\&quot;,\&quot;content\&quot;:\&quot;Hello from ProductAPi\&quot;}&quot;" predecessor_AbstractAction="_H4i-ZmkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4jlcWkgEe-X6Oe0aWH4jA">
+  <components__Repository xsi:type="repository:BasicComponent" id="_UKR0XHhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_composite_product_service_ProductCompositeService">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKR0WnhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/ Provider" providedInterface__OperationProvidedRole="_UKHcQHhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKR0W3hLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/$3 Provider" providedInterface__OperationProvidedRole="_UKHcRHhLEe-xyoZuaXv7tg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJJy93hLEe-xyoZuaXv7tg" describedService__SEFF="_UDWs9HhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UJJy9HhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UJJy9XhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_UJJy9XhLEe-xyoZuaXv7tg" entityName="&quot;{\&quot;timestamp\&quot;:\&quot;&quot; + new Date() + &quot;\&quot;,\&quot;content\&quot;:\&quot;Hello from ProductAPi\&quot;}&quot;" predecessor_AbstractAction="_UJJy9HhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJJy9nhLEe-xyoZuaXv7tg">
         <localVariableUsages_SetVariableAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="PrimitiveType.&quot;{\&quot;timestamp\&quot;:\&quot;&quot; + new Date() + &quot;\&quot;,\&quot;content\&quot;:\&quot;Hello from ProductAPi\&quot;}&quot;"/>
@@ -141,11 +80,11 @@
           </namedReference__VariableUsage>
         </localVariableUsages_SetVariableAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4jlcWkgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4jlcGkgEe-X6Oe0aWH4jA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJJy9nhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJJy9XhLEe-xyoZuaXv7tg"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_H4i-ZGkgEe-X6Oe0aWH4jA" describedService__SEFF="_HypxwGkgEe-X6Oe0aWH4jA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_H4i-YWkgEe-X6Oe0aWH4jA" entityName="Start Action" successor_AbstractAction="_H4i-YmkgEe-X6Oe0aWH4jA"/>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_H4i-YmkgEe-X6Oe0aWH4jA" entityName="util.createOkResponse(new ProductAggregated(product,recommendations,reviews,util.getServiceAddress()))" predecessor_AbstractAction="_H4i-YWkgEe-X6Oe0aWH4jA" successor_AbstractAction="_H4i-Y2kgEe-X6Oe0aWH4jA">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJJy8nhLEe-xyoZuaXv7tg" describedService__SEFF="_UDYiIHhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UJJL6HhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UJJy8HhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_UJJy8HhLEe-xyoZuaXv7tg" entityName="util.createOkResponse(new ProductAggregated(product,recommendations,reviews,util.getServiceAddress()))" predecessor_AbstractAction="_UJJL6HhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJJy8XhLEe-xyoZuaXv7tg">
         <localVariableUsages_SetVariableAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="PrimitiveType.util_createOkResponse(new ProductAggregated(product,recommendations,reviews,util_getServiceAddress()))"/>
@@ -155,115 +94,118 @@
           </namedReference__VariableUsage>
         </localVariableUsages_SetVariableAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_H4i-Y2kgEe-X6Oe0aWH4jA" entityName="Stop Action" predecessor_AbstractAction="_H4i-YmkgEe-X6Oe0aWH4jA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJJy8XhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJJy8HhLEe-xyoZuaXv7tg"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_H55CMmkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_composite_product_service_ProductCompositeService">
-    <assemblyContexts__ComposedStructure id="_H57eeGkgEe-X6Oe0aWH4jA" encapsulatedComponent__AssemblyContext="_H5y7mWkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58FgWkgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5y7mGkgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H55CMGkgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H57eeGkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58sk2kgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5y7l2kgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H55CMWkgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H57eeGkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H55CMGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/ Provider" providedInterface__OperationProvidedRole="_H5gAqmkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H55CMWkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/$2 Provider" providedInterface__OperationProvidedRole="_H5gntWkgEe-X6Oe0aWH4jA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_UKWs3nhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_core_product_service_ProductService">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKWs3HhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/product Provider" providedInterface__OperationProvidedRole="_UKHcRXhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKWs3XhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time$2 Provider" providedInterface__OperationProvidedRole="_UKHcSXhLEe-xyoZuaXv7tg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJJL4XhLEe-xyoZuaXv7tg" describedService__SEFF="_UDYiJHhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UJH9xXhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UJH9xnhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJH9xnhLEe-xyoZuaXv7tg" entityName="LOG.info(&quot;/product called, processing time: {}&quot;,pt)" predecessor_AbstractAction="_UJH9xXhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJIk0HhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJIk0HhLEe-xyoZuaXv7tg" entityName="sleep(pt)" predecessor_AbstractAction="_UJH9xnhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJIk0XhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJIk0XhLEe-xyoZuaXv7tg" entityName="cpuCruncher.exec()" predecessor_AbstractAction="_UJIk0HhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJIk0nhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJIk0nhLEe-xyoZuaXv7tg" entityName="LOG.debug(&quot;/product return the found product&quot;)" predecessor_AbstractAction="_UJIk0XhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJIk03hLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_UJIk03hLEe-xyoZuaXv7tg" entityName="new Product(productId,&quot;name&quot;,123,util.getServiceAddress())" predecessor_AbstractAction="_UJIk0nhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJJL4HhLEe-xyoZuaXv7tg">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage type="VALUE">
+            <specification_VariableCharacterisation specification="PrimitiveType.new Product(productId,&quot;name&quot;,123,util_getServiceAddress())"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:NamespaceReference" referenceName="PrimitiveType">
+            <innerReference_NamespaceReference xsi:type="stoex:VariableReference" referenceName="new Product(productId,&quot;name&quot;,123,util_getServiceAddress())"/>
+          </namedReference__VariableUsage>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJJL4HhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJIk03hLEe-xyoZuaXv7tg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJH9w3hLEe-xyoZuaXv7tg" describedService__SEFF="_UDWF4nhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UJHWtHhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UJH9wHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJH9wHhLEe-xyoZuaXv7tg" entityName="LOG.info(&quot;/set-processing-time called: {} - {} ms&quot;,minMs,maxMs)" predecessor_AbstractAction="_UJHWtHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJH9wXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJH9wXhLEe-xyoZuaXv7tg" entityName="setProcTimeBean.setDefaultProcessingTime(minMs,maxMs)" predecessor_AbstractAction="_UJH9wHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJH9wnhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJH9wnhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJH9wXhLEe-xyoZuaXv7tg"/>
+    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_H55CNWkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_core_review_service_ReviewService">
-    <assemblyContexts__ComposedStructure id="_H57ecmkgEe-X6Oe0aWH4jA" encapsulatedComponent__AssemblyContext="_H5uqL2kgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58FgGkgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5uqLmkgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H55CNGkgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H57ecmkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58sl2kgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5uqLWkgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H55CM2kgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H57ecmkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H55CM2kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/review Provider" providedInterface__OperationProvidedRole="_H5gnsWkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H55CNGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time$2 Provider" providedInterface__OperationProvidedRole="_H5gnuGkgEe-X6Oe0aWH4jA"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_UKblU3hLEe-xyoZuaXv7tg" entityName="se_callista_microservises_support_edge_ZuulApplication"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_UKblVnhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_core_review_service_ReviewService">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKblVHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/review Provider" providedInterface__OperationProvidedRole="_UKHcQnhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKblVXhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time Provider" providedInterface__OperationProvidedRole="_UKHcRnhLEe-xyoZuaXv7tg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJLoI3hLEe-xyoZuaXv7tg" describedService__SEFF="_UDX7EnhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UJJy-XhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UJKaAHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJKaAHhLEe-xyoZuaXv7tg" entityName="LOG.info(&quot;/reviews called, processing time: {}&quot;,pt)" predecessor_AbstractAction="_UJJy-XhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJKaAXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJKaAXhLEe-xyoZuaXv7tg" entityName="LOG.info(&quot;mySecretProperty: {}&quot;,mySecretProperty)" predecessor_AbstractAction="_UJKaAHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJKaAnhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJKaAnhLEe-xyoZuaXv7tg" entityName="sleep(pt)" predecessor_AbstractAction="_UJKaAXhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJKaA3hLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJKaA3hLEe-xyoZuaXv7tg" entityName="cpuCruncher.exec()" predecessor_AbstractAction="_UJKaAnhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJLBEHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJLBEHhLEe-xyoZuaXv7tg" entityName="list.add(new Review(productId,1,&quot;Author 1&quot;,&quot;Subject 1&quot;,&quot;Content 1&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_UJKaA3hLEe-xyoZuaXv7tg" successor_AbstractAction="_UJLBEXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJLBEXhLEe-xyoZuaXv7tg" entityName="list.add(new Review(productId,2,&quot;Author 2&quot;,&quot;Subject 2&quot;,&quot;Content 2&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_UJLBEHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJLBEnhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJLBEnhLEe-xyoZuaXv7tg" entityName="list.add(new Review(productId,3,&quot;Author 3&quot;,&quot;Subject 3&quot;,&quot;Content 3&quot;,util.getServiceAddress()))" predecessor_AbstractAction="_UJLBEXhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJLoIHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJLoIHhLEe-xyoZuaXv7tg" entityName="LOG.debug(&quot;/reviews response size: {}&quot;,list.size())" predecessor_AbstractAction="_UJLBEnhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJLoIXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_UJLoIXhLEe-xyoZuaXv7tg" entityName="list" predecessor_AbstractAction="_UJLoIHhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJLoInhLEe-xyoZuaXv7tg">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage type="VALUE">
+            <specification_VariableCharacterisation specification="PrimitiveType.list"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:NamespaceReference" referenceName="PrimitiveType">
+            <innerReference_NamespaceReference xsi:type="stoex:VariableReference" referenceName="list"/>
+          </namedReference__VariableUsage>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJLoInhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJLoIXhLEe-xyoZuaXv7tg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_UJMPMnhLEe-xyoZuaXv7tg" describedService__SEFF="_UDVe0XhLEe-xyoZuaXv7tg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_UJLoJXhLEe-xyoZuaXv7tg" entityName="Start Action" successor_AbstractAction="_UJLoJnhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJLoJnhLEe-xyoZuaXv7tg" entityName="LOG.info(&quot;/set-processing-time called: {} - {} ms&quot;,minMs,maxMs)" predecessor_AbstractAction="_UJLoJXhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJMPMHhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_UJMPMHhLEe-xyoZuaXv7tg" entityName="setProcTimeBean.setDefaultProcessingTime(minMs,maxMs)" predecessor_AbstractAction="_UJLoJnhLEe-xyoZuaXv7tg" successor_AbstractAction="_UJMPMXhLEe-xyoZuaXv7tg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_UJMPMXhLEe-xyoZuaXv7tg" entityName="Stop Action" predecessor_AbstractAction="_UJMPMHhLEe-xyoZuaXv7tg"/>
+    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_H55pQGkgEe-X6Oe0aWH4jA" entityName="se_callista_microservises_support_monitordashboard_HystrixDashboardApplication">
-    <assemblyContexts__ComposedStructure id="_H563YGkgEe-X6Oe0aWH4jA" encapsulatedComponent__AssemblyContext="_H5gnumkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58slGkgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5gnuWkgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H55CNmkgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H563YGkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H55CNmkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/$3 Provider" providedInterface__OperationProvidedRole="_H5gntmkgEe-X6Oe0aWH4jA"/>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_UKhr8nhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_core_review_service_ReviewService">
+    <assemblyContexts__ComposedStructure id="_UKi6FnhLEe-xyoZuaXv7tg" encapsulatedComponent__AssemblyContext="_UKblVnhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkIMXhLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKblVXhLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKhr8XhLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6FnhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkINHhLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKblVHhLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKhr8HhLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6FnhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKhr8HhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/review Provider" providedInterface__OperationProvidedRole="_UKHcQnhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKhr8XhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time Provider" providedInterface__OperationProvidedRole="_UKHcRnhLEe-xyoZuaXv7tg"/>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_H56QUmkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_core_recommendation_service_RecommendationService">
-    <assemblyContexts__ComposedStructure id="_H57edGkgEe-X6Oe0aWH4jA" encapsulatedComponent__AssemblyContext="_H5ojhWkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58skWkgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5ojhGkgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H56QUWkgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H57edGkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58slmkgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5ojg2kgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H56QUGkgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H57edGkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H56QUGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time$3 Provider" providedInterface__OperationProvidedRole="_H5gntGkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H56QUWkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/recommendation Provider" providedInterface__OperationProvidedRole="_H5gns2kgEe-X6Oe0aWH4jA"/>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_UKhr9HhLEe-xyoZuaXv7tg" entityName="se_callista_microservises_support_oauth_AuthserverApplication">
+    <assemblyContexts__ComposedStructure id="_UKi6EHhLEe-xyoZuaXv7tg" encapsulatedComponent__AssemblyContext="_UKHcS3hLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkIMHhLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKHcSnhLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKhr83hLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6EHhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKhr83hLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/user Provider" providedInterface__OperationProvidedRole="_UKHcQ3hLEe-xyoZuaXv7tg"/>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_H56QVWkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_core_product_service_ProductService">
-    <assemblyContexts__ComposedStructure id="_H57ecGkgEe-X6Oe0aWH4jA" encapsulatedComponent__AssemblyContext="_H5jrBWkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58skGkgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5jrA2kgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H56QU2kgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H57ecGkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58slWkgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5jrBGkgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H56QVGkgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H57ecGkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H56QU2kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/product Provider" providedInterface__OperationProvidedRole="_H5gnt2kgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H56QVGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time Provider" providedInterface__OperationProvidedRole="_H5gnsmkgEe-X6Oe0aWH4jA"/>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_UKiTAnhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_composite_product_service_ProductCompositeService">
+    <assemblyContexts__ComposedStructure id="_UKi6HHhLEe-xyoZuaXv7tg" encapsulatedComponent__AssemblyContext="_UKR0XHhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkINnhLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKR0WnhLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKiTAHhLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6HHhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkIN3hLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKR0W3hLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKiTAXhLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6HHhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKiTAHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/ Provider" providedInterface__OperationProvidedRole="_UKHcQHhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKiTAXhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/$3 Provider" providedInterface__OperationProvidedRole="_UKHcRHhLEe-xyoZuaXv7tg"/>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_H56QV2kgEe-X6Oe0aWH4jA" entityName="se_callista_microservises_support_oauth_AuthserverApplication">
-    <assemblyContexts__ComposedStructure id="_H563YmkgEe-X6Oe0aWH4jA" encapsulatedComponent__AssemblyContext="_H5s0-WkgEe-X6Oe0aWH4jA"/>
-    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_H58skmkgEe-X6Oe0aWH4jA" innerProvidedRole_ProvidedDelegationConnector="_H5s0-GkgEe-X6Oe0aWH4jA" outerProvidedRole_ProvidedDelegationConnector="_H56QVmkgEe-X6Oe0aWH4jA" assemblyContext_ProvidedDelegationConnector="_H563YmkgEe-X6Oe0aWH4jA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_H56QVmkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/user Provider" providedInterface__OperationProvidedRole="_H5gnsGkgEe-X6Oe0aWH4jA"/>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_UKiTBXhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_core_product_service_ProductService">
+    <assemblyContexts__ComposedStructure id="_UKi6GnhLEe-xyoZuaXv7tg" encapsulatedComponent__AssemblyContext="_UKWs3nhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkIMnhLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKWs3XhLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKiTA3hLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6GnhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkIM3hLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKWs3HhLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKiTBHhLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6GnhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKiTA3hLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time$2 Provider" providedInterface__OperationProvidedRole="_UKHcSXhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKiTBHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/product Provider" providedInterface__OperationProvidedRole="_UKHcRXhLEe-xyoZuaXv7tg"/>
   </components__Repository>
-  <components__Repository xsi:type="repository:CompositeComponent" id="_H56QWGkgEe-X6Oe0aWH4jA" entityName="se_callista_microservises_support_edge_ZuulApplication">
-    <assemblyContexts__ComposedStructure id="_H57edmkgEe-X6Oe0aWH4jA" encapsulatedComponent__AssemblyContext="_H5y7lmkgEe-X6Oe0aWH4jA"/>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_UKiTCHhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_core_recommendation_service_RecommendationService">
+    <assemblyContexts__ComposedStructure id="_UKi6EnhLEe-xyoZuaXv7tg" encapsulatedComponent__AssemblyContext="_UKM73HhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkIOHhLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKM723hLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKiTB3hLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6EnhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkIOXhLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKM72nhLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKiTBnhLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6EnhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKiTBnhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/recommendation Provider" providedInterface__OperationProvidedRole="_UKHcR3hLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKiTB3hLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time$3 Provider" providedInterface__OperationProvidedRole="_UKHcQXhLEe-xyoZuaXv7tg"/>
   </components__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gAqmkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/">
-    <signatures__OperationInterface id="_HypxwGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/" returnType__OperationSignature="_HypKtGkgEe-X6Oe0aWH4jA">
-      <parameters__OperationSignature parameterName="productId" modifier__Parameter="in">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gnsGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/user">
-    <signatures__OperationInterface id="_Hyrm8WkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/user" returnType__OperationSignature="_Hyrm8GkgEe-X6Oe0aWH4jA">
-      <parameters__OperationSignature dataType__Parameter="_Hyrm8GkgEe-X6Oe0aWH4jA" parameterName="user" modifier__Parameter="in"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gnsWkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/review">
-    <signatures__OperationInterface id="_Hyrm9GkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/review" returnType__OperationSignature="_HyqY1mkgEe-X6Oe0aWH4jA">
-      <parameters__OperationSignature parameterName="productId" modifier__Parameter="in">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gnsmkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time">
-    <signatures__OperationInterface id="_HypKsWkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time" returnType__OperationSignature="_HypKsGkgEe-X6Oe0aWH4jA">
-      <parameters__OperationSignature parameterName="minMs" modifier__Parameter="in">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
-      </parameters__OperationSignature>
-      <parameters__OperationSignature parameterName="maxMs" modifier__Parameter="in">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gns2kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/recommendation">
-    <signatures__OperationInterface id="_Hyq_4GkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/recommendation" returnType__OperationSignature="_HyqY1mkgEe-X6Oe0aWH4jA">
-      <parameters__OperationSignature parameterName="productId" modifier__Parameter="in">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gntGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time$3">
-    <signatures__OperationInterface id="_Hyq_42kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time$3" returnType__OperationSignature="_HypKsGkgEe-X6Oe0aWH4jA">
-      <parameters__OperationSignature parameterName="minMs" modifier__Parameter="in">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
-      </parameters__OperationSignature>
-      <parameters__OperationSignature parameterName="maxMs" modifier__Parameter="in">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gntWkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/$2">
-    <signatures__OperationInterface id="_HyqY0GkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/$2">
+  <components__Repository xsi:type="repository:CompositeComponent" id="_UKiTCXhLEe-xyoZuaXv7tg" entityName="se_callista_microservises_support_edge_ZuulApplication">
+    <assemblyContexts__ComposedStructure id="_UKi6GHhLEe-xyoZuaXv7tg" encapsulatedComponent__AssemblyContext="_UKblU3hLEe-xyoZuaXv7tg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_UKiTC3hLEe-xyoZuaXv7tg" entityName="se_callista_microservises_support_monitordashboard_HystrixDashboardApplication">
+    <assemblyContexts__ComposedStructure id="_UKi6FHhLEe-xyoZuaXv7tg" encapsulatedComponent__AssemblyContext="_UKKfmHhLEe-xyoZuaXv7tg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UKkINXhLEe-xyoZuaXv7tg" innerProvidedRole_ProvidedDelegationConnector="_UKKfl3hLEe-xyoZuaXv7tg" outerProvidedRole_ProvidedDelegationConnector="_UKiTCnhLEe-xyoZuaXv7tg" assemblyContext_ProvidedDelegationConnector="_UKi6FHhLEe-xyoZuaXv7tg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UKiTCnhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/$2 Provider" providedInterface__OperationProvidedRole="_UKHcSHhLEe-xyoZuaXv7tg"/>
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcQHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/">
+    <signatures__OperationInterface id="_UDWs9HhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/">
       <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gntmkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/$3">
-    <signatures__OperationInterface id="_HyqY02kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/$3">
-      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gnt2kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/product">
-    <signatures__OperationInterface id="_Hx3HkGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/product" returnType__OperationSignature="_Hx15cGkgEe-X6Oe0aWH4jA">
-      <parameters__OperationSignature parameterName="productId" modifier__Parameter="in">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_H5gnuGkgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time$2">
-    <signatures__OperationInterface id="_Hypxw2kgEe-X6Oe0aWH4jA" entityName="SPRING-APPLICATION/set-processing-time$2" returnType__OperationSignature="_HypKsGkgEe-X6Oe0aWH4jA">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcQXhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time$3">
+    <signatures__OperationInterface id="_UDXUAnhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time$3" returnType__OperationSignature="_UDVe0HhLEe-xyoZuaXv7tg">
       <parameters__OperationSignature parameterName="minMs" modifier__Parameter="in">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
@@ -272,9 +214,67 @@
       </parameters__OperationSignature>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Hx15cGkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_model_Product"/>
-  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_HypKsGkgEe-X6Oe0aWH4jA" entityName="Void"/>
-  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_HypKtGkgEe-X6Oe0aWH4jA" entityName="se_callista_microservices_composite_product_service_ResponseEntity"/>
-  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_HyqY1mkgEe-X6Oe0aWH4jA" entityName="java_util_List"/>
-  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Hyrm8GkgEe-X6Oe0aWH4jA" entityName="java_security_Principal"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcQnhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/review">
+    <signatures__OperationInterface id="_UDX7EnhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/review" returnType__OperationSignature="_UDWs8HhLEe-xyoZuaXv7tg">
+      <parameters__OperationSignature parameterName="productId" modifier__Parameter="in">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcQ3hLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/user">
+    <signatures__OperationInterface id="_UCkCwHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/user" returnType__OperationSignature="_UCiNkHhLEe-xyoZuaXv7tg">
+      <parameters__OperationSignature dataType__Parameter="_UCiNkHhLEe-xyoZuaXv7tg" parameterName="user" modifier__Parameter="in"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcRHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/$3">
+    <signatures__OperationInterface id="_UDYiIHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/$3" returnType__OperationSignature="_UDX7FXhLEe-xyoZuaXv7tg">
+      <parameters__OperationSignature parameterName="productId" modifier__Parameter="in">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcRXhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/product">
+    <signatures__OperationInterface id="_UDYiJHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/product" returnType__OperationSignature="_UDYiI3hLEe-xyoZuaXv7tg">
+      <parameters__OperationSignature parameterName="productId" modifier__Parameter="in">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcRnhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time">
+    <signatures__OperationInterface id="_UDVe0XhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time" returnType__OperationSignature="_UDVe0HhLEe-xyoZuaXv7tg">
+      <parameters__OperationSignature parameterName="minMs" modifier__Parameter="in">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="maxMs" modifier__Parameter="in">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcR3hLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/recommendation">
+    <signatures__OperationInterface id="_UDWs8XhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/recommendation" returnType__OperationSignature="_UDWs8HhLEe-xyoZuaXv7tg">
+      <parameters__OperationSignature parameterName="productId" modifier__Parameter="in">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcSHhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/$2">
+    <signatures__OperationInterface id="_UDXUBXhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/$2">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UKHcSXhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time$2">
+    <signatures__OperationInterface id="_UDWF4nhLEe-xyoZuaXv7tg" entityName="SPRING-APPLICATION/set-processing-time$2" returnType__OperationSignature="_UDVe0HhLEe-xyoZuaXv7tg">
+      <parameters__OperationSignature parameterName="minMs" modifier__Parameter="in">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="maxMs" modifier__Parameter="in">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_UCiNkHhLEe-xyoZuaXv7tg" entityName="java_security_Principal"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_UDVe0HhLEe-xyoZuaXv7tg" entityName="Void"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_UDWs8HhLEe-xyoZuaXv7tg" entityName="java_util_List"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_UDX7FXhLEe-xyoZuaXv7tg" entityName="se_callista_microservices_composite_product_service_ResponseEntity"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_UDYiI3hLEe-xyoZuaXv7tg" entityName="se_callista_microservices_model_Product"/>
 </repository:Repository>
