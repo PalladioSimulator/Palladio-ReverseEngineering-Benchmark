@@ -2,30 +2,30 @@
 | Attribute          | Value |
 | ------------------ | ----- |
 | Retriever Version  | v5.2.0.202408280745 |
-| Date               | Sat Sep 21 19:03:01 UTC 2024 |
+| Date               | Fri Oct 18 15:17:42 UTC 2024 |
 | #Components        | 51 |
-| #Source Files      | 2261 |
-| Lines of Code      | 342711 |
+| #Source Files      | 2266 |
+| Lines of Code      | 344254 |
 | #Technologies      | 9 |
-| Abstraction        | 44.33 |
-| Execution Time [s] | 17.693 ± 0.321  |
+| Abstraction        | 44.43 |
+| Execution Time [s] | 17.640 ± 0.430  |
 
 ## Git repository information
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-core |
 | Branch            | master |
-| Commit            | 67eea8ab9f57952e1cccc4894933db5e0113d9d1 |
-| Number of Commits | 12274 |
-| Stars             | 1398 |
-| Contributors      | 345 |
+| Commit            | 489168f91edaa1f58b3fb18f8fd2e5f528e022dc |
+| Number of Commits | 12302 |
+| Stars             | 1412 |
+| Contributors      | 346 |
 
 |      Attribute    | Value |
 | ----------------- | ----- |
 | Repository URL    | https://github.com/openmrs/openmrs-module-webservices.rest |
 | Branch            | master |
-| Commit            | eb0b5d7a6a6da72c8f11fba2edc18fef5bba7691 |
-| Number of Commits | 1743 |
+| Commit            | 61a27fa711d211d65450b243af59a9dfff1ff4e4 |
+| Number of Commits | 1748 |
 | Stars             | 85 |
 | Contributors      | 144 |
 
@@ -35,29 +35,29 @@
 | --------- | ----- |
 | OS | Linux  |
 | Distro | Ubuntu 22.04.5 LTS x86_64  |
-| Kernel | 6.8.0-1014-azure  |
+| Kernel | 6.5.0-1025-azure  |
 | CPU | AMD EPYC 7763 (4) @ 2.445GHz  |
 | GPU | 00:08.0 Microsoft Corporation Hyper-V virtual VGA  |
-| Memory | 816MiB / 15990MiB  |
+| Memory | 799MiB / 15981MiB  |
 
 ## Retriever execution time
 | Mean [s] | Min [s] | Max [s] | Relative |
 |---:|---:|---:|---:|
-| 17.693 ± 0.321 | 17.304 | 18.399 | 1.00 |
+| 17.640 ± 0.430 | 16.891 | 18.103 | 1.00 |
 
 ## Cloc analysis
 
-<!-- github.com/AlDanial/cloc v 1.90  T=9.62 s (243.9 files/s, 52149.0 lines/s) -->
+<!-- github.com/AlDanial/cloc v 1.90  T=9.70 s (242.2 files/s, 51932.9 lines/s) -->
 
 |Technology|files|blank|comment|code|
 |:-------|-------:|-------:|-------:|-------:|
-|Java|1886|47670|91546|192291|
-|XML|307|3190|2895|134462|
+|Java|1891|48021|92047|193787|
+|XML|307|3179|2895|134489|
 |Maven|22|348|105|4775|
 |YAML|11|107|79|787|
 |JSON|6|2|0|503|
 |Dockerfile|1|38|26|81|
 |CSV|2|0|0|2|
-|ECMAScript|21|542|1178|4346|
+|ECMAScript|21|540|1185|4366|
 |SQL|5|918|741|5464|
-|**SUM:**|**2261**|**52815**|**96570**|**342711**|
+|**SUM:**|**2266**|**53153**|**97078**|**344254**|
